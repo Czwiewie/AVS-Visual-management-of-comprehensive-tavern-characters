@@ -1,0 +1,11 @@
+{
+  "display_name": "AVS视觉工坊 R2.0.1（V4.1.10独立配套）",
+  "loading_order": 15,
+  "requires": [],
+  "optional": [],
+  "dependencies": [],
+  "js": "index.js",
+  "author": "AVS project",
+  "version": "2.0.1",
+  "minimum_client_version": "1.19.0"
+}
