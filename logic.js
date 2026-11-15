@@ -1,6 +1,7 @@
 import {lexiconForScene,libraryCandidates} from './assets.js';
 import {visionChat} from './engines.js';
 import {baselineDirector,directorRequest,normalizeDirector,compileDirector,styleSnapshot} from './director.js';
+import {fanReferenceForPrompt} from './fan_canon.js';
 export const MATERIALS={
  发型:[['高马尾','high ponytail, flowing hair'],['低马尾','low ponytail'],['双马尾','twin tails'],['姬发式','hime cut, straight bangs'],['侧编发','side braid'],['长卷发','long wavy hair'],['披肩直发','silky straight shoulder-length hair'],['盘发','elegant updo']],
  表情:[['清浅微笑','gentle smile, soft eyes'],['羞涩','shy smile, subtle blush'],['自信','confident look'],['惊讶','surprised expression'],['忧思','pensive gaze'],['俏皮','playful wink'],['凝视','intense gaze']],
@@ -59,7 +60,7 @@ export async function compileDirectedPrompt(ctx,packets,settings,mode,signal){
  const baseline=baselineDirector(ctx,packets,mode,settings);const lockedAtStart=styleSnapshot(settings);
  let plan=baseline;
  if(settings.prompt.useMain || settings.prompt.key){
-   const req=directorRequest(baseline,packets,settings);let raw;
+   const req=directorRequest(baseline,packets,settings,fanReferenceForPrompt(settings,ctx.context));let raw;
    if(settings.prompt.useMain){const c=stContext();if(typeof c?.generateRaw!=='function')throw new Error('主API未提供generateRaw，不能执行导演规划');
      raw=await c.generateRaw({systemPrompt:req.system,prompt:req.user});
    }else raw=await visionChat(settings.prompt,req.system,req.user,null,signal);

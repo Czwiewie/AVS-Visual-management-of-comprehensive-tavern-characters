@@ -1,23 +1,22 @@
-# AVS Visual Workshop R2.2.0
+# AVS视觉工坊 R2.3.0（V4.1.10档案只读）
 
-SillyTavern 1.19.0+ browser extension, used alongside **unchanged AVS V4.1.10 Core**.
+本浏览器前端扩展只从AVS原悬浮球打开，无额外独立启动按钮。需配套V4.1.10 Core和安全入口UI脚本；保持正式角色档案不变。
 
-## Entry and install
-Only entry: AVS V4.1.10 floating ball → 文生图. No second floating button.
-Upload **all repository contents**, including `director.js` and `comic-page.js`, to your GitHub extension repository root. Then update this extension in SillyTavern and reload the browser. GitHub ZIP itself is not an extension URL. Old Core / UI / worldbook should not be re-imported if already installed.
+## 主要功能
 
-## Director implementation
-- Prompt AI produces a **structured scene/cast/interaction/camera/panel plan**, not an unconstrained positive/negative prompt.
-- The local `director.js` reconciles IDs against *read-only* V4.1.10 character records, rejects unknown actors, compiles scene, role, camera, physical contact and requested negative terms.
-- User camera selections take priority over model camera proposals.
-- Group illustration uses per-person identity and region **text descriptions**. Native RP Cast / ControlNet integration is **not** bundled; no claim of spatial guarantee for generic image APIs.
-- Comics get two distinct panel prompts and a local Canvas assembled PNG page with optional model-planned Chinese dialogue printed in an additional strip. This is not yet a professional balloon editor or multi-page pipeline.
-- Style positive/negative lock: user explicitly selects `使用该图片画风` after visual analysis, or manually edits the locked prompt and saves. Plot API has no style write privileges. Old unconfirmed selections remain legacy presets, **not** locked by an automatic migration.
-- OpenAI-compatible image endpoints lack a standardized native negative field; exclusions are appended as natural language. ComfyUI/NovelAI use their configured negative support.
-- Gallery records include source chat/floor hash and style revision.
+- **懒人画风**：上传本地参考图后自动使用已设置的支持图像输入的独立提示词API解析纯画风，并原子锁定画风正/负词；Pixiv月榜作品可在榜单中直接点「使用该图片画风」。原有手动编辑/清除仍可用。新解析失败不会覆盖旧画风。原图本地保存；发送视觉模型前使用像素缩放和JPEG压缩。解析不可保证语义100%正确，对明显的人物、服饰、场景词做拒绝处理。
+- **同人角色卡全局开关**：在角色页选择「同人角色卡」一次，开关按角色卡ID持久化。AI利用角色卡背景和剧情早期线索估计来源作品；公开百科验证名称后保存。关闭后不再采用对应记录。未核验的作品/角色不会伪造原作外貌或图片；不写回V4.1.10档案。若没有可用的提示词模型，则保留待检测状态。
+- **模型选择**：借鉴SillyTavern公开的GET /models与下拉选择处理方式：新搜索弹窗可查看、收藏、选用当前模型；失败保留已选与收藏模型，响应为HTML时给出可操作的诊断。并非将SillyTavern私有密钥挪用到AVS。
+- **Pixiv月榜**：GitHub Actions优先读取公开排行榜数据；若失败可尝试`tamnd/pixiv-cli`独立抓取。两条都失败时保留旧有效数据，不伪造任何榜单。缩略图仍可能因防盗链不可见；只有用户主动启用第三方缩略图代理时才尝试代理，仍不保证成功。无独立Termux服务器插件。
+- **群像/漫画/摄影**：继续沿用R2.2.0结构化导演及漫画拼页代码。第三方成熟项目仅借鉴思路，本版未复制其源代码。
 
-## Non-claims / limits
-Real Pixiv top-50 retrieval still depends on GitHub Actions and upstream policies; no fabricated data. Actual image model quality, true native multi-person region control, local long-term persistence and real Termux/SillyTavern 1.19.0 operations are **not verified by the offline mocked tests**. No additional Termux server plugin is installed.
+## 重要边界
 
-## Source and licensing
-AVS R2.2.0 director and comic compositor code is project-authored, based on **ideas and contracts**, not copied third-party source. Research references: Manga-NAI-GPT, StoryDiffusion, RP Cast, ST-BaiBai-Image, zhiku-tavern-helper, ComfyUI-qwenmultiangle, DepthAnythingV2, IC-Light. Their engines, nodes, models and weights are not bundled. Follow each original repo's license before redistributing code or models.
+1. 视觉模型必须支持带图像的OpenAI兼容聊天调用；配置为「使用SillyTavern主API」时暂不能直接读取图片，需要选用独立视觉模型，不会偷换模型或捏造成功。
+2. 正式同人角色视觉锚点来自V4.1.10档案。作品名称识别并不等于已取得其官方人物原画；普通图像API不支持的参考图输入不会被虚构为生效。
+3. Pixiv榜单元数据和图片缩略图是两项独立能力。GitHub Actions本身也可能被Pixiv限制。不要将真实Pixiv插画批量重新上传到公共仓库，除非拥有相应的授权。
+4. 不能保证所有端点CORS直连。请依据真实报错排查；没有服务器插件自动代理。
+
+安装：仓库根目录需包含manifest.json、index.js、logic.js、director.js、comic-page.js、fan_canon.js、style_guard.js、style_image.js、assets.js、engines.js、storage.js、style.css、pixiv_sync.js，以及tools、data和.github/workflows目录。
+
+更多安装及验证细节见完整ZIP的`04_说明与验收/08_R2.3.0_四模块开发与验收.md`。

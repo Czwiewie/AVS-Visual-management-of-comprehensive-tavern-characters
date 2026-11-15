@@ -5,7 +5,18 @@ export async function fetchTimeout(url,options={},ms=125000){const ac=new AbortC
  try{return await fetch(url,{...options,signal:ac.signal})}catch(e){if(ac.signal.aborted&&incoming?.aborted)throw new Error('已取消当前任务');if(ac.signal.aborted)throw new Error('连接超时，请检查服务商响应或调整线路');if(e instanceof TypeError)throw new Error('浏览器直连失败：检查地址、网络、CORS跨域权限及HTTPS混合内容限制。'+e.message);throw e}
  finally{clearTimeout(timer);incoming?.removeEventListener('abort',onAbort)}}
 async function needOK(r){if(r.ok)return r;const t=(await r.text().catch(()=>''));let msg=t.slice(0,420);try{const j=JSON.parse(t);msg=j.error?.message||j.message||j.error||msg}catch{}throw new Error(`服务商 HTTP ${r.status}：${String(msg).slice(0,380)}`)}
-export async function models(base,key,signal){const r=await needOK(await fetchTimeout(`${sanitizeUrl(base)}/models`,{headers:{...authHeader(key)},signal},35000));const j=await r.json();return (j.data||j.models||[]).map(v=>typeof v==='string'?v:v.id||v.name).filter(Boolean)}
+export async function models(base,key,signal){
+ const endpoint=`${sanitizeUrl(base)}/models`;
+ const r=await needOK(await fetchTimeout(endpoint,{headers:{...authHeader(key),'Accept':'application/json'},signal},35000));
+ const text=(await r.text()).trim();
+ if(text.startsWith('<'))throw new Error('模型列表接口返回HTML网页，不是JSON。请确认基础URL以正确的小写/v1结尾；最终URL：'+r.url.slice(0,180));
+ let json;try{json=JSON.parse(text)}catch{throw new Error('模型列表接口返回了无法解析的JSON：'+endpoint)}
+ let list=Array.isArray(json)?json:(json.data||json.models||json.result?.data||json.result?.models||[]);
+ if(list&&typeof list==='object'&&!Array.isArray(list))list=Object.values(list);
+ if(!Array.isArray(list))throw new Error('模型列表JSON不包含data/models数组：请核对服务商是否兼容GET /models');
+ const ids=list.map(x=>typeof x==='string'?x:(x?.id||x?.name||x?.model||x?.model_id)).filter(v=>typeof v==='string'&&v.trim()).map(x=>x.trim());
+ const dedup=[...new Set(ids)];return dedup.sort((a,b)=>a.localeCompare(b,'zh-CN',{numeric:true,sensitivity:'base'}));
+}
 export async function visionChat(settings,system,text,imageData,signal){
  const base=sanitizeUrl(settings.base);if(!settings.key&&!settings.useMain)throw new Error('尚未设置提示词API密钥');
  if(!settings.model)throw new Error('尚未选择提示词模型');
