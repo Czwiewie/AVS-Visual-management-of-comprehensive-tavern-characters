@@ -1,7 +1,0 @@
-{
-  "status": "needs_sync",
-  "source": "https://www.pixiv.net/ranking.php?mode=monthly&content=illust&format=json&p=1",
-  "syncedAt": null,
-  "items": [],
-  "message": "仓库尚未成功同步Pixiv月榜。没有伪造的榜单或缩略图。"
-}
