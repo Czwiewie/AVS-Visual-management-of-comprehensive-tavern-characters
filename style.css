@@ -34,3 +34,9 @@
 /* R2.3.1: overlay layers do not participate in the persistent scrollport flex sizing. */
 .avs-layer-slot{display:contents}
 .main{min-height:0;overflow-anchor:auto;overscroll-behavior:contain}
+
+/* R2.4.0: compact accessible Pixiv ranking collapse control */
+.pixiv-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
+.pixiv-title-row .section-title{margin:0}
+.pixiv-title-row .btn{min-width:88px}
+#avs-pixiv-ranking-grid>.small{margin:10px 0;color:#54758c}

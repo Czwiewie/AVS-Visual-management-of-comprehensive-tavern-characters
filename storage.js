@@ -2,9 +2,9 @@ const DB_NAME='AVS_R2_VISUAL_WORKSHOP',DB_VERSION=1;
 const KEY='AVS_R2_SETTINGS_V1';
 export const defaults={
   prompt:{useMain:false,base:'https://api.openai.com/v1',key:'',model:'',temperature:0.65},
-  image:{engine:'openai',base:'https://api.openai.com/v1',key:'',model:'gpt-image-1',size:'1024x1536',
+  image:{engine:'openai',base:'https://api.openai.com/v1',key:'',model:'gpt-image-1.5',size:'1024x1536',referenceMode:'text',
     comfyBase:'http://127.0.0.1:8188',checkpoint:'',steps:28,cfg:6.5,workflow:'',naiModel:'nai-diffusion-5-full',negative:'lowres, watermark, bad anatomy, malformed hands, extra fingers, illegible text'},
-  pixiv:{apiKey:'',githubRepo:'',mode:'monthly',proxy:false,updated:'',items:[]},
+  pixiv:{apiKey:'',githubRepo:'',mode:'monthly',proxy:false,expanded:false,updated:'',items:[]},
   styles:[],chosenStyle:null,styleLock:null,materials:[],characterModes:{},characterRefs:{},fanCards:{},modelFavorites:{prompt:[],image:[],checkpoint:[]},
   director:{shotScale:'auto',elevation:'auto',depthOfField:'auto'},
   auto:false,layout:'portrait',comicPanels:2

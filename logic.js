@@ -20,15 +20,33 @@ export async function archiveView(){const b=coreBridge();if(!b)return {error:'V4
 export async function chosenCharacterPacket(arc,selectedIds){if(!arc.bridge)return [];
  const chars=arc.characters.filter(c=>selectedIds.includes(c.character_id));if(chars.length>12)throw new Error('本版单个画面最多规划12个正式角色，请缩小当前选择；不会静默丢掉其他角色');const output=[];
  for(const c of chars){try{const v=await arc.bridge.fullInspector(c.character_id),ch=v.selected;if(!ch)continue;
- // All packets must remain valid JSON. Never truncate an already serialized JSON document.
- const short={character_id:ch.character_id,name:ch.name,identity:ch.identity,canon:ch.canon,
- current:typeof ch.current==='string'?ch.current.slice(0,3000):ch.current,current_snapshot:typeof ch.current_snapshot==='string'?ch.current_snapshot.slice(0,2500):ch.current_snapshot,
- visual59:ch.visual59?{groups:ch.visual59.groups}:undefined};
+ // Keep complete JSON syntax, but take only visible, current, relevant facts.
+ // V4.1.10 formal archive remains completely unchanged; this is a READ-ONLY packet projection.
+ const unpack=v=>{if(typeof v==='string'){try{return JSON.parse(v)}catch{return {}}}return v&&typeof v==='object'?v:{}};
+ const text=(v,max=190)=>String(v??'').trim().slice(0,max);
+ const pick=(obj,fields,max=190)=>Object.fromEntries(fields.map(k=>[k,typeof obj?.[k]==='string'||typeof obj?.[k]==='number'?text(obj[k],max):undefined]).filter(x=>x[1]));
+ const asset=o=>{if(!o)return null;if(Array.isArray(o))return o.slice(0,8).map(asset).filter(Boolean);
+  if(typeof o==='string')return {name:text(o)};
+  if(typeof o==='object')return {name:text(o.name||o.design?.description||'',170)};
+  return null};
+ const full=unpack(ch.current),appearance=ch.canon?.physical_design||{},slots=full.outfit?.slots||{};
+ const outfitSlots=Object.fromEntries(Object.entries(slots).map(([k,v])=>[k,asset(v)]).filter(([,v])=>v&&(!Array.isArray(v)||v.length)));
+ const slimCurrent={activity:{detail:text(full.activity?.detail,240)},hair:pick(full.hair,['current_style','condition','interaction'],140),
+  makeup:asset(full.makeup),manicure:asset(full.manicure),outfit:{ensemble:asset(full.outfit?.ensemble),slots:outfitSlots},
+  accessories:asset(full.accessories),pose:text(full.pose,220),expression:text(full.expression,170),dress_state:text(full.dress_state,80)};
+ const physical={appearance:pick(appearance.appearance,['overall','skin_tone','skin_texture'],240),
+  face:pick(appearance.face,['face_shape','brows','eyes','iris','pupils','nose','lips'],160),
+  natural_hair:pick(appearance.natural_hair,['color','length','texture','volume'],150),
+  body:pick(appearance.body,['height','overall_proportion','body_type','shoulders','clavicle','bust','waist','abdomen','pelvis','hips','buttocks','thighs','calves'],170),
+  species_features:appearance.species_features};
+ const short={character_id:ch.character_id,name:ch.name,
+  identity:{name:ch.identity?.name,species:ch.identity?.species,body_type:ch.identity?.body_type,
+   visual_age:ch.identity?.visual_age,current_identity_background:text(ch.identity?.current_identity_background,200)},
+  canon:{physical_design:physical},current:slimCurrent};
  let serialized=JSON.stringify(short);
- if(serialized.length>9600){const groups=JSON.stringify(ch.visual59?.groups||{});
- short.visual59={groups_excerpt:groups.slice(0,3000),truncated_for_prompt:true};serialized=JSON.stringify(short)}
- if(serialized.length>9600){short.current=JSON.stringify(short.current||'').slice(0,2300);short.current_snapshot=JSON.stringify(short.current_snapshot||'').slice(0,1000);serialized=JSON.stringify(short)}
- if(serialized.length>9600){short.visual59={groups_excerpt:JSON.stringify(ch.visual59?.groups||{}).slice(0,1000),truncated_for_prompt:true};serialized=JSON.stringify(short)}
+ if(serialized.length>13500){short.canon.physical_design.appearance.overall=text(short.canon.physical_design.appearance.overall,130);serialized=JSON.stringify(short)}
+ if(serialized.length>15000)throw new Error('角色档案中的视觉字段过大，请检查是否存在重复或异常数据');
+
  output.push(serialized);
  }catch(e){throw new Error('读取角色 '+String(c.name||c.character_id)+' 的正式档案失败：'+String(e.message||e).slice(0,180))}}
  return output;}

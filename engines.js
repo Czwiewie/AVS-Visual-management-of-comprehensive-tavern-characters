@@ -25,15 +25,32 @@ export async function visionChat(settings,system,text,imageData,signal){
  const r=await needOK(await fetchTimeout(`${base}/chat/completions`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},135000));
  const j=await r.json();const m=j.choices?.[0]?.message?.content;return typeof m==='string'?m:Array.isArray(m)?m.map(v=>v.text||'').join(''):JSON.stringify(m||'');
 }
-export async function openaiImage(settings,prompt,negative,signal){const base=sanitizeUrl(settings.base);if(!settings.model)throw new Error('尚未填写生图模型');
- // OpenAI-compatible image generation has no portable native negative_prompt field.
- // Convert scene/style negatives to plain language, never pretend a native negative field was used.
- const requestPrompt=String(negative||'').trim()?`${prompt}\n\nVisual exclusions (avoid these results): ${String(negative).slice(0,3200)}`:prompt;
- const body={model:settings.model,prompt:requestPrompt,n:1,size:settings.size};const r=await needOK(await fetchTimeout(`${base}/images/generations`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},190000));
- const j=await r.json(),v=j.data?.[0]||j.images?.[0]||j.output?.[0];if(!v)throw new Error('图像API没有返回图片数据');
+async function imageResult(response,signal){
+ const j=await response.json().catch(()=>{throw new Error('图片API返回非JSON内容；请核对图像生成/编辑接口及中转服务支持情况')});
+ const v=j.data?.[0]||j.images?.[0]||j.output?.[0];if(!v)throw new Error('图像API没有返回图片数据');
  if(v.b64_json||v.b64||v.image_base64)return base64Blob(v.b64_json||v.b64||v.image_base64);
- const link=v.url||v.image_url;if(link){const q=await needOK(await fetchTimeout(link,{signal},75000));return await q.blob()}
- throw new Error('服务商返回了未知图片字段，无法解析');}
+ const link=v.url||v.image_url;if(link){const q=await needOK(await fetchTimeout(link,{signal},75000));const blob=await q.blob();if(!blob.type.startsWith('image/'))throw new Error('图片地址实际返回了非图像数据');return blob}
+ throw new Error('服务商返回了未知图片字段，无法解析');
+}
+const visualExclusions=(prompt,negative)=>String(negative||'').trim()?`${prompt}\n\nVisual exclusions (avoid these results): ${String(negative).slice(0,3000)}`:prompt;
+export async function openaiImage(settings,prompt,negative,signal,reference=null,report={}){
+ const base=sanitizeUrl(settings.base);if(!settings.model)throw new Error('尚未填写生图模型');
+ const requestPrompt=visualExclusions(prompt,negative);
+ if(settings.referenceMode==='edit'){
+  if(!reference?.blob)throw new Error('已选择图片编辑强参考，但当前锁定画风没有可用原图。请重新上传并使用图片画风；没有发送生图请求');
+  if(!['image/png','image/jpeg','image/webp'].includes(reference.blob.type))throw new Error('参考图必须是PNG、JPEG或WebP');
+  const form=new FormData();form.append('model',settings.model);form.append('size',settings.size);form.append('n','1');
+  form.append('prompt',`Create an entirely NEW scene based on the following instructions. Use the attached picture as STYLE reference only: transfer its artistic line weight, shading technique, color finish and brushwork. Do not reproduce the reference character, face, hairstyle, costume, pose, background or composition. The following scene and character information governs all depicted content.\n\n${requestPrompt}`);
+  form.append('image',reference.blob,`avs-style-reference.${reference.blob.type==='image/png'?'png':reference.blob.type==='image/webp'?'webp':'jpg'}`);
+  let r;try{r=await needOK(await fetchTimeout(`${base}/images/edits`,{method:'POST',headers:authHeader(settings.key),body:form,signal},190000));}
+  catch(e){throw new Error(`强参考图片编辑接口不可用（POST /images/edits）。服务商可能不支持multipart图像编辑；未自动降级、未额外重试。${e.message}`)}
+  report.referenceActuallySent=true;report.adapter='openai-image-edit';
+  return imageResult(r,signal);
+ }
+ const body={model:settings.model,prompt:requestPrompt,n:1,size:settings.size};
+ const r=await needOK(await fetchTimeout(`${base}/images/generations`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},190000));
+ report.referenceActuallySent=false;report.adapter='openai-text-only';return imageResult(r,signal);
+}
 export function base64Blob(str,type='image/png'){const base=String(str||'').split(',').pop();const bytes=atob(base),array=new Uint8Array(bytes.length);for(let i=0;i<bytes.length;i++)array[i]=bytes.charCodeAt(i);return new Blob([array],{type})}
 export function blobToDataURL(blob){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(blob)})}
 export async function listCheckpoints(base,signal){const r=await needOK(await fetchTimeout(`${sanitizeUrl(base)}/object_info/CheckpointLoaderSimple`,{signal},30000));const x=await r.json();return x.CheckpointLoaderSimple?.input?.required?.ckpt_name?.[0]||[]}
@@ -47,13 +64,41 @@ export function comfyDefault(prompt,negative,image){const [w,h]=sizeFor(image.si
  '6':{class_type:'VAEDecode',inputs:{samples:['5',0],vae:['1',2]}},
  '7':{class_type:'SaveImage',inputs:{filename_prefix:'AVS_R2',images:['6',0]}}
 };}
-export function applyWorkflow(text,prompt,negative,image){let workflow;try{workflow=JSON.parse(text)}catch{throw new Error('ComfyUI工作流JSON无法解析')}
+export function applyWorkflow(text,prompt,negative,image,styleImageName=''){let workflow;try{workflow=JSON.parse(text)}catch{throw new Error('ComfyUI工作流JSON无法解析')}
  const [w,h]=sizeFor(image.size);const seed=Math.floor(Math.random()*2147483647);
- const replacements={'{{PROMPT}}':prompt,'{{NEGATIVE}}':negative,'{{WIDTH}}':w,'{{HEIGHT}}':h,'{{SEED}}':seed,'{{CKPT}}':image.checkpoint};
+ const replacements={'{{PROMPT}}':prompt,'{{NEGATIVE}}':negative,'{{WIDTH}}':w,'{{HEIGHT}}':h,'{{SEED}}':seed,'{{CKPT}}':image.checkpoint,'{{STYLE_IMAGE}}':styleImageName};
  const apply=x=>{if(typeof x==='string'){if(replacements[x]!==undefined)return replacements[x];let t=x;for(const [k,v] of Object.entries(replacements))t=t.replaceAll(k,String(v));return t}if(Array.isArray(x))return x.map(apply);if(x&&typeof x==='object')return Object.fromEntries(Object.entries(x).map(([k,v])=>[k,apply(v)]));return x};return apply(workflow)}
 const nap=(ms)=>new Promise(r=>setTimeout(r,ms));
-export async function comfyImage(settings,prompt,negative,signal,progress=()=>{}){const base=sanitizeUrl(settings.comfyBase),wf=settings.workflow?.trim()?applyWorkflow(settings.workflow,prompt,negative,settings):comfyDefault(prompt,negative,settings);
- const r=await needOK(await fetchTimeout(`${base}/prompt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:wf,client_id:'avs-r2-visual'}),signal},42000));const j=await r.json(),id=j.prompt_id;if(!id)throw new Error('ComfyUI未返回prompt_id：'+JSON.stringify(j).slice(0,270));progress('ComfyUI已接收任务 '+id.slice(0,8));
+export function checkComfyStyleWorkflow(source){
+ let wf;try{wf=JSON.parse(source)}catch{throw new Error('自定义ComfyUI工作流必须是API格式JSON')}
+ const graph=wf?.prompt&&typeof wf.prompt==='object'?wf.prompt:wf;
+ const entries=Object.entries(graph||{}).filter(([,n])=>n?.class_type);
+ const loaders=entries.filter(([,n])=>n.class_type==='LoadImage'&&n.inputs?.image==='{{STYLE_IMAGE}}').map(([id])=>id);
+ if(!loaders.length)throw new Error('强参考工作流缺少LoadImage节点及{{STYLE_IMAGE}}图片占位符');
+ const adj=new Map();for(const [id,node] of entries){for(const v of Object.values(node.inputs||{}))if(Array.isArray(v)&&typeof v[0]==='string'){
+   const prev=String(v[0]);if(!adj.has(prev))adj.set(prev,[]);adj.get(prev).push(id);
+ }}
+ const nodes=new Map(entries);const reached=new Set(loaders);let queue=[...loaders];
+ for(let depth=0;depth<12&&queue.length;depth++){const next=[];for(const id of queue){for(const downstream of adj.get(id)||[]){if(reached.has(downstream))continue;reached.add(downstream);next.push(downstream)}}queue=next}
+ const isStyle=([...reached].some(id=>/IPAdapter|StyleAligned|StyleReference|StyleTransfer/i.test(nodes.get(id)?.class_type||'')));
+ if(!isStyle)throw new Error('LoadImage尚未连接到可识别的IP-Adapter/风格条件节点，不能宣称强风格参考');
+ return true;
+}
+export async function comfyImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={}){
+ const base=sanitizeUrl(settings.comfyBase);let styleImageName='';
+ if(settings.referenceMode==='comfy_style'){
+  if(!reference?.blob)throw new Error('已选择ComfyUI强参考，但锁定画风没有可读取的参考图');
+  if(!settings.workflow?.trim())throw new Error('ComfyUI风格参考需要自定义工作流，默认Checkpoint文生图不支持参考图');
+  checkComfyStyleWorkflow(settings.workflow);
+  const form=new FormData();form.append('image',reference.blob,`avs-style-${Date.now()}.jpg`);form.append('overwrite','false');
+  const upload=await needOK(await fetchTimeout(`${base}/upload/image`,{method:'POST',body:form,signal},60000));
+  const uploaded=await upload.json();if(!uploaded?.name||!/^input$|^output$|^temp$/.test(uploaded.type||'input'))throw new Error('ComfyUI已响应，但没有返回有效上传图片名');
+  styleImageName=(uploaded.subfolder?uploaded.subfolder+'/':'')+uploaded.name;
+  progress('画风参考图已上传到ComfyUI，正在执行风格工作流…');
+ }
+ const wf=settings.workflow?.trim()?applyWorkflow(settings.workflow,prompt,negative,settings,styleImageName):comfyDefault(prompt,negative,settings);
+
+ const r=await needOK(await fetchTimeout(`${base}/prompt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:wf,client_id:'avs-r2-visual'}),signal},42000));const j=await r.json(),id=j.prompt_id;if(!id)throw new Error('ComfyUI未返回prompt_id：'+JSON.stringify(j).slice(0,270));progress('ComfyUI已接收任务 '+id.slice(0,8));report.referenceActuallySent=!!styleImageName;report.adapter=styleImageName?'comfy-style-workflow':'comfy-text-only';
  const until=Date.now()+240000;while(Date.now()<until){if(signal?.aborted)throw new Error('已停止等待ComfyUI图片（服务器端任务可能继续执行）');await nap(1650);let h;
  try{const q=await needOK(await fetchTimeout(`${base}/history/${encodeURIComponent(id)}`,{signal},16000));h=await q.json()}catch(e){progress('正在等待ComfyUI返回历史…');continue}
  const item=h[id];if(!item)continue;if(item.status?.status_str==='error')throw new Error('ComfyUI执行失败，请检查工作流节点。'+JSON.stringify(item.status.messages||'').slice(0,220));
@@ -85,5 +130,12 @@ async function zipFirstImage(data){
 }
 export async function novelaiImage(settings,prompt,negative,signal){if(!settings.key)throw new Error('NovelAI需要Persistent API Token');const [w,h]=sizeFor(settings.size),model=settings.naiModel||'nai-diffusion-5-full';const pars={params_version:model.includes('-5-')?4:3,width:w,height:h,scale:5,sampler:'k_euler_ancestral',steps:28,n_samples:1,qualityToggle:false,ucPreset:4,sm:false,sm_dyn:false,dynamic_thresholding:false,controlnet_strength:1,legacy:false,add_original_image:true,uncond_scale:1,noise_schedule:'karras',negative_prompt:negative,v4_prompt:{caption:{base_caption:prompt,char_captions:[]},use_coords:false,use_order:true},v4_negative_prompt:{caption:{base_caption:negative,char_captions:[]},legacy_uc:false}};
  const r=await needOK(await fetchTimeout('https://image.novelai.net/ai/generate-image',{method:'POST',headers:{...authHeader(settings.key),'Content-Type':'application/json'},body:JSON.stringify({input:prompt,model,action:'generate',parameters:pars}),signal},190000));return await zipFirstImage(await r.arrayBuffer())}
-export async function generateImage(settings,prompt,negative,signal,progress){if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress);if(settings.engine==='novelai')return novelaiImage(settings,prompt,negative,signal);return openaiImage(settings,prompt,negative,signal)}
+export async function generateImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={}){
+ if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress,reference,report);
+ if(settings.engine==='novelai'){
+  if(settings.referenceMode!=='text')throw new Error('当前NovelAI适配器尚未实现经过验证的Vibe图像参数；请使用文字参考或其他已支持强参考的引擎');
+  report.referenceActuallySent=false;report.adapter='novelai-text-only';return novelaiImage(settings,prompt,negative,signal);
+ }
+ return openaiImage(settings,prompt,negative,signal,reference,report);
+}
 export function pixivProxy(url){if(!url||!url.startsWith('https://i.pximg.net/'))return '';return `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=440&output=webp`}
