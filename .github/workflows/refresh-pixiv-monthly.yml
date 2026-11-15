@@ -1,0 +1,31 @@
+name: 同步Pixiv月榜前50（仅公开元数据）
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 5 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  pixiv-monthly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read monthly public ranking (failure preserves old snapshot)
+        run: python3 tools/sync_pixiv.py
+      - name: Commit verified metadata
+        run: |
+          if git diff --quiet -- data/pixiv-monthly.json; then
+            echo "No snapshot change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pixiv-monthly.json
+          git commit -m "data: sync verified Pixiv monthly ranking"
+          git push
