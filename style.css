@@ -30,3 +30,7 @@
 
 /* R2.3: SillyTavern-style searchable model library */
 .model-line{display:flex;gap:5px;align-items:stretch}.model-line .model-option{flex:1;min-width:0;margin-bottom:7px}.model-star{min-width:44px;align-self:stretch;margin-bottom:7px;background:#fffaf0;color:#986922;border:1px solid #d1e4ed;border-radius:10px;font-size:1.3rem}.model-tabs{display:flex;gap:10px;padding:0 12px 10px;flex-shrink:0}.model-tabs .mode{flex:1;min-height:40px}
+
+/* R2.3.1: overlay layers do not participate in the persistent scrollport flex sizing. */
+.avs-layer-slot{display:contents}
+.main{min-height:0;overflow-anchor:auto;overscroll-behavior:contain}

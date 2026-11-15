@@ -9,7 +9,7 @@ import {cardContext,fanEnabled,fanSummary,discoverFanCard} from './fan_canon.js'
 import {auditStyle} from './style_guard.js';
 import {prepareStylePixels} from './style_image.js';
 
-const VERSION='R2.3.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
+const VERSION='R2.3.1',KEY='__AVS_VISUAL_WORKSHOP_R2__';
 // AVS V4.1.10 mounts the mascot in SillyTavern's visible main document.
 // An extension module may be executed in a helper iframe: do not use its
 // potentially zero-height document as the full-screen overlay host.
@@ -42,6 +42,9 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  const window=HOST_WINDOW,document=HOST_WINDOW.document;
  const s=settingsRead(),ui={page:'home',oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',pendingFile:'',directorPlan:null,directorNote:'',styleDraft:null};
  let shell,surface,shadow,content,picker,aborter,refreshToken=0,workRunning=false,autolast='',priorMascotVisibility=null,visibilityGuard=null,lastMountError='',intentOpen=false;
+ // R2.3.1: a single persistent scrollport. Every page or settings panel has its own position.
+ let mainPort=null,navPort=null,layerPort=null,renderKey='',renderedMainMarkup=null,renderedLayerMarkup=null;
+ const scrollMemory=new Map();
  const workUrl=new URL('./style.css',import.meta.url).href;
  function persist(){settingsWrite(s)}
  function tell(t,error=false){ui.notice=String(t);ui.error=error?String(t):'';console[error?'warn':'info']('[AVS R2]',t);render()}
@@ -102,8 +105,54 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
       </div></div>`;
   }
 
- function render(){if(!content)return;let center='';try{center=ui.page==='home'?home():ui.page==='style'?style():ui.page==='characters'?characters():ui.page==='gallery'?gallery():ui.page==='settings'?settings():diagnostics()}catch(e){center=`<section class="card"><h3>界面渲染异常</h3><pre>${esc(e.stack||e)}</pre></section>`;console.error(e)}
- content.innerHTML=`${header()}<main class="main">${notice()}${center}</main>${footer()}${ui.previewId?preview():''}${modelModal()}`;
+ // Do not destroy .main during normal actions: its destruction resets scrollTop to zero.
+ // Model picker has a second independent scroll container; preserve that as well.
+ function render(){
+   if(!content)return;
+   let center='';
+   try{center=ui.page==='home'?home():ui.page==='style'?style():ui.page==='characters'?characters():ui.page==='gallery'?gallery():ui.page==='settings'?settings():diagnostics()}
+   catch(e){center=`<section class="card"><h3>界面渲染异常</h3><pre>${esc(e.stack||e)}</pre></section>`;console.error(e)}
+   if(!mainPort||!mainPort.isConnected||mainPort.parentNode!==content){
+     // Initial mount only. Keep the same scroll DOM node for the lifetime of this UI.
+     content.innerHTML=`${header()}<main class="main"></main>${footer()}<div class="avs-layer-slot"></div>`;
+     mainPort=content.querySelector('.main');navPort=content.querySelector('.bottom');
+     layerPort=content.querySelector('.avs-layer-slot');
+     renderKey='';renderedMainMarkup=null;renderedLayerMarkup=null;
+     mainPort.addEventListener('scroll',()=>{if(renderKey)scrollMemory.set(renderKey,mainPort.scrollTop)},{passive:true});
+   }
+   const key=ui.page==='settings'?`settings:${ui.settingsTab}`:ui.page;
+   const samePage=key===renderKey;
+   if(renderKey)scrollMemory.set(renderKey,mainPort.scrollTop);
+   const intendedScroll=samePage?mainPort.scrollTop:(scrollMemory.get(key)||0);
+   const mainMarkup=`${notice()}${center}`;
+   if(mainMarkup!==renderedMainMarkup){
+     // Preserve expanded panels when rerendering the same page.
+     const expanded=samePage?[...mainPort.querySelectorAll('details')].map((el,i)=>el.open?i:-1).filter(i=>i>=0):[];
+     const active=shadow.activeElement;
+     const focusAttrs=['data-bind','data-check','data-char','data-ref','data-draft','data-style-draft'];
+     const focusDescriptor=active&&mainPort.contains(active)?focusAttrs.map(k=>active.hasAttribute(k)?[k,active.getAttribute(k)]:null).find(Boolean):null;
+     mainPort.innerHTML=mainMarkup;
+     if(expanded.length){const all=mainPort.querySelectorAll('details');for(const i of expanded)if(all[i])all[i].open=true}
+     if(focusDescriptor){const [name,value]=focusDescriptor;const replacement=[...mainPort.querySelectorAll(`[${name}]`)].find(el=>el.getAttribute(name)===value);if(replacement)try{replacement.focus({preventScroll:true})}catch(_){}}
+     renderedMainMarkup=mainMarkup;
+   }
+   // Footer itself is persistent, too: only update the active-state class.
+   for(const b of navPort.querySelectorAll('[data-act^="goto:"]'))b.classList.toggle('on',b.dataset.act===`goto:${ui.page}`);
+   const oldResults=layerPort.querySelector('[data-model-results]');
+   const oldLightbox=layerPort.querySelector('.lightbox');
+   const resultsScroll=oldResults?.scrollTop||0,lightboxScroll=oldLightbox?.scrollTop||0;
+   const layerMarkup=`${ui.previewId?preview():''}${modelModal()}`;
+   if(layerMarkup!==renderedLayerMarkup){
+     layerPort.innerHTML=layerMarkup;
+     const results=layerPort.querySelector('[data-model-results]');if(results)results.scrollTop=resultsScroll;
+     const lightbox=layerPort.querySelector('.lightbox');if(lightbox)lightbox.scrollTop=lightboxScroll;
+     renderedLayerMarkup=layerMarkup;
+   }
+   // Same-page actions preserve their exact position. Switching tabs restores
+   // their remembered position (0 only on first visit). Shrunk content clamps naturally.
+   mainPort.scrollTop=intendedScroll;
+   renderKey=key;
+   scrollMemory.set(key,mainPort.scrollTop);
  }
  async function refresh(){const gen=++refreshToken;const last=contextInfo(),arc=await archiveView();if(gen!==refreshToken)return;const changed=last.id!==ui.chat.id;ui.chat=last;ui.archive=arc;
  if(changed){ui.selected=[];ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';}
