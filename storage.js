@@ -7,12 +7,13 @@ export const defaults={
   pixiv:{apiKey:'',githubRepo:'',mode:'monthly',proxy:false,expanded:false,updated:'',items:[]},
   styles:[],chosenStyle:null,styleLock:null,materials:[],characterModes:{},characterRefs:{},fanCards:{},modelFavorites:{prompt:[],image:[],checkpoint:[]},
   director:{shotScale:'auto',elevation:'auto',depthOfField:'auto'},
-  auto:false,layout:'portrait',comicPanels:2
+  visualTarget:'premium',auto:false,layout:'portrait',comicPanels:2
 };
 export function settingsRead(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return {
 ...structuredClone(defaults),...x,
 prompt:{...defaults.prompt,...(x.prompt||{})},image:{...defaults.image,...(x.image||{})},
 pixiv:{...defaults.pixiv,...(x.pixiv||{})}, director:{...defaults.director,...(x.director||{})},
+visualTarget:['reference','premium','naval','resonant'].includes(x.visualTarget)?x.visualTarget:'premium',
 styles:Array.isArray(x.styles)?x.styles:[],materials:Array.isArray(x.materials)?x.materials:[],characterModes:x.characterModes||{},characterRefs:x.characterRefs||{},fanCards:x.fanCards||{},modelFavorites:{...defaults.modelFavorites,...(x.modelFavorites||{})}
 };}catch{return structuredClone(defaults)}}
 export function settingsWrite(s){try{localStorage.setItem(KEY,JSON.stringify(s));return true;}catch(e){throw new Error('设置保存失败：本地存储空间不足。请先导出数据，不要清理AVS角色档案。'+String(e.message||''))}}

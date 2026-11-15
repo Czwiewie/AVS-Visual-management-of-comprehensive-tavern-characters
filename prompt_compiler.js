@@ -60,4 +60,5 @@ export function composePrompt(style,parts,budget=6500){const locked=String(style
 }
 export function validateImagePrompt(prompt,negative){for(const t of [prompt,negative]){
  if(/\bcharacter_id\s*=|\bfocus anchor\b|\bscene object\s*:|\bmodel_inference\b|"(?:identity|canon|current|field_meta)"\s*:|\bchar_[a-z0-9]{6,}/i.test(t))throw new Error('最终提示词包含AVS档案内部字段，已阻止生图请求');
+ if(/【\s*(?:重要记忆区|记忆区|选项栏|选项|平行事件|额外独立剧情|状态栏)|(?:^|\n)\s*(?:>\s*)?选项[一二三四五六七八九十\d]+\s*[:：]/m.test(t))throw new Error('提示词包含未发生选项或记忆/平行事件块，已阻止污染的生图请求');
  }return true;}

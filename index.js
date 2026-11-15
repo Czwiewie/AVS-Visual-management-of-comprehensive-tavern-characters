@@ -2,6 +2,7 @@ import {settingsRead,settingsWrite,dbPut,dbGet,dbAll,dbDelete,makeId,loadTasks,s
 import {models,listCheckpoints,generateImage,pixivProxy,blobToDataURL,visionChat,fetchTimeout} from './engines.js';
 import {MATERIALS,esc,contextInfo,archiveView,archiveGate,chosenCharacterPacket,compileDirectedPrompt,normalizeAnalysis} from './logic.js';
 import {hashScene,styleSnapshot,createStyleLock} from './director.js';
+import {suggestCharacterIds} from './scene_extractor.js';
 import {comicPageBlob} from './comic-page.js';
 import {warmAssetLibrary,assetStatus} from './assets.js';
 import {loadMonthlyRanking} from './pixiv_sync.js';
@@ -10,7 +11,7 @@ import {auditStyle} from './style_guard.js';
 import {validateImagePrompt} from './prompt_compiler.js';
 import {prepareStylePixels} from './style_image.js';
 
-const VERSION='R2.4.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
+const VERSION='R2.5.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
 // AVS V4.1.10 mounts the mascot in SillyTavern's visible main document.
 // An extension module may be executed in a helper iframe: do not use its
 // potentially zero-height document as the full-screen overlay host.
@@ -41,7 +42,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
 }else{
  // All UI mounting, hit testing and event dispatch use the same window as the mascot.
  const window=HOST_WINDOW,document=HOST_WINDOW.document;
- const s=settingsRead(),ui={page:'home',oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',pendingFile:'',directorPlan:null,directorNote:'',styleDraft:null};
+ const s=settingsRead(),ui={page:'home',manualCharacterSelection:false,oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',pendingFile:'',directorPlan:null,directorNote:'',styleDraft:null};
  let shell,surface,shadow,content,picker,aborter,refreshToken=0,workRunning=false,autolast='',priorMascotVisibility=null,visibilityGuard=null,lastMountError='',intentOpen=false;
  // R2.3.1: a single persistent scrollport. Every page or settings panel has its own position.
  let mainPort=null,navPort=null,layerPort=null,renderKey='',renderedMainMarkup=null,renderedLayerMarkup=null,styleSelectionSeq=0;
@@ -63,7 +64,8 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  function card(content,cl=''){return `<section class="card ${cl}">${content}</section>`}
  function home(){const latest=ui.chat.text;const block=archiveGate(ui.archive||{},ui.chat);const configured=s.image.engine==='comfy'?!!s.image.checkpoint||!!s.image.workflow:s.image.engine==='novelai'?!!s.image.key:!!s.image.model;
  return `${card(`<div class="eyebrow">当前剧情</div><h2>从最后一幕开始创作</h2><p class="muted">${latest?esc(latest.slice(-230)):'进入角色聊天并完成一次AI回复后即可开始。'}</p><div class="status ${block?'warn':''}">${block?'注意：'+esc(block):'角色档案与当前剧情已可读取'}</div>`)}
- ${card(`<h3>生成模式</h3><div class="twos">${[['single','单幅插画'],['group','群像插画'],['comic','两格漫画']].map(([x,t])=>`<button class="mode ${ui.mode===x?'selected':''}" data-act="mode:${x}">${t}</button>`).join('')}</div><p class="small">当前画风：${esc(s.styleLock?(activeStyle()?.label||s.styleLock.styleId)+'（已锁定）':'默认/旧版临时画风')}　· 角色 ${ui.selected.length} 名</p><div class="row">${btn('一键编译并生成','make','primary')}${btn('仅编译提示词','compile')}</div>${ui.busy?`<div class="progress"><span class="spinner"></span>${esc(ui.busy)}　${btn('取消','abort','flat')}</div>`:''}${!configured?'<p class="hint">首次使用需在设置中连接一个生图模型。配置后，普通玩家无需再填写提示词。</p>':''}`)}
+ ${card(`<h3>生成模式</h3><div class="twos">${[['portrait','角色立绘'],['single','剧情插画'],['group','群像插画'],['comic','两格漫画']].map(([x,t])=>`<button class="mode ${ui.mode===x?'selected':''}" data-act="mode:${x}">${t}</button>`).join('')}</div><p class="small">${ui.chat.cleaning?.removedCount?'已排除非正文块/续行 '+ui.chat.cleaning.removedCount+' 处 · ':''}当前画风：${esc(s.styleLock?(activeStyle()?.label||s.styleLock.styleId)+'（已锁定）':'默认/旧版临时画风')}　· 角色 ${ui.selected.length} 名</p><div class="row">${btn('一键编译并生成','make','primary')}${btn('仅编译提示词','compile')}</div>${ui.busy?`<div class="progress"><span class="spinner"></span>${esc(ui.busy)}　${btn('取消','abort','flat')}</div>`:''}${!configured?'<p class="hint">首次使用需在设置中连接一个生图模型。配置后，普通玩家无需再填写提示词。</p>':''}`)}
+ ${card(`<h3>立绘艺术方向（可选）</h3><p class="small">只影响角色展示的摄影与精修目标；不套用参考图人物、服装，也不改写用户锁定画风。单人角色立绘模式最明显。</p>${pick('视觉方向','visualTarget',[['reference','只跟随参考图'],['premium','商业二游精修立绘'],['naval','华丽二游角色展示向'],['resonant','清透高完成度宣传向']])}`)}
  ${card(`<h3>摄影导演（可选）</h3><p class="small">根据剧情自动决定透视、构图、景深、焦点和光影；人工设置优先，摄影参数不改写正式角色档案或锁定画风。</p>${pick('镜头景别','director.shotScale',[['auto','自动决定'],['wide','远景/全景'],['medium_wide','多人中全景'],['medium','中景'],['medium_close','中近景'],['close_up','特写']])}${pick('机位高度','director.elevation',[['auto','自动决定'],['eye_level','平视'],['low_angle','仰拍'],['elevated','略高机位'],['high_angle','俯拍'],['top_down','顶视']])}${pick('景深','director.depthOfField',[['auto','自动决定'],['deep','深景深（群像推荐）'],['moderate','适度景深'],['shallow','浅景深'],['illustrative_layering','插画层次']])}${ui.directorPlan?`<details><summary>查看本次导演计划</summary><p class="small">${esc(ui.directorNote)}</p><pre class="director-json">${esc(JSON.stringify(ui.directorPlan,null,2).slice(0,8500))}</pre></details>`:'<p class="small">完成一次提示词编译后可查看导演规划与摄影决策。</p>'}`)}
  ${card(`<h3>高级提示词（可选）</h3><label class="field"><span>正向提示词</span><textarea data-draft="positive" rows="5" placeholder="一键编译后将显示在这里，亦可自行修改">${esc(ui.prompt)}</textarea></label><label class="field"><span>负向提示词</span><textarea data-draft="negative" rows="2">${esc(ui.negative)}</textarea></label><p class="small">${esc(ui.promptSource)}</p><div class="row">${btn('使用现有提示词生成','direct')}${btn('复制提示词','copy-prompt')}</div>`)}
  ${card(`<h3>数据状态</h3><p class="small">${esc(archiveName())}</p><p class="small">最新AI楼层：${ui.chat.index>=0?'#'+ui.chat.index:'无'} · 生图API：${esc(s.image.engine)} · 画风参考：${esc(s.image.referenceMode||'text')}</p>${btn('刷新档案状态','refresh','flat')}`)} `;}
@@ -156,8 +158,9 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    scrollMemory.set(key,mainPort.scrollTop);
  }
  async function refresh(){const gen=++refreshToken;const last=contextInfo(),arc=await archiveView();if(gen!==refreshToken)return;const changed=last.id!==ui.chat.id;ui.chat=last;ui.archive=arc;
- if(changed){ui.selected=[];ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';}
- const ids=arc.characters.filter(c=>c.active).map(x=>x.character_id);if(!ui.selected.length)ui.selected=ids.length?ids:arc.characters.slice(0,1).map(x=>x.character_id);
+ if(changed){ui.selected=[];ui.manualCharacterSelection=false;ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';}
+ const ids=arc.characters.filter(c=>c.active).map(x=>x.character_id);
+ if(!ui.manualCharacterSelection){const names=suggestCharacterIds(last.text,arc.characters);ui.selected=names.length?names:(ids.length?ids:arc.characters.slice(0,1).map(x=>x.character_id));}
  try{await refreshGallery(gen)}catch(e){ui.notice='图库无法读取：'+String(e.message||e);ui.error=ui.notice}render();
   const cardInfo=cardContext(last.context);if(fanEnabled(s,cardInfo)){discoverFanCard(last.context,s).then(()=>persist()).catch(e=>console.warn('[AVS] 同人来源后台检索受阻',e));}}
  async function refreshGallery(gen=refreshToken){const all=(await dbAll('gallery')).sort((a,b)=>b.createdAt-a.createdAt);if(gen!==refreshToken)return;ui.gallery=all.slice(0,220);
@@ -450,7 +453,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  shadow.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(b){e.preventDefault();action(b.dataset.act)}});
  shadow.addEventListener('change',e=>{const el=e.target;if(el.dataset.bind){changePath(el.dataset.bind,el.value);if(el.dataset.bind==='image.engine'){s.image.referenceMode='text';persist();render()}else if(el.dataset.bind==='prompt.useMain')render()}
  else if(el.dataset.check){changePath(el.dataset.check,el.checked);render()}
- else if(el.dataset.char){ui.selected=el.checked?[...new Set([...ui.selected,el.dataset.char])]:ui.selected.filter(x=>x!==el.dataset.char);render()}
+ else if(el.dataset.char){ui.manualCharacterSelection=true;ui.selected=el.checked?[...new Set([...ui.selected,el.dataset.char])]:ui.selected.filter(x=>x!==el.dataset.char);render()}
  else if(el.dataset.ref){s.characterRefs[el.dataset.ref]=el.value.trim();persist()}});
  shadow.addEventListener('input',e=>{const el=e.target;
   if(el.hasAttribute('data-model-search')){ui.modelSearch=el.value;const box=shadow.querySelector('[data-model-results]');if(box)box.innerHTML=modelRows();return;}

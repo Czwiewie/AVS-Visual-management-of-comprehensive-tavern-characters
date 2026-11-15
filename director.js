@@ -1,6 +1,9 @@
 /* AVS R2.2.0 scene director. Project-owned implementation of the documented
    character-anchor / region / cinematography contract. No third-party source copied. */
-import {extractCharacterFacts,characterImageText,safeVisualText,cleanList,composePrompt,validateImagePrompt} from './prompt_compiler.js';
+import {extractCharacterFacts,characterImageText,safeVisualText,cleanList,composePrompt,validateImagePrompt} from './prompt_compiler_v2.js';
+import {targetFor} from './style_target.js';
+import {assertNoAuxiliaryLeak} from './story_cleaner.js';
+import {extractSceneEvidence} from './scene_extractor.js';
 const str=(v,max=2000)=>String(v??'').trim().slice(0,max);
 const arr=(v,max=24)=>Array.isArray(v)?v.slice(0,max):[];
 const allowedZones=new Set(['left','center','right','upper-left','upper-right','lower-left','lower-right','other']);
@@ -30,17 +33,18 @@ export function createStyleLock(entry,previous){const positive=str(entry?.positi
  if(!entry?.styleId)throw new Error('缺少画风来源ID，无法锁定');
  return {styleId:str(entry.styleId,150),revision:(Number(previous?.revision)||0)+1,positive,negative,mediaId:entry.mediaId||null,mediaSha256:entry.mediaSha256||null,mediaSource:entry.mediaSource||null,updatedAt:new Date().toISOString()};
 }
-export function baselineDirector(ctx,packets,mode,settings){const cast=archiveSources(packets);let members=cast;
- if(mode==='single' && cast.length>1)members=cast.slice(0,1);
+export function baselineDirector(ctx,packets,mode,settings){const cast=archiveSources(packets);const evidence=extractSceneEvidence(ctx,cast);let members=cast;
+ if((mode==='single'||mode==='portrait') && cast.length>1)members=cast.slice(0,1);
  const count=members.length;const zones=count===1?['center']:count===2?['left','right']:['left','center','right','upper-left','upper-right','lower-left','lower-right'];
  const camera=settings?.director||{};
  const box={schema_version:'avs-director-exec-1',mode,source:{chatId:str(ctx.id,200),messageIndex:ctx.index,sourceHash:hashScene(ctx.text)},
- scene:{environment:'',weather_time:'',objects:[],atmosphere:'',moment:str(ctx.text?.slice(-360),360),supports:[],occlusions:[],material_response:[]},
+ scene:{environment:'',weather_time:'',objects:[],atmosphere:'',moment:str(evidence.lastBeat,780),supports:[],occlusions:[],material_response:[]},
  cast:members.map((x,i)=>({id:x.id,name:x.name,zone:zones[i%zones.length],depth:'midground',facing:'toward the interaction',expression:'',gaze:'',pose:'',action:'',visible_physiology:[],wardrobe_motion:''})),
  interactions:[],effects:[],negative_risks:[],
  cameraPolicy:{shotScaleManual:!!camera.shotScale&&camera.shotScale!=='auto',angleManual:!!camera.elevation&&camera.elevation!=='auto',depthManual:!!camera.depthOfField&&camera.depthOfField!=='auto'},
- camera:{shot_scale:camera.shotScale==='auto'?(count>2?'medium_wide':'medium'):camera.shotScale||'medium_wide',elevation:camera.elevation==='auto'?'eye_level':camera.elevation||'eye_level',azimuth:'front_quarter',viewpoint:'in front of the active scene',projection:'natural perspective',composition:'readable character grouping with natural depth and clear interactions',visual_path:'from main faces toward the action and the key prop',focus:'faces and interacting hands',depth_of_field:camera.depthOfField==='auto'?(count>1?'deep':'moderate'):camera.depthOfField||'moderate',lighting:'scene-motivated lighting; plausible highlight and shadow direction',mood:'',light_sources:[],focus_targets:members.map(x=>x.id),foreground:[],background:[],axis_policy:'preserve_screen_direction'},
+ camera:{shot_scale:camera.shotScale==='auto'?(mode==='portrait'?'medium_wide':count>2?'medium_wide':'medium'):camera.shotScale||(mode==='portrait'?'medium_wide':'medium'),elevation:camera.elevation==='auto'?'eye_level':camera.elevation||'eye_level',azimuth:'front_quarter',viewpoint:'in front of the active scene',projection:'natural perspective',composition:'readable character grouping with natural depth and clear interactions',visual_path:'from main faces toward the action and the key prop',focus:'faces and interacting hands',depth_of_field:camera.depthOfField==='auto'?(count>1?'deep':'moderate'):camera.depthOfField||'moderate',lighting:'scene-motivated lighting; plausible highlight and shadow direction',mood:'',light_sources:[],focus_targets:members.map(x=>x.id),foreground:[],background:[],axis_policy:'preserve_screen_direction'},
  panels:mode==='comic'?[{order:1,moment:'establish the scene and the characters before the main action',subjects:members.map(c=>c.id),shot_scale:'medium_wide',dialogue:[],continuity:''},{order:2,moment:'show the next distinct beat, continuing the same action and character state',subjects:members.map(c=>c.id),shot_scale:'medium',dialogue:[],continuity:'preserve positions, costume and object ownership from panel 1'}]:[]};
+ box.storyForDirector=evidence.mainStory;box.visibleNameMentions=evidence.visibleNameMentions;
  return box;
 }
 const MODEL_SYSTEM=`You are the AVS ACGN visual STORYBOARD DIRECTOR, not a free-form prompt writer. Return ONE strict JSON object and no markdown. Do not output any style tags, positive prompt or negative prompt. The authoritative AVS character archive is read-only and the visual style is locked externally. Do not invent or change hair color, body proportions, clothing items, known relationships, or established items. You may plan temporary visible expressions, camera, perspective, motivated lighting, pose, interactions, physiology (visible signs only), physics of support/contact/occlusion, special effects, and comic continuity where justified by the provided scene. Every character id must exactly match provided IDs. Never confuse actor and target. Only use visible on-scene people. Avoid forcing the scene into a lineup photograph; direct a coherent story moment. Avoid generic cinematic clichés or unsupported precise camera measurements. For comics split the timeline into separate adjacent moments; speech must use quoted/clearly supported dialogue, not made up facts. If an element is uncertain leave it empty instead of asserting it.`;
@@ -52,7 +56,7 @@ export function directorRequest(base,packets,settings,fanReference=''){const ros
  effects:[{source:'defined source',appearance:'observable VFX',direction:'direction and lighting effect'}],negative_risks:['specific visual synthesis pitfalls, not style and not character properties'],
  camera:{shot_scale:'medium|medium_wide|wide|close_up|medium_close|extreme_wide|extreme_close_up',elevation:'eye_level|low_angle|elevated|high_angle|top_down',azimuth:'front|front_quarter|side|back_quarter|back',viewpoint:'where observer is',projection:'natural/wide/compressed perspective',composition:'spatial arrangement and intentional negative space',visual_path:'guided view sequence',focus:'which character/prop in focus',depth_of_field:'deep|moderate|shallow|illustrative_layering|none',lighting:'source direction, shadow and bounce, motivated',mood:'emotional intention through framing and illumination',light_sources:[{source:'e.g. window',direction:'left to right',quality:'soft',shadow_logic:'soft consistent shadows'}],focus_targets:['provided character IDs'],foreground:['visible foreground planes'],background:['visible background planes'],axis_policy:'preserve_screen_direction|justified_axis_crossing'},
  panels:[{order:1,moment:'distinct beat',subjects:['provided character ID'],shot_scale:'medium',dialogue:[{speaker_id:'provided character ID',text:'supported Chinese dialogue'}],continuity:'what carries from previous panel'}]};
- return {system:MODEL_SYSTEM,user:JSON.stringify({task:'Return a partial scene/director plan using the schema outline; omit unclear details. NEVER include visual style fields or whole-image positive/negative strings.',mode:base.mode,story:String(base.scene.moment).slice(-6000),archive:roster,fanWorkReference:String(fanReference||'').slice(0,1600),fanReferencePolicy:'仅将核验过的作品名用于识别语境；任何原作角色外貌均不得覆盖AVS正式档案，不允许编造原画URL或相似同名角色绑定。',cinematographyOverrides:settings?.director||{},expectedPanelCount:base.panels.length,format:instruction})};
+ return {system:MODEL_SYSTEM,user:JSON.stringify({task:'Return a partial scene/director plan using the schema outline; omit unclear details. NEVER include visual style fields or whole-image positive/negative strings.',mode:base.mode,story:String(base.storyForDirector||base.scene.moment).slice(-7600),mentionedCharacters:base.visibleNameMentions,storyPolicy:'ONLY latest completed AI reply MAIN narrative: memory appendix, option choices, parallel event blocks, system notices and hidden markup have already been removed. Do NOT infer an unchosen branch; use only visible actions. For portrait mode emphasize established character design, not all setting details.',archive:roster,fanWorkReference:String(fanReference||'').slice(0,1600),fanReferencePolicy:'仅将核验过的作品名用于识别语境；任何原作角色外貌均不得覆盖AVS正式档案，不允许编造原画URL或相似同名角色绑定。',cinematographyOverrides:settings?.director||{},expectedPanelCount:base.panels.length,format:instruction})};
 }
 function jsonObject(raw){const s=str(raw,50000).replace(/<think>[\s\S]*?<\/think>/gi,'');try{return JSON.parse(s)}catch{}
  const match=s.match(/\{[\s\S]*\}/);if(!match)throw new Error('导演模型未返回JSON，已停止，未请求生图');try{return JSON.parse(match[0])}catch{throw new Error('导演模型JSON无效，已停止，未请求生图')}}
@@ -125,15 +129,22 @@ export function compileDirector(plan,packets,settings,styleRef){const source=arc
  for(const c of plan.cast)if(!refs.has(c.id))throw new Error('角色档案引用校验失败：'+c.id);
  const cast=plan.cast,sceneParts=dynamicScene(plan,source,cast),camera=cameraText(plan.camera);
  const group=cast.length>1?'ACGN group story illustration':'ACGN story illustration';
- const heading=plan.mode==='comic'?'ACGN manga storyboard illustration':group;
- const positive=composePrompt(styleRef.positive,[heading,...sceneParts,camera,'coherent perspective, believable contact, clear faces and readable action'],7000);
+ const portrait=plan.mode==='portrait',target=targetFor(settings,plan.mode);
+ const heading=portrait?'premium ACGN character key visual':plan.mode==='comic'?'ACGN manga storyboard illustration':group;
+ const portraitParts=portrait?([
+   ...cast.map(ch=>characterImageText(ch,extractCharacterFacts(source.find(x=>x.id===ch.id)?.raw||{}))),
+   safeVisualText(plan.scene.atmosphere,110),safeVisualText(plan.scene.environment,100),
+   ...cleanList(plan.scene.objects,2,70)
+ ]):sceneParts;
+ const cameraParts=portrait?camera.replace(/readable character grouping with natural depth and clear interactions/g,'character-forward balanced composition'):camera;
+ const positive=composePrompt(styleRef.positive,[heading,target.positive,target.portrait,...portraitParts,cameraParts,'coherent perspective, believable contact, clear faces and readable action'],portrait?5200:7000);
  const negative=composePrompt(styleRef.negative,[settings?.image?.negative||'',cast.length>1?'duplicated people, swapped identities, merged bodies, wrong outfit, cropped faces':'duplicated people, malformed limbs',...cleanList(plan.negative_risks,8,110)],3100);
  const panels=plan.mode==='comic'?plan.panels.map(p=>{
   const subset=cast.filter(c=>p.subjects.includes(c.id));const parts=[`manga panel ${p.order}`,...dynamicScene(plan,source,subset,false),safeVisualText(p.moment,260),scales[p.shot_scale]||'',cameraText(plan.camera),safeVisualText(p.continuity,160),'single narrative beat; leave clear space for dialogue added in post-production'];
   const pos=composePrompt(styleRef.positive,parts,7000);const neg=composePrompt(styleRef.negative,[negative.replace(styleRef.negative,'').trim(), 'gibberish letters, accidental pseudo-text, duplicated speech bubbles'],3100);
   validateImagePrompt(pos,neg);return {order:p.order,positive:pos,negative:neg,dialogue:p.dialogue,subjects:p.subjects,shot:p.shot_scale,moment:p.moment};
  }):[];
- validateImagePrompt(positive,negative);
- return {positive,negative,panels,plan,source:'AVS R2.4结构化导演 + 精简无JSON编译',styleRevision:styleRef.revision,styleId:styleRef.id,
+ validateImagePrompt(positive,negative);assertNoAuxiliaryLeak(positive,negative,...panels.map(x=>x.positive));
+ return {positive,negative,panels,plan,source:'AVS R2.5净化主线 + 结构化导演 + 商业立绘编译',styleRevision:styleRef.revision,styleId:styleRef.id,
  note:`镜头：${scales[plan.camera.shot_scale]||plan.camera.shot_scale} · 景深：${plan.camera.depth_of_field} · ${cast.length}名角色`};
 }

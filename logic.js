@@ -2,6 +2,8 @@ import {lexiconForScene,libraryCandidates} from './assets.js';
 import {visionChat} from './engines.js';
 import {baselineDirector,directorRequest,normalizeDirector,compileDirector,styleSnapshot} from './director.js';
 import {fanReferenceForPrompt} from './fan_canon.js';
+import {cleanStory,cleanText as cleanNarrative,assertCleanStory} from './story_cleaner.js';
+import {resolveMode} from './mode_resolver.js';
 export const MATERIALS={
  发型:[['高马尾','high ponytail, flowing hair'],['低马尾','low ponytail'],['双马尾','twin tails'],['姬发式','hime cut, straight bangs'],['侧编发','side braid'],['长卷发','long wavy hair'],['披肩直发','silky straight shoulder-length hair'],['盘发','elegant updo']],
  表情:[['清浅微笑','gentle smile, soft eyes'],['羞涩','shy smile, subtle blush'],['自信','confident look'],['惊讶','surprised expression'],['忧思','pensive gaze'],['俏皮','playful wink'],['凝视','intense gaze']],
@@ -11,9 +13,9 @@ export const MATERIALS={
 };
 const s=v=>String(v??'');
 export const esc=v=>s(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export const cleanText=x=>s(x).replace(/<think>[\s\S]*?<\/think>/gi,'').replace(/<details[^>]*>[\s\S]*?<\/details>/gi,'').replace(/<[^>]+>/g,' ').replace(/\[AVS[^\]]*\]/g,' ').replace(/\s{4,}/g,'\n').trim().slice(-12500);
+export const cleanText=cleanNarrative;
 export function stContext(){try{let w=globalThis;for(let i=0;i<8;i++){try{if(w.SillyTavern?.getContext)return w.SillyTavern.getContext()}catch(_){}if(w.parent===w)break;w=w.parent;}return null}catch{return null}}
-export function contextInfo(){const c=stContext();if(!c)return {id:null,text:'',index:-1,context:null};const chat=Array.isArray(c.chat)?c.chat:[];const index=chat.findLastIndex(m=>!m.is_user&&!m.is_system&&s(m.mes||m.message).trim());const card=c.characterId??c.groupId??'none';const cid=c.chatId??c.chat_metadata?.chat_id??c.chat_metadata?.file_name??c.getCurrentChatId?.()??'unknown';return {id:`${card}::${cid}`,text:index>=0?cleanText(chat[index].mes||chat[index].message):'',index,context:c};}
+export function contextInfo(){const c=stContext();if(!c)return {id:null,text:'',index:-1,context:null};const chat=Array.isArray(c.chat)?c.chat:[];const index=chat.findLastIndex(m=>!m.is_user&&!m.is_system&&s(m.mes||m.message).trim());const card=c.characterId??c.groupId??'none';const cid=c.chatId??c.chat_metadata?.chat_id??c.chat_metadata?.file_name??c.getCurrentChatId?.()??'unknown';const cleaned=index>=0?cleanStory(chat[index].mes||chat[index].message):cleanStory('');return {id:`${card}::${cid}`,text:cleaned.text,cleaning:cleaned,index,context:c};}
 export function coreBridge(){let w=globalThis;try{for(let i=0;i<8;i++){const b=w.__AVS_V4_BRIDGE__;if(b?.version==='4.1.10'&&typeof b.fullInspector==='function')return b;if(w.parent===w)break;w=w.parent;}}catch(_){}return null}
 export async function archiveView(){const b=coreBridge();if(!b)return {error:'V4.1.10角色档案尚未就绪：请确认原版Core正在运行',characters:[],runtime:null,details:{}};
  try{const v=await b.fullInspector();const characters=(v.characters||[]).filter(x=>!x.blocked);return {characters,runtime:v.runtime||{},details:{},error:'',bridge:b}}catch(e){return {error:'读取V4.1.10只读档案失败：'+String(e.message||e),characters:[],runtime:null,details:{}}}}
@@ -50,7 +52,7 @@ export async function chosenCharacterPacket(arc,selectedIds){if(!arc.bridge)retu
  output.push(serialized);
  }catch(e){throw new Error('读取角色 '+String(c.name||c.character_id)+' 的正式档案失败：'+String(e.message||e).slice(0,180))}}
  return output;}
-export function archiveGate(arc,ctx){if(arc.error)return arc.error;if(!ctx.context)return 'SillyTavern聊天上下文未就绪，请先进入一个角色聊天';if(ctx.index<0)return '当前聊天没有已完成的AI回复';
+export function archiveGate(arc,ctx){if(arc.error)return arc.error;if(!ctx.context)return 'SillyTavern聊天上下文未就绪，请先进入一个角色聊天';if(ctx.index<0)return '当前聊天没有已完成的AI回复';if(!ctx.text?.trim())return '最新回复只有记忆/选项/辅助文本，没有可用主线画面。已阻止生图';
  if(arc.runtime?.requires_sync||arc.runtime?.rebuild_required)return '角色档案正在等待时间线修复；请先通过原版AVS处理后再生图';
  if(arc.runtime?.health&&['ERROR','BLOCKED'].includes(arc.runtime.health))return '角色档案状态异常：'+arc.runtime.health;
  const floor=Number(arc.runtime?.last_processed_message_id);if(arc.characters.length&&Number.isFinite(floor)&&floor<ctx.index)return `最新AI楼层#${ctx.index}尚未完成独立API视觉同步（档案已同步至#${floor}）`;
@@ -75,7 +77,9 @@ export function normalizeAnalysis(reply){const match=s(reply).match(/\{[\s\S]*\}
 
 // R2.2: The prompt model plans a scene, never directly owns final prompts or a style lock.
 export async function compileDirectedPrompt(ctx,packets,settings,mode,signal){
- const baseline=baselineDirector(ctx,packets,mode,settings);const lockedAtStart=styleSnapshot(settings);
+ assertCleanStory(ctx.text);
+ const requested=resolveMode(mode,packets.length);
+ const baseline=baselineDirector(ctx,packets,requested.mode,settings);const lockedAtStart=styleSnapshot(settings);
  let plan=baseline;
  if(settings.prompt.useMain || settings.prompt.key){
    const req=directorRequest(baseline,packets,settings,fanReferenceForPrompt(settings,ctx.context));let raw;
