@@ -1,0 +1,43 @@
+name: 同步Pixiv月榜前50（仅公开元数据）
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 5 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  pixiv-monthly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read monthly public ranking (failure preserves old snapshot)
+        id: public_rank
+        continue-on-error: true
+        run: python3 tools/sync_pixiv.py
+      - name: Prepare independent open-source CLI fallback
+        if: steps.public_rank.outcome == 'failure'
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+      - name: Try tamnd/pixiv-cli public ranking fallback
+        if: steps.public_rank.outcome == 'failure'
+        run: |
+          go install github.com/tamnd/pixiv-cli/cmd/pixiv@v0.1.0
+          AVS_PIXIV_CLI_BIN="$(go env GOPATH)/bin/pixiv" python3 tools/sync_pixiv.py
+      - name: Commit verified metadata
+        run: |
+          if git diff --quiet -- data/pixiv-monthly.json; then
+            echo "No snapshot change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pixiv-monthly.json
+          git commit -m "data: sync verified Pixiv monthly ranking"
+          git push
