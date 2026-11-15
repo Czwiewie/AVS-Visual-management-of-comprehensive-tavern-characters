@@ -14,8 +14,11 @@ export async function visionChat(settings,system,text,imageData,signal){
  const r=await needOK(await fetchTimeout(`${base}/chat/completions`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},135000));
  const j=await r.json();const m=j.choices?.[0]?.message?.content;return typeof m==='string'?m:Array.isArray(m)?m.map(v=>v.text||'').join(''):JSON.stringify(m||'');
 }
-export async function openaiImage(settings,prompt,signal){const base=sanitizeUrl(settings.base);if(!settings.model)throw new Error('尚未填写生图模型');
- const body={model:settings.model,prompt,n:1,size:settings.size};const r=await needOK(await fetchTimeout(`${base}/images/generations`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},190000));
+export async function openaiImage(settings,prompt,negative,signal){const base=sanitizeUrl(settings.base);if(!settings.model)throw new Error('尚未填写生图模型');
+ // OpenAI-compatible image generation has no portable native negative_prompt field.
+ // Convert scene/style negatives to plain language, never pretend a native negative field was used.
+ const requestPrompt=String(negative||'').trim()?`${prompt}\n\nVisual exclusions (avoid these results): ${String(negative).slice(0,3200)}`:prompt;
+ const body={model:settings.model,prompt:requestPrompt,n:1,size:settings.size};const r=await needOK(await fetchTimeout(`${base}/images/generations`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},190000));
  const j=await r.json(),v=j.data?.[0]||j.images?.[0]||j.output?.[0];if(!v)throw new Error('图像API没有返回图片数据');
  if(v.b64_json||v.b64||v.image_base64)return base64Blob(v.b64_json||v.b64||v.image_base64);
  const link=v.url||v.image_url;if(link){const q=await needOK(await fetchTimeout(link,{signal},75000));return await q.blob()}
@@ -71,8 +74,5 @@ async function zipFirstImage(data){
 }
 export async function novelaiImage(settings,prompt,negative,signal){if(!settings.key)throw new Error('NovelAI需要Persistent API Token');const [w,h]=sizeFor(settings.size),model=settings.naiModel||'nai-diffusion-5-full';const pars={params_version:model.includes('-5-')?4:3,width:w,height:h,scale:5,sampler:'k_euler_ancestral',steps:28,n_samples:1,qualityToggle:false,ucPreset:4,sm:false,sm_dyn:false,dynamic_thresholding:false,controlnet_strength:1,legacy:false,add_original_image:true,uncond_scale:1,noise_schedule:'karras',negative_prompt:negative,v4_prompt:{caption:{base_caption:prompt,char_captions:[]},use_coords:false,use_order:true},v4_negative_prompt:{caption:{base_caption:negative,char_captions:[]},legacy_uc:false}};
  const r=await needOK(await fetchTimeout('https://image.novelai.net/ai/generate-image',{method:'POST',headers:{...authHeader(settings.key),'Content-Type':'application/json'},body:JSON.stringify({input:prompt,model,action:'generate',parameters:pars}),signal},190000));return await zipFirstImage(await r.arrayBuffer())}
-export async function generateImage(settings,prompt,negative,signal,progress){if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress);if(settings.engine==='novelai')return novelaiImage(settings,prompt,negative,signal);return openaiImage(settings,prompt,signal)}
-export async function pixivRanking(apiKey,signal){if(!apiKey)throw new Error('请先在设置中连接Pixiv排行榜数据源（API.SH密钥），才能读取真实月榜前50；不使用伪榜单。');
- const r=await needOK(await fetchTimeout('https://api.api.sh/pixiv/v1/ranking?mode=monthly&content=illust&page=1',{headers:{'x-api-key':apiKey.trim()},signal},90000));const j=await r.json();const arr=Array.isArray(j.rankings)?j.rankings:Array.isArray(j.data?.rankings)?j.data.rankings:[];
- if(!arr.length)throw new Error('排行榜接口没有返回作品，请检查账号额度或服务状态');return arr.filter(x=>Number(x.rank)>0).slice(0,50).map(x=>({id:String(x.id),rank:Number(x.rank),title:String(x.title||'未命名'),artist:String(x.user?.name||x.artist?.name||'未知画师'),tags:(x.tags||[]).map(v=>String(typeof v==='string'?v:v.name||'')).slice(0,24),thumbnail:x.thumbnail||'',url:x.url||`https://www.pixiv.net/artworks/${x.id}`}));}
+export async function generateImage(settings,prompt,negative,signal,progress){if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress);if(settings.engine==='novelai')return novelaiImage(settings,prompt,negative,signal);return openaiImage(settings,prompt,negative,signal)}
 export function pixivProxy(url){if(!url||!url.startsWith('https://i.pximg.net/'))return '';return `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=440&output=webp`}
