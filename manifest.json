@@ -1,11 +1,11 @@
 {
-  "display_name": "AVS视觉工坊 R2.5.0（V4.1.10档案只读）",
+  "display_name": "AVS视觉工坊 R2.6.0（Nai素材库与角色分层）",
   "loading_order": 15,
   "requires": [],
   "optional": [],
   "dependencies": [],
   "js": "index.js",
   "author": "AVS project",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "minimum_client_version": "1.19.0"
 }

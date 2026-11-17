@@ -1,31 +1,23 @@
-/* AVS R2.2 comic page compositor: panels made by the configured image engine,
-   dialogue added locally without asking the image engine to typeset Chinese. */
-const safe=(s)=>String(s??'').replace(/[\u0000-\u001f]/g,' ').trim().slice(0,260);
-async function bitmap(blob){if(typeof createImageBitmap==='function')return createImageBitmap(blob);
- const u=URL.createObjectURL(blob);try{return await new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>reject(new Error('漫画画格图片无法解码'));img.src=u})}finally{URL.revokeObjectURL(u)}}
-function wrap(ctx,txt,width,x,y,lineHeight,maxLines){let line='';const lines=[];
- for(const ch of [...safe(txt)]){const proposal=line+ch;if(ctx.measureText(proposal).width>width && line){lines.push(line);line=ch}else line=proposal;if(lines.length>=maxLines)break}
- if(line && lines.length<maxLines)lines.push(line);
- for(let i=0;i<lines.length;i++)ctx.fillText(lines[i],x,y+i*lineHeight);
- return lines.length;
-}
+/* Panels are generated independently; supported Chinese speech is lettered locally.
+ * No director notes are printed as invented narration; no silent two-line clipping. */
+const safe=s=>String(s??'').replace(/[\u0000-\u001f]/g,' ').trim();
+async function bitmap(blob){if(typeof createImageBitmap==='function')return createImageBitmap(blob);const u=URL.createObjectURL(blob);try{return await new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>reject(new Error('漫画画格无法解码'));img.src=u})}finally{URL.revokeObjectURL(u)}}
+export function wrapComicText(ctx,text,width){const lines=[];let current='';for(const ch of [...safe(text)]){const next=current+ch;if(ctx.measureText(next).width>width&&current){lines.push(current);current=ch}else current=next;}if(current)lines.push(current);return lines;}
 export async function comicPageBlob(images,panels,names=new Map()){
- if(images.length<2)throw new Error('漫画拼页至少需要两格图像');
- const imagesDecoded=await Promise.all(images.map(bitmap));const W=980;const M=18;const panelImageH=960;const bubbleH=132;const panelH=panelImageH+bubbleH;const H=M*2+(panelH+M)*images.length;
- const canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('浏览器不支持Canvas 2D，原始画格已保存在图库');
- ctx.fillStyle='#eef5fa';ctx.fillRect(0,0,W,H);
- for(let i=0;i<imagesDecoded.length;i++){
-  const img=imagesDecoded[i],y=M+i*(panelH+M),pw=W-2*M;
-  ctx.fillStyle='#fff';ctx.fillRect(M,y,pw,panelH);ctx.strokeStyle='#66879b';ctx.lineWidth=3;ctx.strokeRect(M+1,y+1,pw-2,panelH-2);
-  const ratio=Math.min(pw/img.width,panelImageH/img.height);const dw=img.width*ratio,dh=img.height*ratio;
-  ctx.fillStyle='#dceaf3';ctx.fillRect(M+2,y+2,pw-4,panelImageH);
-  ctx.drawImage(img,M+(pw-dw)/2,y+(panelImageH-dh)/2,dw,dh);
-  ctx.fillStyle='#fff';ctx.fillRect(M+3,y+panelImageH,pw-6,bubbleH-2);
-  const cap=panels[i]||{};ctx.fillStyle='#224c66';ctx.font='bold 24px sans-serif';ctx.fillText(`第 ${i+1} 格`,M+18,y+panelImageH+31);
-  ctx.fillStyle='#26495a';ctx.font='25px sans-serif';const speak=(cap.dialogue||[]).slice(0,2).map(d=>{const name=names.get(d.speaker_id)||d.speaker_id||'旁白';return `${name}：${safe(d.text)}`}).join('　');
-  if(speak){const count=wrap(ctx,speak,pw-44,M+18,y+panelImageH+63,31,2);if(count>=2){} }
-  else {ctx.font='20px sans-serif';ctx.fillStyle='#698496';wrap(ctx,cap.moment||'',pw-44,M+18,y+panelImageH+66,26,2)}
-  if(typeof img.close==='function')img.close();
- }
- return await new Promise((resolve,reject)=>{canvas.toBlob(b=>b?resolve(b):reject(new Error('漫画合成图片为空')),'image/png')});
+ if(images.length<2||images.length>6||images.length!==panels.length)throw new Error('漫画需要2～6个对应的画格');
+ const W=980,M=18,pw=W-2*M,imageH=960,lineH=32;const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');if(!ctx)throw new Error('浏览器没有Canvas 2D，无法拼页');
+ ctx.font='25px sans-serif';const rows=panels.map(p=>(p.dialogue||[]).map(d=>{const content=(names.get(d.speaker_id)||'旁白')+'：'+safe(d.text);const lines=wrapComicText(ctx,content,pw-84);return {lines,height:lines.length*lineH+34};}));
+ const heights=rows.map(dialogues=>imageH+dialogues.reduce((sum,d)=>sum+d.height+12,0)+(dialogues.length?18:0));
+ const H=2*M+heights.reduce((sum,h)=>sum+h+M,0);if(H>20000)throw new Error('本页对白过长，请减少格数或拆分正文后生成');
+ canvas.width=W;canvas.height=H;ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+ const decoded=await Promise.all(images.map(bitmap));let y=M;
+ try{for(let i=0;i<decoded.length;i++){
+  const img=decoded[i];ctx.fillStyle='#fff';ctx.fillRect(M,y,pw,heights[i]);const ratio=Math.min(pw/img.width,imageH/img.height),dw=img.width*ratio,dh=img.height*ratio;
+  ctx.drawImage(img,M+(pw-dw)/2,y+(imageH-dh)/2,dw,dh);ctx.strokeStyle='#202225';ctx.lineWidth=3;ctx.strokeRect(M,y,pw,heights[i]);
+  let by=y+imageH+12;ctx.font='25px sans-serif';for(const dialogue of rows[i]){
+   ctx.fillStyle='#fff';ctx.strokeStyle='#222';ctx.lineWidth=2;ctx.beginPath();if(typeof ctx.roundRect==='function')ctx.roundRect(M+18,by,pw-36,dialogue.height,24);else ctx.rect(M+18,by,pw-36,dialogue.height);ctx.fill();ctx.stroke();
+   ctx.fillStyle='#17191c';dialogue.lines.forEach((line,n)=>ctx.fillText(line,M+40,by+30+n*lineH));by+=dialogue.height+12;
+  }y+=heights[i]+M;
+ }}finally{for(const img of decoded)img.close?.();}
+ return await new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(new Error('漫画排版结果为空')),'image/png'));
 }

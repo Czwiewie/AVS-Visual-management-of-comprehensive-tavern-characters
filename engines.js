@@ -1,3 +1,5 @@
+import {profileFor,NAI_PROFILES,manualNai} from './nai_compiler.js';
+import {readNaiStream} from './nai_stream.js';
 export function sanitizeUrl(base){const u=new URL(String(base||''));if(!['http:','https:'].includes(u.protocol))throw new Error('仅支持HTTP/HTTPS服务地址');return u.href.replace(/\/+$/,'')}
 function authHeader(key){return key?{'Authorization':`Bearer ${key.trim()}`}:{}}
 export async function fetchTimeout(url,options={},ms=125000){const ac=new AbortController();const timer=setTimeout(()=>ac.abort('timeout'),ms);const incoming=options.signal;
@@ -20,9 +22,10 @@ export async function models(base,key,signal){
 export async function visionChat(settings,system,text,imageData,signal){
  const base=sanitizeUrl(settings.base);if(!settings.key&&!settings.useMain)throw new Error('尚未设置提示词API密钥');
  if(!settings.model)throw new Error('尚未选择提示词模型');
- const content=[{type:'text',text:String(text).slice(0,16500)}];if(imageData)content.push({type:'image_url',image_url:{url:imageData}});
+ const requestText=String(text);if(requestText.length>512000)throw new Error('提示词API输入过大，请减少本幕人物或过长档案；没有截断JSON');
+ const content=[{type:'text',text:requestText}];if(imageData)content.push({type:'image_url',image_url:{url:imageData}});
  const body={model:settings.model,messages:[{role:'system',content:system},{role:'user',content}],temperature:Number(settings.temperature)||0.6};
- const r=await needOK(await fetchTimeout(`${base}/chat/completions`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},135000));
+ const r=await needOK(await fetchTimeout(`${base}/chat/completions`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},Number(settings.timeoutMs)||240000));
  const j=await r.json();const m=j.choices?.[0]?.message?.content;return typeof m==='string'?m:Array.isArray(m)?m.map(v=>v.text||'').join(''):JSON.stringify(m||'');
 }
 async function imageResult(response,signal){
@@ -128,13 +131,34 @@ async function zipFirstImage(data){
  }
  throw new Error('NovelAI压缩包中没有可识别的图片');
 }
-export async function novelaiImage(settings,prompt,negative,signal){if(!settings.key)throw new Error('NovelAI需要Persistent API Token');const [w,h]=sizeFor(settings.size),model=settings.naiModel||'nai-diffusion-5-full';const pars={params_version:model.includes('-5-')?4:3,width:w,height:h,scale:5,sampler:'k_euler_ancestral',steps:28,n_samples:1,qualityToggle:false,ucPreset:4,sm:false,sm_dyn:false,dynamic_thresholding:false,controlnet_strength:1,legacy:false,add_original_image:true,uncond_scale:1,noise_schedule:'karras',negative_prompt:negative,v4_prompt:{caption:{base_caption:prompt,char_captions:[]},use_coords:false,use_order:true},v4_negative_prompt:{caption:{base_caption:negative,char_captions:[]},legacy_uc:false}};
- const r=await needOK(await fetchTimeout('https://image.novelai.net/ai/generate-image',{method:'POST',headers:{...authHeader(settings.key),'Content-Type':'application/json'},body:JSON.stringify({input:prompt,model,action:'generate',parameters:pars}),signal},190000));return await zipFirstImage(await r.arrayBuffer())}
-export async function generateImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={}){
+export function buildNovelAIRequest(settings,prompt,negative,compiled=null){
+ const profile=profileFor({...settings,engine:'novelai'}),model=NAI_PROFILES[profile].model;
+ const captions=compiled||manualNai(prompt,negative,{...settings,engine:'novelai'});
+ if(captions.profile!==profile)throw new Error('编译提示词与当前Nai型号不同，请重新编译；不会自动切换型号');
+ const [width,height]=sizeFor(settings.size),v5=profile==='nai5full';
+ const roles=captions.characters||[];if(roles.length>NAI_PROFILES[profile].maxCharacters)throw new Error('独立角色数量超过当前Nai型号支持范围');
+ const centers=c=>[c.center||{x:0.5,y:0.5}];
+ const parameters={params_version:v5?4:3,width,height,scale:Number(settings.cfg)||5,sampler:'k_euler_ancestral',steps:Number(settings.steps)||28,n_samples:1,seed:Math.floor(Math.random()*4294967295),
+  noise_schedule:'karras',negative_prompt:captions.negative||negative||'',
+  v4_prompt:{caption:{base_caption:captions.base,char_captions:roles.map(c=>({char_caption:c.prompt,centers:centers(c)}))},use_coords:roles.length>1,use_order:true},
+  v4_negative_prompt:{caption:{base_caption:captions.negative||negative||'',char_captions:roles.map(c=>({char_caption:c.negative||'',centers:centers(c)}))},legacy_uc:false}};
+ if(v5){parameters.image_format='png';parameters.characterPrompts=roles.map(c=>({prompt:c.prompt,uc:c.negative||'',center:c.center||{x:0.5,y:0.5},enabled:true}));parameters.stream='msgpack';}
+ else Object.assign(parameters,{qualityToggle:false,ucPreset:4,sm:false,sm_dyn:false,dynamic_thresholding:false,legacy:false,add_original_image:true,uncond_scale:1});
+ return {input:captions.base,model,action:'generate',parameters};
+}
+export async function novelaiImage(settings,prompt,negative,signal,compiled=null,progress=()=>{}){
+ if(!settings.key)throw new Error('NovelAI需要Persistent API Token');const body=buildNovelAIRequest(settings,prompt,negative,compiled),v5=body.model==='nai-diffusion-5-full';
+ const controller=new AbortController(),cancel=()=>controller.abort(signal?.reason||'user');if(signal?.aborted)cancel();else signal?.addEventListener('abort',cancel,{once:true});
+ const timer=setTimeout(()=>controller.abort('timeout'),Number(settings.timeoutMs)||240000);
+ try{const r=await needOK(await fetchTimeout('https://image.novelai.net/ai/'+(v5?'generate-image-stream':'generate-image'),{method:'POST',headers:{...authHeader(settings.key),'Content-Type':'application/json'},body:JSON.stringify(body),signal:controller.signal},240000));
+  return v5?await readNaiStream(r,controller.signal,progress):await zipFirstImage(await r.arrayBuffer());
+ }finally{clearTimeout(timer);signal?.removeEventListener('abort',cancel);}
+}
+export async function generateImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={},compiled=null){
  if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress,reference,report);
  if(settings.engine==='novelai'){
-  if(settings.referenceMode!=='text')throw new Error('当前NovelAI适配器尚未实现经过验证的Vibe图像参数；请使用文字参考或其他已支持强参考的引擎');
-  report.referenceActuallySent=false;report.adapter='novelai-text-only';return novelaiImage(settings,prompt,negative,signal);
+  if((settings.referenceMode||'text')!=='text')throw new Error('当前NovelAI适配不发送Vibe参考图，请使用文字画风参考');
+  report.referenceActuallySent=false;report.adapter=settings.naiModel==='nai-diffusion-5-full'?'novelai-v5-stream-role-captions':'novelai-v4-zip-role-captions';return novelaiImage(settings,prompt,negative,signal,compiled,progress);
  }
  return openaiImage(settings,prompt,negative,signal,reference,report);
 }

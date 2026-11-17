@@ -4,6 +4,9 @@ import {baselineDirector,directorRequest,normalizeDirector,compileDirector,style
 import {fanReferenceForPrompt} from './fan_canon.js';
 import {cleanStory,cleanText as cleanNarrative,assertCleanStory} from './story_cleaner.js';
 import {resolveMode} from './mode_resolver.js';
+import {projectCharacter} from './visual_facts.js';
+import {retrieveForPlan} from './visual_resources.js';
+import {profileFor,NAI_PROFILES} from './nai_compiler.js';
 export const MATERIALS={
  发型:[['高马尾','high ponytail, flowing hair'],['低马尾','low ponytail'],['双马尾','twin tails'],['姬发式','hime cut, straight bangs'],['侧编发','side braid'],['长卷发','long wavy hair'],['披肩直发','silky straight shoulder-length hair'],['盘发','elegant updo']],
  表情:[['清浅微笑','gentle smile, soft eyes'],['羞涩','shy smile, subtle blush'],['自信','confident look'],['惊讶','surprised expression'],['忧思','pensive gaze'],['俏皮','playful wink'],['凝视','intense gaze']],
@@ -20,39 +23,11 @@ export function coreBridge(){let w=globalThis;try{for(let i=0;i<8;i++){const b=w
 export async function archiveView(){const b=coreBridge();if(!b)return {error:'V4.1.10角色档案尚未就绪：请确认原版Core正在运行',characters:[],runtime:null,details:{}};
  try{const v=await b.fullInspector();const characters=(v.characters||[]).filter(x=>!x.blocked);return {characters,runtime:v.runtime||{},details:{},error:'',bridge:b}}catch(e){return {error:'读取V4.1.10只读档案失败：'+String(e.message||e),characters:[],runtime:null,details:{}}}}
 export async function chosenCharacterPacket(arc,selectedIds){if(!arc.bridge)return [];
- const chars=arc.characters.filter(c=>selectedIds.includes(c.character_id));if(chars.length>12)throw new Error('本版单个画面最多规划12个正式角色，请缩小当前选择；不会静默丢掉其他角色');const output=[];
- for(const c of chars){try{const v=await arc.bridge.fullInspector(c.character_id),ch=v.selected;if(!ch)continue;
- // Keep complete JSON syntax, but take only visible, current, relevant facts.
- // V4.1.10 formal archive remains completely unchanged; this is a READ-ONLY packet projection.
- const unpack=v=>{if(typeof v==='string'){try{return JSON.parse(v)}catch{return {}}}return v&&typeof v==='object'?v:{}};
- const text=(v,max=190)=>String(v??'').trim().slice(0,max);
- const pick=(obj,fields,max=190)=>Object.fromEntries(fields.map(k=>[k,typeof obj?.[k]==='string'||typeof obj?.[k]==='number'?text(obj[k],max):undefined]).filter(x=>x[1]));
- const asset=o=>{if(!o)return null;if(Array.isArray(o))return o.slice(0,8).map(asset).filter(Boolean);
-  if(typeof o==='string')return {name:text(o)};
-  if(typeof o==='object')return {name:text(o.name||o.design?.description||'',170)};
-  return null};
- const full=unpack(ch.current),appearance=ch.canon?.physical_design||{},slots=full.outfit?.slots||{};
- const outfitSlots=Object.fromEntries(Object.entries(slots).map(([k,v])=>[k,asset(v)]).filter(([,v])=>v&&(!Array.isArray(v)||v.length)));
- const slimCurrent={activity:{detail:text(full.activity?.detail,240)},hair:pick(full.hair,['current_style','condition','interaction'],140),
-  makeup:asset(full.makeup),manicure:asset(full.manicure),outfit:{ensemble:asset(full.outfit?.ensemble),slots:outfitSlots},
-  accessories:asset(full.accessories),pose:text(full.pose,220),expression:text(full.expression,170),dress_state:text(full.dress_state,80)};
- const physical={appearance:pick(appearance.appearance,['overall','skin_tone','skin_texture'],240),
-  face:pick(appearance.face,['face_shape','brows','eyes','iris','pupils','nose','lips'],160),
-  natural_hair:pick(appearance.natural_hair,['color','length','texture','volume'],150),
-  body:pick(appearance.body,['height','overall_proportion','body_type','shoulders','clavicle','bust','waist','abdomen','pelvis','hips','buttocks','thighs','calves'],170),
-  species_features:appearance.species_features};
- const short={character_id:ch.character_id,name:ch.name,
-  identity:{name:ch.identity?.name,species:ch.identity?.species,body_type:ch.identity?.body_type,
-   visual_age:ch.identity?.visual_age,current_identity_background:text(ch.identity?.current_identity_background,200)},
-  canon:{physical_design:physical},current:slimCurrent};
- let serialized=JSON.stringify(short);
- if(serialized.length>13500){short.canon.physical_design.appearance.overall=text(short.canon.physical_design.appearance.overall,130);serialized=JSON.stringify(short)}
- if(serialized.length>15000)throw new Error('角色档案中的视觉字段过大，请检查是否存在重复或异常数据');
-
- output.push(serialized);
- }catch(e){throw new Error('读取角色 '+String(c.name||c.character_id)+' 的正式档案失败：'+String(e.message||e).slice(0,180))}}
- return output;}
-export function archiveGate(arc,ctx){if(arc.error)return arc.error;if(!ctx.context)return 'SillyTavern聊天上下文未就绪，请先进入一个角色聊天';if(ctx.index<0)return '当前聊天没有已完成的AI回复';if(!ctx.text?.trim())return '最新回复只有记忆/选项/辅助文本，没有可用主线画面。已阻止生图';
+ const chars=selectedIds.map(id=>arc.characters.find(c=>c.character_id===id)).filter(Boolean);if(chars.length>22)throw new Error('当前画面超过22个正式人物，请缩小画面范围');
+ const output=[];for(const c of chars){const view=await arc.bridge.fullInspector(c.character_id);if(!view.selected)throw new Error('正式角色档案已失效：'+c.name);
+  output.push(JSON.stringify(projectCharacter(view.selected)));}return output;
+}
+export function archiveGate(arc={},ctx={}){if(!Array.isArray(arc?.characters))return '正在读取V4.1.10角色档案';if(arc.error)return arc.error;if(!ctx.context)return 'SillyTavern聊天上下文未就绪，请先进入一个角色聊天';if(ctx.index<0)return '当前聊天没有已完成的AI回复';if(!ctx.text?.trim())return '最新回复只有记忆/选项/辅助文本，没有可用主线画面。已阻止生图';
  if(arc.runtime?.requires_sync||arc.runtime?.rebuild_required)return '角色档案正在等待时间线修复；请先通过原版AVS处理后再生图';
  if(arc.runtime?.health&&['ERROR','BLOCKED'].includes(arc.runtime.health))return '角色档案状态异常：'+arc.runtime.health;
  const floor=Number(arc.runtime?.last_processed_message_id);if(arc.characters.length&&Number.isFinite(floor)&&floor<ctx.index)return `最新AI楼层#${ctx.index}尚未完成独立API视觉同步（档案已同步至#${floor}）`;
@@ -80,14 +55,17 @@ export async function compileDirectedPrompt(ctx,packets,settings,mode,signal){
  assertCleanStory(ctx.text);
  const requested=resolveMode(mode,packets.length);
  const baseline=baselineDirector(ctx,packets,requested.mode,settings);const lockedAtStart=styleSnapshot(settings);
+ const profile=profileFor(settings.image);if(NAI_PROFILES[profile]&&baseline.cast.length>NAI_PROFILES[profile].maxCharacters)throw new Error('所选Nai型号无法容纳当前同场人数，请减少选择');
+ baseline.resourceContext=retrieveForPlan(baseline,packets,settings);baseline.requestProfile=profile;baseline.observerSelection=settings.observer||null;
  let plan=baseline;
  if(settings.prompt.useMain || settings.prompt.key){
    const req=directorRequest(baseline,packets,settings,fanReferenceForPrompt(settings,ctx.context));let raw;
    if(settings.prompt.useMain){const c=stContext();if(typeof c?.generateRaw!=='function')throw new Error('主API未提供generateRaw，不能执行导演规划');
      raw=await c.generateRaw({systemPrompt:req.system,prompt:req.user});
    }else raw=await visionChat(settings.prompt,req.system,req.user,null,signal);
-   plan=normalizeDirector(raw,baseline);
+   if(signal?.aborted)throw new Error('用户取消');
+   plan=normalizeDirector(raw,baseline,packets);
  }
  const lockedNow=styleSnapshot(settings);if(lockedNow.revision!==lockedAtStart.revision||lockedNow.id!==lockedAtStart.id)throw new Error('规划期间玩家切换或清除了画风，请重新编译，避免旧任务覆盖新画风');
- return compileDirector(plan,packets,settings,lockedAtStart);
+ return compileDirector(plan,[...packets,...(plan.supportingPackets||[])],settings,lockedAtStart);
 }

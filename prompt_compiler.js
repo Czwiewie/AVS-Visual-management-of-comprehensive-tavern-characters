@@ -22,7 +22,10 @@ export function extractCharacterFacts(packet){const x=unpack(packet),p=path(x,'c
   datum(body,'waist'),datum(body,'hips'),datum(body,'bust'),
   datum(current,'makeup.name'),datum(current,'manicure.name')
  ].filter(Boolean);
- const outfit=clothes(x);
+ const groups=x.visual59||{};
+ for(const group of ['beauty','body'])for(const [key,value] of Object.entries(groups[group]||{})){if(value&&anchors.length<24)anchors.push(`${key}: ${String(value).slice(0,160)}`)}
+ if(x.render_identity)anchors.unshift(x.render_identity);
+ const outfit=Array.isArray(x.items)?x.items.filter(i=>i.wear_state==='worn'||/手|臂|holding|held|hand|arm/i.test(i.location||'')).map(i=>(i.wear_state==='worn'?'':`held at ${i.location}: `)+(i.fact||i.name)).filter(Boolean):clothes(x);
  const accessories=unpack(x.current).accessories||[];
  for(const a of (Array.isArray(accessories)?accessories:[accessories]).slice(0,5)){
   const name=valid(typeof a==='string'?a:a?.name||'');if(name&&!outfit.includes(name))outfit.push(name);

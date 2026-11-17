@@ -1,17 +1,19 @@
 const DB_NAME='AVS_R2_VISUAL_WORKSHOP',DB_VERSION=1;
 const KEY='AVS_R2_SETTINGS_V1';
 export const defaults={
-  prompt:{useMain:false,base:'https://api.openai.com/v1',key:'',model:'',temperature:0.65},
-  image:{engine:'openai',base:'https://api.openai.com/v1',key:'',model:'gpt-image-1.5',size:'1024x1536',referenceMode:'text',
+  prompt:{useMain:false,base:'https://api.openai.com/v1',key:'',model:'',temperature:0.65,timeoutMs:240000},
+  image:{engine:'openai',base:'https://api.openai.com/v1',key:'',model:'gpt-image-1.5',size:'1024x1536',referenceMode:'text',promptProfile:'none',
     comfyBase:'http://127.0.0.1:8188',checkpoint:'',steps:28,cfg:6.5,workflow:'',naiModel:'nai-diffusion-5-full',negative:'lowres, watermark, bad anatomy, malformed hands, extra fingers, illegible text'},
   pixiv:{apiKey:'',githubRepo:'',mode:'monthly',proxy:false,expanded:false,updated:'',items:[]},
   styles:[],chosenStyle:null,styleLock:null,materials:[],characterModes:{},characterRefs:{},fanCards:{},modelFavorites:{prompt:[],image:[],checkpoint:[]},
   director:{shotScale:'auto',elevation:'auto',depthOfField:'auto'},
-  visualTarget:'premium',auto:false,layout:'portrait',comicPanels:2
+  resources:{enabled:true},observer:{id:'User',name:'User'},groupBoost:false,
+  visualTarget:'premium',auto:false,attachToChat:true,layout:'portrait',comicPanels:2
 };
 export function settingsRead(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return {
 ...structuredClone(defaults),...x,
 prompt:{...defaults.prompt,...(x.prompt||{})},image:{...defaults.image,...(x.image||{})},
+resources:{...defaults.resources,...(x.resources||{})},observer:{...defaults.observer,...(x.observer||{})},
 pixiv:{...defaults.pixiv,...(x.pixiv||{})}, director:{...defaults.director,...(x.director||{})},
 visualTarget:['reference','premium','naval','resonant'].includes(x.visualTarget)?x.visualTarget:'premium',
 styles:Array.isArray(x.styles)?x.styles:[],materials:Array.isArray(x.materials)?x.materials:[],characterModes:x.characterModes||{},characterRefs:x.characterRefs||{},fanCards:x.fanCards||{},modelFavorites:{...defaults.modelFavorites,...(x.modelFavorites||{})}
@@ -29,6 +31,7 @@ export const dbPut=(store,value)=>tx(store,'readwrite',o=>o.put(value));
 export const dbGet=(store,id)=>tx(store,'readonly',o=>o.get(id));
 export const dbAll=(store)=>tx(store,'readonly',o=>o.getAll());
 export const dbDelete=(store,id)=>tx(store,'readwrite',o=>o.delete(id));
+export async function dbPutMany(store,values){const db=await openDB();return new Promise((resolve,reject)=>{const t=db.transaction(store,'readwrite'),os=t.objectStore(store);for(const value of values)os.put(value);t.oncomplete=()=>resolve(values.length);t.onerror=()=>reject(t.error||new Error('图库批量保存失败'));t.onabort=()=>reject(t.error||new Error('图库批量保存已回滚'));});}
 export function makeId(prefix='avs'){return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,10)}`}
 export function taskKey(chatId){return `AVS_R2_TASKS_${String(chatId||'unknown').replace(/[^\w.\-]/g,'_').slice(0,100)}`}
 export function loadTasks(chatId){try{return JSON.parse(localStorage.getItem(taskKey(chatId))||'[]').slice(0,60)}catch{return []}}
