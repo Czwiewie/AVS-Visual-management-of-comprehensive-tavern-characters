@@ -1,0 +1,62 @@
+MIT License
+
+Copyright (c) 2026 wzc520pyfm
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+数据来源与版权
+
+本 MIT 许可只覆盖澜姿自己的程序：姿势工作室、DeepSeek Harness 插件、提示词组装和测试。
+下面这些材料不因本文件而变成澜姿的作品，也不因此获得额外授权。
+
+姿势线稿与中文译名
+权利人：ギア
+来源：https://github.com/anhao/ai-pose-gallery-zh
+原站：https://ai-pose-gallery.pages.dev/
+原作者：https://x.com/giaaibusi
+本仓库只保存 288 组姿势的中文名称、分类和公开图地址，不附带线稿文件。页面按需读取 https://ai-pose-gallery.anhao.app 。
+线稿和原始日文数据的著作权归ギア所有。Anhao 维护中文译名。该仓库的 MIT 许可只覆盖它自己的页面和脚本，不覆盖 img/、thumbs/ 与原始数据，上游也说明这些素材不得用于商业用途。把名称和地址收进澜姿，并不把原图的权利转成我们的 MIT 许可。
+
+脸部与表情参考
+权利人：ギア
+来源：https://github.com/sleepy-zone/ai-ref-library-cn
+原站：https://ai-portrait-gallery.pages.dev/
+原作者：https://x.com/giaaibusi
+本仓库只保存 1499 张脸部参考的编号、分区、发长、中日文造型名和公开图地址，不附带图片文件。页面按需读取 https://ai-portrait-gallery.pages.dev/ 的缩略图和原图。
+脸部图片由ギア以 CC0 发布。sleepy-zone/ai-ref-library-cn 只提供中文检索目录和分区译名，图像作者仍是ギア。把编号和地址收进澜姿，并不把原图的权利转成我们的 MIT 许可。
+
+衣装集
+权利人：ギア
+来源：https://ai-costume-gallery.pages.dev/
+本仓库只保存 1407 套服装的编号和关键词，不附带服装图片。页面按需读取上述站点。
+制作者是ギア。衣装集允许把这些图用作创作参考，包括编辑和商业作品中的参考；禁止再分发、转载或转售图像数据本身，原尺寸和加工后的图都一样。署名不是对方的要求，这里仍然注明来源。
+
+默认模特大肥鱼
+权利人：上善无形、ZipZipPipe
+来源：https://github.com/TreapGoGo/deepseek-whale-girl
+public/muse/dafeiyu-sheet.png 是该仓库的 dafeiyu-mature-character-sheet.png。public/muse/dafeiyu-portrait.jpg 是同一张设定图的界面裁切。
+大肥鱼的角色设计来自 上善无形 的原创角色和 ZipZipPipe 的女仆装鲸鱼娘，按 CC BY-NC-SA 4.0（https://creativecommons.org/licenses/by-nc-sa/4.0/）授权（署名、非商业、相同方式共享）。这张设定图收录于社区仓库 TreapGoGo/deepseek-whale-girl，由 ChatGPT 生成；该仓库的 MIT 只覆盖它的网站代码，不覆盖这张图。这是非官方社区形象，不代表深度求索。
+
+社区角色设定图
+权利人：ZipZipPipe
+来源：https://www.bilibili.com/opus/1233069202138464289
+public/muse/ 里 Claude 娘、Gemini 娘、GLM 娘、GPT 娘、Grok 娘、Kimi 娘、llama 娘、Minimax 娘、Qwen 娘的肖像和多视角设定图。
+这些图是 ZipZipPipe 的社区创作。澜姿把它们用作界面和生图参考，不表示这些角色是各公司的官方形象，也不表示获得了额外的商标授权。
+
+DeepSeek 是深度求索的商标。澜姿没有获得这项商标的使用许可。
