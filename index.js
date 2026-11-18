@@ -10,11 +10,14 @@ import {cardContext,fanEnabled,fanSummary,discoverFanCard} from './fan_canon.js'
 import {auditStyle} from './style_guard.js';
 import {validateImagePrompt} from './prompt_compiler.js';
 import {prepareStylePixels} from './style_image.js';
+import {resourceBrowser,resourcePreview,browseResources,resourceRows as drawResourceRows,LIBRARY_MANIFEST} from './resource_browser.js';
+import {referenceTrace, canReplayGalleryPrompt} from './resource_reference.js';
 import {searchResources,resourceEntries,CATEGORY_LABELS,referencePreview} from './visual_resources.js';
 import {manualNai,profileFor} from './nai_compiler.js';
 import {attachGalleryImage,assertBoundSource} from './chat_media.js';
+import {automaticBinding,automaticImageId,automaticCandidates,listenForNewReplies} from './automatic.js';
 
-const VERSION='R2.6.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
+const VERSION='R2.9.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
 // AVS V4.1.10 mounts the mascot in SillyTavern's visible main document.
 // An extension module may be executed in a helper iframe: do not use its
 // potentially zero-height document as the full-screen overlay host.
@@ -45,12 +48,14 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
 }else{
  // All UI mounting, hit testing and event dispatch use the same window as the mascot.
  const window=HOST_WINDOW,document=HOST_WINDOW.document;
- const s=settingsRead(),ui={page:'home',manualCharacterSelection:false,oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',pendingFile:'',directorPlan:null,directorNote:'',styleDraft:null,compiled:null,pending:null,portraitId:'',resourceQuery:'',resourceCategory:''};
- let shell,surface,shadow,content,picker,aborter,refreshToken=0,workRunning=false,autolast='',priorMascotVisibility=null,visibilityGuard=null,lastMountError='',intentOpen=false;
+ const s=settingsRead(),ui={page:'home',manualCharacterSelection:false,oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',directorPlan:null,directorNote:'',styleDraft:null,compiled:null,pending:null,portraitId:'',resourceQuery:'',resourceCategory:'hair',resourcePage:0,resourceImagesOnly:false,resourceFavoritesOnly:false,resourceActorId:'auto',resourcePreviewId:'',resourcePicks:[],referenceRevision:0,referenceBinding:null,resourcesDirty:false};
+ let shell,surface,shadow,content,picker,aborter,refreshToken=0,workRunning=false,priorMascotVisibility=null,visibilityGuard=null,lastMountError='',intentOpen=false;
  // R2.3.1: a single persistent scrollport. Every page or settings panel has its own position.
  let mainPort=null,navPort=null,layerPort=null,renderKey='',renderedMainMarkup=null,renderedLayerMarkup=null,styleSelectionSeq=0;
  const scrollMemory=new Map();
+ let autoJobQueued=null,autoTask=null,autoStatus='',replyEvents=null,eventTimer=null,autoTimer=null,styleBusy=false;
  const workUrl=new URL('./style.css',import.meta.url).href;
+
  function persist(){settingsWrite(s)}
  function tell(t,error=false){ui.notice=String(t);ui.error=error?String(t):'';console[error?'warn':'info']('[AVS R2]',t);render()}
  const activeStyle=()=>s.styles.find(x=>x.id===(s.styleLock?.styleId||s.chosenStyle))||null;
@@ -65,9 +70,36 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  function header(){return `<header class="top"><button class="head-btn" data-act="back" aria-label="返回">← 返回</button><div class="heading"><strong>AVS · 视觉工坊</strong><small>${VERSION} · V4.1.10档案只读</small></div><button class="head-btn" data-act="close">关闭</button></header>`}
  function footer(){const items=[['home','创作'],['style','画风'],['characters','角色'],['gallery','图库'],['settings','设置']];return `<nav class="bottom" aria-label="视觉工坊导航">${items.map(([id,t])=>`<button data-act="goto:${id}" class="${ui.page===id?'on':''}">${t}</button>`).join('')}</nav>`}
  function card(content,cl=''){return `<section class="card ${cl}">${content}</section>`}
- function home(){const latest=ui.chat.text;const block=archiveGate(ui.archive||{},ui.chat);const configured=s.image.engine==='comfy'?!!s.image.checkpoint||!!s.image.workflow:s.image.engine==='novelai'?!!s.image.key:!!s.image.model;
- return `${card(`<div class="eyebrow">当前剧情</div><h2>从最后一幕开始创作</h2><p class="muted">${latest?esc(latest.slice(-230)):'进入角色聊天并完成一次AI回复后即可开始。'}</p><div class="status ${block?'warn':''}">${block?'注意：'+esc(block):'角色档案与当前剧情已可读取'}</div>`)}
- ${card(`<h3>生成模式</h3><div class="twos">${[['portrait','指定女角色立绘'],['pov','指定角色视角插画'],['single','实时画面插画'],['comic','正文转漫画']].map(([x,t])=>`<button class="mode ${ui.mode===x?'selected':''}" data-act="mode:${x}">${t}</button>`).join('')}</div>${ui.mode==='portrait'?`<label class="field"><span>立绘主角</span><select data-portrait-target>${(ui.archive?.characters||[]).map(ch=>`<option value="${esc(ch.character_id)}" ${(ui.portraitId||ui.selected[0])===ch.character_id?'selected':''}>${esc(ch.name)}</option>`).join('')}</select></label>`:''}${ui.mode==='pov'?`${pick('观察者','observer.id',[['User','User'],...(ui.archive?.characters||[]).map(ch=>[ch.character_id,ch.name]),['named_npc','指定在场NPC']])}${s.observer.id==='named_npc'?field('NPC姓名（须在本幕出现）','observer.name'):''}<p class="small">镜头位于观察者视线位置；由提示词API核实在场证据，不默认User的性别。</p>`:''}${ui.mode==='comic'?pick('漫画格数','comicPanels',[['2','2格'],['3','3格'],['4','4格'],['6','6格']]):''}${ui.mode!=='portrait'?`<label class="check"><input type="checkbox" data-check="groupBoost" ${s.groupBoost?'checked':''}/>加强群像（保留本幕相关人物与互动）</label>`:''}<p class="small">${ui.chat.cleaning?.removedCount?'已排除非正文块/续行 '+ui.chat.cleaning.removedCount+' 处 · ':''}当前画风：${esc(s.styleLock?(activeStyle()?.label||s.styleLock.styleId)+'（已锁定）':'默认/旧版临时画风')}　· 角色 ${ui.selected.length} 名</p><div class="row">${btn('一键编译并生成','make','primary')}${btn('仅编译提示词','compile')}</div>${ui.busy?`<div class="progress" role="status"><span class="spinner"></span>${esc(ui.busy)}<progress class="avs-task-progress" aria-label="任务处理中"></progress>　${btn('取消','abort','flat')}</div>`:''}${!configured?'<p class="hint">首次使用需在设置中连接一个生图模型。配置后，普通玩家无需再填写提示词。</p>':''}`)}
+ function activity(){return ui.busy?`<div class="progress" role="status"><span class="spinner"></span>${esc(ui.busy)}<progress class="avs-task-progress" aria-label="任务处理中"></progress>　${btn('取消','abort','flat')}</div>`:''}
+ function visualMode(){
+  const isAuto=s.generationMode==='auto';
+  const choices=[['auto','自动配图'],['manual','手动创作']];
+  return card(`<div class="twos" aria-label="创作模式">${choices.map(([id,label])=>`<button class="mode ${s.generationMode===id?'selected':''}" aria-pressed="${s.generationMode===id}" data-act="generation-mode:${id}">${label}</button>`).join('')}</div>
+  ${isAuto?'':btn('打开分类素材仓库','goto:resources','flat')}`);
+ }
+ function hasUploadedStyle(){const lock=styleSnapshot(s);return lock.locked&&!!lock.mediaId&&lock.mediaSource==='uploaded-image'}
+ function imageConfigError(image){
+  if(image.engine==='novelai'&&!image.key)return '请先配置NovelAI令牌';
+  if(image.engine==='openai'&&!image.model)return '请先填写生图模型';
+  if(image.engine==='comfy'&&!image.checkpoint&&!image.workflow)return '请先选择ComfyUI模型或导入工作流';
+  return '';
+ }
+ function autoConfigError(){
+  if(!hasUploadedStyle())return '请上传一张参考图并完成画风提取';
+  if(!s.prompt.useMain&&(!s.prompt.key||!s.prompt.model))return '请先配置提示词API';
+  return imageConfigError(s.image);
+ }
+ function autoHome(){
+  const issue=autoConfigError(), label=activeStyle()?.label||'上传的参考图';
+  return visualMode()+card(`<h2>随剧情自动配图</h2>
+  <p>普通 AI 回复完成后，自动挑一幕值得画的情节，识别入镜人物，出图并保存。${s.attachToChat?'图片会插入对应回复。':''}</p>
+  <div class="status ${issue?'warn':''}">${issue?esc(issue):'已开启 · 当前画风 '+esc(label)}</div>
+  <div class="row">${btn(hasUploadedStyle()?'更换画风参考图':'上传画风参考图','upload-style','primary')}${issue?btn('API设置','goto:settings'):btn('为本楼配图','auto-current')}</div>
+  ${autoStatus?`<p class="small" role="status">${esc(autoStatus)}</p>`:''}${activity()}`);
+ }
+ function home(){if(s.generationMode==='auto')return autoHome();const latest=ui.chat.text;const block=archiveGate(ui.archive||{},ui.chat);const configured=!imageConfigError(s.image);
+ return `${visualMode()}${card(`<div class="eyebrow">当前剧情</div><h2>从最后一幕开始创作</h2><p class="muted">${latest?esc(latest.slice(-230)):'进入角色聊天并完成一次AI回复后即可开始。'}</p><div class="status ${block?'warn':''}">${block?'注意：'+esc(block):'角色档案与当前剧情已可读取'}</div>`)}
+ ${card(`<h3>画面类型</h3><div class="twos">${[['portrait','指定女角色立绘'],['pov','指定角色视角插画'],['single','实时画面插画'],['comic','正文转漫画']].map(([x,t])=>`<button class="mode ${ui.mode===x?'selected':''}" data-act="mode:${x}">${t}</button>`).join('')}</div>${ui.mode==='portrait'?`<label class="field"><span>立绘主角</span><select data-portrait-target>${(ui.archive?.characters||[]).map(ch=>`<option value="${esc(ch.character_id)}" ${(ui.portraitId||ui.selected[0])===ch.character_id?'selected':''}>${esc(ch.name)}</option>`).join('')}</select></label>`:''}${ui.mode==='pov'?`${pick('观察者','observer.id',[['User','User'],...(ui.archive?.characters||[]).map(ch=>[ch.character_id,ch.name]),['named_npc','指定在场NPC']])}${s.observer.id==='named_npc'?field('NPC姓名（须在本幕出现）','observer.name'):''}<p class="small">镜头位于观察者视线位置；由提示词API核实在场证据，不默认User的性别。</p>`:''}${ui.mode==='comic'?pick('漫画格数','comicPanels',[['2','2格'],['3','3格'],['4','4格'],['6','6格']]):''}${ui.mode!=='portrait'?`<label class="check"><input type="checkbox" data-check="groupBoost" ${s.groupBoost?'checked':''}/>加强群像（保留本幕相关人物与互动）</label>`:''}<p class="small">${ui.chat.cleaning?.removedCount?'已排除非正文块/续行 '+ui.chat.cleaning.removedCount+' 处 · ':''}当前画风：${esc(s.styleLock?(activeStyle()?.label||s.styleLock.styleId)+'（已锁定）':'默认/旧版临时画风')}　· 角色 ${ui.selected.length} 名</p><div class="row">${btn('一键编译并生成','make','primary')}${btn('仅编译提示词','compile')}</div>${activity()}${!configured?'<p class="hint">首次使用需在设置中连接一个生图模型。配置后，普通玩家无需再填写提示词。</p>':''}`)}
  ${card(`<h3>立绘艺术方向（可选）</h3><p class="small">只影响角色展示的摄影与精修目标；不套用参考图人物、服装，也不改写用户锁定画风。单人角色立绘模式最明显。</p>${pick('视觉方向','visualTarget',[['reference','只跟随参考图'],['premium','商业二游精修立绘'],['naval','华丽二游角色展示向'],['resonant','清透高完成度宣传向']])}`)}
  ${card(`<h3>摄影导演（可选）</h3><p class="small">根据剧情自动决定透视、构图、景深、焦点和光影；人工设置优先，摄影参数不改写正式角色档案或锁定画风。</p>${pick('镜头景别','director.shotScale',[['auto','自动决定'],['full_body','完整全身'],['wide','远景/全景'],['medium_wide','多人中全景'],['medium','中景'],['medium_close','中近景'],['close_up','特写']])}${pick('机位高度','director.elevation',[['auto','自动决定'],['eye_level','平视'],['low_angle','仰拍'],['elevated','略高机位'],['high_angle','俯拍'],['top_down','顶视']])}${pick('景深','director.depthOfField',[['auto','自动决定'],['deep','深景深（群像推荐）'],['moderate','适度景深'],['shallow','浅景深'],['illustrative_layering','插画层次']])}${ui.directorPlan?`<details><summary>查看本次导演计划</summary><p class="small">${esc(ui.directorNote)}</p><pre class="director-json">${esc(JSON.stringify(ui.directorPlan,null,2).slice(0,8500))}</pre></details>`:'<p class="small">完成一次提示词编译后可查看导演规划与摄影决策。</p>'}`)}
  ${card(`<h3>高级提示词（可选）</h3><label class="field"><span>正向提示词</span><textarea data-draft="positive" rows="5" placeholder="一键编译后将显示在这里，亦可自行修改">${esc(ui.prompt)}</textarea></label><label class="field"><span>负向提示词</span><textarea data-draft="negative" rows="2">${esc(ui.negative)}</textarea></label><p class="small">${esc(ui.promptSource)}</p>${resourceReport()}<div class="row">${btn('使用现有提示词生成','direct')}${btn('复制提示词','copy-prompt')}</div>`)}
@@ -81,15 +113,16 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  function characters(){const chars=ui.archive?.characters||[],cardInfo=cardContext(ui.chat.context),active=fanEnabled(s,cardInfo);
  return `${card(`<h2>角色卡作品识别</h2><p>仅需决定当前角色卡是否属于同人作品。启用后后台识别卡片介绍、剧情中的动画或游戏出处，并长效保存；不显示复杂检索过程，不改写V4.1.10正式档案。</p><div class="twos"><button class="mode ${active?'selected':''}" data-act="fan-set:yes">同人角色卡</button><button class="mode ${!active?'selected':''}" data-act="fan-set:no">非同人角色卡</button></div><p class="small">识别属于辅助生图信息；未查实出处或角色对应关系时，不会猜测原作外貌。</p><div class="status">${esc(archiveName())}</div>`)}${chars.length?chars.map(ch=>card(`<div class="chrow"><label class="check"><input type="checkbox" data-char="${esc(ch.character_id)}" ${ui.selected.includes(ch.character_id)?'checked':''}/><strong>${esc(ch.name)}</strong></label><small>${ch.active?'当前场景':'已登记'} · ${esc(ch.activity||'')}</small></div>`)).join(''):card('<p class="muted">请先使用原V4.1.10独立API完成角色档案，再生图。</p>')}`;
  }
- function gallery(){const works=ui.gallery.filter(x=>x.chatId===ui.chat.id);return `${card(`<h2>本聊天图库</h2><p class="small">共${works.length}张 · 图片保存在浏览器IndexedDB中，删除前请先下载重要作品。</p>${btn('刷新图库','gallery-refresh','flat')}`)}${works.length?`<div class="artgrid">${works.map(x=>`<article class="art"><button class="image-btn" data-act="preview:${esc(x.id)}"><img src="${esc(ui.galleryUrls.get(x.id)||'')}" alt="已生成插画" /></button><div class="artbody"><small>${new Date(x.createdAt).toLocaleString()} · ${esc(x.engine)} · ${x.referenceActuallySent?'已发送参考图':x.referenceActuallySent===false?'仅文字参考':'历史记录未标注'}</small><div class="actions">${btn('放大','preview:'+x.id)}${btn('保存','download:'+x.id)}${btn('插入原AI回复','attach:'+x.id,'flat')}${btn('删除','delete:'+x.id,'flat')}</div></div></article>`).join('')}</div>`:card('<p class="muted">暂无图片。生成后先预览，点击“保存到图库”才会保存。</p>')}`;}
- function settings(){const tab=ui.settingsTab;return `${card(`<h2>API与生成设置</h2><div class="twos">${[['prompt','提示词API'],['image','生图引擎'],['resources','素材库'],['pixiv','Pixiv月榜']].map(([id,t])=>`<button class="mode ${tab===id?'selected':''}" data-act="stab:${id}">${t}</button>`).join('')}</div>`)}
- ${tab==='prompt'?card(`<h3>画面导演模型</h3><label class="check"><input type="checkbox" data-check="prompt.useMain" ${s.prompt.useMain?'checked':''}/>使用SillyTavern主API生成提示词</label>${s.prompt.useMain?'<p class="hint">调用酒馆当前主API的 generateRaw，不额外填写模型密钥。仅用于编译画面提示词，不修改正文。</p>':`${field('OpenAI兼容接口基础地址','prompt.base',{placeholder:'https://api.openai.com/v1'})}${field('独立API Key','prompt.key',{type:'password'})}${field('模型名称','prompt.model',{placeholder:'点击获取模型列表'})}${btn('获取可用模型列表','models-prompt','flat')}`}<p class="small">不使用提示词API时，仍可采用本地编译，但精细场景理解与风格解析需要视觉模型。</p>`):''}
+ function gallery(){const works=ui.gallery.filter(x=>x.chatId===ui.chat.id);return `${card(`<h2>本聊天图库</h2><p class="small">共${works.length}张 · 图片保存在浏览器IndexedDB中，删除前请先下载重要作品。</p>${btn('刷新图库','gallery-refresh','flat')}`)}${works.length?`<div class="artgrid">${works.map(x=>`<article class="art"><button class="image-btn" data-act="preview:${esc(x.id)}"><img src="${esc(ui.galleryUrls.get(x.id)||'')}" alt="已生成插画" /></button><div class="artbody"><small>${new Date(x.createdAt).toLocaleString()} · ${esc(x.engine)} · ${x.referenceActuallySent?'已发送参考图':x.referenceActuallySent===false?'仅文字参考':'历史记录未标注'}</small><div class="actions">${btn('放大','preview:'+x.id)}${btn('保存','download:'+x.id)}${btn('插入原AI回复','attach:'+x.id,'flat')}${btn('删除','delete:'+x.id,'flat')}</div></div></article>`).join('')}</div>`:card('<p class="muted">暂无图片。自动配图直接保存，手动创作可在预览后保存。</p>')}`;}
+ function settings(){const tab=ui.settingsTab;const directorFields=`${field('OpenAI兼容接口基础地址','prompt.base',{placeholder:'https://api.openai.com/v1'})}${field('独立API Key','prompt.key',{type:'password'})}${field('模型名称','prompt.model',{placeholder:'点击获取模型列表'})}${btn('获取可用模型列表','models-prompt','flat')}`;return `${card(`<h2>API与生成设置</h2><div class="twos">${[['prompt','提示词API'],['image','生图引擎'],['resources','素材库'],['pixiv','Pixiv月榜']].map(([id,t])=>`<button class="mode ${tab===id?'selected':''}" data-act="stab:${id}">${t}</button>`).join('')}</div>`)}
+ ${tab==='prompt'?card(`<h3>画面导演模型</h3><label class="check"><input type="checkbox" data-check="prompt.useMain" ${s.prompt.useMain?'checked':''}/>使用SillyTavern主API生成提示词</label>${s.prompt.useMain?`<p class="hint">编译时调用当前主API。上传图的首次画风提取仍使用下面的视觉模型。</p><details><summary>配置用于画风提取的视觉模型</summary>${directorFields}</details>`:directorFields}
+ <p class="small">用同一个独立API提取画风时，所选模型需要支持图片输入。</p>`):''}
  ${tab==='image'?card(`<h3>生图引擎</h3>${pick('选择引擎','image.engine',[['openai','OpenAI兼容图像API'],['comfy','ComfyUI浏览器直连'],['novelai','NovelAI官方图像API']])}${s.image.engine==='comfy'?`${field('ComfyUI服务地址','image.comfyBase',{placeholder:'http://电脑局域网IP:8188'})}${field('Checkpoint文件名','image.checkpoint')}${btn('读取ComfyUI模型列表','checkpoints','flat')}${field('高级：API工作流JSON（可选）','image.workflow',{type:'textarea',rows:6,placeholder:'留空使用标准Checkpoint工作流；可用占位符 {{PROMPT}}、{{NEGATIVE}}、{{WIDTH}}、{{HEIGHT}}、{{SEED}}、{{CKPT}}、{{STYLE_IMAGE}}（强参考专用）'})}`:s.image.engine==='novelai'?`${field('NovelAI Persistent Token','image.key',{type:'password'})}${pick('NovelAI模型','image.naiModel',[['nai-diffusion-5-full','NovelAI Diffusion V5 Full'],['nai-diffusion-4-full','NovelAI Diffusion V4 Full']])}`:`${field('基础地址','image.base')}${field('生图API Key','image.key',{type:'password'})}${field('图像模型','image.model')}${btn('获取可用模型列表','models-image','flat')}${pick('提示词适配型号（不改变上方实际模型）','image.promptProfile',[['none','不使用Nai提示词格式'],['nai4full','适用Nai 4 Full'],['nai5full','适用Nai 5 Full']])}`}${s.image.engine==='openai'?`${pick('画风参考方式','image.referenceMode',[['text','文字画风（兼容文生图）'],['edit','图片强参考（/images/edits，需服务商支持）']])}<p class="hint">强参考会把你锁定的参考图发送给所选图像服务商；图像编辑模型可能同时借用参考图的姿势或人物。中转站不支持时明确报错，不自动降级收费。</p>`:s.image.engine==='comfy'?`${pick('画风参考方式','image.referenceMode',[['text','文字画风（默认）'],['comfy_style','ComfyUI风格参考工作流（需要IP-Adapter）']])}<p class="hint">强参考需导入实际连接IP-Adapter等风格条件节点的API工作流，其中LoadImage.image填写{{STYLE_IMAGE}}。AVS将图片上传到所配置的ComfyUI；不会自动安装节点。</p>`:'<p class="hint">当前NovelAI适配仅支持画风文字；Vibe强参考尚未经过接口适配验证，不会伪称已传图。</p>'}${pick('画幅尺寸','image.size',[['1024x1536','竖版 1024×1536'],['1536x1024','横版 1536×1024'],['1024x1024','方形 1024×1024'],['832x1216','竖版 832×1216'],['1216x832','横版 1216×832']])}${field('负面提示词','image.negative',{type:'textarea',rows:3})}${btn('测试引擎连通性','test-image','flat')}`):''}
  ${tab==='resources'?resourcesPanel():''}
  ${tab==='pixiv'?card(`<h3>Pixiv真实月榜 · GitHub代码同步</h3><p>取消第三方榜单API Key。由你的GitHub仓库Actions定时读取Pixiv公开月度排行榜，只在数据真实、排名完整时更新50条元数据。若Pixiv限制访问，同步会失败并保留上次数据，不会生成假榜。</p>${field('你的扩展GitHub仓库地址（可选，远程自动读取）','pixiv.githubRepo',{placeholder:'https://github.com/用户名/avs-visual-workshop'})}<p class="hint">可留空读取当前扩展内的同步快照；填写后将优先从仓库main分支读取最新榜单，不需要填写密钥。首次同步需到GitHub → Actions运行一次。</p><label class="check"><input type="checkbox" data-check="pixiv.proxy" ${s.pixiv.proxy?'checked':''}/>允许第三方缓存代理尝试显示Pixiv缩略图（可随时关闭）</label><p class="hint">缩略图可能受Pixiv防盗链限制；代理有可用性和隐私风险，只发送公开图片地址，不发送聊天和角色资料。</p>${btn('读取已同步的月榜前50','ranking','primary')}<p class="small">月榜更新时间：${esc(s.pixiv.updated||'尚未成功同步')} · 当前可用：${(s.pixiv.items||[]).length}/50</p>`):''}
- ${card(`<h3>自动创作</h3><label class="check"><input type="checkbox" data-check="auto" ${s.auto?'checked':''}/>在AI回复完毕且V4.1.10同步完成后自动配图</label><label class="check"><input type="checkbox" data-check="attachToChat" ${s.attachToChat?'checked':''}/>保存预览时插入对应AI回复</label><p class="hint">自动模式会触发API计费；检测到聊天变更或档案未同步则不会提交生图。每次只处理一个有效回复。</p><div class="row">${btn('导出非密钥配置','backup','flat')}${btn('查看诊断','diagnostics','flat')}</div>`)} `;}
+ ${card(`<h3>图片保存</h3><label class="check"><input type="checkbox" data-check="attachToChat" ${s.attachToChat?'checked':''}/>保存预览时插入对应AI回复</label><p class="hint">自动模式会触发API计费；检测到聊天变更或档案未同步则不会提交生图。每次只处理一个有效回复。</p><div class="row">${btn('导出非密钥配置','backup','flat')}${btn('查看诊断','diagnostics','flat')}</div>`)} `;}
  function diagnostics(){return `${card(`<h2>诊断与安全</h2><p class="small">扩展：${VERSION} · 页面：${esc(location.href)}<br/>SillyTavern：${ui.chat.context?'可读取聊天':'未取得聊天'}<br/>V4.1.10桥接：${ui.archive?.bridge?'就绪':'未就绪'}<br/>档案：${esc(archiveName())}<br/>图库：${ui.gallery.length}条<br/>任务：${ui.tasks.length}条<br/>同人后台识别：${esc(fanSummary(s,cardContext(ui.chat.context))?.status||'未开启')} ${esc(fanSummary(s,cardContext(ui.chat.context))?.work||'')}</p><p>此扩展不改写角色档案，也不自动修改聊天正文。若浏览器阻止跨域连接，请处理浏览器/服务商的CORS设置；AVS不会额外安装Termux服务器插件。</p>${btn('刷新诊断','refresh','flat')}`)}${card(`<h3>最近任务</h3>${ui.tasks.slice(0,20).map(t=>`<div class="task"><b>${esc(t.status)}</b> · ${esc(t.mode)} · ${esc(new Date(t.time).toLocaleString())}<small>${esc(t.message||'')}</small></div>`).join('')||'暂无任务'}`)}`;}
- function preview(){const item=ui.gallery.find(x=>x.id===ui.previewId);return item?`<div class="lightbox"><div class="light-card"><button class="btn" data-act="preview-close">← 返回图库</button><img src="${esc(ui.galleryUrls.get(item.id)||'')}" alt="生成图片"/><p class="small">${esc(item.prompt?.slice(0,1200)||'')}</p><div class="row">${btn('保存原图','download:'+item.id)}${btn('按原提示词重绘','regenerate:'+item.id)}</div></div></div>`:''}
+ function preview(){const item=ui.gallery.find(x=>x.id===ui.previewId);return item?`<div class="lightbox"><div class="light-card"><button class="btn" data-act="preview-close">← 返回图库</button><img src="${esc(ui.galleryUrls.get(item.id)||'')}" alt="生成图片"/><p class="small">${esc(item.prompt?.slice(0,1200)||'')}</p><div class="row">${btn('保存原图','download:'+item.id)}${canReplayGalleryPrompt(item)?btn('按原提示词重绘','regenerate:'+item.id):'<p class="small">此旧图需要从正文重新编译提示词。</p>'}</div></div></div>`:''}
 
   function modelRows(){
     const type=ui.modelPicker,list=ui.models[type]||[],q=ui.modelSearch.trim().toLowerCase(),favs=s.modelFavorites?.[type]||[];
@@ -117,7 +150,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  function render(){
    if(!content)return;
    let center='';
-   try{center=ui.page==='home'?home():ui.page==='style'?style():ui.page==='characters'?characters():ui.page==='gallery'?gallery():ui.page==='settings'?settings():diagnostics()}
+   try{center=ui.page==='home'?home():ui.page==='style'?style():ui.page==='characters'?characters():ui.page==='gallery'?gallery():ui.page==='settings'?settings():ui.page==='resources'?card(resourceBrowser(ui,s,ui.archive?.characters||[])):diagnostics()}
    catch(e){center=`<section class="card"><h3>界面渲染异常</h3><pre>${esc(e.stack||e)}</pre></section>`;console.error(e)}
    if(!mainPort||!mainPort.isConnected||mainPort.parentNode!==content){
      // Initial mount only. Keep the same scroll DOM node for the lifetime of this UI.
@@ -136,7 +169,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
      // Preserve expanded panels when rerendering the same page.
      const expanded=samePage?[...mainPort.querySelectorAll('details')].map((el,i)=>el.open?i:-1).filter(i=>i>=0):[];
      const active=shadow.activeElement;
-     const focusAttrs=['data-bind','data-check','data-char','data-ref','data-draft','data-style-draft'];
+     const focusAttrs=['data-bind','data-check','data-char','data-ref','data-draft','data-style-draft','data-resource-query','data-resource-filter','data-resource-actor'];
      const focusDescriptor=active&&mainPort.contains(active)?focusAttrs.map(k=>active.hasAttribute(k)?[k,active.getAttribute(k)]:null).find(Boolean):null;
      mainPort.innerHTML=mainMarkup;
      if(expanded.length){const all=mainPort.querySelectorAll('details');for(const i of expanded)if(all[i])all[i].open=true}
@@ -148,7 +181,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    const oldResults=layerPort.querySelector('[data-model-results]');
    const oldLightbox=layerPort.querySelector('.lightbox');
    const resultsScroll=oldResults?.scrollTop||0,lightboxScroll=oldLightbox?.scrollTop||0;
-   const layerMarkup=`${ui.previewId?preview():''}${pendingPreview()}${modelModal()}`;
+   const layerMarkup=`${ui.previewId?preview():''}${pendingPreview()}${resourcePreview(ui.resourcePreviewId,ui.resourcePicks)}${modelModal()}`;
    if(layerMarkup!==renderedLayerMarkup){
      layerPort.innerHTML=layerMarkup;
      const results=layerPort.querySelector('[data-model-results]');if(results)results.scrollTop=resultsScroll;
@@ -162,7 +195,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    scrollMemory.set(key,mainPort.scrollTop);
  }
  async function refresh(){const gen=++refreshToken;const last=contextInfo(),arc=await archiveView();if(gen!==refreshToken)return;const changed=last.id!==ui.chat.id;ui.chat=last;ui.archive=arc;
- if(changed){ui.selected=[];ui.manualCharacterSelection=false;ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';ui.compiled=null;ui.portraitId='';discardPending(false);}
+ if(changed){ui.selected=[];ui.manualCharacterSelection=false;ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';ui.compiled=null;ui.portraitId='';ui.resourcePicks=[];ui.referenceBinding=null;ui.resourcePreviewId='';ui.referenceRevision++;ui.resourcesDirty=false;discardPending(false);}
  const ids=arc.characters.filter(c=>c.active).map(x=>x.character_id);
  if(!ui.manualCharacterSelection){const names=suggestCharacterIds(last.text,arc.characters);ui.selected=names.length?names:(ids.length?ids:arc.characters.slice(0,1).map(x=>x.character_id));}
  try{await refreshGallery(gen)}catch(e){ui.notice='图库无法读取：'+String(e.message||e);ui.error=ui.notice}render();
@@ -296,40 +329,97 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    },1200);
    return {ok:true};
  }
- function setBusy(str){ui.busy=str;render()}
- function recordTask(job){ui.tasks.unshift(job);ui.tasks=ui.tasks.slice(0,60);saveTasks(ui.chat.id,ui.tasks)}
- function updateTask(job,status,message){job.status=status;job.message=message;saveTasks(job.chatId,ui.tasks);render()}
- async function waitForCore(signal){const latest=contextInfo(),deadline=Date.now()+300000;let arc=await archiveView();let gate=archiveGate(arc,latest);if(!gate)return {arc,ctx:latest};
- if(!gate.includes('尚未完成独立API视觉同步'))throw new Error(gate);
- while(Date.now()<deadline){if(signal.aborted)throw new Error('用户取消');setBusy('等待V4.1.10独立API完成正式角色档案…');await new Promise(r=>setTimeout(r,2200));arc=await archiveView();const now=contextInfo();if(now.id!==latest.id||now.index!==latest.index)throw new Error('生成期间聊天或AI回复发生变化，已安全停止');gate=archiveGate(arc,now);if(!gate)return {arc,ctx:now};if(!gate.includes('尚未完成'))throw new Error(gate)}
- throw new Error('V4.1.10独立API同步等待超时，请查看角色档案的日志；没有发送生图请求');}
- async function preparePrompt(arc,ctx,signal,taskSettings=s,taskMode=ui.mode){const target=taskMode==='portrait'?[ui.portraitId||ui.selected[0]||arc.characters[0]?.character_id]:[...selections()];
+ function setBusy(str){ui.busy=str;render();if(!str)scheduleAuto()}
+ function recordTask(job){const tasks=[job,...loadTasks(job.chatId).filter(t=>t.id!==job.id)].slice(0,60);saveTasks(job.chatId,tasks);if(ui.chat.id===job.chatId)ui.tasks=tasks}
+ function updateTask(job,status,message){job.status=status;job.message=message;recordTask(job);render()}
+ function autoNotice(binding,message){if(!binding||contextInfo().id===binding.chatId){autoStatus=message;render()}}
+ function stopAuto(){replyEvents?.reset();autoJobQueued=null;autoTask?.controller.abort('auto cancelled');}
+ function setGenerationMode(mode){
+  if(s.generationMode===mode)return;
+  const old=s.generationMode;s.generationMode=mode;
+  try{persist()}catch(e){s.generationMode=old;throw e}
+  stopAuto();autoStatus='';ui.notice='';ui.error='';render();
+ }
+ function scheduleAuto(){
+  if(autoJobQueued&&autoTimer===null)autoTimer=window.setTimeout(()=>{autoTimer=null;drainAuto()},0);
+ }
+ function enqueueAuto(ctx,force=false){
+  if(s.generationMode!=='auto'||!ctx.id||ctx.index<0)return;
+  const binding=automaticBinding(ctx);
+  const id=automaticImageId(binding);
+  if(autoTask?.imageId===id||autoJobQueued?.imageId===id)return;
+  autoJobQueued={binding,imageId:id,force};
+  if(workRunning||ui.pending||styleBusy||ui.busy)autoNotice(binding,`#${ctx.index} 等待当前操作完成`);
+  scheduleAuto();
+ }
+ function drainAuto(){
+  if(!autoJobQueued||workRunning||ui.pending||styleBusy||ui.busy||s.generationMode!=='auto')return;
+  const task=autoJobQueued;autoJobQueued=null;
+  const ctx=contextInfo();
+  if(ctx.id!==task.binding.chatId||ctx.index!==task.binding.messageIndex)return;
+  try{assertBoundSource(task.binding,contextInfo,hashScene)}catch{return}
+  const issue=autoConfigError();
+  if(issue){autoNotice(task.binding,issue);return}
+  if(!ctx.text){autoNotice(task.binding,`#${ctx.index} 没有可用于配图的正文`);return}
+  runTask(false,false,task);
+ }
+ async function waitForCore(signal,latest,binding,automatic){
+  const deadline=Date.now()+300000;
+  while(Date.now()<deadline){
+   if(signal.aborted)throw new Error('用户取消');
+   const arc=await archiveView();
+   const {info:ctx}=assertBoundSource(binding,contextInfo,hashScene);
+   if(ctx.index!==latest.index)throw new Error('已出现新的AI回复，请为最新楼层配图');
+   const gate=archiveGate(arc,ctx);
+   if(gate&&!gate.includes('尚未完成独立API视觉同步'))throw new Error(gate);
+   const floor=arc.runtime?.last_processed_message_id;
+   const waitingForFirstArchive=automatic&&arc.runtime?.auto_ingest===true&&(floor==null||Number(floor)<ctx.index);
+   if(!gate&&!waitingForFirstArchive)return {arc,ctx};
+   if(automatic&&arc.runtime?.api?.ok===false)throw new Error('V4.1.10独立档案API未就绪：'+arc.runtime.api.reason);
+   setBusy('等待V4.1.10独立API完成正式角色档案…');await new Promise(r=>setTimeout(r,2200));
+  }
+  throw new Error('V4.1.10独立API同步等待超时，请查看角色档案的日志。未发送生图请求');
+ }
+ async function preparePrompt(arc,ctx,signal,taskSettings=s,taskMode=ui.mode,automatic=null){const target=automatic?automaticCandidates(ctx.text,arc.characters):taskMode==='portrait'?[ui.portraitId||ui.selected[0]||arc.characters[0]?.character_id]:[...selections()];
  if(taskMode==='pov'){const observer=taskSettings.observer;if(observer.id==='named_npc'&&(!observer.name?.trim()||!ctx.text.includes(observer.name.trim())))throw new Error('指定NPC姓名不在本幕正文中，请选择在场观察者');const formal=arc.characters.find(c=>c.character_id===observer.id);if(formal){taskSettings.observer={id:formal.character_id,name:formal.name};if(!target.includes(formal.character_id))target.push(formal.character_id);}}
  if(taskMode==='portrait'&&!target[0])throw new Error('角色立绘需要先选择一名正式女角色');
  const packets=await chosenCharacterPacket(arc,target);setBusy('结构化画面导演正在整理剧情、档案和摄影镜头…');try{
- const cardInfo=cardContext(ctx.context);if(fanEnabled(s,cardInfo)){await discoverFanCard(ctx.context,s,signal);persist();}
- const result=await compileDirectedPrompt(ctx,packets,taskSettings,taskMode,signal);
- ui.directorPlan=result.plan;ui.directorNote=result.note;return result;
- }catch(e){throw new Error('导演规划或编译失败：'+e.message+'。未发送图像请求；中文档案用于Nai时需要提示词API输出英文分层JSON。')}}
- async function runTask(promptOnly=false,direct=false){if(workRunning){tell('已有任务正在执行，请勿重复提交',true);return}if(ui.pending&&!promptOnly){tell('请先保存或取消当前预览，再开始新任务',true);return}workRunning=true;aborter=new AbortController();const ctl=aborter.signal;
- const taskSettings=structuredClone(s),taskMode=ui.mode,current=contextInfo();const job={id:makeId('task'),time:Date.now(),status:'运行中',message:'读取档案与素材',chatId:current.id,mode:taskMode};recordTask(job);const staged={items:[],binding:null};
+ const cardInfo=cardContext(ctx.context);if(fanEnabled(s,cardInfo)){await discoverFanCard(ctx.context,s,signal);taskSettings.fanCards=structuredClone(s.fanCards);persist();}
+ const result=await compileDirectedPrompt(ctx,packets,taskSettings,taskMode,signal,automatic);
+ if(!automatic){ui.directorPlan=result.plan;ui.directorNote=result.note}return result;
+ }catch(e){throw new Error('提示词准备失败：'+e.message+'。未发送图像请求。')}}
+ async function runTask(promptOnly=false,direct=false,automatic=null){if(workRunning||styleBusy||ui.busy){tell('已有任务正在执行，请勿重复提交',true);return}if(ui.pending&&!promptOnly){tell('请先保存或取消当前预览，再开始新任务',true);return}workRunning=true;aborter=new AbortController();const ctl=aborter.signal;
+ const taskSettings=structuredClone(s),taskMode=automatic?'single':ui.mode,current=contextInfo();
+ if(automatic){taskSettings.image.referenceMode='text';autoTask={...automatic,controller:aborter};autoNotice(automatic.binding,`#${current.index} 正在准备自动配图`)}
+ if(!automatic&&ui.referenceBinding&&(ui.referenceBinding.chatId!==current.id||ui.referenceBinding.index!==current.index||ui.referenceBinding.hash!==hashScene(current.text))){ui.resourcePicks=[];ui.referenceBinding=null;ui.referenceRevision++;ui.resourcesDirty=false;}
+ taskSettings.resourcePicks=automatic?[]:structuredClone(ui.resourcePicks);taskSettings.referenceRevision=automatic?0:ui.referenceRevision;
+ const job={id:makeId('task'),time:Date.now(),status:'运行中',message:'读取档案与素材',chatId:current.id,mode:taskMode};recordTask(job);
+ const binding=automatic?.binding??automaticBinding(current),staged={items:[],binding};
  try{
- if(!promptOnly){const x=taskSettings.image;if(x.engine==='openai'&&!x.model)throw new Error('请先填写生图模型');if(x.engine==='novelai'&&!x.key)throw new Error('请先配置NovelAI令牌');if(x.engine==='comfy'&&!x.checkpoint&&!x.workflow)throw new Error('请先选择ComfyUI模型或导入工作流')}
- const {arc,ctx}=await waitForCore(ctl);if(current.id!==ctx.id||current.index!==ctx.index)throw new Error('聊天或AI回复已变化，请重新生成');
- const binding={chatId:ctx.id,messageIndex:ctx.index,sourceHash:hashScene(ctx.text)};staged.binding=binding;let result;
- if(direct){if(!ui.prompt.trim())throw new Error('请先编译或填写提示词');if(ui.compiled?.binding){assertBoundSource(ui.compiled.binding,contextInfo,hashScene);if(ui.compiled.binding.messageIndex!==ctx.index)throw new Error('现有提示词绑定较早楼层，请为当前回复重新编译');}
+ if(!promptOnly){const error=imageConfigError(taskSettings.image);if(error)throw new Error(error)}
+ if(current.index<0)throw new Error('当前聊天没有已完成的AI回复');
+ if(automatic&&await dbGet('gallery',automatic.imageId)){
+  updateTask(job,'已跳过','本楼这个版本已有自动配图');autoNotice(binding,`#${current.index} 已有自动配图`);return;
+ }
+ const {arc,ctx}=await waitForCore(ctl,current,binding,!!automatic);
+ let result;
+ if(direct){if(ui.resourcesDirty&&ui.resourcePicks.length)throw new Error('素材参考已变更，请先点击“仅编译提示词”，再使用现有提示词生成');if(!ui.prompt.trim())throw new Error('请先编译或填写提示词');if(ui.compiled?.binding){assertBoundSource(ui.compiled.binding,contextInfo,hashScene);if(ui.compiled.binding.messageIndex!==ctx.index)throw new Error('现有提示词绑定较早楼层，请为当前回复重新编译');}
   const unchanged=ui.compiled&&ui.prompt===ui.compiled.positive&&ui.negative===ui.compiled.negative;
   if(unchanged&&ui.compiled.nai?.profile!==undefined&&ui.compiled.nai.profile!==profileFor(taskSettings.image))throw new Error('当前型号与已编译提示词不一致，请重新编译');
   if(unchanged&&ui.compiled.styleId){const active=styleSnapshot(taskSettings);if(active.id!==ui.compiled.styleId||active.revision!==ui.compiled.styleRevision)throw new Error('已编译提示词的画风版本已变化，请重新编译');}
+  if(unchanged&&ui.compiled.referencePicks)taskSettings.resourcePicks=structuredClone(ui.compiled.referencePicks);
   result=unchanged?ui.compiled:{positive:ui.prompt,negative:ui.negative,nai:manualNai(ui.prompt,ui.negative,taskSettings.image),source:'手动提示词',plan:{mode:taskMode}};
- }else result=await preparePrompt(arc,ctx,ctl,taskSettings,taskMode);
- if(ctl.aborted)throw new Error('用户取消');assertBoundSource(binding,contextInfo,hashScene);
- ui.prompt=result.positive;ui.negative=result.negative;ui.promptSource=result.source;ui.compiled={...result,binding};
+ }else result=await preparePrompt(arc,ctx,ctl,taskSettings,taskMode,automatic);
+ if(ctl.aborted)throw new Error('用户取消');
+ const {info:currentSource}=assertBoundSource(binding,contextInfo,hashScene);
+ if(automatic&&currentSource.index!==binding.messageIndex)throw new Error('此楼已有后续回复，已跳过旧的配图任务');
+ if(automatic&&result.skipped){updateTask(job,'已跳过',result.decision.reason);autoNotice(binding,`#${ctx.index} 跳过 · ${result.decision.reason}`);return}
+ if(!automatic){ui.prompt=result.positive;ui.negative=result.negative;ui.promptSource=result.source;ui.compiled={...result,binding,referencePicks:structuredClone(taskSettings.resourcePicks)};ui.resourcesDirty=false}
  if(promptOnly){updateTask(job,'已编译','已完成素材与角色分层，尚未请求生图');tell('提示词编译完成，可查看素材归属与预算，再生成预览。');return}
  const panels=result.plan?.mode==='comic'&&result.panels?.length?result.panels:null;const targets=panels||[result];
  const lock=styleSnapshot(taskSettings),referenceMode=taskSettings.image.referenceMode||'text';
  if(referenceMode!=='text'&&!((taskSettings.image.engine==='openai'&&referenceMode==='edit')||(taskSettings.image.engine==='comfy'&&referenceMode==='comfy_style')))throw new Error('生图引擎与画风参考模式不匹配，请在设置中选择');
- const reference=await taskReference(lock,referenceMode),items=staged.items,blobs=[];
+ const reference=await taskReference(lock,referenceMode),items=staged.items,blobs=[],allTraces=[];
  for(let i=0;i<targets.length;i++){
  if(ctl.aborted)throw new Error('用户取消');assertBoundSource(binding,contextInfo,hashScene);
  const nowStyle=styleSnapshot(s);if(nowStyle.id!==lock.id||nowStyle.revision!==lock.revision)throw new Error('任务期间画风发生变化，请重新编译');
@@ -337,26 +427,49 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  const report={referenceActuallySent:false,adapter:''};const blob=await generateImage(taskSettings.image,part.positive,part.negative,ctl,msg=>setBusy(msg),reference,report,part.nai||null);
  if(ctl.aborted)throw new Error('用户取消');assertBoundSource(binding,contextInfo,hashScene);
  if(referenceMode!=='text'&&!report.referenceActuallySent)throw new Error('参考图未实际发送，停止保存');if(!(blob instanceof Blob)||!blob.size||!blob.type.startsWith('image/'))throw new Error('生图返回了无效图片');
- blobs.push(blob);items.push({id:makeId('img'),...binding,createdAt:Date.now(),engine:taskSettings.image.engine,kind:panels?'comic_panel':'illustration',panelNo:panels?i+1:undefined,prompt:part.positive,negative:part.negative,nai:part.nai||null,resourceReport:part.resourceReport||null,source:result.source,styleId:result.styleId,styleRevision:result.styleRevision,directorPlan:result.plan||null,referenceActuallySent:report.referenceActuallySent,referenceAdapter:report.adapter,blob});
+ part.referenceTrace=referenceTrace(part,taskSettings.resourcePicks,report.promptDelivery);allTraces.push(...part.referenceTrace.map(t=>({...t,panel:panels?i+1:null})));
+ if(!automatic)ui.compiled.referenceTrace=taskSettings.resourcePicks.map(p=>allTraces.find(t=>t.resource_id===p.resource_id&&t.status==='sent_to_image_api')||allTraces.find(t=>t.resource_id===p.resource_id)||referenceTrace(result,[p])[0]);
+ blobs.push(blob);items.push({id:automatic?.imageId??makeId('img'),...binding,createdAt:Date.now(),engine:taskSettings.image.engine,kind:panels?'comic_panel':'illustration',panelNo:panels?i+1:undefined,prompt:part.positive,negative:part.negative,nai:part.nai||null,resourceReport:part.resourceReport||null,referenceTrace:part.referenceTrace||[],referenceImageTrace:result.referenceImages||[],source:result.source,styleId:result.styleId,styleRevision:result.styleRevision,directorPlan:result.plan||null,referenceActuallySent:report.referenceActuallySent,referenceAdapter:report.adapter,blob});
  }
  if(panels){setBusy('正在排版中文漫画…');const names=new Map((result.plan?.cast||[]).map(c=>[c.id,c.name]));const pageBlob=await comicPageBlob(blobs,panels,names);items.push({id:makeId('comicpage'),...binding,createdAt:Date.now(),engine:taskSettings.image.engine,kind:'comic_page',prompt:result.positive,negative:result.negative,source:result.source,styleId:result.styleId,styleRevision:result.styleRevision,blob:pageBlob});}
+ if(automatic){
+  const {attached,note}=await persistImages(items,binding,items[0],taskSettings.attachToChat!==false,ctl);
+  const status='已存入图库'+(attached?'，已插入对应AI回复':'')+note;
+  updateTask(job,'已保存',status);autoNotice(binding,`#${ctx.index} ${status}`);return;
+ }
  assertBoundSource(binding,contextInfo,hashScene);ui.pending={items,urls:items.map(x=>URL.createObjectURL(x.blob)),binding,job,attach:taskSettings.attachToChat!==false};
  updateTask(job,'等待保存','图片仅在临时预览中，尚未写入图库或聊天');tell('预览已生成。满意后保存，也可以重试或取消。');
- }catch(e){const msg=String(e?.message||e);let recoverable=false;try{if(!ctl.aborted&&staged.items.length){assertBoundSource(staged.binding,contextInfo,hashScene);recoverable=true;}}catch{}
+ }catch(e){const msg=String(e?.message||e);let recoverable=false;try{if(!automatic&&!ctl.aborted&&staged.items.length){assertBoundSource(staged.binding,contextInfo,hashScene);recoverable=true;}}catch{}
  if(recoverable){ui.pending={items:staged.items,urls:staged.items.map(x=>URL.createObjectURL(x.blob)),binding:staged.binding,job,attach:taskSettings.attachToChat!==false,partial:true};updateTask(job,'部分成功',msg);tell('后续生成或拼页未完成，已生成的'+staged.items.length+'张图片仍可预览保存。'+msg,true);}
- else{updateTask(job,ctl.aborted?'已取消':'失败',msg);tell(msg,true)}}finally{workRunning=false;aborter=null;ui.busy='';render()}
+ else{updateTask(job,ctl.aborted?'已取消':'失败',msg);if(automatic)autoNotice(binding,`#${binding.messageIndex} ${ctl.aborted?'已取消':msg}`);else tell(msg,true)}}
+ finally{workRunning=false;aborter=null;if(automatic)autoTask=null;setBusy('')}
  }
- function discardPending(update=true){const pending=ui.pending;if(!pending)return;for(const url of pending.urls)URL.revokeObjectURL(url);ui.pending=null;if(update){updateTask(pending.job,'未保存','已取消临时预览');render()}}
+ function discardPending(update=true){const pending=ui.pending;if(!pending)return;for(const url of pending.urls)URL.revokeObjectURL(url);ui.pending=null;if(update){updateTask(pending.job,'未保存','已取消临时预览');render()}scheduleAuto()}
+ async function persistImages(items,binding,primary,attach,signal){
+  if(signal?.aborted)throw new Error('用户取消');
+  assertBoundSource(binding,contextInfo,hashScene);
+  await dbPutMany('gallery',items);
+  let attached=false,note='';
+  if(attach){
+   try{await attachGalleryImage(primary,contextInfo,hashScene,new URL('api/images/upload',document.baseURI).href,signal);attached=true}
+   catch(e){note='。插入正文未完成：'+e.message}
+  }
+  try{await refreshGallery()}catch(e){console.warn('[AVS] 图片已保存，图库列表刷新失败',e)}
+  return {attached,note};
+ }
  async function savePending(){if(workRunning||!ui.pending)return;workRunning=true;const pending=ui.pending;pending.saving=true;render();
- try{assertBoundSource(pending.binding,contextInfo,hashScene);await dbPutMany('gallery',pending.items);await refreshGallery();const primary=pending.items[pending.viewIndex??pending.items.length-1];
-  let attached=false,note='';if(pending.attach){try{await attachGalleryImage(primary,contextInfo,hashScene,new URL('api/images/upload',document.baseURI).href);attached=true;}catch(e){note='；插入正文未完成：'+e.message;}}
+ try{const primary=pending.items[pending.viewIndex??pending.items.length-1];
+  const {attached,note}=await persistImages(pending.items,pending.binding,primary,pending.attach);
   updateTask(pending.job,'已保存',`已保存${pending.items.length}张${attached?'，已插入对应AI回复':''}${note}`);discardPending(false);ui.page='gallery';tell(`已保存到本聊天图库${attached?'，并插入对应AI回复':''}${note}`,!!note);
- }catch(e){tell('保存失败：'+e.message,true)}finally{workRunning=false;if(ui.pending)ui.pending.saving=false;render()}}
+ }catch(e){tell('保存失败：'+e.message,true)}finally{workRunning=false;if(ui.pending)ui.pending.saving=false;render();scheduleAuto()}}
  function pendingPreview(){const p=ui.pending;if(!p)return '';const view=p.viewIndex??p.items.length-1,primary=p.items[view];return `<div class="lightbox" role="dialog" aria-modal="true" aria-label="生成结果预览"><div class="light-card"><h3>${p.saving?'正在保存…':p.partial?'部分完成 · 已生成图片可保存':'生成结果预览 · 尚未保存'}</h3><img src="${esc(p.urls[view])}" alt="临时生成图片"/>${p.items.length>1?`<div class="row">${p.items.map((item,i)=>btn(item.kind==='comic_page'?'查看整页':'查看第'+(i+1)+'张','pending-view:'+i,'flat')).join('')}</div>`:''}<p class="small">${primary.kind==='comic_page'?'漫画整页及各格':'本次图片'} · 仅保存后才写入图库${p.attach?'和对应AI回复':''}</p><div class="row">${btn('保存到图库','pending-save','primary')}${btn('重试','pending-retry')}${btn('取消本次图片','pending-cancel','flat')}</div></div></div>`;}
- function resourceReport(){const r=ui.compiled?.resourceReport;if(!r)return '';const b=r.budget;return `<details><summary>本次素材、角色归属与预算</summary><p class="small">模板：${esc(r.template)} · ${r.catalogSize}条候选${b?` · 全局约${b.baseEstimated} / 角色合计约${b.charactersEstimated} tokens（估算，非精确计数）`:''}</p>${(r.selected||[]).map(f=>`<p class="small">${esc(ui.compiled?.plan?.cast?.find(c=>c.id===f.actor)?.name||'本幕人物')} · ${esc(CATEGORY_LABELS[f.category]||f.category)}：${esc(f.text)}</p>`).join('')||'<p class="small">本次无须额外素材片段；档案与剧情仍参与编译。</p>'}<p class="small">略去不可见或预算不足片段 ${(r.omitted||[]).length} 项。</p>${(r.warnings||[]).map(w=>`<p class="hint">${esc(w)}</p>`).join('')}</details>`;}
- function resourcesPanel(){const list=ui.resourceQuery?searchResources(ui.resourceQuery,{category:ui.resourceCategory,limit:30}):resourceEntries.filter(e=>(!ui.resourceCategory||e.category===ui.resourceCategory)&&referencePreview(e)).slice(0,12);
- return card(`<h3>本地视觉素材库</h3><label class="check"><input type="checkbox" data-check="resources.enabled" ${s.resources.enabled?'checked':''}/>自动检索素材并交给提示词API选用</label><p class="small">共2483条候选，含发型、表情、动作、服饰、配饰、美甲与装饰。候选须有档案或剧情证据才可采用；不会随机替换当前穿搭。示例图用于识别类别，未验证Nai复现效果。</p><label class="field"><span>搜索（如：马尾、珍珠、美甲、smile）</span><input data-resource-query value="${esc(ui.resourceQuery)}"/></label><label class="field"><span>类别</span><select data-resource-category><option value="">全部</option>${Object.entries(CATEGORY_LABELS).map(([id,label])=>`<option value="${id}" ${ui.resourceCategory===id?'selected':''}>${label}</option>`).join('')}</select></label><div data-resource-results>${resourceRows(list)}</div>`);}
- function resourceRows(list){return list.map(e=>`<article class="resource-entry">${referencePreview(e)?`<img src="${esc(referencePreview(e))}" alt="${esc(e.label)}类别示例" loading="lazy"/>`:''}<b>${esc(e.label)}</b><span class="small">${esc(CATEGORY_LABELS[e.category])}</span><p class="small">${esc(e.description)}</p><small>${esc(e.provenance?.repository||'AVS')} · ${esc(e.id)}</small></article>`).join('')||'<p class="small">没有匹配词，尝试英文或更具体的关键词。</p>';}
+ function resourceReport(){const r=ui.compiled?.resourceReport;if(!r)return '';const b=r.budget;return `<details><summary>本次素材、角色归属与预算</summary><p class="small">模板：${esc(r.template)} · ${r.catalogSize}条候选${b?` · 全局约${b.baseEstimated} / 角色合计约${b.charactersEstimated} tokens（估算，非精确计数）`:''}</p>${(r.selected||[]).map(f=>`<p class="small">${esc(ui.compiled?.plan?.cast?.find(c=>c.id===f.actor)?.name||'本幕人物')} · ${esc(CATEGORY_LABELS[f.category]||f.category)}：${esc(f.text)}</p>`).join('')||'<p class="small">本次无须额外素材片段；档案与剧情仍参与编译。</p>'}${(ui.compiled?.referenceTrace||[]).map(t=>`<p class="reference-trace small"><b>${esc(t.label)}</b>：${esc(t.reason)}${t.status==='sent_to_image_api'?' ✓':''}</p>`).join('')}<p class="small">${(ui.compiled?.referenceImages||[]).filter(x=>x.status==='sent_to_prompt_api').length?`已向提示词API提供${ui.compiled.referenceImages.filter(x=>x.status==='sent_to_prompt_api').length}张本地参考图；生图引擎收到编译后的文字片段。`:'本次按文字候选编译素材。'}</p><p class="small">略去不可见或预算不足片段 ${(r.omitted||[]).length} 项。</p>${(r.warnings||[]).map(w=>`<p class="hint">${esc(w)}</p>`).join('')}</details>`;}
+ function resourcesPanel(){return card(resourceBrowser(ui,s,ui.archive?.characters||[]));}
+ function refreshResourceResults(){const result=browseResources({category:ui.resourceCategory,query:ui.resourceQuery,page:ui.resourcePage,imagesOnly:ui.resourceImagesOnly,favoritesOnly:ui.resourceFavoritesOnly,favorites:s.resources.favorites||[]});ui.resourcePage=result.page;
+ const box=shadow.querySelector('[data-resource-results]');if(box)box.innerHTML=drawResourceRows(result.rows,ui.resourcePicks,s.resources.favorites||[]);
+ const pager=shadow.querySelector('.resource-pagination');if(pager)pager.innerHTML=`${btn('上一页','resource-page:'+(result.page-1),'flat')}<span>第${result.page+1}/${result.pages}页 · 共${result.total}条</span>${btn('下一页','resource-page:'+(result.page+1),'flat')}`;if(pager){const buttons=pager.querySelectorAll('button');if(buttons[0])buttons[0].disabled=result.page===0;if(buttons[1])buttons[1].disabled=result.page>=result.pages-1;}
+ }
+ function resourcesChanged(){ui.referenceRevision++;ui.resourcesDirty=ui.resourcePicks.length>0;ui.compiled=null;ui.promptSource='素材参考已变更，请重新编译提示词；手动文本不会自动改动。';const ctx=contextInfo();ui.referenceBinding={chatId:ctx.id,index:ctx.index,hash:hashScene(ctx.text)};}
  async function fetchRanking(){if(ui.rankingBusy)return;ui.rankingBusy=true;aborter=new AbortController();setBusy('读取GitHub同步的Pixiv真实月榜快照…');
     try{const snapshot=await loadMonthlyRanking(s.pixiv.githubRepo||'',aborter.signal);
       s.pixiv.items=snapshot.items;s.pixiv.updated=snapshot.updated;persist();
@@ -367,9 +480,9 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
   async function pickPixiv(id){const x=s.pixiv.items.find(x=>x.id===id);if(!x)return tell('找不到该Pixiv作品',true);const ref='pixiv:'+x.id;let style=s.styles.find(v=>v.id===ref);
    if(!style){style={id:ref,label:`#${x.rank} ${x.title}`,source:'Pixiv月榜',url:x.url,thumbnail:x.thumbnail,tags:x.tags,analysis:null};s.styles.unshift(style)}
    persist();tell('作品已收藏。选择收藏中的“使用该图片画风”才会解析并锁定，不影响当前画风');}
- async function uploadStyle(){picker.value='';ui.pendingFile='style';picker.click()}
- async function onPicked(){const file=picker.files?.[0];if(!file)return;if(!file.type.startsWith('image/'))return tell('只能上传图片文件',true);if(file.size>8*1024*1024)return tell('参考图过大，不能超过8MB',true);
- try{const id=makeId('style'),mediaId=makeId('media');await dbPut('media',{id:mediaId,name:file.name,blob:file});s.styles.unshift({id,label:file.name.replace(/\.[^.]*$/,'').slice(0,60)||'我的参考图',source:'本地图片',mediaId,analysis:null});ui.styleMediaUrls.set(id,URL.createObjectURL(file));persist();ui.page='style';render();await useStyle(id)}catch(e){tell('图片保存失败：'+e.message,true)}}
+ async function uploadStyle(){if(workRunning||styleBusy||ui.busy)return tell('请等待当前任务完成',true);picker.value='';picker.click()}
+ async function onPicked(){const file=picker.files?.[0];if(!file)return;if(workRunning||styleBusy||ui.busy)return tell('请等待当前任务完成',true);if(!file.type.startsWith('image/'))return tell('只能上传图片文件',true);if(file.size>8*1024*1024)return tell('参考图过大，不能超过8MB',true);
+ try{const id=makeId('style'),mediaId=makeId('media');await dbPut('media',{id:mediaId,name:file.name,blob:file});s.styles.unshift({id,label:file.name.replace(/\.[^.]*$/,'').slice(0,60)||'我的参考图',source:'本地图片',mediaId,analysis:null});ui.styleMediaUrls.set(id,URL.createObjectURL(file));persist();if(s.generationMode!=='auto'||ui.page!=='home')ui.page='style';render();await useStyle(id)}catch(e){tell('图片保存失败：'+e.message,true)}}
  async function sha256(blob){try{const a=await blob.arrayBuffer();const hash=await crypto.subtle.digest('SHA-256',a);return [...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch{return ''}}
  async function taskReference(lock,mode){if(mode==='text')return null;
   if(!lock?.locked)throw new Error('强参考要求玩家先使用一张图片并锁定画风；当前没有已确认的画风');
@@ -378,12 +491,12 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
   if(!media.blob.type.startsWith('image/'))throw new Error('画风原图类型无效，未发送生图请求');
   const blob=await prepareStylePixels(media.blob,1600);return {blob,mediaId:lock.mediaId,sha256:lock.mediaSha256||''};
  }
- async function analyzeStyle(id){const x=s.styles.find(v=>v.id===id);if(!x)return tell('找不到该画风条目',true);if(!s.prompt.key||s.prompt.useMain)return tell('图片画风自动解析需要一个支持图片输入的视觉模型，请在提示词API设置选择独立视觉模型；原画风保持不变。',true);
- const styleController=new AbortController();aborter=styleController;setBusy('正在读取图像、分析线稿/上色/光影/构图…');try{let blob;
+ async function analyzeStyle(id){const x=s.styles.find(v=>v.id===id);if(!x)return tell('找不到该画风条目',true);if(workRunning||styleBusy||ui.busy)return tell('请等待当前任务完成',true);if(!s.prompt.key||!s.prompt.model)return tell('请在提示词API设置中配置支持图片输入的模型，再使用收藏中的参考图。',true);
+ const styleController=new AbortController();styleBusy=true;aborter=styleController;setBusy('正在读取图像、分析线稿/上色/光影/构图…');try{let blob;
  if(x.mediaId){blob=(await dbGet('media',x.mediaId))?.blob}else if(x.thumbnail){const url=thumb(x.thumbnail);const r=await fetchTimeout(url,{signal:styleController.signal},45000);if(!r.ok)throw new Error('图片来源返回HTTP '+r.status);blob=await r.blob()}
  if(!blob||!blob.type.startsWith('image/'))throw new Error('无法获取图像像素，请确认源图片可下载或改用本地上传');if(blob.size>9*1024*1024)throw new Error('参考图超出视觉模型传输限制（9MB）');
  const data=await blobToDataURL(await prepareStylePixels(blob));
- const raw=await visionChat(s.prompt,'You are a professional ACGN style extractor. Return JSON with positive, negative, description, tags, palette, lighting. Extract only reusable line quality, stroke/brushwork, shading technique, generic color handling, rendering texture, stylization and light treatment. Do NOT identify or depict subjects, anatomy, clothes, hair or eye color, poses, location, camera angle, text, artists or specific copyrighted compositions. Negative must ONLY exclude rendering flaws, never people/objects/scene types. No subject tokens allowed in positive or negative.',`请先在内部辨别参考图里的具体人物、衣服、姿势和场景，但不要输出这些内容。只输出可以用于任意人物与场景的绘画风格正面/负面提示词。JSON字段positive、negative、description、tags、palette、lighting。禁止1girl、衣服、发色、具体道具、地点、摄影机位标签。`,data,styleController.signal);
+ const raw=await visionChat(s.prompt,'You are a professional ACGN style extractor. Return JSON with positive, negative, description, tags, palette, lighting. Extract only reusable line quality, stroke/brushwork, shading technique, generic color handling, rendering texture, stylization and light treatment. Do NOT identify or depict subjects, anatomy, clothes, hair or eye color, poses, location, camera angle, text, artists or specific copyrighted compositions. Write 6-10 short comma-separated positive phrases, at most 55 English words, and up to 5 short negative phrases. Put the most distinctive style traits first. Use plain English tags without model-specific weights. Negative must ONLY exclude rendering flaws, never people/objects/scene types. No subject tokens allowed in positive or negative.',`请先在内部辨别参考图里的具体人物、衣服、姿势和场景，但不要输出这些内容。只输出可以用于任意人物与场景的绘画风格正面/负面提示词。JSON字段positive、negative、description、tags、palette、lighting。禁止1girl、衣服、发色、具体道具、地点、摄影机位标签。`,data,styleController.signal);
  const analyzed=normalizeAnalysis(raw),safe=auditStyle(analyzed);
    // Pixiv image must be preserved locally before a strong-reference lock can claim an image input.
    const needsMedia=!x.mediaId,mediaId=x.mediaId||makeId('media');
@@ -392,9 +505,9 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    x.analysis={...analyzed,...safe};x.mediaId=mediaId;x.mediaSha256=await sha256(blob);x.mediaSource=x.source==='Pixiv月榜'?'pixiv-thumbnail':'uploaded-image';
    try{persist()}catch(e){Object.assign(x,previous);throw e}
    tell('画风解析与主体信息审查通过，画风正负词及可读取的原图均已保存。');
- }catch(e){tell('画风解析失败：'+e.message,true)}finally{if(aborter===styleController){aborter=null;setBusy('')}}}
- async function useStyle(id){const seq=++styleSelectionSeq;const entry=s.styles.find(x=>x.id===id);if(!entry)return tell('未找到画风候选',true);
- if(!entry.analysis?.positive){await analyzeStyle(id);if(seq!==styleSelectionSeq)return;if(!entry.analysis?.positive)return tell('本次图片的视觉解析失败，原画风锁定保持不变。',true)}
+ }catch(e){tell('画风解析失败：'+e.message,true)}finally{styleBusy=false;if(aborter===styleController){aborter=null;setBusy('')}}}
+ async function useStyle(id){if(workRunning||styleBusy||ui.busy)return tell('请等待当前任务完成',true);const seq=++styleSelectionSeq;const entry=s.styles.find(x=>x.id===id);if(!entry)return tell('未找到画风候选',true);
+ if(!entry.analysis?.positive){await analyzeStyle(id);if(!entry.analysis?.positive)return;}
  if(seq!==styleSelectionSeq)return;
  const next=createStyleLock({styleId:entry.id,positive:entry.analysis.positive,negative:entry.analysis.negative||'',mediaId:entry.mediaId||null,mediaSha256:entry.mediaSha256||null,mediaSource:entry.mediaSource||null},s.styleLock);
  const previous=s.styleLock,oldChosen=s.chosenStyle;s.styleLock=next;s.chosenStyle=id;
@@ -416,10 +529,22 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  tell(`引擎接口响应正常：${items.length}项；生成能力仍需实际图像任务验证。`)}catch(e){tell('连接测试失败：'+e.message,true)}finally{setBusy('')}}
  function saveConfigBackup(){const safe=structuredClone(s);safe.prompt.key='';safe.image.key='';safe.pixiv.apiKey='';const file=new Blob([JSON.stringify({version:VERSION,settings:safe,date:new Date().toISOString()},null,2)],{type:'application/json'});const url=URL.createObjectURL(file),a=document.createElement('a');a.href=url;a.download='AVS_R2_settings_without_keys.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),800)}
  async function action(act){try{
+ if(act==='generation-mode:auto'||act==='generation-mode:manual')return setGenerationMode(act.split(':')[1]);
+ if(act==='auto-current'){const ctx=contextInfo();if(ctx.index<0)return tell('当前聊天没有已完成的AI回复',true);if(replyEvents?.generating())return tell('请等待当前 AI 回复完成',true);return enqueueAuto(ctx,true)}
+ if((workRunning||styleBusy)&&/^(?:ranking|models-(?:prompt|image)|checkpoints|test-image|style-lock-(?:save|clear))$/.test(act))return tell('请等待当前任务完成',true);
+ if(act.startsWith('resource-category:')){ui.resourceCategory=act.slice(18);ui.resourcePage=0;return render()}
+ if(act.startsWith('resource-page:')){ui.resourcePage=Math.max(0,Number(act.slice(14))||0);refreshResourceResults();return}
+ if(act.startsWith('resource-preview:')){ui.resourcePreviewId=act.slice(17);return render()}
+ if(act==='resource-preview-close'){ui.resourcePreviewId='';return render()}
+ if(act.startsWith('resource-favorite:')){const id=act.slice(18);s.resources.favorites||=[];s.resources.favorites=s.resources.favorites.includes(id)?s.resources.favorites.filter(x=>x!==id):[...s.resources.favorites,id];persist();return render()}
+ if(act.startsWith('resource-pick:')){const id=act.slice(14);if(!resourceEntries.some(x=>x.id===id))throw new Error('素材已失效');if(ui.resourcePicks.some(x=>x.resource_id===id))ui.resourcePicks=ui.resourcePicks.filter(x=>x.resource_id!==id);else{if(ui.resourcePicks.length>=16)throw new Error('本次最多选择16项参考，请先移除不需要的项目');ui.resourcePicks.push({resource_id:id,character_id:ui.resourceActorId||'auto'});}resourcesChanged();return render()}
+ if(act.startsWith('resource-remove:')){ui.resourcePicks=ui.resourcePicks.filter(x=>x.resource_id!==act.slice(16));resourcesChanged();return render()}
+ if(act==='resource-clear'){ui.resourcePicks=[];resourcesChanged();return render()}
+
  if(act.startsWith('pending-view:')){if(ui.pending)ui.pending.viewIndex=Number(act.slice(13));return render()}
  if(act==='pending-save')return savePending();if(act==='pending-cancel'){if(workRunning)return;discardPending();return}if(act==='pending-retry'){if(workRunning)return;discardPending();return runTask(false,true)}
  if(act.startsWith('attach:')){const item=ui.gallery.find(x=>x.id===act.slice(7));if(!item)return;await attachGalleryImage(item,contextInfo,hashScene,new URL('api/images/upload',document.baseURI).href);return tell('已插入绑定的AI回复')}
- if(act==='close')return close();if(act==='back'){if(ui.pending){if(workRunning)return;discardPending();return}if(ui.previewId){ui.previewId='';return render()}return show(ui.page==='home'?'home':ui.oldPage==='settings'&&ui.page==='style'?'settings':'home')}
+ if(act==='close')return close();if(act==='back'){if(ui.resourcePreviewId){ui.resourcePreviewId='';return render()}if(ui.pending){if(workRunning)return;discardPending();return}if(ui.previewId){ui.previewId='';return render()}return show(ui.page==='home'?'home':ui.oldPage==='settings'&&ui.page==='style'?'settings':'home')}
  if(act.startsWith('goto:'))return show(act.split(':')[1]);if(act.startsWith('mode:')){ui.mode=act.split(':')[1];return render()}
  if(act==='refresh')return refresh();if(act==='abort'){aborter?.abort('user');return}
  if(act==='make')return runTask(false,false);if(act==='compile')return runTask(true,false);if(act==='direct')return runTask(false,true);
@@ -439,7 +564,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  if(act==='gallery-refresh')return refreshGallery().then(render);
  if(act.startsWith('preview:')){ui.previewId=act.slice(8);return render()}if(act==='preview-close'){ui.previewId='';return render()}
  if(act.startsWith('download:'))return download(act.slice(9));if(act.startsWith('delete:'))return galleryDelete(act.slice(7));
- if(act.startsWith('regenerate:')){const x=ui.gallery.find(v=>v.id===act.slice(11));if(!x)return;ui.prompt=x.prompt;ui.negative=x.negative;ui.previewId='';ui.mode='single';show('home');return tell('已载入原始提示词，点击“使用现有提示词生成”重绘')}
+ if(act.startsWith('regenerate:')){const x=ui.gallery.find(v=>v.id===act.slice(11));if(!x)return;if(!canReplayGalleryPrompt(x))return tell('请从正文重新编译这张旧图的提示词。',true);setGenerationMode('manual');ui.prompt=x.prompt;ui.negative=x.negative;ui.previewId='';ui.mode='single';show('home');return tell('已载入原始提示词，点击“使用现有提示词生成”重绘')}
  if(act.startsWith('stab:')){ui.settingsTab=act.slice(5);return render()}
  if(act==='models-prompt'||act==='models-image'){setBusy('获取模型列表…');const name=act.endsWith('prompt')?'prompt':'image',v=s[name];
     let list;try{list=await models(v.base,v.key)}catch(e){list=[...(ui.models[name]||[]),...(s.modelFavorites?.[name]||[]),s[name].model].filter(Boolean);if(!list.length)throw e;tell('实时刷新失败，仍可使用已选或收藏的模型：'+e.message,true)}
@@ -453,7 +578,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
     if(type==='prompt')s.prompt.model=chosen;else if(type==='image')s.image.model=chosen;else if(type==='checkpoint')s.image.checkpoint=chosen;
     persist();ui.modelPicker='';ui.modelSearch='';if(type==='prompt'&&fanEnabled(s,cardContext(ui.chat.context)))discoverFanCard(ui.chat.context,s).then(()=>persist()).catch(()=>{});return render()}
  if(act==='test-image')return connectivity();if(act==='backup')return saveConfigBackup();if(act==='diagnostics')return show('diagnostics');
- }catch(e){ui.busy='';tell('操作失败：'+String(e.message||e),true)}}
+ }catch(e){ui.busy='';tell('操作失败：'+String(e.message||e),true)}finally{scheduleAuto()}}
  function initialize(){
  // Remove obsolete standalone launchers from R2.0.0; the only entry is V4.1.10's mascot.
  document.querySelectorAll('.avs-r2-launcher,#avs-r2-launcher-css').forEach(el=>el.remove());
@@ -466,25 +591,33 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  content=document.createElement('div');content.className='app';shadow.append(content);document.body.append(shell);
  picker=document.createElement('input');picker.type='file';picker.accept='image/*';picker.style.display='none';picker.addEventListener('change',onPicked);shadow.append(picker);
  repair();
- window[KEY]={version:VERSION,open,verifyVisible,activate,close,repair,diagnostics:()=>({chat:ui.chat.id,archive:ui.archive?.runtime,ui:ui.page,visible:visibleGeometry(),frontMost:frontMost(),layout:layoutProbe(),lastMountError}),destroy(){close();window.removeEventListener('resize',syncViewport);window.visualViewport?.removeEventListener('resize',syncViewport);shell?.remove();if(window[KEY]?.version===VERSION)delete window[KEY]}};
+ window[KEY]={version:VERSION,open,verifyVisible,activate,close,repair,diagnostics:()=>({chat:ui.chat.id,archive:ui.archive?.runtime,ui:ui.page,visible:visibleGeometry(),frontMost:frontMost(),layout:layoutProbe(),lastMountError}),destroy(){close();stopAuto();replyEvents?.disconnect();window.clearTimeout(eventTimer);window.clearTimeout(autoTimer);aborter?.abort('destroyed');window.removeEventListener('resize',syncViewport);window.visualViewport?.removeEventListener('resize',syncViewport);shell?.remove();if(window[KEY]?.version===VERSION)delete window[KEY]}};
  shadow.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(b){e.preventDefault();action(b.dataset.act)}});
  shadow.addEventListener('change',e=>{const el=e.target;if(el.dataset.bind){changePath(el.dataset.bind,el.value);if(['observer.id','comicPanels'].includes(el.dataset.bind)){render()}else if(el.dataset.bind==='image.engine'){s.image.referenceMode='text';persist();render()}else if(el.dataset.bind==='prompt.useMain')render()}
  else if(el.dataset.check){changePath(el.dataset.check,el.checked);render()}
  else if(el.dataset.char){ui.manualCharacterSelection=true;ui.selected=el.checked?[...new Set([...ui.selected,el.dataset.char])]:ui.selected.filter(x=>x!==el.dataset.char);render()}
  else if(el.hasAttribute('data-portrait-target')){ui.portraitId=el.value;render()}
- else if(el.hasAttribute('data-resource-category')){ui.resourceCategory=el.value;render()}
+ else if(el.hasAttribute('data-resource-category')){ui.resourceCategory=el.value;ui.resourcePage=0;render()}
+ else if(el.hasAttribute('data-resource-filter')){if(el.dataset.resourceFilter==='images')ui.resourceImagesOnly=el.checked;else ui.resourceFavoritesOnly=el.checked;ui.resourcePage=0;render()}
+ else if(el.hasAttribute('data-resource-actor')){ui.resourceActorId=el.value;}
  else if(el.dataset.ref){s.characterRefs[el.dataset.ref]=el.value.trim();persist()}});
  shadow.addEventListener('input',e=>{const el=e.target;
-  if(el.hasAttribute('data-resource-query')){ui.resourceQuery=el.value;const box=shadow.querySelector('[data-resource-results]');if(box)box.innerHTML=resourceRows(searchResources(ui.resourceQuery,{category:ui.resourceCategory,limit:30}));return;}
+  if(el.hasAttribute('data-resource-query')){ui.resourceQuery=el.value;ui.resourcePage=0;refreshResourceResults();return;}
   if(el.hasAttribute('data-model-search')){ui.modelSearch=el.value;const box=shadow.querySelector('[data-model-results]');if(box)box.innerHTML=modelRows();return;}
   if(el.dataset.draft){if(el.dataset.draft==='positive')ui.prompt=el.value;else ui.negative=el.value}
   if(el.dataset.styleDraft){if(!ui.styleDraft)ui.styleDraft={positive:s.styleLock?.positive||'',negative:s.styleLock?.negative||''};ui.styleDraft[el.dataset.styleDraft]=el.value}});
  // Character reference URLs persist after leaving the field.
  shadow.addEventListener('focusout',e=>{const el=e.target;if(el?.dataset?.ref){s.characterRefs[el.dataset.ref]=el.value.trim();persist()}});
  // No separate launch button: AVS V4.1.10 mascot is the only entry.
- function eventHook(){try{const c=window.SillyTavern?.getContext?.();const src=c?.eventSource,events=c?.event_types;if(!src||!events)return;
- if(events.CHAT_CHANGED)src.on(events.CHAT_CHANGED,()=>{ui.notice='';ui.error='';refresh()});
- if(events.GENERATION_ENDED)src.on(events.GENERATION_ENDED,async()=>{if(!s.auto||workRunning)return;const ctx=contextInfo();const k=ctx.id+'#'+ctx.index;if(ctx.index<0||autolast===k)return;autolast=k;await runTask(false,false)})}catch(e){console.warn('[AVS R2] 事件挂载失败',e)}}
- window.addEventListener('resize',syncViewport);window.visualViewport?.addEventListener('resize',syncViewport);render();/* R2.6 uses the bundled provenance-tracked catalog, no external vocabulary fetch. */window.setTimeout(eventHook,800);console.info('[AVS R2]',VERSION,'浏览器前端视觉工坊已挂载');}
+ function eventHook(){
+  const host=window.SillyTavern?.getContext?.();
+  replyEvents=listenForNewReplies(host,contextInfo,{
+   enabled:()=>s.generationMode==='auto',
+   ready:ctx=>enqueueAuto(ctx),
+   chatChanged:()=>{stopAuto();autoStatus='';ui.notice='';ui.error='';refresh().catch(e=>console.warn('[AVS] 档案刷新失败',e))},
+  });
+  if(!replyEvents)eventTimer=window.setTimeout(eventHook,800);
+ }
+ window.addEventListener('resize',syncViewport);window.visualViewport?.addEventListener('resize',syncViewport);render();eventHook();console.info('[AVS R2]',VERSION,'浏览器前端视觉工坊已挂载');}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initialize,{once:true});else initialize();
 }

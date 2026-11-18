@@ -1,10 +1,11 @@
 import {lexiconForScene,libraryCandidates} from './assets.js';
 import {visionChat} from './engines.js';
-import {baselineDirector,directorRequest,normalizeDirector,compileDirector,styleSnapshot} from './director.js';
+import {baselineDirector,directorRequest,normalizeDirector,normalizeAutomaticDecision,compileDirector,styleSnapshot} from './director.js';
 import {fanReferenceForPrompt} from './fan_canon.js';
 import {cleanStory,cleanText as cleanNarrative,assertCleanStory} from './story_cleaner.js';
 import {resolveMode} from './mode_resolver.js';
 import {projectCharacter} from './visual_facts.js';
+import {collectReferenceImages,referenceTrace} from './resource_reference.js';
 import {retrieveForPlan} from './visual_resources.js';
 import {profileFor,NAI_PROFILES} from './nai_compiler.js';
 export const MATERIALS={
@@ -18,7 +19,7 @@ const s=v=>String(v??'');
 export const esc=v=>s(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const cleanText=cleanNarrative;
 export function stContext(){try{let w=globalThis;for(let i=0;i<8;i++){try{if(w.SillyTavern?.getContext)return w.SillyTavern.getContext()}catch(_){}if(w.parent===w)break;w=w.parent;}return null}catch{return null}}
-export function contextInfo(){const c=stContext();if(!c)return {id:null,text:'',index:-1,context:null};const chat=Array.isArray(c.chat)?c.chat:[];const index=chat.findLastIndex(m=>!m.is_user&&!m.is_system&&s(m.mes||m.message).trim());const card=c.characterId??c.groupId??'none';const cid=c.chatId??c.chat_metadata?.chat_id??c.chat_metadata?.file_name??c.getCurrentChatId?.()??'unknown';const cleaned=index>=0?cleanStory(chat[index].mes||chat[index].message):cleanStory('');return {id:`${card}::${cid}`,text:cleaned.text,cleaning:cleaned,index,context:c};}
+export function contextInfo(){const c=stContext();if(!c)return {id:null,text:'',index:-1,context:null};const chat=Array.isArray(c.chat)?c.chat:[];const index=chat.findLastIndex(m=>!m.is_user&&!m.is_system&&s(m.mes||m.message).trim());const card=c.groupId??c.characterId??'none';const cid=c.chatId??c.chat_metadata?.chat_id??c.chat_metadata?.file_name??c.getCurrentChatId?.()??'unknown';const cleaned=index>=0?cleanStory(chat[index].mes||chat[index].message):cleanStory('');return {id:`${card}::${cid}`,text:cleaned.text,cleaning:cleaned,index,context:c};}
 export function coreBridge(){let w=globalThis;try{for(let i=0;i<8;i++){const b=w.__AVS_V4_BRIDGE__;if(b?.version==='4.1.10'&&typeof b.fullInspector==='function')return b;if(w.parent===w)break;w=w.parent;}}catch(_){}return null}
 export async function archiveView(){const b=coreBridge();if(!b)return {error:'V4.1.10角色档案尚未就绪：请确认原版Core正在运行',characters:[],runtime:null,details:{}};
  try{const v=await b.fullInspector();const characters=(v.characters||[]).filter(x=>!x.blocked);return {characters,runtime:v.runtime||{},details:{},error:'',bridge:b}}catch(e){return {error:'读取V4.1.10只读档案失败：'+String(e.message||e),characters:[],runtime:null,details:{}}}}
@@ -51,21 +52,37 @@ export async function compileWithAI(ctx,packets,settings,style,mode,signal){cons
 export function normalizeAnalysis(reply){const match=s(reply).match(/\{[\s\S]*\}/);if(!match)throw new Error('模型没有返回JSON');const a=JSON.parse(match[0]);return {description:s(a.description).slice(0,600),tags:s(a.tags).slice(0,1200),positive:s(a.positive||a.tags).slice(0,2000),negative:s(a.negative).slice(0,1200),palette:s(a.palette).slice(0,300),lighting:s(a.lighting).slice(0,300),composition:s(a.composition).slice(0,300)}}
 
 // R2.2: The prompt model plans a scene, never directly owns final prompts or a style lock.
-export async function compileDirectedPrompt(ctx,packets,settings,mode,signal){
+export async function compileDirectedPrompt(ctx,packets,settings,mode,signal,automatic=null){
  assertCleanStory(ctx.text);
  const requested=resolveMode(mode,packets.length);
  const baseline=baselineDirector(ctx,packets,requested.mode,settings);const lockedAtStart=styleSnapshot(settings);
- const profile=profileFor(settings.image);if(NAI_PROFILES[profile]&&baseline.cast.length>NAI_PROFILES[profile].maxCharacters)throw new Error('所选Nai型号无法容纳当前同场人数，请减少选择');
+ if(automatic&&!settings.prompt.useMain&&!settings.prompt.key)throw new Error('自动模式需要提示词API');
+ const profile=profileFor(settings.image),naiProfile=NAI_PROFILES[profile];if(!automatic&&naiProfile&&baseline.cast.length>naiProfile.maxCharacters)throw new Error('所选Nai型号无法容纳当前同场人数，请减少选择');
  baseline.resourceContext=retrieveForPlan(baseline,packets,settings);baseline.requestProfile=profile;baseline.observerSelection=settings.observer||null;
- let plan=baseline;
+ if(automatic)baseline.automatic={force:automatic.force,maxCharacters:naiProfile?.maxCharacters??22,workingBudget:naiProfile?.workingBudget};
+ let plan=baseline;const referenceImages=await collectReferenceImages(baseline.resourceContext,settings,signal);baseline.resourceContext.image_references=referenceImages.trace;
  if(settings.prompt.useMain || settings.prompt.key){
    const req=directorRequest(baseline,packets,settings,fanReferenceForPrompt(settings,ctx.context));let raw;
    if(settings.prompt.useMain){const c=stContext();if(typeof c?.generateRaw!=='function')throw new Error('主API未提供generateRaw，不能执行导演规划');
      raw=await c.generateRaw({systemPrompt:req.system,prompt:req.user});
-   }else raw=await visionChat(settings.prompt,req.system,req.user,null,signal);
+   }else raw=await visionChat(settings.prompt,req.system,req.user,referenceImages.images,signal);
    if(signal?.aborted)throw new Error('用户取消');
-   plan=normalizeDirector(raw,baseline,packets);
+   if(automatic){
+     const {incoming,decision}=normalizeAutomaticDecision(raw,baseline);
+     if(decision.action==='skip')return {skipped:true,decision};
+     const chosen=new Set(decision.characters.map(character=>character.id));
+     const excluded=baseline.cast.filter(c=>!chosen.has(c.id));
+     baseline.cast=baseline.cast.filter(c=>chosen.has(c.id));
+     baseline.excludedActorNames=excluded.map(c=>c.name);
+     baseline.camera.focus_targets=baseline.camera.focus_targets.filter(id=>chosen.has(id));
+     baseline.resourceContext.actors=baseline.resourceContext.actors.filter(c=>chosen.has(c.id));
+     plan=normalizeDirector(incoming,baseline,packets);
+     if(plan.cast.length>baseline.automatic.maxCharacters)throw new Error('本幕入镜人数超过所选模型限制');
+     plan.automatic=decision;
+     delete plan.excludedActorNames;
+   }else plan=normalizeDirector(raw,baseline,packets);
  }
  const lockedNow=styleSnapshot(settings);if(lockedNow.revision!==lockedAtStart.revision||lockedNow.id!==lockedAtStart.id)throw new Error('规划期间玩家切换或清除了画风，请重新编译，避免旧任务覆盖新画风');
- return compileDirector(plan,[...packets,...(plan.supportingPackets||[])],settings,lockedAtStart);
+ const result=compileDirector(plan,[...packets,...(plan.supportingPackets||[])],settings,lockedAtStart);result.referenceImages=referenceImages.trace;result.referenceMode=referenceImages.mode;result.referenceTrace=referenceTrace(result,settings.resourcePicks||[]);result.referenceRevision=settings.referenceRevision||0;
+ for(const panel of result.panels||[]){panel.referenceTrace=referenceTrace(panel,settings.resourcePicks||[]);panel.referenceImages=referenceImages.trace;}return result;
 }

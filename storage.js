@@ -1,5 +1,28 @@
 const DB_NAME='AVS_R2_VISUAL_WORKSHOP',DB_VERSION=1;
 const KEY='AVS_R2_SETTINGS_V1';
+
+export function isRetiredProductId(id) {
+  return typeof id === 'string' && id.startsWith('webproduct.');
+}
+
+// R2.8.0 settings may contain credentials and favorites for the retired provider.
+function migrateSettings(settings) {
+  let changed = Object.hasOwn(settings, 'shopping') || Object.hasOwn(settings, 'auto');
+  delete settings.shopping;
+  // The old setting only opened a preview. Require explicit consent for background saves.
+  delete settings.auto;
+  if (Array.isArray(settings.resources?.favorites)) {
+    const favorites = settings.resources.favorites.filter(id => !isRetiredProductId(id));
+    if (favorites.length !== settings.resources.favorites.length) {
+      settings.resources.favorites = favorites;
+      changed = true;
+    }
+  }
+  if (changed) {
+    try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch { /* Keep the sanitized settings for this session. */ }
+  }
+  return settings;
+}
 export const defaults={
   prompt:{useMain:false,base:'https://api.openai.com/v1',key:'',model:'',temperature:0.65,timeoutMs:240000},
   image:{engine:'openai',base:'https://api.openai.com/v1',key:'',model:'gpt-image-1.5',size:'1024x1536',referenceMode:'text',promptProfile:'none',
@@ -7,14 +30,15 @@ export const defaults={
   pixiv:{apiKey:'',githubRepo:'',mode:'monthly',proxy:false,expanded:false,updated:'',items:[]},
   styles:[],chosenStyle:null,styleLock:null,materials:[],characterModes:{},characterRefs:{},fanCards:{},modelFavorites:{prompt:[],image:[],checkpoint:[]},
   director:{shotScale:'auto',elevation:'auto',depthOfField:'auto'},
-  resources:{enabled:true},observer:{id:'User',name:'User'},groupBoost:false,
-  visualTarget:'premium',auto:false,attachToChat:true,layout:'portrait',comicPanels:2
+  resources:{enabled:true,visionEnabled:false,favorites:[]},observer:{id:'User',name:'User'},groupBoost:false,
+  visualTarget:'premium',generationMode:'manual',attachToChat:true,layout:'portrait',comicPanels:2
 };
-export function settingsRead(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return {
+export function settingsRead(){try{const x=migrateSettings(JSON.parse(localStorage.getItem(KEY)||'{}'));return {
 ...structuredClone(defaults),...x,
 prompt:{...defaults.prompt,...(x.prompt||{})},image:{...defaults.image,...(x.image||{})},
 resources:{...defaults.resources,...(x.resources||{})},observer:{...defaults.observer,...(x.observer||{})},
 pixiv:{...defaults.pixiv,...(x.pixiv||{})}, director:{...defaults.director,...(x.director||{})},
+generationMode:x.generationMode==='auto'?'auto':'manual',
 visualTarget:['reference','premium','naval','resonant'].includes(x.visualTarget)?x.visualTarget:'premium',
 styles:Array.isArray(x.styles)?x.styles:[],materials:Array.isArray(x.materials)?x.materials:[],characterModes:x.characterModes||{},characterRefs:x.characterRefs||{},fanCards:x.fanCards||{},modelFavorites:{...defaults.modelFavorites,...(x.modelFavorites||{})}
 };}catch{return structuredClone(defaults)}}

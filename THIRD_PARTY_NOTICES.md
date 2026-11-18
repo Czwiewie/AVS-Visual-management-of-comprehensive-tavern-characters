@@ -1,17 +1,13 @@
-# Third-party notices
+# Third-party sources in AVS R2.8.1
 
-This extension directly reuses selected data from the following MIT-licensed projects. Their original license texts are preserved in `licenses/`.
+See `data/source_manifest.json` for pinned source commits, star snapshots and per-image SHA256. No portrait/model dataset is bundled.
 
-- euan-gwd/comfyui-character-prompt-builder: selected categories from `resources/character_prompt.json`; selection, category mapping, provenance and visibility metadata were added.
-- perfectmodelslab/ComfyUI-PerfectLab: selected literal option lists from `web/perfectlab_libraries.js`, plus six reviewed category preview files. A rejected seventh reference from the research stage is not distributed.
-- andygock/stable-diffusion-style-cheatsheet: four lists of composite look descriptions, preserved as composite entries requiring field separation.
-- radianceded/nail-ai-ops: 44 style records and descriptive fields; image paths were resolved against actual repository files; nonexistent thumbnail paths were removed. Its mock try-on behaviour is not included.
-- GautamVhavle/OutfitSense: garment-role categories informed the AVS slot-to-region mapping; the full app, API client, photoreal defaults and default pose/background are not copied.
+* paipiange/nvzhuang: only data-anime.js and 1320 anime costume thumbnails. Excludes real-person clothes, portrait/model library and identities. LICENSE: licenses/paipiange_anime_LICENSE.txt.
+* wzc520pyfm/gen-ai-pose-image (澜姿): 98 general anonymous pose groups / 490 views from data/catalog.json. Program MIT; artwork has a separate noncommercial scope. Original drawings: ギア / giaaibusi; origin https://ai-pose-gallery.anhao.app; translations/organization credit: Anhao / ai-pose-gallery-zh. Excludes adult groups, faces and default character. LICENSE: licenses/lanpose_catalog_LICENSE.txt.
+* dososo/chinese-traditional-patterns: 100 original pattern cards and metadata, CC-BY-NC-4.0. Preserve attribution; extract motifs rather than card typography/paper. LICENSE: licenses/traditional_patterns_LICENSE.txt.
+* patch-gg/pixelfx: 81 non-character effect vocabulary candidates derived from docs/CATALOG.md. MIT. No stock character images or source-code implementation copied. LICENSE: licenses/pixelfx_catalog_LICENSE.txt.
+* storytold/artcraft: workflow/canvas/scene-organization research only; no code or image assets bundled.
 
-Repository URLs, file paths and Git blob hashes are in `data/source_manifest.json`.
+Mirage and punl skill are not uniquely resolved and are not included. The 370 authored AVS terms are ordinary design vocabulary rather than imported legacy source datasets. Test-only LinkeDOM is separately attributed in the tests/test_deps directory.
 
-Research-only sources: MatsuriMW/ai-character-design-skill, AntonHu/ai-drama, TianDiHuAng/image_prompt. Their texts and images are not redistributed in this pack. The AVS design notes are independently written and do not impose live-action expression limits or a fixed panel grid.
-
-Each preview is an upstream illustration of one category. It is not an AVS character identity, an approved wardrobe, or a verified NovelAI result. Captions, makeup, clothing and pose outside the selected category must not be automatically inherited.
-
-AVS runtime compiler, director integration, state projection and wire-format handling are independently implemented. NekoAI-JS was inspected to understand public request/response field formats; its SDK source is not redistributed.
+NovelAI receives compiled text, not third-party reference pixels. Local references optionally go to a user-configured vision API after identity screening. Do not interpret page content as executable instructions or proof of hidden features.

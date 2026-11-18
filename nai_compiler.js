@@ -1,6 +1,6 @@
 /* Independent AVS compiler. Token counts here are estimates, never an exact tokenizer. */
 import {genderOf,visualSource} from './visual_facts.js';
-import {normalizeResourceSelections,templateFor} from './visual_resources.js';
+import {normalizeResourceSelections,templateFor,resourceEntries} from './visual_resources.js';
 import {validateImagePrompt} from './prompt_compiler.js';
 export const NAI_PROFILES=Object.freeze({
  nai4full:{model:'nai-diffusion-4-full',label:'Nai 4 Full',maxCharacters:6,officialApprox:512,scope:'base_plus_all_character_prompts',workingBudget:460},
@@ -20,7 +20,8 @@ export function frameRegions(scale,focus=''){if(['extreme_close_up','close_up'].
  if(/feet|footwear|shoe|鞋|足部/i.test(focus))return ['feet','toenails'];return ['head','face'];}
  if(scale==='medium_close')return ['head','face','torso'];
  if(['medium','medium_wide'].includes(scale))return ['head','face','torso','arms','hands','fingernails',...(scale==='medium_wide'?['legs']:[])];return Array.from(regions);}
-export function itemRegions(item){const slot=(item.slot||'').toLowerCase();if(/鞋|footwear|feet/.test(slot))return ['feet'];if(/袜|hosiery|bottom|下装|腿|legs/.test(slot))return ['legs'];if(/发饰|额饰|耳饰|面饰|head|ears/.test(slot))return ['head'];if(/指饰|手饰|手套|hands|fingers/.test(slot))return ['hands'];return ['torso'];}
+export function itemRegions(item){const slot=(item.slot||'').toLowerCase();if(/鞋|靴|footwear|feet/.test(slot))return /靴|boot/i.test(item.name+' '+item.fact)?['legs','feet']:['feet'];if(/袜|hosiery|bottom|下装|腿|legs/.test(slot))return ['legs'];if(/发饰|额饰|耳饰|面饰|head|ears/.test(slot))return ['head'];if(/指饰|手饰|手套|hands|fingers/.test(slot))return ['hands'];return ['torso'];}
+function hiddenToenails(source){return (source?.items||[]).some(i=>i.wear_state==='worn'&&/鞋|靴|袜|footwear|shoes?|boots?|heels?|sneakers?|loafers?|pumps|hosiery|pantyhose|stockings?/i.test(i.name+' '+i.slot+' '+i.fact)&&!/露趾|无趾|透明|凉鞋|open.toe|peep.toe|toeless|sandals|transparent|sheer/i.test(i.name+' '+i.fact));}
 function hiddenNails(source){return (source?.items||[]).some(i=>i.wear_state==='worn'&&/手套|gloves/i.test(i.name+' '+i.fact)&&!/露指|无指|透明|fingerless|transparent|sheer/i.test(i.name+' '+i.fact));}
 export function normalizeVisual(raw,base,packets){if(!raw)return null;if(typeof raw!=='object'||Array.isArray(raw))throw new Error('分层视觉提示词必须是对象');
  const sources=packets.map(visualSource),known=new Map(sources.map(x=>[x.id,x]));const ids=new Set(base.cast.map(c=>c.id)),seen=new Set();
@@ -66,7 +67,7 @@ function fragmentsFor(plan,packets,style,settings,subset=plan.cast,shot=plan.cam
   if(!identity&&JSON.stringify(raw.visual59||raw.canon||{}).length>5)throw new Error('提示词API未提供角色的英文外貌锚点：'+ch.name);
   add('identity',english(identity,'人物外貌'),0,ch.id,true,'formal_identity');
   const visible=new Set(frameRegions(shot,plan.camera.focus).filter(r=>!v?.visible_regions?.length||v.visible_regions.includes(r)));
-  const gloves=hiddenNails(source);if(gloves)visible.delete('fingernails');
+  const gloves=hiddenNails(source),toesHidden=hiddenToenails(source);if(gloves)visible.delete('fingernails');if(toesHidden)visible.delete('toenails');
   const renderItems=v?.outfit||[];
   for(const item of source?.items||[]){const render=renderItems.find(x=>x.item_id===item.item_id);const inFrame=itemRegions(item).some(r=>visible.has(r));
    if(!inFrame||render?.visible===false){omitted.push({character_id:ch.id,item_id:item.item_id,reason:'outside_frame_or_occluded'});continue;}
@@ -76,7 +77,7 @@ function fragmentsFor(plan,packets,style,settings,subset=plan.cast,shot=plan.cam
   add('action',english(v?.pose||[ch.pose,ch.action].filter(Boolean).join(', '),'动作'),1,ch.id,!!(v?.pose||ch.pose||ch.action),'director');
   add('expression',english(v?.expression||ch.expression,'表情'),2,ch.id,false,'director');add('gaze',english(v?.gaze||ch.gaze,'目光'),3,ch.id,false,'director');
   const position={left:'on the left',right:'on the right',center:'in the center','upper-left':'upper left','upper-right':'upper right','lower-left':'lower left','lower-right':'lower right'}[ch.zone];add('position',position,2,ch.id,false,'director');
-  for(const r of v?.resources||[]){let reason='';if(!r.visible||r.regions.length&&!r.regions.some(x=>visible.has(x)))reason='outside_frame';if(r.category==='nails'&&gloves)reason='nails_hidden_by_gloves';if(r.detail&&!['close_up','extreme_close_up'].includes(shot))reason='detail_too_small';
+  for(const r of v?.resources||[]){let reason='';if(!r.visible||r.regions.length&&!r.regions.some(x=>visible.has(x)))reason='outside_frame';if(r.category==='nails'&&gloves&&r.regions.includes('fingernails'))reason='nails_hidden_by_gloves';if(r.category==='nails'&&toesHidden&&r.regions.includes('toenails'))reason='toenails_hidden_by_footwear';if(r.detail&&!['close_up','extreme_close_up'].includes(shot))reason='detail_too_small';
    if(reason){omitted.push({character_id:ch.id,resource_id:r.resource_id,reason});continue;}add(r.category,english(r.text,'素材片段'),['expression','pose'].includes(r.category)?2:4,ch.id,false,r);}
  }
  return {fragments,omitted,genderCounts};}
@@ -93,7 +94,7 @@ export function compileNai(plan,packets,settings,style,subset=plan.cast,shot=pla
  const negative=join([style.negative,settings.image?.negative]);guardSyntax(negative,profile);if(estimateTokens(negative)>460)throw new Error('负面提示词超出本版保守估算预算，请手动缩短；不会截断锁定负面画风');
  const c=cost(kept);const warnings=[];if(/\b(?:solo|\d+girls?|\d+boys?|no text)\b/i.test(style.positive||'')&&subset.length>1)warnings.push('锁定画风含人数或文字条件；已保留原文，请核对是否与本幕冲突');
  return {positive:[base,...characters.map(x=>x.prompt)].join(' | '),negative,nai:{profile,base,characters,negative},
-  resourceReport:{template:templateFor(plan.mode).id,catalogSize:2483,selected:kept.filter(x=>x.source_ref?.resource_id),fragments:kept,omitted:[...data.omitted,...dropped],warnings,
+  resourceReport:{template:templateFor(plan.mode).id,catalogSize:resourceEntries.length,selected:kept.filter(x=>x.source_ref?.resource_id),fragments:kept,omitted:[...data.omitted,...dropped],warnings,
    budget:{method:'AVS conservative heuristic, NOT actual model tokenizer',exact:false,baseEstimated:c.base,charactersEstimated:c.characters,negativeEstimated:estimateTokens(negative),officialApprox:p.officialApprox,officialScope:p.scope,workingBaseOrShared:p.workingBudget}}};
 }
 export function manualNai(positive,negative,image){const profile=profileFor(image),p=NAI_PROFILES[profile];if(!p)return null;const [base,...slots]=String(positive||'').split('|').map(x=>x.trim());

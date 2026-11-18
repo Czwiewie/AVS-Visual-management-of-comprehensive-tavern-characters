@@ -23,7 +23,7 @@ export async function visionChat(settings,system,text,imageData,signal){
  const base=sanitizeUrl(settings.base);if(!settings.key&&!settings.useMain)throw new Error('尚未设置提示词API密钥');
  if(!settings.model)throw new Error('尚未选择提示词模型');
  const requestText=String(text);if(requestText.length>512000)throw new Error('提示词API输入过大，请减少本幕人物或过长档案；没有截断JSON');
- const content=[{type:'text',text:requestText}];if(imageData)content.push({type:'image_url',image_url:{url:imageData}});
+ const content=[{type:'text',text:requestText}];for(const data of (Array.isArray(imageData)?imageData:imageData?[imageData]:[])){if(typeof data!=='string'||!data.startsWith('data:image/'))throw new Error('参考图片必须转换为实际图片数据');content.push({type:'image_url',image_url:{url:data}});}
  const body={model:settings.model,messages:[{role:'system',content:system},{role:'user',content}],temperature:Number(settings.temperature)||0.6};
  const r=await needOK(await fetchTimeout(`${base}/chat/completions`,{method:'POST',headers:{'Content-Type':'application/json',...authHeader(settings.key)},body:JSON.stringify(body),signal},Number(settings.timeoutMs)||240000));
  const j=await r.json();const m=j.choices?.[0]?.message?.content;return typeof m==='string'?m:Array.isArray(m)?m.map(v=>v.text||'').join(''):JSON.stringify(m||'');
@@ -146,19 +146,22 @@ export function buildNovelAIRequest(settings,prompt,negative,compiled=null){
  else Object.assign(parameters,{qualityToggle:false,ucPreset:4,sm:false,sm_dyn:false,dynamic_thresholding:false,legacy:false,add_original_image:true,uncond_scale:1});
  return {input:captions.base,model,action:'generate',parameters};
 }
-export async function novelaiImage(settings,prompt,negative,signal,compiled=null,progress=()=>{}){
+export async function novelaiImage(settings,prompt,negative,signal,compiled=null,progress=()=>{},report={}){
  if(!settings.key)throw new Error('NovelAI需要Persistent API Token');const body=buildNovelAIRequest(settings,prompt,negative,compiled),v5=body.model==='nai-diffusion-5-full';
  const controller=new AbortController(),cancel=()=>controller.abort(signal?.reason||'user');if(signal?.aborted)cancel();else signal?.addEventListener('abort',cancel,{once:true});
+ report.promptDelivery={base:body.input,characters:body.parameters.v4_prompt.caption.char_captions.map((c,i)=>({id:compiled?.characters?.[i]?.id||'manual-'+i,prompt:c.char_caption})),method:'novelai_independent_captions',imagePixelsSent:false};
  const timer=setTimeout(()=>controller.abort('timeout'),Number(settings.timeoutMs)||240000);
  try{const r=await needOK(await fetchTimeout('https://image.novelai.net/ai/'+(v5?'generate-image-stream':'generate-image'),{method:'POST',headers:{...authHeader(settings.key),'Content-Type':'application/json'},body:JSON.stringify(body),signal:controller.signal},240000));
   return v5?await readNaiStream(r,controller.signal,progress):await zipFirstImage(await r.arrayBuffer());
  }finally{clearTimeout(timer);signal?.removeEventListener('abort',cancel);}
 }
 export async function generateImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={},compiled=null){
+ report.promptDelivery={flatPrompt:prompt,characters:[],method:'text_prompt',imagePixelsSent:false};
+ if(settings.engine==='comfy'&&settings.workflow?.trim()&&!settings.workflow.includes('{{PROMPT}}'))throw new Error('ComfyUI工作流缺少{{PROMPT}}，无法传入本次素材片段，已停止请求');
  if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress,reference,report);
  if(settings.engine==='novelai'){
   if((settings.referenceMode||'text')!=='text')throw new Error('当前NovelAI适配不发送Vibe参考图，请使用文字画风参考');
-  report.referenceActuallySent=false;report.adapter=settings.naiModel==='nai-diffusion-5-full'?'novelai-v5-stream-role-captions':'novelai-v4-zip-role-captions';return novelaiImage(settings,prompt,negative,signal,compiled,progress);
+  report.referenceActuallySent=false;report.adapter=settings.naiModel==='nai-diffusion-5-full'?'novelai-v5-stream-role-captions':'novelai-v4-zip-role-captions';return novelaiImage(settings,prompt,negative,signal,compiled,progress,report);
  }
  return openaiImage(settings,prompt,negative,signal,reference,report);
 }
