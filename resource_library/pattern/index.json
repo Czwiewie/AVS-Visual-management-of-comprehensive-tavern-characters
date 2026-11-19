@@ -45,12 +45,10 @@
         "local_file": "resource_library/pattern/images/traditional_001.png",
         "source_path": "patterns/001-020_植物花卉纹/001_缠枝莲纹/001_缠枝莲纹_卡片图.png",
         "git_blob_sha": "29e63c07dffedb337dd77aec462839e931e01315",
-        "sha256": "346d348abdf69032ea6a6d68809412a0f4e224229a0e6a8cca588a2be4213d24",
+        "sha256": "4984244a6dfaf52b4e970232bb865825866b5d50eae167e721735d89fcabfa6f",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "4984244a6dfaf52b4e970232bb865825866b5d50eae167e721735d89fcabfa6f"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -108,12 +106,10 @@
         "local_file": "resource_library/pattern/images/traditional_002.png",
         "source_path": "patterns/001-020_植物花卉纹/002_宝相花纹/002_宝相花纹_卡片图.png",
         "git_blob_sha": "26f58408cc926215185e9215df98c8bb952cf9cd",
-        "sha256": "01b837fa3c54f7d4d7a5dc10556f61b187e8f930094a35389a14e176926c27cf",
+        "sha256": "813408e02e62dc2597bc042c2d9d61e87466d15834cac226d702c747591e4daa",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "813408e02e62dc2597bc042c2d9d61e87466d15834cac226d702c747591e4daa"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -170,12 +166,10 @@
         "local_file": "resource_library/pattern/images/traditional_003.png",
         "source_path": "patterns/001-020_植物花卉纹/003_牡丹纹/003_牡丹纹_卡片图.png",
         "git_blob_sha": "50bd9b213fbdb04c7150f5cb05bcdd79e272ff4d",
-        "sha256": "400694c6c9eceee83fe271de2d0bb57cafede9c587acfe32ab284d5935c534ee",
+        "sha256": "688ea05afe40acb075a5d74c3f2dfccd8d09c87fce2e0806600d8fef337f82ee",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "688ea05afe40acb075a5d74c3f2dfccd8d09c87fce2e0806600d8fef337f82ee"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -232,12 +226,10 @@
         "local_file": "resource_library/pattern/images/traditional_004.png",
         "source_path": "patterns/001-020_植物花卉纹/004_菊花纹/004_菊花纹_卡片图.png",
         "git_blob_sha": "dbbee631a7964ef4a782ee6cfb7394e2384d2f2e",
-        "sha256": "d461a3733b74dcc2418f6de41188abdfaba5b28e1708a728e2d548668168298b",
+        "sha256": "5a29ecace0214e45cd1a694e19fdba2f3c4af7a99ac9dfa4293e5cda9fad3683",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "5a29ecace0214e45cd1a694e19fdba2f3c4af7a99ac9dfa4293e5cda9fad3683"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -294,12 +286,10 @@
         "local_file": "resource_library/pattern/images/traditional_005.png",
         "source_path": "patterns/001-020_植物花卉纹/005_莲瓣纹/005_莲瓣纹_卡片图.png",
         "git_blob_sha": "6612aa769c016da2080a7972b34fc92bbaec457a",
-        "sha256": "f2c1949150bd6de5a7b56818d2dfe028e1ce815dfe99a10204330db03a5fe3d6",
+        "sha256": "33f9b7618138c56b4fe586d4ee96a3d60e103ffaf383b7e4a09d60f0663d4da2",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "33f9b7618138c56b4fe586d4ee96a3d60e103ffaf383b7e4a09d60f0663d4da2"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -356,12 +346,10 @@
         "local_file": "resource_library/pattern/images/traditional_006.png",
         "source_path": "patterns/001-020_植物花卉纹/006_卷草纹/006_卷草纹_卡片图.png",
         "git_blob_sha": "066896b72f34f0f0e14ff0ceaaf6dd25a7008fdc",
-        "sha256": "757416502e937290201dea650fe34f5bd858a6ff336a331a7f6734e06c218322",
+        "sha256": "eb709d544e706e3fa9473d058432e80fc18c61ac8608079f544af0dfb3131e83",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "eb709d544e706e3fa9473d058432e80fc18c61ac8608079f544af0dfb3131e83"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -418,12 +406,10 @@
         "local_file": "resource_library/pattern/images/traditional_007.png",
         "source_path": "patterns/001-020_植物花卉纹/007_忍冬纹/007_忍冬纹_卡片图.png",
         "git_blob_sha": "ce8304b21776b5eb5d5d33a7f930a6bcc1dbfc32",
-        "sha256": "577e8ae124035230aeabbfaa23f84a3303a74514121f775f5d41415952869603",
+        "sha256": "d3001e1a9fecb2491ffe8f3006017b4508467d40c31b4b9e970d8b3a58a798a1",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "d3001e1a9fecb2491ffe8f3006017b4508467d40c31b4b9e970d8b3a58a798a1"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -480,12 +466,10 @@
         "local_file": "resource_library/pattern/images/traditional_008.png",
         "source_path": "patterns/001-020_植物花卉纹/008_唐草纹/008_唐草纹_卡片图.png",
         "git_blob_sha": "e246020b0f8e5a0792f458ac91e5805181507d4b",
-        "sha256": "b22c0f8e1c78cc8597d5bc42525e16ae7acd8b3c0b665055f59a881e229dfca7",
+        "sha256": "6111ffc7147f54d08e6579122e0c396cbe90e43e19dcd92e2b441b2c95b681d4",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "6111ffc7147f54d08e6579122e0c396cbe90e43e19dcd92e2b441b2c95b681d4"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -542,12 +526,10 @@
         "local_file": "resource_library/pattern/images/traditional_009.png",
         "source_path": "patterns/001-020_植物花卉纹/009_石榴纹/009_石榴纹_卡片图.png",
         "git_blob_sha": "f3c42a77b53ee72a51a66f4f67109aa792149b07",
-        "sha256": "276e6152b3502efd024b7c554ef8701a95569403edbb80840bc025283e92c052",
+        "sha256": "fbee9c3bdf860962219e54df041abd6cccd6de258bd0286575f124fc5aaed6c9",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "fbee9c3bdf860962219e54df041abd6cccd6de258bd0286575f124fc5aaed6c9"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -605,12 +587,10 @@
         "local_file": "resource_library/pattern/images/traditional_010.png",
         "source_path": "patterns/001-020_植物花卉纹/010_梅花纹/010_梅花纹_卡片图.png",
         "git_blob_sha": "fafe06f8a33366be1c5c093932525eda4e1a15f9",
-        "sha256": "3381be075bd039beab4d58fe0cd80c2935811a8d1cc40f012907b5ebbc082952",
+        "sha256": "dd9d8ab5b1a996e411dafed8cb4ff52421a361876ce2f8f9409b8f4eb6a419f9",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "dd9d8ab5b1a996e411dafed8cb4ff52421a361876ce2f8f9409b8f4eb6a419f9"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -668,12 +648,10 @@
         "local_file": "resource_library/pattern/images/traditional_011.png",
         "source_path": "patterns/001-020_植物花卉纹/011_兰草纹/011_兰草纹_卡片图.png",
         "git_blob_sha": "b747ae986a2f5b38c04031565e2b865fe29a9cd2",
-        "sha256": "4d964bfc33a924d34042cc9b8c8d0c20fcb22969fd5b90d0f858223b1eee59a8",
+        "sha256": "6a1d18a2ac65f00c9e0836e4efbe8edb6125cf446bf827afa474582c53129dd4",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "6a1d18a2ac65f00c9e0836e4efbe8edb6125cf446bf827afa474582c53129dd4"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -730,12 +708,10 @@
         "local_file": "resource_library/pattern/images/traditional_012.png",
         "source_path": "patterns/001-020_植物花卉纹/012_竹叶纹/012_竹叶纹_卡片图.png",
         "git_blob_sha": "3ca93b2d638cc15466d810ac82987a6e1ab09e62",
-        "sha256": "4ad3f760e00ba55ee31b1a9a614533346509a4fe272446a1cb263cae4680a3c8",
+        "sha256": "6d11df41586999992ef8943d602d4da60760e722a272ab3efddb2073a1e5883a",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "6d11df41586999992ef8943d602d4da60760e722a272ab3efddb2073a1e5883a"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -792,12 +768,10 @@
         "local_file": "resource_library/pattern/images/traditional_013.png",
         "source_path": "patterns/001-020_植物花卉纹/013_松针纹/013_松针纹_卡片图.png",
         "git_blob_sha": "99c9e6033b92ebf4ba635509977be2a46cb22433",
-        "sha256": "be16f073a9971865e5c6d82925c2e1077000bbb6b3d06bb621831cf38295e71b",
+        "sha256": "2cc428e7bc1984c5f61bc4cdfc1825fbcce157cd12e4af824cc0581c581cc5ae",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "2cc428e7bc1984c5f61bc4cdfc1825fbcce157cd12e4af824cc0581c581cc5ae"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -854,12 +828,10 @@
         "local_file": "resource_library/pattern/images/traditional_014.png",
         "source_path": "patterns/001-020_植物花卉纹/014_桃花纹/014_桃花纹_卡片图.png",
         "git_blob_sha": "093dac734d818a5b331a5efe2679ce7421e43e44",
-        "sha256": "ae4801f754304e5610622f2466fc6c5d1512485e2b2d671158f5e3ba1566bd99",
+        "sha256": "da8da9024f999092bc84aa46ac60e3da8810c356c5232662c6112371503b40d6",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "da8da9024f999092bc84aa46ac60e3da8810c356c5232662c6112371503b40d6"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -916,12 +888,10 @@
         "local_file": "resource_library/pattern/images/traditional_015.png",
         "source_path": "patterns/001-020_植物花卉纹/015_海棠纹/015_海棠纹_卡片图.png",
         "git_blob_sha": "dd51243cda87e4390e4b787c473a0905230543f5",
-        "sha256": "a05c1e3caedce38c5a6ab6b68e5704d87b89f325f345d2e6bf3ff19a0643e4d9",
+        "sha256": "ca5211bc76a02cad45b3a64b9a6455f61446ff075e524da3f0a2fde4580c0fcb",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "ca5211bc76a02cad45b3a64b9a6455f61446ff075e524da3f0a2fde4580c0fcb"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -978,12 +948,10 @@
         "local_file": "resource_library/pattern/images/traditional_016.png",
         "source_path": "patterns/001-020_植物花卉纹/016_荷叶纹/016_荷叶纹_卡片图.png",
         "git_blob_sha": "cefb22b3872a0eea79b393242ffeeda92dbc5ab4",
-        "sha256": "c0fa80a208588190363242a20476522f4e51571623621f8ca240925b7932b032",
+        "sha256": "c3bc982178c60b8ef5077db201ec70f53c3e81cd4e497721da4d106dccd53285",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "c3bc982178c60b8ef5077db201ec70f53c3e81cd4e497721da4d106dccd53285"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1040,12 +1008,10 @@
         "local_file": "resource_library/pattern/images/traditional_017.png",
         "source_path": "patterns/001-020_植物花卉纹/017_葡萄藤纹/017_葡萄藤纹_卡片图.png",
         "git_blob_sha": "07203a72f3419d2bb8a90a800a88676d54776334",
-        "sha256": "a040a6e4b13bacb6d6efbff28fa330fe6b4ff3b6617f734cc61ce6fdbe125c91",
+        "sha256": "b99629ded0333c383ee14a7149755aff1d0fb93992acf3e1ad73992238f0f9b9",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "b99629ded0333c383ee14a7149755aff1d0fb93992acf3e1ad73992238f0f9b9"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1103,12 +1069,10 @@
         "local_file": "resource_library/pattern/images/traditional_018.png",
         "source_path": "patterns/001-020_植物花卉纹/018_葫芦藤纹/018_葫芦藤纹_卡片图.png",
         "git_blob_sha": "e5afa43f26274cb95cef773f8b46676963d4d4b1",
-        "sha256": "3f9e10311e7854c93baa71894aeea9bce64b55a3dd8021e7cc6bad7745249458",
+        "sha256": "0efb728a4c8397f78cc8ece0986fa115554cff4601e7403e292f0d3130bf4818",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "0efb728a4c8397f78cc8ece0986fa115554cff4601e7403e292f0d3130bf4818"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1166,12 +1130,10 @@
         "local_file": "resource_library/pattern/images/traditional_019.png",
         "source_path": "patterns/001-020_植物花卉纹/019_折枝花纹/019_折枝花纹_卡片图.png",
         "git_blob_sha": "5c3c050eb296d378c10c0dc364054d7427073894",
-        "sha256": "67b540e549daa9f415525f00e8d9a186db00673d19be4a5e07a891c1b930f32b",
+        "sha256": "281fb1bee18dcee0332a988ca21113e523da5952104219ea9ae6cb0f7c4de0dd",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "281fb1bee18dcee0332a988ca21113e523da5952104219ea9ae6cb0f7c4de0dd"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1228,12 +1190,10 @@
         "local_file": "resource_library/pattern/images/traditional_020.png",
         "source_path": "patterns/001-020_植物花卉纹/020_团花纹/020_团花纹_卡片图.png",
         "git_blob_sha": "ee3c5f3fa22df447ae943e8711adb36cdf21b7e4",
-        "sha256": "16a6e4b0d04cb50537e54af71ca3326d9914c19a7294f15d5553948fbbd929b5",
+        "sha256": "b5fd3f284aea3de1d777bbeaf9c5cd36e22ba6e276e6806e9cc2a43f30c93e4e",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "b5fd3f284aea3de1d777bbeaf9c5cd36e22ba6e276e6806e9cc2a43f30c93e4e"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1290,12 +1250,10 @@
         "local_file": "resource_library/pattern/images/traditional_041.png",
         "source_path": "patterns/041-060_几何锦纹/041_回纹/041_回纹_卡片图.png",
         "git_blob_sha": "0c351333b16ec567ba23ebb0fc73a42017515199",
-        "sha256": "d398486baaf9ffdb0d142969f66d486aa309fccce9a6368965874bcb2eb14cc2",
+        "sha256": "3b520d77307f21e70dc4276455bb3803c21e0aea91ebebc1af93e072674ff078",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "3b520d77307f21e70dc4276455bb3803c21e0aea91ebebc1af93e072674ff078"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1352,12 +1310,10 @@
         "local_file": "resource_library/pattern/images/traditional_042.png",
         "source_path": "patterns/041-060_几何锦纹/042_雷纹/042_雷纹_卡片图.png",
         "git_blob_sha": "4eb60a1dc600f319c94ca16d9fe4df9a6ae2e14b",
-        "sha256": "c718090236efe6d82251d91b7d490f1cf95ffa9241184cb13cdc41440e69cab1",
+        "sha256": "c9b793d4f82c0a3399712d474a0838d864412833f0a7cd78db647684aeed82c3",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "c9b793d4f82c0a3399712d474a0838d864412833f0a7cd78db647684aeed82c3"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1414,12 +1370,10 @@
         "local_file": "resource_library/pattern/images/traditional_043.png",
         "source_path": "patterns/041-060_几何锦纹/043_云雷纹/043_云雷纹_卡片图.png",
         "git_blob_sha": "5c8ff1a12d9fb48ed5fcf55e30d3bef3f47c92b7",
-        "sha256": "517aed2bd3a51687674b799abee7816236e518b6231266364d44132ab52e57b9",
+        "sha256": "e3086cd7bdfe50fa7e062ffc760bff4a695bc9622dae5e1a7c826ad9154b8ba9",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "e3086cd7bdfe50fa7e062ffc760bff4a695bc9622dae5e1a7c826ad9154b8ba9"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1475,12 +1429,10 @@
         "local_file": "resource_library/pattern/images/traditional_044.png",
         "source_path": "patterns/041-060_几何锦纹/044_龟背纹/044_龟背纹_卡片图.png",
         "git_blob_sha": "c73912a3e25c8aa3e8e5ffe9cf15e213c96f26dd",
-        "sha256": "e755026107df0668ffd58962a819c5d2b500b22319802a6c83db13aa67183342",
+        "sha256": "a3c1d8dc1405357219f43198ef4e5ef406b41e125753c164cf0101f26886a1f9",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "a3c1d8dc1405357219f43198ef4e5ef406b41e125753c164cf0101f26886a1f9"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1536,12 +1488,10 @@
         "local_file": "resource_library/pattern/images/traditional_045.png",
         "source_path": "patterns/041-060_几何锦纹/045_菱格纹/045_菱格纹_卡片图.png",
         "git_blob_sha": "ead125863abc4775d95c866d5a7e138238e16f4b",
-        "sha256": "8bbc273efeb0d9b3045a04f9dd8c4192cac8b08f3a2e65aac6c7bed80ca76829",
+        "sha256": "2309b47e06ead645cde888d7cc14bbe0cc74e45c2ded1eec5e87faadd72dcbb1",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "2309b47e06ead645cde888d7cc14bbe0cc74e45c2ded1eec5e87faadd72dcbb1"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1598,12 +1548,10 @@
         "local_file": "resource_library/pattern/images/traditional_046.png",
         "source_path": "patterns/041-060_几何锦纹/046_连珠纹/046_连珠纹_卡片图.png",
         "git_blob_sha": "57abd1cfc6f9f84def65c253ddf301ad62f51825",
-        "sha256": "8d355a8edf20c51602927a8abd6a08c60b346e9b506e0d88997364b32a0bc51a",
+        "sha256": "067be08953cf8b7a6b6d9a1c55826dd29b956aaeb888c185a630ddc83bdf4826",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "067be08953cf8b7a6b6d9a1c55826dd29b956aaeb888c185a630ddc83bdf4826"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1660,12 +1608,10 @@
         "local_file": "resource_library/pattern/images/traditional_047.png",
         "source_path": "patterns/041-060_几何锦纹/047_方胜纹/047_方胜纹_卡片图.png",
         "git_blob_sha": "39a360d96d790d86cb1b728e713d55f3c639b24c",
-        "sha256": "66c8046a467f2c1501fab8a54083ff6e895359a8e6104055922fc816e3fbc001",
+        "sha256": "a648261a6cedffbe9b146030043fd75dab8bda511f753138470bc97494c39a06",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "a648261a6cedffbe9b146030043fd75dab8bda511f753138470bc97494c39a06"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1722,12 +1668,10 @@
         "local_file": "resource_library/pattern/images/traditional_048.png",
         "source_path": "patterns/041-060_几何锦纹/048_盘长纹/048_盘长纹_卡片图.png",
         "git_blob_sha": "650dc9842ac102256369d151da18add2d468f3e9",
-        "sha256": "ef2fc41c8c3d5759bbcc573049ff6fbd6cdcd9c7558f860bc155e3f1debeb310",
+        "sha256": "1db6dea9a9d6a47238ee2b2977a462a4d2430be1783b29313245227692eec1c6",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "1db6dea9a9d6a47238ee2b2977a462a4d2430be1783b29313245227692eec1c6"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1784,12 +1728,10 @@
         "local_file": "resource_library/pattern/images/traditional_049.png",
         "source_path": "patterns/041-060_几何锦纹/049_万字锦纹/049_万字锦纹_卡片图.png",
         "git_blob_sha": "53b08fa27a31bb783a38f84ef08492b4cb69e656",
-        "sha256": "f60a2edf0aa54e229bfd9ab1de310dad90387655160d12a1478ec06a8cbd6ebe",
+        "sha256": "4cf367669b7b8eab62f05481bbac620c03befb679ebdd6fadca7f45aede8a813",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "4cf367669b7b8eab62f05481bbac620c03befb679ebdd6fadca7f45aede8a813"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1846,12 +1788,10 @@
         "local_file": "resource_library/pattern/images/traditional_050.png",
         "source_path": "patterns/041-060_几何锦纹/050_锁子纹/050_锁子纹_卡片图.png",
         "git_blob_sha": "13361ebf04020d2d030031d4f315a458cfe4cff0",
-        "sha256": "7e5951d4ef6f1a05fb358e6e799f643c8f0a6b4d218c0911b6079e8e4b9d28f2",
+        "sha256": "2005f357bf76ec5c807d3e2d6041cd8510d03438fbb1a0463ef00d9bed672831",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "2005f357bf76ec5c807d3e2d6041cd8510d03438fbb1a0463ef00d9bed672831"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1907,12 +1847,10 @@
         "local_file": "resource_library/pattern/images/traditional_051.png",
         "source_path": "patterns/041-060_几何锦纹/051_冰裂纹/051_冰裂纹_卡片图.png",
         "git_blob_sha": "fd1a35a80a528c35777f22d48d6b5968afbc9c57",
-        "sha256": "ec8f28ed234a4d760ef0e1a91a682e494d08f24f23b3e90e5400e07263320861",
+        "sha256": "2610bd1cec3af64425feb63e12105032444bff7b02418667977c8587e9e65e26",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "2610bd1cec3af64425feb63e12105032444bff7b02418667977c8587e9e65e26"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -1967,12 +1905,10 @@
         "local_file": "resource_library/pattern/images/traditional_052.png",
         "source_path": "patterns/041-060_几何锦纹/052_锦地纹/052_锦地纹_卡片图.png",
         "git_blob_sha": "6c9e6a59ad1b5139652465b1272a0d06cfca4b4c",
-        "sha256": "520415fd37942ae635a64f778ef3d9090b70709080204cd78f1df5f668d4f51c",
+        "sha256": "5f61cef044934264d242c58bac658a25e37b38580679094e9ed14cbc8c0f0878",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "5f61cef044934264d242c58bac658a25e37b38580679094e9ed14cbc8c0f0878"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2028,12 +1964,10 @@
         "local_file": "resource_library/pattern/images/traditional_053.png",
         "source_path": "patterns/041-060_几何锦纹/053_十字花纹/053_十字花纹_卡片图.png",
         "git_blob_sha": "870ff86d8353ba982333b340996f01551f63b308",
-        "sha256": "1834c3a089ebec97202c03d34905ac3a94f76e9202ea292904569ee5832caa53",
+        "sha256": "9fe4e745763a3394a9cf3801b80bac81c6730159fef8bb633f7a95b9bfb55b63",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "9fe4e745763a3394a9cf3801b80bac81c6730159fef8bb633f7a95b9bfb55b63"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2090,12 +2024,10 @@
         "local_file": "resource_library/pattern/images/traditional_054.png",
         "source_path": "patterns/041-060_几何锦纹/054_六角花纹/054_六角花纹_卡片图.png",
         "git_blob_sha": "3626fb330120e4481b963d4fd0044b0ef06e04b3",
-        "sha256": "490c396436dbca9be8089e9b439dd0111916c4af24c0f3384f68ac4ec298483f",
+        "sha256": "3f4b78f583ed73579c244492c3441e1f89037a41f1798c618ded7c3a0995ad22",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "3f4b78f583ed73579c244492c3441e1f89037a41f1798c618ded7c3a0995ad22"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2152,12 +2084,10 @@
         "local_file": "resource_library/pattern/images/traditional_055.png",
         "source_path": "patterns/041-060_几何锦纹/055_八角星纹/055_八角星纹_卡片图.png",
         "git_blob_sha": "80f9e5558608e85635c7c2682e9f724ea28b5490",
-        "sha256": "843d0856d5ba82dacf10edc18c3a6c6c1b594330dc0da74528915d69280fda3e",
+        "sha256": "2bd23bd7c67fa1d03cd7769a89c06505255e2da7581f6f5a02899f195eb7517b",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "2bd23bd7c67fa1d03cd7769a89c06505255e2da7581f6f5a02899f195eb7517b"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2214,12 +2144,10 @@
         "local_file": "resource_library/pattern/images/traditional_056.png",
         "source_path": "patterns/041-060_几何锦纹/056_波折纹/056_波折纹_卡片图.png",
         "git_blob_sha": "c4f377461020b9877bab1a3bb0ebfb0440ce8bb2",
-        "sha256": "6010bd589e458b3d85bae5d236dbefc40bc825772fdd8375cfb2b15c61d84409",
+        "sha256": "70f01897a3315fa4b59800e53036aee6995726854913d06dc0a630738a65b1f5",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "70f01897a3315fa4b59800e53036aee6995726854913d06dc0a630738a65b1f5"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2276,12 +2204,10 @@
         "local_file": "resource_library/pattern/images/traditional_057.png",
         "source_path": "patterns/041-060_几何锦纹/057_曲尺纹/057_曲尺纹_卡片图.png",
         "git_blob_sha": "768570adfd82dc1cca6393bf17b81d4460c76049",
-        "sha256": "ae35a1aeafe807ad95f254140a54e1f775f88434b34dd7bf36d05fff348b4531",
+        "sha256": "419c649392d67dbfa336fedf1d9b3b0bdb7c409b2eb7f3a793e806cc587d58f0",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "419c649392d67dbfa336fedf1d9b3b0bdb7c409b2eb7f3a793e806cc587d58f0"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2338,12 +2264,10 @@
         "local_file": "resource_library/pattern/images/traditional_058.png",
         "source_path": "patterns/041-060_几何锦纹/058_格锦纹/058_格锦纹_卡片图.png",
         "git_blob_sha": "6875e095678972c3c86962a8b6db31f4daf5e475",
-        "sha256": "ccb29a02267eb55a3f85b0347b8a04fadc727be0750f59f59b1a0f29a9d03dad",
+        "sha256": "e67607ff4288d1092a13c586fce8414e45469305d45acbcafa0d23a1ec430343",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "e67607ff4288d1092a13c586fce8414e45469305d45acbcafa0d23a1ec430343"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2399,12 +2323,10 @@
         "local_file": "resource_library/pattern/images/traditional_059.png",
         "source_path": "patterns/041-060_几何锦纹/059_菱花锦纹/059_菱花锦纹_卡片图.png",
         "git_blob_sha": "e61796b6aae27996009f98eddc1dbb08414ba7e1",
-        "sha256": "0d73cbb4bb3d27383dbc42bc2a4182859a4cac68a3642554fbc02078ff7fd8d2",
+        "sha256": "288207fc1911ea0e495154db11ebdd9a5355410fff199c1d733c1fd453660b3b",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "288207fc1911ea0e495154db11ebdd9a5355410fff199c1d733c1fd453660b3b"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2460,12 +2382,10 @@
         "local_file": "resource_library/pattern/images/traditional_060.png",
         "source_path": "patterns/041-060_几何锦纹/060_连环纹/060_连环纹_卡片图.png",
         "git_blob_sha": "c4fb7e8bd593c529548b9870ef2a2c2570f9c8a9",
-        "sha256": "2c4ad951e797760b37ea0d8c9f4eaa130052017d998479c6ea561123d9cdd044",
+        "sha256": "bfefbbbd46571714abce54c44db806498db5692df1ebaeaf70eebbf0a4b3f763",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "bfefbbbd46571714abce54c44db806498db5692df1ebaeaf70eebbf0a4b3f763"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2522,12 +2442,10 @@
         "local_file": "resource_library/pattern/images/traditional_061.png",
         "source_path": "patterns/061-075_云水山石纹/061_祥云纹/061_祥云纹_卡片图.png",
         "git_blob_sha": "3fe47f091bb10d876925d7a2a200ea7db91598ca",
-        "sha256": "eb609d08f0da2e53224c18dc8442f8b5d25446e320e96d0ec866fe5c621acc7b",
+        "sha256": "1def082329a2284f928c25181885d315a2cf43b3b7afa7da59e73ad65ee96a3b",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "1def082329a2284f928c25181885d315a2cf43b3b7afa7da59e73ad65ee96a3b"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2584,12 +2502,10 @@
         "local_file": "resource_library/pattern/images/traditional_062.png",
         "source_path": "patterns/061-075_云水山石纹/062_如意云纹/062_如意云纹_卡片图.png",
         "git_blob_sha": "6f8c8178045aa19d0910f259bf7ec48938eec1e7",
-        "sha256": "08ed84396a9a4266dc4a124eed4adff4a46e2363372302a887c83a1b80b33258",
+        "sha256": "78d4ed845b8e1794dacb5817fb917d416716eaa38a141c71e7435ec6c3166954",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "78d4ed845b8e1794dacb5817fb917d416716eaa38a141c71e7435ec6c3166954"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2645,12 +2561,10 @@
         "local_file": "resource_library/pattern/images/traditional_063.png",
         "source_path": "patterns/061-075_云水山石纹/063_卷云纹/063_卷云纹_卡片图.png",
         "git_blob_sha": "8dee8b24f4c4df61ae013a452814f282e832f4c8",
-        "sha256": "cc31711fd1c42984f4aa1095f6552cd4ee4b1f18663ea1fec38b123c29a40a55",
+        "sha256": "0f610a0ff9c0533570ae24ea27c326bea3cf32aa046b24f30474852cf1237fe0",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "0f610a0ff9c0533570ae24ea27c326bea3cf32aa046b24f30474852cf1237fe0"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2706,12 +2620,10 @@
         "local_file": "resource_library/pattern/images/traditional_064.png",
         "source_path": "patterns/061-075_云水山石纹/064_海水江崖纹/064_海水江崖纹_卡片图.png",
         "git_blob_sha": "ae1b8b6245d9dec690b050400ac562d276d055f0",
-        "sha256": "4db0439810ba3ae80c0b327d005bb2ab7adff452e3abb92a677ce065b8a37a29",
+        "sha256": "9275ae87d1cf157d8ab3c209d4fad479012211f0670540915318f33d890d5ee5",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "9275ae87d1cf157d8ab3c209d4fad479012211f0670540915318f33d890d5ee5"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2768,12 +2680,10 @@
         "local_file": "resource_library/pattern/images/traditional_065.png",
         "source_path": "patterns/061-075_云水山石纹/065_水波纹/065_水波纹_卡片图.png",
         "git_blob_sha": "f35760c21c5fc12613260924ecbba5c3799127d4",
-        "sha256": "a159656ee494c485ece1dfd99473a50dcadecdd432915dc5bc90fcf5b8926422",
+        "sha256": "5555a9d114ee80ff90806b84bff52ecd89ec28ec3f91d1810c051e43b5522419",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "5555a9d114ee80ff90806b84bff52ecd89ec28ec3f91d1810c051e43b5522419"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2830,12 +2740,10 @@
         "local_file": "resource_library/pattern/images/traditional_066.png",
         "source_path": "patterns/061-075_云水山石纹/066_浪花纹/066_浪花纹_卡片图.png",
         "git_blob_sha": "cb7b48245da454c201080f2a150a327028d07043",
-        "sha256": "6f6c6d1700ce542ef87f17b0f270153c2b1f6a02aae7f71932a8901f8760c827",
+        "sha256": "e5220b387c464a75e3b2058bc10105bf91fd7ad20836426ac409115b12161be9",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "e5220b387c464a75e3b2058bc10105bf91fd7ad20836426ac409115b12161be9"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2892,12 +2800,10 @@
         "local_file": "resource_library/pattern/images/traditional_067.png",
         "source_path": "patterns/061-075_云水山石纹/067_山纹/067_山纹_卡片图.png",
         "git_blob_sha": "a05689425614d5eaf24b64b460ea460a08b7f3b0",
-        "sha256": "e4c2b6a8ad2ff93d9f4dfc20ef481f86c59231decd62a4047a03e463c20e6efb",
+        "sha256": "70be6a881bc02b2f00d33d7d439a6f2c506b8785e72a38eeae3e0f899a937c6e",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "70be6a881bc02b2f00d33d7d439a6f2c506b8785e72a38eeae3e0f899a937c6e"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -2955,12 +2861,10 @@
         "local_file": "resource_library/pattern/images/traditional_068.png",
         "source_path": "patterns/061-075_云水山石纹/068_山水纹/068_山水纹_卡片图.png",
         "git_blob_sha": "e13b72ae3706126391c6a1fa45e68cd3287d3a1e",
-        "sha256": "50db2c68b96706c269503099353733ea20fba9d5e7b5999604322169aaa2cb21",
+        "sha256": "304970725d594bf7bb7b60fc97b4ea4cc555488bba8f644d97c9ec840c6b9163",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "304970725d594bf7bb7b60fc97b4ea4cc555488bba8f644d97c9ec840c6b9163"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3019,12 +2923,10 @@
         "local_file": "resource_library/pattern/images/traditional_069.png",
         "source_path": "patterns/061-075_云水山石纹/069_太湖石纹/069_太湖石纹_卡片图.png",
         "git_blob_sha": "8f35113848a23863546347a6d43f71c5e17a4d5a",
-        "sha256": "a444c616f3a42d401596ed059722955dadb1cf1b0b82e78fb5a325dbc2a68bfb",
+        "sha256": "f66979edd6e4fea6c5e29df1de4474e9aa715edbbff4b35c86edfbeeb136ba59",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "f66979edd6e4fea6c5e29df1de4474e9aa715edbbff4b35c86edfbeeb136ba59"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3081,12 +2983,10 @@
         "local_file": "resource_library/pattern/images/traditional_070.png",
         "source_path": "patterns/061-075_云水山石纹/070_火焰纹/070_火焰纹_卡片图.png",
         "git_blob_sha": "30b76f8a9b8db993d5a6ffa289f952cf0847788b",
-        "sha256": "5b3d0e5899691484784665314eee22610d350a8b104988d4d21591fe57cc3476",
+        "sha256": "1b3e934537c11e933ddf2add994b4cdd0d5979059413f91599846d1fd610a74f",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "1b3e934537c11e933ddf2add994b4cdd0d5979059413f91599846d1fd610a74f"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3141,12 +3041,10 @@
         "local_file": "resource_library/pattern/images/traditional_071.png",
         "source_path": "patterns/061-075_云水山石纹/071_流云纹/071_流云纹_卡片图.png",
         "git_blob_sha": "993caf6a490173630e46497fde7e7d22c91b7f64",
-        "sha256": "34ee2629decaab60d5f501cc8802a80b0b0a98f0f9368994b5fd16545b7477db",
+        "sha256": "a936ae186e46388609be7a53e7547f62303cb5bf078c5fbefaa72468cdb62551",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "a936ae186e46388609be7a53e7547f62303cb5bf078c5fbefaa72468cdb62551"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3202,12 +3100,10 @@
         "local_file": "resource_library/pattern/images/traditional_072.png",
         "source_path": "patterns/061-075_云水山石纹/072_云气纹/072_云气纹_卡片图.png",
         "git_blob_sha": "f6bb8905a45a0b99f4e0353af4de30af5c242c35",
-        "sha256": "a88a1e8e6442f8f73084b4e0572c9c7b2224246f502c5c1cb57b126d05263a01",
+        "sha256": "900ec941044d0a96bd26a13247a13b6d924e24ba9f046fd4a22d5280c930d89d",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "900ec941044d0a96bd26a13247a13b6d924e24ba9f046fd4a22d5280c930d89d"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3264,12 +3160,10 @@
         "local_file": "resource_library/pattern/images/traditional_073.png",
         "source_path": "patterns/061-075_云水山石纹/073_涡纹/073_涡纹_卡片图.png",
         "git_blob_sha": "c199a5f1928adcd967518a909243ebe42bcaa025",
-        "sha256": "c1594a877325cc7b31af2687ef645bf0b0660a911b9d1bc141e45dd6724d6cf7",
+        "sha256": "2a90a983298e108a2487e32fdda8503cfcbe6a04847cc729ab18b361ab322be4",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "2a90a983298e108a2487e32fdda8503cfcbe6a04847cc729ab18b361ab322be4"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3326,12 +3220,10 @@
         "local_file": "resource_library/pattern/images/traditional_074.png",
         "source_path": "patterns/061-075_云水山石纹/074_雨点纹/074_雨点纹_卡片图.png",
         "git_blob_sha": "9d51c2f81537552e3787458f998b6796875f5d5b",
-        "sha256": "27d41173dceba8cf57b99cfcbb50e87f50e7b99a51a42eab59d511fedbaf9427",
+        "sha256": "e207302db25403daef9b1e6db98bb65e94fe02d05abe2cce01e8c59a6e9b94b3",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "e207302db25403daef9b1e6db98bb65e94fe02d05abe2cce01e8c59a6e9b94b3"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
@@ -3388,12 +3280,10 @@
         "local_file": "resource_library/pattern/images/traditional_075.png",
         "source_path": "patterns/061-075_云水山石纹/075_星宿纹/075_星宿纹_卡片图.png",
         "git_blob_sha": "72334ab5f1af99ec6866de2a18c74ebba1b5e0f0",
-        "sha256": "0e49e3631384052101eb762b1d80abb09cf8b7a2d062fa32ca683fc67aa3fb28",
+        "sha256": "fe6f311651091c3f6ff2bbf8f6cd8dfa534dcf98f2b814b8bbfaa5e7073e081e",
         "visual_review": "reviewed_nonportrait_pattern_card",
         "scope": "pattern",
-        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。",
-        "mobile_optimized_preview": true,
-        "upstream_original_sha256": "fe6f311651091c3f6ff2bbf8f6cd8dfa534dcf98f2b814b8bbfaa5e7073e081e"
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
       },
       "nai4full_status": "candidate_not_image_quality_tested",
       "nai5full_status": "candidate_not_image_quality_tested",
