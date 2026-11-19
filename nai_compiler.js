@@ -68,16 +68,17 @@ function fragmentsFor(plan,packets,style,settings,subset=plan.cast,shot=plan.cam
   add('identity',english(identity,'人物外貌'),0,ch.id,true,'formal_identity');
   const visible=new Set(frameRegions(shot,plan.camera.focus).filter(r=>!v?.visible_regions?.length||v.visible_regions.includes(r)));
   const gloves=hiddenNails(source),toesHidden=hiddenToenails(source);if(gloves)visible.delete('fingernails');if(toesHidden)visible.delete('toenails');
-  const renderItems=v?.outfit||[];
+  const renderItems=v?.outfit||[],visibleItemIds=new Set();
   for(const item of source?.items||[]){const render=renderItems.find(x=>x.item_id===item.item_id);const inFrame=itemRegions(item).some(r=>visible.has(r));
    if(!inFrame||render?.visible===false){omitted.push({character_id:ch.id,item_id:item.item_id,reason:'outside_frame_or_occluded'});continue;}
    if(item.wear_state!=='worn'&&!(item.wear_state==='partial'&&item.members?.some(m=>m.wear_state==='worn'))&&!/手|臂|held|holding|arm|hand/i.test(item.location||'')){omitted.push({character_id:ch.id,item_id:item.item_id,reason:'not_worn_or_visibility_unknown'});continue;}
+   visibleItemIds.add(item.item_id);
    const t=render?.text||item.name;if(!t)continue;add('outfit',english(t,'当前服饰与状态'),0,ch.id,true,item.item_id);
   }
   add('action',english(v?.pose||[ch.pose,ch.action].filter(Boolean).join(', '),'动作'),1,ch.id,!!(v?.pose||ch.pose||ch.action),'director');
   add('expression',english(v?.expression||ch.expression,'表情'),2,ch.id,false,'director');add('gaze',english(v?.gaze||ch.gaze,'目光'),3,ch.id,false,'director');
   const position={left:'on the left',right:'on the right',center:'in the center','upper-left':'upper left','upper-right':'upper right','lower-left':'lower left','lower-right':'lower right'}[ch.zone];add('position',position,2,ch.id,false,'director');
-  for(const r of v?.resources||[]){let reason='';if(!r.visible||r.regions.length&&!r.regions.some(x=>visible.has(x)))reason='outside_frame';if(r.category==='nails'&&gloves&&r.regions.includes('fingernails'))reason='nails_hidden_by_gloves';if(r.category==='nails'&&toesHidden&&r.regions.includes('toenails'))reason='toenails_hidden_by_footwear';if(r.detail&&!['close_up','extreme_close_up'].includes(shot))reason='detail_too_small';
+  for(const r of v?.resources||[]){let reason='';if(!r.visible||r.regions.length&&!r.regions.some(x=>visible.has(x)))reason='outside_frame';if(r.parent_item_id&&!visibleItemIds.has(r.parent_item_id))reason='outside_frame_or_occluded';if(r.category==='nails'&&gloves&&r.regions.includes('fingernails'))reason='nails_hidden_by_gloves';if(r.category==='nails'&&toesHidden&&r.regions.includes('toenails'))reason='toenails_hidden_by_footwear';if(r.detail&&!['close_up','extreme_close_up'].includes(shot))reason='detail_too_small';
    if(reason){omitted.push({character_id:ch.id,resource_id:r.resource_id,reason});continue;}add(r.category,english(r.text,'素材片段'),['expression','pose'].includes(r.category)?2:4,ch.id,false,r);}
  }
  return {fragments,omitted,genderCounts};}
@@ -97,8 +98,36 @@ export function compileNai(plan,packets,settings,style,subset=plan.cast,shot=pla
   resourceReport:{template:templateFor(plan.mode).id,catalogSize:resourceEntries.length,selected:kept.filter(x=>x.source_ref?.resource_id),fragments:kept,omitted:[...data.omitted,...dropped],warnings,
    budget:{method:'AVS conservative heuristic, NOT actual model tokenizer',exact:false,baseEstimated:c.base,charactersEstimated:c.characters,negativeEstimated:estimateTokens(negative),officialApprox:p.officialApprox,officialScope:p.scope,workingBaseOrShared:p.workingBudget}}};
 }
-export function manualNai(positive,negative,image){const profile=profileFor(image),p=NAI_PROFILES[profile];if(!p)return null;const [base,...slots]=String(positive||'').split('|').map(x=>x.trim());
- if(!base||slots.some(x=>!x))throw new Error('手动提示词包含空白全局或角色片段');if(slots.length>p.maxCharacters)throw new Error('手动提示词超出所选Nai的独立角色数量');
- for(const s of [base,...slots,String(negative||'')])guardSyntax(s,profile);
- const b=estimateTokens(base),c=slots.reduce((n,s)=>n+estimateTokens(s),0);if((profile==='nai4full'?b+c:b)>p.workingBudget||estimateTokens(negative)>460)throw new Error('手动提示词超过所选型号的保守估算预算，请缩短后重试');
- return {profile,base,negative:String(negative||''),characters:slots.map((prompt,i)=>({id:'manual-'+i,prompt,negative:'',center:{x:0.5,y:0.5}}))};}
+export function promptCounts({base, negative, characters = []}) {
+ return {
+  base: estimateTokens(base),
+  roles: characters.reduce((n, role) => n + estimateTokens(role.prompt), 0),
+  negative: estimateTokens(negative) + characters.reduce((n, role) => n + estimateTokens(role.negative), 0)
+ };
+}
+
+export function manualNaiParts(draft, image) {
+ const profile = profileFor(image), p = NAI_PROFILES[profile];
+ if (!p) return null;
+ const base = String(draft.base || '').trim();
+ const negative = String(draft.negative || '').trim();
+ const characters = (draft.characters || []).map((role, index) => {
+  const {x, y} = role.center || {x: 0.5, y: 0.5};
+  if (![x, y].every(n => Number.isFinite(n) && n >= 0 && n <= 1)) throw new Error('角色站位坐标须在 0 到 1 之间');
+  return {id: role.id || 'manual-' + index, prompt: String(role.prompt || '').trim(), negative: String(role.negative || '').trim(), center: {x, y}};
+ });
+ if (!base || characters.some(role => !role.prompt)) throw new Error('手动提示词包含空白全局或角色片段');
+ if (characters.length > p.maxCharacters) throw new Error('手动提示词超出所选Nai的独立角色数量');
+ for (const value of [base, negative, ...characters.flatMap(role => [role.prompt, role.negative])]) guardSyntax(value, profile);
+ const totals = promptCounts({base, negative, characters});
+ const overPositive = profile === 'nai4full'
+  ? totals.base + totals.roles > p.workingBudget
+  : totals.base > p.workingBudget || totals.roles > Math.max(700, characters.length * 380);
+ if (overPositive || totals.negative > 460) throw new Error('手动提示词超过所选型号的保守估算预算，请缩短后重试');
+ return {profile, base, negative, characters, useCoords: draft.useCoords ?? characters.length > 1};
+}
+
+export function manualNai(positive, negative, image) {
+ const [base, ...slots] = String(positive || '').split('|');
+ return manualNaiParts({base, negative, characters: slots.map(prompt => ({prompt}))}, image);
+}

@@ -13,7 +13,9 @@ export function validateMaterialAudit(raw,rows){let d;try{const m=String(raw).ma
 export async function collectReferenceImages(context,settings,signal){const refs=context.user_selected||[],images=[],trace=[],seen=new Set(),pending=[];
  if(!settings.resources?.visionEnabled)return {images,trace,mode:'text_only'};
  if(settings.prompt.useMain)return {images:[],trace:refs.map(p=>({resource_id:p.resource_id,status:'text_only_main_api',reason:'主API路径按文字片段参考，不发送图片'})),mode:'text_only_main_api'};
- for(const ref of refs){if(images.length>=4){trace.push({resource_id:ref.resource_id,status:'image_limit',reason:'本次最多4张参考图'});continue;}const entry=resourceById.get(ref.resource_id),url=entry&&referencePreview(entry);if(!url){trace.push({resource_id:ref.resource_id,status:'text_only',reason:'该条目为文字／结构候选，无人物图片'});continue;}
+ for(const ref of refs){const entry=resourceById.get(ref.resource_id);
+  if(entry?.reference?.visual_review==='reviewed_nonportrait_pattern_card'){trace.push({resource_id:ref.resource_id,status:'text_only_pattern_card',reason:'带说明文字的纹样卡仅供浏览，本次按文字取材'});continue;}
+  if(images.length>=4){trace.push({resource_id:ref.resource_id,status:'image_limit',reason:'本次最多4张参考图'});continue;}const url=entry&&referencePreview(entry);if(!url){trace.push({resource_id:ref.resource_id,status:'text_only',reason:'该条目为文字／结构候选，无人物图片'});continue;}
   const fingerprint=entry.reference.sha256||url;if(seen.has(fingerprint)){trace.push({resource_id:ref.resource_id,status:'shared_image',reason:'相同示例只发送一次'});continue;}seen.add(fingerprint);
   const response=await fetch(url,{signal,credentials:'omit'});
   if(!response.ok)throw new Error('本地参考图读取失败：'+entry.label_zh);

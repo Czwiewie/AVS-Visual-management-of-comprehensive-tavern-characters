@@ -43,13 +43,19 @@ export function retrieveForPlan(plan,packets,settings){const template=templateFo
   rule:'候选不是事实。仅选择有档案或本幕证据的条目，逐角色编译英文短片段；不得因为库中出现某物就为人物换装。材质/装饰须绑定既有物品ID和附着位置。隐藏的美甲和画外鞋履只保留在元数据。不要复制整个库或类别标题到最终提示词。'};}
 function resourceRegions(entry,parent,anchor,category){
  if(parent&&['ornament','material'].includes(category)){
+  if(/裙摆|裙边|裤脚|下裙|\b(?:skirt|trouser|pant|lower dress)\b.*\bhem\b|\bhem\b.*\bskirt\b/i.test(anchor))return ['legs'];
+  if(/领口|衣领|驳领|前胸|\b(?:neckline|collar|lapel|bodice|chest)\b/i.test(anchor))return ['torso'];
+  if(/袖口|手腕|\b(?:sleeve cuff|wrist)\b/i.test(anchor))return ['arms','hands'];
+  if(/袖子|袖身|\bsleeve\b/i.test(anchor))return ['arms'];
+  if(/鞋面|鞋底|鞋跟|\b(?:shoe|footwear|toe|heel|sole)\b/i.test(anchor))return ['feet'];
+  if(/发饰|耳部|耳侧|\b(?:hairpin|headpiece|earring)\b/i.test(anchor))return ['head'];
   const location=[anchor,parent.slot,parent.name].join(' ');
+  if(/\bhem\b|下摆/i.test(anchor)&&/裙|\b(?:dress|skirt)\b/i.test(parent.name+' '+parent.slot))return ['legs'];
   if(/靴|boot shaft|boot leg/i.test(location))return ['legs','feet'];
   if(/鞋|鞋面|足|foot|toe|heel|sole|shoe|sandal/i.test(location))return ['feet'];
   if(/袜|腿|hosiery|stocking|pantyhose|legwear|leg/i.test(location))return ['legs','feet'];
   if(/发|头|耳|hair|head|earring/i.test(location))return ['head'];
   if(/手|指|腕|glove|hand|wrist|finger/i.test(location))return ['hands'];
-  if(/裙摆|hem|skirt/i.test(anchor))return ['legs','torso'];
   return ['torso'];
  }
  return entry.regions||[];

@@ -67,15 +67,41 @@ export function comfyDefault(prompt,negative,image){const [w,h]=sizeFor(image.si
  '6':{class_type:'VAEDecode',inputs:{samples:['5',0],vae:['1',2]}},
  '7':{class_type:'SaveImage',inputs:{filename_prefix:'AVS_R2',images:['6',0]}}
 };}
-export function applyWorkflow(text,prompt,negative,image,styleImageName=''){let workflow;try{workflow=JSON.parse(text)}catch{throw new Error('ComfyUI工作流JSON无法解析')}
- const [w,h]=sizeFor(image.size);const seed=Math.floor(Math.random()*2147483647);
- const replacements={'{{PROMPT}}':prompt,'{{NEGATIVE}}':negative,'{{WIDTH}}':w,'{{HEIGHT}}':h,'{{SEED}}':seed,'{{CKPT}}':image.checkpoint,'{{STYLE_IMAGE}}':styleImageName};
- const apply=x=>{if(typeof x==='string'){if(replacements[x]!==undefined)return replacements[x];let t=x;for(const [k,v] of Object.entries(replacements))t=t.replaceAll(k,String(v));return t}if(Array.isArray(x))return x.map(apply);if(x&&typeof x==='object')return Object.fromEntries(Object.entries(x).map(([k,v])=>[k,apply(v)]));return x};return apply(workflow)}
+function comfyGraph(source) {
+ let parsed;
+ try { parsed=JSON.parse(source); } catch { throw new Error('ComfyUI工作流JSON无法解析'); }
+ const graph=parsed?.prompt??parsed, nodes=Object.values(graph||{});
+ if(!nodes.length||Array.isArray(graph)||!nodes.every(node=>
+  typeof node?.class_type==='string'&&node.class_type.trim()&&
+  node.inputs&&typeof node.inputs==='object'&&!Array.isArray(node.inputs)
+ )) throw new Error('请从ComfyUI导出API格式JSON，每个节点应包含class_type与inputs');
+ const hasPrompt=value=>typeof value==='string'?value.includes('{{PROMPT}}'):
+  value&&typeof value==='object'&&Object.values(value).some(hasPrompt);
+ if(!nodes.some(node=>hasPrompt(node.inputs)))throw new Error('ComfyUI工作流节点输入缺少{{PROMPT}}，无法传入本次提示词');
+ return graph;
+}
+function fillWorkflow(graph,prompt,negative,image,styleImageName) {
+ const [w,h]=sizeFor(image.size), seed=Math.floor(Math.random()*2147483647);
+ const replacements={'{{PROMPT}}':prompt,'{{NEGATIVE}}':negative,'{{WIDTH}}':w,'{{HEIGHT}}':h,
+  '{{SEED}}':seed,'{{CKPT}}':image.checkpoint??'','{{STYLE_IMAGE}}':styleImageName};
+ const apply=value=>{
+  if(typeof value==='string'){
+   if(Object.hasOwn(replacements,value))return replacements[value];
+   return value.replace(/\{\{(?:PROMPT|NEGATIVE|WIDTH|HEIGHT|SEED|CKPT|STYLE_IMAGE)\}\}/g,key=>String(replacements[key]));
+  }
+  if(Array.isArray(value))return value.map(apply);
+  if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,apply(item)]));
+  return value;
+ };
+ return Object.fromEntries(Object.entries(graph).map(([id,node])=>[id,{...node,inputs:apply(node.inputs)}]));
+}
+export function applyWorkflow(source,prompt,negative,image,styleImageName=''){
+ return fillWorkflow(comfyGraph(source),prompt,negative,image,styleImageName);
+}
 const nap=(ms)=>new Promise(r=>setTimeout(r,ms));
-export function checkComfyStyleWorkflow(source){
- let wf;try{wf=JSON.parse(source)}catch{throw new Error('自定义ComfyUI工作流必须是API格式JSON')}
- const graph=wf?.prompt&&typeof wf.prompt==='object'?wf.prompt:wf;
- const entries=Object.entries(graph||{}).filter(([,n])=>n?.class_type);
+export function checkComfyStyleWorkflow(source){ return checkComfyStyleGraph(comfyGraph(source)); }
+function checkComfyStyleGraph(graph){
+ const entries=Object.entries(graph);
  const loaders=entries.filter(([,n])=>n.class_type==='LoadImage'&&n.inputs?.image==='{{STYLE_IMAGE}}').map(([id])=>id);
  if(!loaders.length)throw new Error('强参考工作流缺少LoadImage节点及{{STYLE_IMAGE}}图片占位符');
  const adj=new Map();for(const [id,node] of entries){for(const v of Object.values(node.inputs||{}))if(Array.isArray(v)&&typeof v[0]==='string'){
@@ -88,18 +114,19 @@ export function checkComfyStyleWorkflow(source){
  return true;
 }
 export async function comfyImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={}){
+ const graph=settings.workflow?.trim()?comfyGraph(settings.workflow):null;
  const base=sanitizeUrl(settings.comfyBase);let styleImageName='';
  if(settings.referenceMode==='comfy_style'){
   if(!reference?.blob)throw new Error('已选择ComfyUI强参考，但锁定画风没有可读取的参考图');
-  if(!settings.workflow?.trim())throw new Error('ComfyUI风格参考需要自定义工作流，默认Checkpoint文生图不支持参考图');
-  checkComfyStyleWorkflow(settings.workflow);
+  if(!graph)throw new Error('ComfyUI风格参考需要自定义工作流，默认Checkpoint文生图不支持参考图');
+  checkComfyStyleGraph(graph);
   const form=new FormData();form.append('image',reference.blob,`avs-style-${Date.now()}.jpg`);form.append('overwrite','false');
   const upload=await needOK(await fetchTimeout(`${base}/upload/image`,{method:'POST',body:form,signal},60000));
   const uploaded=await upload.json();if(!uploaded?.name||!/^input$|^output$|^temp$/.test(uploaded.type||'input'))throw new Error('ComfyUI已响应，但没有返回有效上传图片名');
   styleImageName=(uploaded.subfolder?uploaded.subfolder+'/':'')+uploaded.name;
   progress('画风参考图已上传到ComfyUI，正在执行风格工作流…');
  }
- const wf=settings.workflow?.trim()?applyWorkflow(settings.workflow,prompt,negative,settings,styleImageName):comfyDefault(prompt,negative,settings);
+ const wf=graph?fillWorkflow(graph,prompt,negative,settings,styleImageName):comfyDefault(prompt,negative,settings);
 
  const r=await needOK(await fetchTimeout(`${base}/prompt`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:wf,client_id:'avs-r2-visual'}),signal},42000));const j=await r.json(),id=j.prompt_id;if(!id)throw new Error('ComfyUI未返回prompt_id：'+JSON.stringify(j).slice(0,270));progress('ComfyUI已接收任务 '+id.slice(0,8));report.referenceActuallySent=!!styleImageName;report.adapter=styleImageName?'comfy-style-workflow':'comfy-text-only';
  const until=Date.now()+240000;while(Date.now()<until){if(signal?.aborted)throw new Error('已停止等待ComfyUI图片（服务器端任务可能继续执行）');await nap(1650);let h;
@@ -140,7 +167,7 @@ export function buildNovelAIRequest(settings,prompt,negative,compiled=null){
  const centers=c=>[c.center||{x:0.5,y:0.5}];
  const parameters={params_version:v5?4:3,width,height,scale:Number(settings.cfg)||5,sampler:'k_euler_ancestral',steps:Number(settings.steps)||28,n_samples:1,seed:Math.floor(Math.random()*4294967295),
   noise_schedule:'karras',negative_prompt:captions.negative||negative||'',
-  v4_prompt:{caption:{base_caption:captions.base,char_captions:roles.map(c=>({char_caption:c.prompt,centers:centers(c)}))},use_coords:roles.length>1,use_order:true},
+  v4_prompt:{caption:{base_caption:captions.base,char_captions:roles.map(c=>({char_caption:c.prompt,centers:centers(c)}))},use_coords:captions.useCoords??roles.length>1,use_order:true},
   v4_negative_prompt:{caption:{base_caption:captions.negative||negative||'',char_captions:roles.map(c=>({char_caption:c.negative||'',centers:centers(c)}))},legacy_uc:false}};
  if(v5){parameters.image_format='png';parameters.characterPrompts=roles.map(c=>({prompt:c.prompt,uc:c.negative||'',center:c.center||{x:0.5,y:0.5},enabled:true}));parameters.stream='msgpack';}
  else Object.assign(parameters,{qualityToggle:false,ucPreset:4,sm:false,sm_dyn:false,dynamic_thresholding:false,legacy:false,add_original_image:true,uncond_scale:1});
@@ -157,7 +184,6 @@ export async function novelaiImage(settings,prompt,negative,signal,compiled=null
 }
 export async function generateImage(settings,prompt,negative,signal,progress=()=>{},reference=null,report={},compiled=null){
  report.promptDelivery={flatPrompt:prompt,characters:[],method:'text_prompt',imagePixelsSent:false};
- if(settings.engine==='comfy'&&settings.workflow?.trim()&&!settings.workflow.includes('{{PROMPT}}'))throw new Error('ComfyUI工作流缺少{{PROMPT}}，无法传入本次素材片段，已停止请求');
  if(settings.engine==='comfy')return comfyImage(settings,prompt,negative,signal,progress,reference,report);
  if(settings.engine==='novelai'){
   if((settings.referenceMode||'text')!=='text')throw new Error('当前NovelAI适配不发送Vibe参考图，请使用文字画风参考');

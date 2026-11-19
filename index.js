@@ -10,14 +10,16 @@ import {cardContext,fanEnabled,fanSummary,discoverFanCard} from './fan_canon.js'
 import {auditStyle} from './style_guard.js';
 import {validateImagePrompt} from './prompt_compiler.js';
 import {prepareStylePixels} from './style_image.js';
-import {resourceBrowser,resourcePreview,browseResources,resourceRows as drawResourceRows,LIBRARY_MANIFEST} from './resource_browser.js';
+import {resourceBrowser,resourcePreview,browseResources,browseOptions,toggleResourcePick,resourceRows as drawResourceRows,LIBRARY_MANIFEST} from './resource_browser.js';
 import {referenceTrace, canReplayGalleryPrompt} from './resource_reference.js';
 import {searchResources,resourceEntries,CATEGORY_LABELS,referencePreview} from './visual_resources.js';
-import {manualNai,profileFor} from './nai_compiler.js';
+import {manualNaiParts,profileFor,NAI_PROFILES} from './nai_compiler.js';
+import {readNovelAIPng} from './nai_metadata.js';
+import {draftFromPrompts,insertPromptTags,promptBudget,promptTagRows,promptWorkspace} from './prompt_workspace.js';
 import {attachGalleryImage,assertBoundSource} from './chat_media.js';
 import {automaticBinding,automaticImageId,automaticCandidates,listenForNewReplies} from './automatic.js';
 
-const VERSION='R2.9.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
+const VERSION='R2.10.0',KEY='__AVS_VISUAL_WORKSHOP_R2__';
 // AVS V4.1.10 mounts the mascot in SillyTavern's visible main document.
 // An extension module may be executed in a helper iframe: do not use its
 // potentially zero-height document as the full-screen overlay host.
@@ -48,11 +50,13 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
 }else{
  // All UI mounting, hit testing and event dispatch use the same window as the mascot.
  const window=HOST_WINDOW,document=HOST_WINDOW.document;
- const s=settingsRead(),ui={page:'home',manualCharacterSelection:false,oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',directorPlan:null,directorNote:'',styleDraft:null,compiled:null,pending:null,portraitId:'',resourceQuery:'',resourceCategory:'hair',resourcePage:0,resourceImagesOnly:false,resourceFavoritesOnly:false,resourceActorId:'auto',resourcePreviewId:'',resourcePicks:[],referenceRevision:0,referenceBinding:null,resourcesDirty:false};
- let shell,surface,shadow,content,picker,aborter,refreshToken=0,workRunning=false,priorMascotVisibility=null,visibilityGuard=null,lastMountError='',intentOpen=false;
+ const s=settingsRead(),ui={page:'home',manualCharacterSelection:false,oldPage:'home',settingsTab:'prompt',busy:'',notice:'',error:'',selected:[],archive:null,chat:contextInfo(),tasks:[],gallery:[],galleryUrls:new Map(),styleMediaUrls:new Map(),prompt:'',negative:s.image.negative||'',promptSource:'',mode:'single',rankingBusy:false,previewId:'',pixivStatus:'',models:{prompt:[],image:[],checkpoint:[]},modelPicker:'',modelSearch:'',modelView:'all',directorPlan:null,directorNote:'',styleDraft:null,compiled:null,pending:null,portraitId:'',resourceQuery:'',resourceCategory:'hair',resourcePoseAngle:'',resourcePoseViews:new Map(),resourceWardrobe:'',resourcePage:0,resourceImagesOnly:false,resourceFavoritesOnly:false,resourceActorId:'auto',resourcePreviewId:'',resourcePicks:[],referenceRevision:0,referenceBinding:null,resourcesDirty:false};
+ let shell,surface,shadow,content,picker,promptPicker,aborter,refreshToken=0,workRunning=false,priorMascotVisibility=null,visibilityGuard=null,lastMountError='',intentOpen=false;
  // R2.3.1: a single persistent scrollport. Every page or settings panel has its own position.
  let mainPort=null,navPort=null,layerPort=null,renderKey='',renderedMainMarkup=null,renderedLayerMarkup=null,styleSelectionSeq=0;
  const scrollMemory=new Map();
+ let promptReadSequence=0;
+ ui.promptBoard=null;
  let autoJobQueued=null,autoTask=null,autoStatus='',replyEvents=null,eventTimer=null,autoTimer=null,styleBusy=false;
  const workUrl=new URL('./style.css',import.meta.url).href;
 
@@ -102,7 +106,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  ${card(`<h3>画面类型</h3><div class="twos">${[['portrait','指定女角色立绘'],['pov','指定角色视角插画'],['single','实时画面插画'],['comic','正文转漫画']].map(([x,t])=>`<button class="mode ${ui.mode===x?'selected':''}" data-act="mode:${x}">${t}</button>`).join('')}</div>${ui.mode==='portrait'?`<label class="field"><span>立绘主角</span><select data-portrait-target>${(ui.archive?.characters||[]).map(ch=>`<option value="${esc(ch.character_id)}" ${(ui.portraitId||ui.selected[0])===ch.character_id?'selected':''}>${esc(ch.name)}</option>`).join('')}</select></label>`:''}${ui.mode==='pov'?`${pick('观察者','observer.id',[['User','User'],...(ui.archive?.characters||[]).map(ch=>[ch.character_id,ch.name]),['named_npc','指定在场NPC']])}${s.observer.id==='named_npc'?field('NPC姓名（须在本幕出现）','observer.name'):''}<p class="small">镜头位于观察者视线位置；由提示词API核实在场证据，不默认User的性别。</p>`:''}${ui.mode==='comic'?pick('漫画格数','comicPanels',[['2','2格'],['3','3格'],['4','4格'],['6','6格']]):''}${ui.mode!=='portrait'?`<label class="check"><input type="checkbox" data-check="groupBoost" ${s.groupBoost?'checked':''}/>加强群像（保留本幕相关人物与互动）</label>`:''}<p class="small">${ui.chat.cleaning?.removedCount?'已排除非正文块/续行 '+ui.chat.cleaning.removedCount+' 处 · ':''}当前画风：${esc(s.styleLock?(activeStyle()?.label||s.styleLock.styleId)+'（已锁定）':'默认/旧版临时画风')}　· 角色 ${ui.selected.length} 名</p><div class="row">${btn('一键编译并生成','make','primary')}${btn('仅编译提示词','compile')}</div>${activity()}${!configured?'<p class="hint">首次使用需在设置中连接一个生图模型。配置后，普通玩家无需再填写提示词。</p>':''}`)}
  ${card(`<h3>立绘艺术方向（可选）</h3><p class="small">只影响角色展示的摄影与精修目标；不套用参考图人物、服装，也不改写用户锁定画风。单人角色立绘模式最明显。</p>${pick('视觉方向','visualTarget',[['reference','只跟随参考图'],['premium','商业二游精修立绘'],['naval','华丽二游角色展示向'],['resonant','清透高完成度宣传向']])}`)}
  ${card(`<h3>摄影导演（可选）</h3><p class="small">根据剧情自动决定透视、构图、景深、焦点和光影；人工设置优先，摄影参数不改写正式角色档案或锁定画风。</p>${pick('镜头景别','director.shotScale',[['auto','自动决定'],['full_body','完整全身'],['wide','远景/全景'],['medium_wide','多人中全景'],['medium','中景'],['medium_close','中近景'],['close_up','特写']])}${pick('机位高度','director.elevation',[['auto','自动决定'],['eye_level','平视'],['low_angle','仰拍'],['elevated','略高机位'],['high_angle','俯拍'],['top_down','顶视']])}${pick('景深','director.depthOfField',[['auto','自动决定'],['deep','深景深（群像推荐）'],['moderate','适度景深'],['shallow','浅景深'],['illustrative_layering','插画层次']])}${ui.directorPlan?`<details><summary>查看本次导演计划</summary><p class="small">${esc(ui.directorNote)}</p><pre class="director-json">${esc(JSON.stringify(ui.directorPlan,null,2).slice(0,8500))}</pre></details>`:'<p class="small">完成一次提示词编译后可查看导演规划与摄影决策。</p>'}`)}
- ${card(`<h3>高级提示词（可选）</h3><label class="field"><span>正向提示词</span><textarea data-draft="positive" rows="5" placeholder="一键编译后将显示在这里，亦可自行修改">${esc(ui.prompt)}</textarea></label><label class="field"><span>负向提示词</span><textarea data-draft="negative" rows="2">${esc(ui.negative)}</textarea></label><p class="small">${esc(ui.promptSource)}</p>${resourceReport()}<div class="row">${btn('使用现有提示词生成','direct')}${btn('复制提示词','copy-prompt')}</div>`)}
+ ${card(`<h3>高级提示词（可选）</h3><label class="field"><span>正向提示词</span><textarea data-draft="positive" rows="5" placeholder="一键编译后将显示在这里，亦可自行修改">${esc(ui.prompt)}</textarea></label><label class="field"><span>负向提示词</span><textarea data-draft="negative" rows="2">${esc(ui.negative)}</textarea></label><p class="small">${esc(ui.promptSource)}</p>${resourceReport()}<div class="row">${btn('使用现有提示词生成','direct')}${btn('复制提示词','copy-prompt')}${s.image.engine==='novelai'?btn('提示词分区与原图导入','prompt-open'):''}</div>`)}
  ${card(`<h3>数据状态</h3><p class="small">${esc(archiveName())}</p><p class="small">最新AI楼层：${ui.chat.index>=0?'#'+ui.chat.index:'无'} · 生图API：${esc(s.image.engine)} · 画风参考：${esc(s.image.referenceMode||'text')}</p>${btn('刷新档案状态','refresh','flat')}`)} `;}
  function style(){const items=s.pixiv.items||[];const styl=s.styles||[];return `${card(`<h2>画风与收藏</h2><p>一键使用参考图：选择Pixiv月榜作品或上传本地图片，视觉模型自动提取纯画风正负词并锁定。识图失败时，旧画风保持不变。</p><div class="row">${btn('读取月榜前50','ranking','primary')}${btn('上传并直接使用画风','upload-style')}${btn('数据源设置','pixiv-config')}</div><div class="status">${s.pixiv.updated?'榜单更新时间：'+esc(s.pixiv.updated):'尚未取得完整月榜；不显示虚构榜单'} · ${items.length}/50</div>`)}
  <div class="pixiv-title-row"><h3 class="section-title">Pixiv月度插画榜</h3><button type="button" class="btn flat" data-act="pixiv-toggle" aria-expanded="${!!s.pixiv.expanded}" aria-controls="avs-pixiv-ranking-grid">${s.pixiv.expanded?'收起 ▲':'展开 ▼'}</button></div><div id="avs-pixiv-ranking-grid">${s.pixiv.expanded?(items.length?`<div class="artgrid">${items.map(x=>`<article class="art"><div class="artimg">${thumb(x.thumbnail)?`<img src="${esc(thumb(x.thumbnail))}" loading="lazy" alt="${esc(x.title)}" onerror="this.style.display='none'"/><span class="thumb-fallback">缩略图受来源限制时，可打开原作查看</span>`:'<span>无缩略图</span>'}</div><div class="artbody"><b>#${x.rank}　${esc(x.title)}</b><small>${esc(x.artist)}</small><div class="actions"><button data-act="pixivuse:${esc(x.id)}">使用该图片画风</button><button data-act="choosepixiv:${esc(x.id)}">收藏</button><a href="${esc(x.url)}" rel="noopener noreferrer" target="_blank">原作</a></div></div></article>`).join('')}</div>`:card(`<p class="muted">当前尚无真实月榜数据。请在GitHub仓库Actions运行同步任务。${ui.pixivStatus?`<br/><strong>当前状态：</strong>${esc(ui.pixivStatus)}`:''}</p>`)):'<p class="small">月榜已收起。展开后可浏览和选择已同步作品。</p>'}</div>
@@ -150,7 +154,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  function render(){
    if(!content)return;
    let center='';
-   try{center=ui.page==='home'?home():ui.page==='style'?style():ui.page==='characters'?characters():ui.page==='gallery'?gallery():ui.page==='settings'?settings():ui.page==='resources'?card(resourceBrowser(ui,s,ui.archive?.characters||[])):diagnostics()}
+   try{center=ui.page==='home'?home():ui.page==='style'?style():ui.page==='characters'?characters():ui.page==='gallery'?gallery():ui.page==='settings'?settings():ui.page==='resources'?card(resourceBrowser(ui,s,ui.archive?.characters||[])):ui.page==='prompts'&&ui.promptBoard?card(promptWorkspace(ui.promptBoard,s.image,new Map((ui.archive?.characters||[]).map(c=>[c.character_id,c.name])))):diagnostics()}
    catch(e){center=`<section class="card"><h3>界面渲染异常</h3><pre>${esc(e.stack||e)}</pre></section>`;console.error(e)}
    if(!mainPort||!mainPort.isConnected||mainPort.parentNode!==content){
      // Initial mount only. Keep the same scroll DOM node for the lifetime of this UI.
@@ -169,7 +173,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
      // Preserve expanded panels when rerendering the same page.
      const expanded=samePage?[...mainPort.querySelectorAll('details')].map((el,i)=>el.open?i:-1).filter(i=>i>=0):[];
      const active=shadow.activeElement;
-     const focusAttrs=['data-bind','data-check','data-char','data-ref','data-draft','data-style-draft','data-resource-query','data-resource-filter','data-resource-actor'];
+     const focusAttrs=['data-bind','data-check','data-char','data-ref','data-draft','data-style-draft','data-resource-query','data-resource-filter','data-resource-actor','data-prompt-input','data-prompt-query','data-prompt-target','data-prompt-panel'];
      const focusDescriptor=active&&mainPort.contains(active)?focusAttrs.map(k=>active.hasAttribute(k)?[k,active.getAttribute(k)]:null).find(Boolean):null;
      mainPort.innerHTML=mainMarkup;
      if(expanded.length){const all=mainPort.querySelectorAll('details');for(const i of expanded)if(all[i])all[i].open=true}
@@ -181,7 +185,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    const oldResults=layerPort.querySelector('[data-model-results]');
    const oldLightbox=layerPort.querySelector('.lightbox');
    const resultsScroll=oldResults?.scrollTop||0,lightboxScroll=oldLightbox?.scrollTop||0;
-   const layerMarkup=`${ui.previewId?preview():''}${pendingPreview()}${resourcePreview(ui.resourcePreviewId,ui.resourcePicks)}${modelModal()}`;
+   const layerMarkup=`${ui.previewId?preview():''}${pendingPreview()}${resourcePreview(ui.resourcePreviewId,ui.resourcePicks,ui.resourceActorId)}${modelModal()}`;
    if(layerMarkup!==renderedLayerMarkup){
      layerPort.innerHTML=layerMarkup;
      const results=layerPort.querySelector('[data-model-results]');if(results)results.scrollTop=resultsScroll;
@@ -195,7 +199,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
    scrollMemory.set(key,mainPort.scrollTop);
  }
  async function refresh(){const gen=++refreshToken;const last=contextInfo(),arc=await archiveView();if(gen!==refreshToken)return;const changed=last.id!==ui.chat.id;ui.chat=last;ui.archive=arc;
- if(changed){ui.selected=[];ui.manualCharacterSelection=false;ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';ui.compiled=null;ui.portraitId='';ui.resourcePicks=[];ui.referenceBinding=null;ui.resourcePreviewId='';ui.referenceRevision++;ui.resourcesDirty=false;discardPending(false);}
+ if(changed){ui.selected=[];ui.manualCharacterSelection=false;ui.tasks=loadTasks(last.id);ui.prompt='';ui.promptSource='';ui.directorPlan=null;ui.directorNote='';ui.previewId='';ui.compiled=null;ui.promptBoard=null;ui.portraitId='';ui.resourcePicks=[];ui.referenceBinding=null;ui.resourcePreviewId='';ui.referenceRevision++;ui.resourcesDirty=false;discardPending(false);}
  const ids=arc.characters.filter(c=>c.active).map(x=>x.character_id);
  if(!ui.manualCharacterSelection){const names=suggestCharacterIds(last.text,arc.characters);ui.selected=names.length?names:(ids.length?ids:arc.characters.slice(0,1).map(x=>x.character_id));}
  try{await refreshGallery(gen)}catch(e){ui.notice='图库无法读取：'+String(e.message||e);ui.error=ui.notice}render();
@@ -408,7 +412,7 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
   if(unchanged&&ui.compiled.nai?.profile!==undefined&&ui.compiled.nai.profile!==profileFor(taskSettings.image))throw new Error('当前型号与已编译提示词不一致，请重新编译');
   if(unchanged&&ui.compiled.styleId){const active=styleSnapshot(taskSettings);if(active.id!==ui.compiled.styleId||active.revision!==ui.compiled.styleRevision)throw new Error('已编译提示词的画风版本已变化，请重新编译');}
   if(unchanged&&ui.compiled.referencePicks)taskSettings.resourcePicks=structuredClone(ui.compiled.referencePicks);
-  result=unchanged?ui.compiled:{positive:ui.prompt,negative:ui.negative,nai:manualNai(ui.prompt,ui.negative,taskSettings.image),source:'手动提示词',plan:{mode:taskMode}};
+  result=unchanged?ui.compiled:{positive:ui.prompt,negative:ui.negative,nai:manualNaiParts(draftFromPrompts(ui.prompt,ui.negative,ui.compiled?.nai),taskSettings.image),source:'手动提示词',plan:{mode:taskMode}};
  }else result=await preparePrompt(arc,ctx,ctl,taskSettings,taskMode,automatic);
  if(ctl.aborted)throw new Error('用户取消');
  const {info:currentSource}=assertBoundSource(binding,contextInfo,hashScene);
@@ -465,8 +469,8 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  function pendingPreview(){const p=ui.pending;if(!p)return '';const view=p.viewIndex??p.items.length-1,primary=p.items[view];return `<div class="lightbox" role="dialog" aria-modal="true" aria-label="生成结果预览"><div class="light-card"><h3>${p.saving?'正在保存…':p.partial?'部分完成 · 已生成图片可保存':'生成结果预览 · 尚未保存'}</h3><img src="${esc(p.urls[view])}" alt="临时生成图片"/>${p.items.length>1?`<div class="row">${p.items.map((item,i)=>btn(item.kind==='comic_page'?'查看整页':'查看第'+(i+1)+'张','pending-view:'+i,'flat')).join('')}</div>`:''}<p class="small">${primary.kind==='comic_page'?'漫画整页及各格':'本次图片'} · 仅保存后才写入图库${p.attach?'和对应AI回复':''}</p><div class="row">${btn('保存到图库','pending-save','primary')}${btn('重试','pending-retry')}${btn('取消本次图片','pending-cancel','flat')}</div></div></div>`;}
  function resourceReport(){const r=ui.compiled?.resourceReport;if(!r)return '';const b=r.budget;return `<details><summary>本次素材、角色归属与预算</summary><p class="small">模板：${esc(r.template)} · ${r.catalogSize}条候选${b?` · 全局约${b.baseEstimated} / 角色合计约${b.charactersEstimated} tokens（估算，非精确计数）`:''}</p>${(r.selected||[]).map(f=>`<p class="small">${esc(ui.compiled?.plan?.cast?.find(c=>c.id===f.actor)?.name||'本幕人物')} · ${esc(CATEGORY_LABELS[f.category]||f.category)}：${esc(f.text)}</p>`).join('')||'<p class="small">本次无须额外素材片段；档案与剧情仍参与编译。</p>'}${(ui.compiled?.referenceTrace||[]).map(t=>`<p class="reference-trace small"><b>${esc(t.label)}</b>：${esc(t.reason)}${t.status==='sent_to_image_api'?' ✓':''}</p>`).join('')}<p class="small">${(ui.compiled?.referenceImages||[]).filter(x=>x.status==='sent_to_prompt_api').length?`已向提示词API提供${ui.compiled.referenceImages.filter(x=>x.status==='sent_to_prompt_api').length}张本地参考图；生图引擎收到编译后的文字片段。`:'本次按文字候选编译素材。'}</p><p class="small">略去不可见或预算不足片段 ${(r.omitted||[]).length} 项。</p>${(r.warnings||[]).map(w=>`<p class="hint">${esc(w)}</p>`).join('')}</details>`;}
  function resourcesPanel(){return card(resourceBrowser(ui,s,ui.archive?.characters||[]));}
- function refreshResourceResults(){const result=browseResources({category:ui.resourceCategory,query:ui.resourceQuery,page:ui.resourcePage,imagesOnly:ui.resourceImagesOnly,favoritesOnly:ui.resourceFavoritesOnly,favorites:s.resources.favorites||[]});ui.resourcePage=result.page;
- const box=shadow.querySelector('[data-resource-results]');if(box)box.innerHTML=drawResourceRows(result.rows,ui.resourcePicks,s.resources.favorites||[]);
+ function refreshResourceResults(){const result=browseResources(browseOptions(ui,s.resources.favorites||[]));ui.resourcePage=result.page;
+ const box=shadow.querySelector('[data-resource-results]');if(box)box.innerHTML=drawResourceRows(result.rows,ui.resourcePicks,s.resources.favorites||[],ui.resourceActorId);
  const pager=shadow.querySelector('.resource-pagination');if(pager)pager.innerHTML=`${btn('上一页','resource-page:'+(result.page-1),'flat')}<span>第${result.page+1}/${result.pages}页 · 共${result.total}条</span>${btn('下一页','resource-page:'+(result.page+1),'flat')}`;if(pager){const buttons=pager.querySelectorAll('button');if(buttons[0])buttons[0].disabled=result.page===0;if(buttons[1])buttons[1].disabled=result.page>=result.pages-1;}
  }
  function resourcesChanged(){ui.referenceRevision++;ui.resourcesDirty=ui.resourcePicks.length>0;ui.compiled=null;ui.promptSource='素材参考已变更，请重新编译提示词；手动文本不会自动改动。';const ctx=contextInfo();ui.referenceBinding={chatId:ctx.id,index:ctx.index,hash:hashScene(ctx.text)};}
@@ -528,6 +532,91 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  if(s.image.engine==='comfy')items=await listCheckpoints(s.image.comfyBase);else if(s.image.engine==='novelai'){const r=await fetchTimeout('https://image.novelai.net/user/subscription',{headers:{Authorization:`Bearer ${s.image.key}`}},35000);if(!r.ok)throw new Error('NovelAI HTTP '+r.status);items=['NovelAI订阅响应正常']}else items=await models(s.image.base,s.image.key);
  tell(`引擎接口响应正常：${items.length}项；生成能力仍需实际图像任务验证。`)}catch(e){tell('连接测试失败：'+e.message,true)}finally{setBusy('')}}
  function saveConfigBackup(){const safe=structuredClone(s);safe.prompt.key='';safe.image.key='';safe.pixiv.apiKey='';const file=new Blob([JSON.stringify({version:VERSION,settings:safe,date:new Date().toISOString()},null,2)],{type:'application/json'});const url=URL.createObjectURL(file),a=document.createElement('a');a.href=url;a.download='AVS_R2_settings_without_keys.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),800)}
+
+ function currentPromptDraft() {
+  const board = ui.promptBoard;
+  return board?.drafts[board.active];
+ }
+
+ function openPromptWorkspace() {
+  if (workRunning || styleBusy || ui.pending) return tell('请先完成当前任务或关闭生成预览', true);
+  if (s.image.engine !== 'novelai') return tell('提示词分区工作台用于 NovelAI 引擎', true);
+  const profile = profileFor(s.image);
+  const exact = ui.compiled?.positive === ui.prompt && ui.compiled?.negative === ui.negative &&
+   ui.compiled?.nai?.profile === profile && (!ui.compiled?.panels?.length || ui.mode === 'comic');
+  const origin = exact ? ui.compiled : null;
+  const panels = origin?.panels;
+  const drafts = panels?.length
+   ? panels.map(part => draftFromPrompts(part.positive, part.negative, part.nai))
+   : [draftFromPrompts(ui.prompt, ui.negative, ui.compiled?.nai)];
+  ui.promptBoard = {drafts, origin, binding: origin?.binding || automaticBinding(contextInfo()), profile, active: 0, query: '', target: 'base'};
+  show('prompts');
+ }
+
+ function applyPromptWorkspace() {
+  if (workRunning || s.generationMode !== 'manual') throw new Error('请在手动创作模式下完成当前任务后应用');
+  const board = ui.promptBoard, now = contextInfo();
+  if (!board || s.image.engine !== 'novelai' || board.profile !== profileFor(s.image)) throw new Error('请使用当前 NovelAI 型号重新打开工作台');
+  if (board.metadata?.unsupportedModel || (board.metadata?.profile && board.metadata.profile !== board.profile)) throw new Error('原图型号与当前型号不一致');
+  const currentBinding = automaticBinding(now);
+  if (Object.keys(currentBinding).some(key => (board.binding[key] ?? 0) !== currentBinding[key])) throw new Error('当前剧情已变动，请重新打开提示词分区');
+  const compiled = board.drafts.map(draft => manualNaiParts(draft, s.image));
+  const edit = (old, nai) => ({
+   ...old, nai, positive: [nai.base, ...nai.characters.map(role => role.prompt)].join(' | '),
+   negative: nai.negative, resourceReport: null, referenceTrace: []
+  });
+  const origin = board.origin;
+  const source = board.metadata ? 'NovelAI PNG 元数据分区' : '手动提示词分区';
+  const result = origin?.panels?.length
+   ? {...origin, panels: origin.panels.map((part, index) => edit(part, compiled[index])), resourceReport: null, referenceTrace: []}
+   : edit(origin || {plan: {mode: board.metadata ? 'single' : ui.mode}}, compiled[0]);
+  if (!origin || board.metadata) {
+   ui.resourcePicks = [];
+   ui.referenceBinding = null;
+   ui.referenceRevision++;
+  }
+  if (board.metadata) ui.mode = 'single';
+  ui.prompt = result.positive;
+  ui.negative = result.negative;
+  ui.compiled = {...result, source, binding: now.index >= 0 ? board.binding : null, referencePicks: origin?.referencePicks || []};
+  ui.resourcesDirty = false;
+  ui.promptBoard = null;
+  ui.promptSource = source;
+  show('home');
+  tell('提示词分区已应用。使用现有提示词生成时会保留各角色内容与站位。');
+ }
+
+ async function onPromptPng() {
+  const file = promptPicker.files?.[0], board = ui.promptBoard;
+  if (!file || !board || ui.page !== 'prompts') return;
+  const reading = ++promptReadSequence;
+  try {
+   const metadata = await readNovelAIPng(file);
+   if (reading !== promptReadSequence || ui.page !== 'prompts' || board !== ui.promptBoard) return;
+   const {base, negative, characters, useCoords} = metadata;
+   ui.promptBoard = {...board, metadata, drafts: [{base, negative, characters, useCoords}], origin: null, active: 0, target: 'base'};
+   tell('已读取 PNG 原图中的提示词分区与参数。请核对后应用。');
+  } catch (error) {
+   if (reading === promptReadSequence && ui.page === 'prompts') tell(error.message, true);
+  }
+ }
+
+ function changePromptField(el) {
+  const draft = currentPromptDraft();
+  if (!draft) return;
+  const key = el.dataset.promptInput;
+  if (key === 'base' || key === 'negative') draft[key] = el.value;
+  else {
+   const match = key.match(/^role-(\d+)-(prompt|negative|x|y)$/);
+   if (!match || !draft.characters[Number(match[1])]) return;
+   const role = draft.characters[Number(match[1])], field = match[2];
+   if (field === 'x' || field === 'y') role.center[field] = el.value === '' ? NaN : Number(el.value);
+   else role[field] = el.value;
+  }
+  const budget = shadow.querySelector('[data-prompt-budget]');
+  if (budget) budget.textContent = promptBudget(draft, s.image);
+ }
+
  async function action(act){try{
  if(act==='generation-mode:auto'||act==='generation-mode:manual')return setGenerationMode(act.split(':')[1]);
  if(act==='auto-current'){const ctx=contextInfo();if(ctx.index<0)return tell('当前聊天没有已完成的AI回复',true);if(replyEvents?.generating())return tell('请等待当前 AI 回复完成',true);return enqueueAuto(ctx,true)}
@@ -537,8 +626,8 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  if(act.startsWith('resource-preview:')){ui.resourcePreviewId=act.slice(17);return render()}
  if(act==='resource-preview-close'){ui.resourcePreviewId='';return render()}
  if(act.startsWith('resource-favorite:')){const id=act.slice(18);s.resources.favorites||=[];s.resources.favorites=s.resources.favorites.includes(id)?s.resources.favorites.filter(x=>x!==id):[...s.resources.favorites,id];persist();return render()}
- if(act.startsWith('resource-pick:')){const id=act.slice(14);if(!resourceEntries.some(x=>x.id===id))throw new Error('素材已失效');if(ui.resourcePicks.some(x=>x.resource_id===id))ui.resourcePicks=ui.resourcePicks.filter(x=>x.resource_id!==id);else{if(ui.resourcePicks.length>=16)throw new Error('本次最多选择16项参考，请先移除不需要的项目');ui.resourcePicks.push({resource_id:id,character_id:ui.resourceActorId||'auto'});}resourcesChanged();return render()}
- if(act.startsWith('resource-remove:')){ui.resourcePicks=ui.resourcePicks.filter(x=>x.resource_id!==act.slice(16));resourcesChanged();return render()}
+ if(act.startsWith('resource-pick:')){ui.resourcePicks=toggleResourcePick(ui.resourcePicks,act.slice(14),ui.resourceActorId);resourcesChanged();return render()}
+ if(act.startsWith('resource-remove:')){ui.resourcePicks=ui.resourcePicks.filter(p=>p.resource_id!==act.slice(16));resourcesChanged();return render()}
  if(act==='resource-clear'){ui.resourcePicks=[];resourcesChanged();return render()}
 
  if(act.startsWith('pending-view:')){if(ui.pending)ui.pending.viewIndex=Number(act.slice(13));return render()}
@@ -548,6 +637,24 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  if(act.startsWith('goto:'))return show(act.split(':')[1]);if(act.startsWith('mode:')){ui.mode=act.split(':')[1];return render()}
  if(act==='refresh')return refresh();if(act==='abort'){aborter?.abort('user');return}
  if(act==='make')return runTask(false,false);if(act==='compile')return runTask(true,false);if(act==='direct')return runTask(false,true);
+ if(act==='prompt-open')return openPromptWorkspace();
+ if(act==='prompt-png'){promptPicker.value='';return promptPicker.click();}
+ if(act==='prompt-apply')return applyPromptWorkspace();
+ if(act==='prompt-add'){
+  const draft=currentPromptDraft(), profile=NAI_PROFILES[profileFor(s.image)];
+  if(draft && profile && draft.characters.length<profile.maxCharacters){
+   draft.characters.push({id:makeId('role'),prompt:'',negative:'',center:{x:0.5,y:0.5}});
+   return render();
+  }
+ }
+ if(act.startsWith('prompt-remove:')){
+  const draft=currentPromptDraft(), index=Number(act.slice(14));
+  if(draft?.characters[index]){draft.characters.splice(index,1);ui.promptBoard.target='base';return render();}
+ }
+ if(act.startsWith('prompt-label:')){
+  const draft=currentPromptDraft();
+  if(draft && insertPromptTags(draft,ui.promptBoard.target,act.slice(13)))return render();
+ }
  if(act==='copy-prompt'){await navigator.clipboard.writeText(ui.prompt);return tell('正向提示词已复制')}
  if(act==='pixiv-toggle'){s.pixiv.expanded=!s.pixiv.expanded;persist();return render()}
  if(act==='ranking')return fetchRanking();if(act.startsWith('pixivuse:')){const id=act.slice(9);await pickPixiv(id);return useStyle('pixiv:'+id)}if(act==='upload-style')return uploadStyle();if(act==='pixiv-config'){ui.settingsTab='pixiv';return show('settings')}
@@ -590,6 +697,8 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  surface=document.createElement('div');surface.id='avs-r2-visual-surface';shell.append(surface);shadow=surface.attachShadow({mode:'open'});shadow.append(link);
  content=document.createElement('div');content.className='app';shadow.append(content);document.body.append(shell);
  picker=document.createElement('input');picker.type='file';picker.accept='image/*';picker.style.display='none';picker.addEventListener('change',onPicked);shadow.append(picker);
+ promptPicker=document.createElement('input');promptPicker.type='file';promptPicker.accept='.png,image/png';promptPicker.hidden=true;
+ promptPicker.setAttribute('data-prompt-file','');promptPicker.addEventListener('change',onPromptPng);shadow.append(promptPicker);
  repair();
  window[KEY]={version:VERSION,open,verifyVisible,activate,close,repair,diagnostics:()=>({chat:ui.chat.id,archive:ui.archive?.runtime,ui:ui.page,visible:visibleGeometry(),frontMost:frontMost(),layout:layoutProbe(),lastMountError}),destroy(){close();stopAuto();replyEvents?.disconnect();window.clearTimeout(eventTimer);window.clearTimeout(autoTimer);aborter?.abort('destroyed');window.removeEventListener('resize',syncViewport);window.visualViewport?.removeEventListener('resize',syncViewport);shell?.remove();if(window[KEY]?.version===VERSION)delete window[KEY]}};
  shadow.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(b){e.preventDefault();action(b.dataset.act)}});
@@ -599,9 +708,17 @@ if(HOST_WINDOW[KEY]?.version===VERSION && HOST_WINDOW[KEY]?.repair?.()){
  else if(el.hasAttribute('data-portrait-target')){ui.portraitId=el.value;render()}
  else if(el.hasAttribute('data-resource-category')){ui.resourceCategory=el.value;ui.resourcePage=0;render()}
  else if(el.hasAttribute('data-resource-filter')){if(el.dataset.resourceFilter==='images')ui.resourceImagesOnly=el.checked;else ui.resourceFavoritesOnly=el.checked;ui.resourcePage=0;render()}
- else if(el.hasAttribute('data-resource-actor')){ui.resourceActorId=el.value;}
+ else if(el.hasAttribute('data-prompt-panel')&&ui.promptBoard){ui.promptBoard.active=Number(el.value);ui.promptBoard.target='base';render();}
+ else if(el.hasAttribute('data-prompt-target')&&ui.promptBoard){ui.promptBoard.target=el.value;}
+ else if(el.hasAttribute('data-prompt-coords')&&currentPromptDraft()){currentPromptDraft().useCoords=el.checked;}
+ else if(el.hasAttribute('data-resource-angle')){ui.resourcePoseAngle=el.value;ui.resourcePage=0;refreshResourceResults();}
+ else if(el.hasAttribute('data-resource-view')){ui.resourcePoseViews.set(el.dataset.resourceView,el.value);refreshResourceResults();}
+ else if(el.hasAttribute('data-resource-wardrobe')){ui.resourceWardrobe=el.value;ui.resourcePage=0;refreshResourceResults();}
+ else if(el.hasAttribute('data-resource-actor')){ui.resourceActorId=el.value;refreshResourceResults();}
  else if(el.dataset.ref){s.characterRefs[el.dataset.ref]=el.value.trim();persist()}});
  shadow.addEventListener('input',e=>{const el=e.target;
+  if(el.hasAttribute('data-prompt-input')){changePromptField(el);return;}
+  if(el.hasAttribute('data-prompt-query')&&ui.promptBoard){ui.promptBoard.query=el.value;const target=shadow.querySelector('[data-prompt-tags]');if(target)target.innerHTML=promptTagRows(el.value);return;}
   if(el.hasAttribute('data-resource-query')){ui.resourceQuery=el.value;ui.resourcePage=0;refreshResourceResults();return;}
   if(el.hasAttribute('data-model-search')){ui.modelSearch=el.value;const box=shadow.querySelector('[data-model-results]');if(box)box.innerHTML=modelRows();return;}
   if(el.dataset.draft){if(el.dataset.draft==='positive')ui.prompt=el.value;else ui.negative=el.value}
