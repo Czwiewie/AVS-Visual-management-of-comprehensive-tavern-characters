@@ -1,0 +1,270 @@
+{
+  "category": "signature",
+  "label_zh": "标志特征术语",
+  "entries": [
+    {
+      "id": "avs.signature.asymmetric_hair_ornaments",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "asymmetric hair ornaments",
+      "label_zh": "不对称发饰",
+      "aliases_zh": [
+        "不对称发饰"
+      ],
+      "description": "asymmetric hair ornaments",
+      "nai_tags": [
+        "asymmetric hair ornaments"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.beauty_mark_near_the_lips",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "appearance",
+      "subcategory": "common_design_term",
+      "label": "beauty mark near the lips",
+      "label_zh": "唇边痣",
+      "aliases_zh": [
+        "唇边痣"
+      ],
+      "description": "beauty mark near the lips",
+      "nai_tags": [
+        "beauty mark near the lips"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.cheek_scar",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "appearance",
+      "subcategory": "common_design_term",
+      "label": "cheek scar",
+      "label_zh": "面颊疤痕",
+      "aliases_zh": [
+        "面颊疤痕"
+      ],
+      "description": "cheek scar",
+      "nai_tags": [
+        "cheek scar"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.contrasting_hair_streak",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "appearance",
+      "subcategory": "common_design_term",
+      "label": "contrasting hair streak",
+      "label_zh": "发间挑染",
+      "aliases_zh": [
+        "发间挑染"
+      ],
+      "description": "contrasting hair streak",
+      "nai_tags": [
+        "contrasting hair streak"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.distinctive_iris_pattern",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "appearance",
+      "subcategory": "common_design_term",
+      "label": "distinctive iris pattern",
+      "label_zh": "特殊虹膜纹理",
+      "aliases_zh": [
+        "特殊虹膜纹理"
+      ],
+      "description": "distinctive iris pattern",
+      "nai_tags": [
+        "distinctive iris pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.mole_under_the_eye",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "appearance",
+      "subcategory": "common_design_term",
+      "label": "mole under the eye",
+      "label_zh": "眼下痣",
+      "aliases_zh": [
+        "眼下痣"
+      ],
+      "description": "mole under the eye",
+      "nai_tags": [
+        "mole under the eye"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.scar_on_the_eyebrow",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "appearance",
+      "subcategory": "common_design_term",
+      "label": "scar on the eyebrow",
+      "label_zh": "眉部疤痕",
+      "aliases_zh": [
+        "眉部疤痕"
+      ],
+      "description": "scar on the eyebrow",
+      "nai_tags": [
+        "scar on the eyebrow"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.signature.single_earring",
+      "category": "signature",
+      "category_zh": "标志特征术语",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "single earring",
+      "label_zh": "单侧耳饰",
+      "aliases_zh": [
+        "单侧耳饰"
+      ],
+      "description": "single earring",
+      "nai_tags": [
+        "single earring"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "head",
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
