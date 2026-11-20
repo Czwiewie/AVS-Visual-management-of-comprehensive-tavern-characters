@@ -1,0 +1,3366 @@
+{
+  "category": "motif",
+  "label_zh": "图案",
+  "entries": [
+    {
+      "id": "traditional.021",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Dragon Pattern",
+      "label_zh": "龙纹",
+      "aliases_zh": [
+        "龙纹",
+        "龙纹是中国传统纹样中的核心祥瑞题材，常见于服饰、器物和建筑装饰。",
+        "游龙",
+        "祥云",
+        "鳞片",
+        "金青配色"
+      ],
+      "description": "Dragon Pattern",
+      "nai_tags": [
+        "Dragon Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_021.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/021_龙纹/021_龙纹_卡片图.png",
+        "git_blob_sha": "9fb69e125df7247b92f9b5e47a14e7f08868e1cd",
+        "sha256": "f1636491ba0853895469406bb02457e0dedf00ba06c44a61307f10cf1828737d",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "龙纹是中国传统纹样中的核心祥瑞题材，常见于服饰、器物和建筑装饰。",
+      "visual_keywords": [
+        "游龙",
+        "祥云",
+        "鳞片",
+        "金青配色"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.022",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Kui Dragon Pattern",
+      "label_zh": "夔龙纹",
+      "aliases_zh": [
+        "夔龙纹",
+        "夔龙纹多见于青铜器装饰，形体抽象古拙。",
+        "单足龙形",
+        "青铜感",
+        "几何化"
+      ],
+      "description": "Kui Dragon Pattern",
+      "nai_tags": [
+        "Kui Dragon Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_022.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/022_夔龙纹/022_夔龙纹_卡片图.png",
+        "git_blob_sha": "e0db8c03669ba517ec6c25c9a9afa9b3919d4c3b",
+        "sha256": "73e2652629634b167fe6c7ae418705f6c7a708c6d2bb26210882245d2494a2a7",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "夔龙纹多见于青铜器装饰，形体抽象古拙。",
+      "visual_keywords": [
+        "单足龙形",
+        "青铜感",
+        "几何化"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.023",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Chi Dragon Pattern",
+      "label_zh": "螭龙纹",
+      "aliases_zh": [
+        "螭龙纹",
+        "螭龙纹常见于玉器、建筑和家具装饰，形态盘曲灵动。",
+        "盘曲小龙",
+        "卷尾",
+        "玉雕感"
+      ],
+      "description": "Chi Dragon Pattern",
+      "nai_tags": [
+        "Chi Dragon Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_023.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/023_螭龙纹/023_螭龙纹_卡片图.png",
+        "git_blob_sha": "e0d1189cd5e37355aad0c655f89ae8f7da43ed62",
+        "sha256": "1788b183609f7117b5022b127f429c9a1b1e2cd66fbce3ff86813dc6b92c095f",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "螭龙纹常见于玉器、建筑和家具装饰，形态盘曲灵动。",
+      "visual_keywords": [
+        "盘曲小龙",
+        "卷尾",
+        "玉雕感"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.024",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Phoenix Pattern",
+      "label_zh": "凤鸟纹",
+      "aliases_zh": [
+        "凤鸟纹",
+        "凤鸟纹常与花卉、云纹组合，视觉华丽优雅。",
+        "凤凰",
+        "羽尾",
+        "祥云",
+        "朱砂鎏金"
+      ],
+      "description": "Phoenix Pattern",
+      "nai_tags": [
+        "Phoenix Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_024.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/024_凤鸟纹/024_凤鸟纹_卡片图.png",
+        "git_blob_sha": "83283c13bc8cba57b33860f386aabc25f2a9baa9",
+        "sha256": "95718f92e39295a68128aae2d82191e4b1525b46b21f372182523be2fbaac9d8",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "凤鸟纹常与花卉、云纹组合，视觉华丽优雅。",
+      "visual_keywords": [
+        "凤凰",
+        "羽尾",
+        "祥云",
+        "朱砂鎏金"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.025",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Kui Phoenix Pattern",
+      "label_zh": "夔凤纹",
+      "aliases_zh": [
+        "夔凤纹",
+        "夔凤纹形态古雅，多以抽象鸟形和卷曲线条构成。",
+        "抽象凤鸟",
+        "青铜绿",
+        "对称构图"
+      ],
+      "description": "Kui Phoenix Pattern",
+      "nai_tags": [
+        "Kui Phoenix Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_025.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/025_夔凤纹/025_夔凤纹_卡片图.png",
+        "git_blob_sha": "1f131f4587fcf6d5ff4e35798284d57a9ee7fa84",
+        "sha256": "a55842d78effac5363e9ca0680bb0344af3bac954a8ec188227a2f612c86d3f4",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "夔凤纹形态古雅，多以抽象鸟形和卷曲线条构成。",
+      "visual_keywords": [
+        "抽象凤鸟",
+        "青铜绿",
+        "对称构图"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.026",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Qilin Pattern",
+      "label_zh": "麒麟纹",
+      "aliases_zh": [
+        "麒麟纹",
+        "麒麟是传统瑞兽，常用于建筑、织绣与器物装饰。",
+        "麒麟",
+        "火焰云",
+        "鳞甲",
+        "祥瑞感"
+      ],
+      "description": "Qilin Pattern",
+      "nai_tags": [
+        "Qilin Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_026.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/026_麒麟纹/026_麒麟纹_卡片图.png",
+        "git_blob_sha": "cccd8494c3905829ba06f640f2ecb7184118688c",
+        "sha256": "ab8efdd90eb379596a1f98286ad52741e019a7efa29239fa80484f398543703f",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "麒麟是传统瑞兽，常用于建筑、织绣与器物装饰。",
+      "visual_keywords": [
+        "麒麟",
+        "火焰云",
+        "鳞甲",
+        "祥瑞感"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.027",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Guardian Lion Pattern",
+      "label_zh": "瑞狮纹",
+      "aliases_zh": [
+        "瑞狮纹",
+        "狮纹常有镇守、威严与辟邪意味，适合作为气势强的纹样主题。",
+        "瑞狮",
+        "卷毛",
+        "绣球",
+        "威严造型"
+      ],
+      "description": "Guardian Lion Pattern",
+      "nai_tags": [
+        "Guardian Lion Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_027.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/027_瑞狮纹/027_瑞狮纹_卡片图.png",
+        "git_blob_sha": "a065085acd61614d94ea01662df5746b759f47fd",
+        "sha256": "76c28581220313c93d09ae736c904ecb4c8d1c73e4d41fb2790642ae9eb6d3c0",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "狮纹常有镇守、威严与辟邪意味，适合作为气势强的纹样主题。",
+      "visual_keywords": [
+        "瑞狮",
+        "卷毛",
+        "绣球",
+        "威严造型"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.028",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Taotie Mask Pattern",
+      "label_zh": "饕餮纹",
+      "aliases_zh": [
+        "饕餮纹",
+        "饕餮纹常见于青铜器，以对称兽面构成，神秘厚重。",
+        "对称兽面",
+        "青铜纹理",
+        "粗线条"
+      ],
+      "description": "Taotie Mask Pattern",
+      "nai_tags": [
+        "Taotie Mask Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_028.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/028_饕餮纹/028_饕餮纹_卡片图.png",
+        "git_blob_sha": "f1ec7f18cb220706e652f503765671df30c48c39",
+        "sha256": "2050f5c29d256335287774e5e122a8456e62a5fbc3368b239c2f3287ceb38a12",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "饕餮纹常见于青铜器，以对称兽面构成，神秘厚重。",
+      "visual_keywords": [
+        "对称兽面",
+        "青铜纹理",
+        "粗线条"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.029",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Animal Mask Pattern",
+      "label_zh": "兽面纹",
+      "aliases_zh": [
+        "兽面纹",
+        "兽面纹以抽象动物面部为主体，风格庄重、神秘、古朴。",
+        "正面对称兽面",
+        "目纹",
+        "角纹"
+      ],
+      "description": "Animal Mask Pattern",
+      "nai_tags": [
+        "Animal Mask Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_029.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/029_兽面纹/029_兽面纹_卡片图.png",
+        "git_blob_sha": "21a6b6afa38cebf63495d58b406fa3a17c93c24e",
+        "sha256": "59c95876aec3a1cd89dff1a56af5be8932d68ae50622dc447c5114ce1b92ae19",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "兽面纹以抽象动物面部为主体，风格庄重、神秘、古朴。",
+      "visual_keywords": [
+        "正面对称兽面",
+        "目纹",
+        "角纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.030",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Bat Pattern",
+      "label_zh": "蝙蝠纹",
+      "aliases_zh": [
+        "蝙蝠纹",
+        "蝙蝠因“蝠”谐音“福”，常用于吉祥图案。",
+        "五只蝙蝠",
+        "祥云",
+        "圆形构图"
+      ],
+      "description": "Bat Pattern",
+      "nai_tags": [
+        "Bat Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_030.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/030_蝙蝠纹/030_蝙蝠纹_卡片图.png",
+        "git_blob_sha": "5a6ec2c6d25f6bee0b8023bef216882f8e94b456",
+        "sha256": "c07f4861fa5d0fc34e2b99b248f874d1c4221c62dca15860096695c350d05b02",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "蝙蝠因“蝠”谐音“福”，常用于吉祥图案。",
+      "visual_keywords": [
+        "五只蝙蝠",
+        "祥云",
+        "圆形构图"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.031",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Crane Pattern",
+      "label_zh": "鹤纹",
+      "aliases_zh": [
+        "鹤纹",
+        "鹤纹多用于服饰、瓷器、屏风和吉祥图案。",
+        "仙鹤",
+        "云气",
+        "松枝",
+        "水面"
+      ],
+      "description": "Crane Pattern",
+      "nai_tags": [
+        "Crane Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_031.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/031_鹤纹/031_鹤纹_卡片图.png",
+        "git_blob_sha": "cea64806ccaf9cfd75d59a76cf5e1825621525dc",
+        "sha256": "a97d0923306493738e9848d34c6d875c7e2d2b50bf71090b220997043aba0cb1",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "鹤纹多用于服饰、瓷器、屏风和吉祥图案。",
+      "visual_keywords": [
+        "仙鹤",
+        "云气",
+        "松枝",
+        "水面"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.032",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Deer Pattern",
+      "label_zh": "鹿纹",
+      "aliases_zh": [
+        "鹿纹",
+        "鹿与“禄”谐音，常与松、鹤、灵芝等元素组合。",
+        "梅花鹿",
+        "灵芝",
+        "松树",
+        "山石"
+      ],
+      "description": "Deer Pattern",
+      "nai_tags": [
+        "Deer Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_032.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/032_鹿纹/032_鹿纹_卡片图.png",
+        "git_blob_sha": "26f7a9213da344cbc2c05373d0a93264e5f76917",
+        "sha256": "eba72f8eba7f66f92e05443581fbb34eae643a0eeed8f81e708c6074bc868884",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "鹿与“禄”谐音，常与松、鹤、灵芝等元素组合。",
+      "visual_keywords": [
+        "梅花鹿",
+        "灵芝",
+        "松树",
+        "山石"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.033",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Fish Pattern",
+      "label_zh": "鱼纹",
+      "aliases_zh": [
+        "鱼纹",
+        "鱼纹常见于瓷器、民俗年画和织物装饰。",
+        "双鱼",
+        "水波",
+        "莲花",
+        "圆形"
+      ],
+      "description": "Fish Pattern",
+      "nai_tags": [
+        "Fish Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_033.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/033_鱼纹/033_鱼纹_卡片图.png",
+        "git_blob_sha": "ab41cbb59b7b0ca0249f05fbc130a58d12733625",
+        "sha256": "a18b11aaa8ddc1c95a38bfe38d213d8672ce4e2de8be6efacf1a1eb5255d181e",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "鱼纹常见于瓷器、民俗年画和织物装饰。",
+      "visual_keywords": [
+        "双鱼",
+        "水波",
+        "莲花",
+        "圆形"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.034",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Carp Pattern",
+      "label_zh": "鲤鱼纹",
+      "aliases_zh": [
+        "鲤鱼纹",
+        "鲤鱼纹常与跃水、龙门意象相关，具有进取意味。",
+        "鲤鱼跃浪",
+        "水花",
+        "云纹"
+      ],
+      "description": "Carp Pattern",
+      "nai_tags": [
+        "Carp Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_034.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/034_鲤鱼纹/034_鲤鱼纹_卡片图.png",
+        "git_blob_sha": "7181e7cd195bf1afa59cb1b32b6627de60a05284",
+        "sha256": "4f911f4989d73639ec15de1167406fda15f097ba2823bc519d5c5d69cba007de",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "鲤鱼纹常与跃水、龙门意象相关，具有进取意味。",
+      "visual_keywords": [
+        "鲤鱼跃浪",
+        "水花",
+        "云纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.035",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Mandarin Duck Pattern",
+      "label_zh": "鸳鸯纹",
+      "aliases_zh": [
+        "鸳鸯纹",
+        "鸳鸯纹常用于婚庆、织绣与爱情主题装饰。",
+        "一对鸳鸯",
+        "莲叶",
+        "水纹"
+      ],
+      "description": "Mandarin Duck Pattern",
+      "nai_tags": [
+        "Mandarin Duck Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_035.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/035_鸳鸯纹/035_鸳鸯纹_卡片图.png",
+        "git_blob_sha": "94dc1a2814592bfd74ca66a8e193497f6d7da072",
+        "sha256": "50eb61820f5a6616791d84041f6f1a8eaa95c81ed4949033ba71b1489cfa5bd2",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "鸳鸯纹常用于婚庆、织绣与爱情主题装饰。",
+      "visual_keywords": [
+        "一对鸳鸯",
+        "莲叶",
+        "水纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.036",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Magpie Pattern",
+      "label_zh": "喜鹊纹",
+      "aliases_zh": [
+        "喜鹊纹",
+        "喜鹊纹常与梅花组合，形成喜上眉梢的吉祥意象。",
+        "喜鹊",
+        "梅枝",
+        "花苞"
+      ],
+      "description": "Magpie Pattern",
+      "nai_tags": [
+        "Magpie Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_036.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/036_喜鹊纹/036_喜鹊纹_卡片图.png",
+        "git_blob_sha": "22e036268a0cda340ccb7bfd872af4477923fa6e",
+        "sha256": "7df072418cb812816a6df5df29af2eeb027b96da416e2332a3f61ea3661bf598",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "喜鹊纹常与梅花组合，形成喜上眉梢的吉祥意象。",
+      "visual_keywords": [
+        "喜鹊",
+        "梅枝",
+        "花苞"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.037",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Horse Pattern",
+      "label_zh": "马纹",
+      "aliases_zh": [
+        "马纹",
+        "马纹表现速度、力量与进取精神，常见于壁画、器物与民俗装饰。",
+        "奔马",
+        "飘带",
+        "云气",
+        "动感"
+      ],
+      "description": "Horse Pattern",
+      "nai_tags": [
+        "Horse Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_037.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/037_马纹/037_马纹_卡片图.png",
+        "git_blob_sha": "76e63caec23d94a710318c25944a47e3ce10481b",
+        "sha256": "9d3f2169a9c2749b551c33437a127f2d890b1b7c405f8338bb396153d58de7a0",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "马纹表现速度、力量与进取精神，常见于壁画、器物与民俗装饰。",
+      "visual_keywords": [
+        "奔马",
+        "飘带",
+        "云气",
+        "动感"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.038",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Turtle Pattern",
+      "label_zh": "龟纹",
+      "aliases_zh": [
+        "龟纹",
+        "龟在传统文化中常与长寿、稳固相关。",
+        "龟形",
+        "龟甲",
+        "几何纹"
+      ],
+      "description": "Turtle Pattern",
+      "nai_tags": [
+        "Turtle Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_038.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/038_龟纹/038_龟纹_卡片图.png",
+        "git_blob_sha": "3578598af4ceac68f72ec19fad756bf6e1bfb72f",
+        "sha256": "0a3337f4db1f41dfdbc47edc5d0767d4a6654d005aeb2051972bd617055eb1d7",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "龟在传统文化中常与长寿、稳固相关。",
+      "visual_keywords": [
+        "龟形",
+        "龟甲",
+        "几何纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.039",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Butterfly Pattern",
+      "label_zh": "蝴蝶纹",
+      "aliases_zh": [
+        "蝴蝶纹",
+        "蝴蝶纹轻盈灵动，常与花卉组合。",
+        "双蝶",
+        "花枝",
+        "对称翅纹"
+      ],
+      "description": "Butterfly Pattern",
+      "nai_tags": [
+        "Butterfly Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_039.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/039_蝴蝶纹/039_蝴蝶纹_卡片图.png",
+        "git_blob_sha": "cc1037779a305282aa0d701cba6b38923a368a63",
+        "sha256": "56df627ce12d25c45d8050b1da8c28f000365d202e231fc6a4fd015db9ac58f6",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "蝴蝶纹轻盈灵动，常与花卉组合。",
+      "visual_keywords": [
+        "双蝶",
+        "花枝",
+        "对称翅纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.040",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "动物瑞兽纹",
+      "label": "Golden Toad Pattern",
+      "label_zh": "金蟾纹",
+      "aliases_zh": [
+        "金蟾纹",
+        "金蟾纹带有招财、纳福意味，适合民俗吉祥类纹样展示。",
+        "三足金蟾",
+        "铜钱",
+        "云纹"
+      ],
+      "description": "Golden Toad Pattern",
+      "nai_tags": [
+        "Golden Toad Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_040.png",
+        "source_path": "patterns/021-040_动物瑞兽纹/040_金蟾纹/040_金蟾纹_卡片图.png",
+        "git_blob_sha": "5a570f1a919ca1cc3bcf9d57a6bef43db5f16b0d",
+        "sha256": "4708aded8dc1a69d949d1b6457b88cdd3a8a5257b66192ebe8c9eb50fb76ea37",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "金蟾纹带有招财、纳福意味，适合民俗吉祥类纹样展示。",
+      "visual_keywords": [
+        "三足金蟾",
+        "铜钱",
+        "云纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.076",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Ruyi Pattern",
+      "label_zh": "如意纹",
+      "aliases_zh": [
+        "如意纹",
+        "如意纹由如意头造型发展而来，常见于边饰与器物装饰。",
+        "如意头",
+        "卷草",
+        "对称边饰"
+      ],
+      "description": "Ruyi Pattern",
+      "nai_tags": [
+        "Ruyi Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_076.png",
+        "source_path": "patterns/076-090_吉祥器物纹/076_如意纹/076_如意纹_卡片图.png",
+        "git_blob_sha": "0ca79914437e789a2f86967ca8605bbb15899fd1",
+        "sha256": "be7e54fc217dcf66297bc3912d9d57b51a7624a57cd77a7b53e9e09a34a10143",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "如意纹由如意头造型发展而来，常见于边饰与器物装饰。",
+      "visual_keywords": [
+        "如意头",
+        "卷草",
+        "对称边饰"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.077",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Treasure Vase Pattern",
+      "label_zh": "宝瓶纹",
+      "aliases_zh": [
+        "宝瓶纹",
+        "宝瓶纹常作为吉祥器物出现，可与花枝、祥云组合。",
+        "宝瓶",
+        "花枝",
+        "祥云"
+      ],
+      "description": "Treasure Vase Pattern",
+      "nai_tags": [
+        "Treasure Vase Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_077.png",
+        "source_path": "patterns/076-090_吉祥器物纹/077_宝瓶纹/077_宝瓶纹_卡片图.png",
+        "git_blob_sha": "e28612fb3f85725acd7cc5130d957d73a58a3641",
+        "sha256": "a11737f2f571e33ea2615b87baa855502132e0f85733afff043d170bcd2cb25e",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "宝瓶纹常作为吉祥器物出现，可与花枝、祥云组合。",
+      "visual_keywords": [
+        "宝瓶",
+        "花枝",
+        "祥云"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.078",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Double Coin Pattern",
+      "label_zh": "双钱纹",
+      "aliases_zh": [
+        "双钱纹",
+        "双钱纹由钱币形态组合而成，结构简洁，寓意明确。",
+        "两枚古钱",
+        "方孔",
+        "金线"
+      ],
+      "description": "Double Coin Pattern",
+      "nai_tags": [
+        "Double Coin Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_078.png",
+        "source_path": "patterns/076-090_吉祥器物纹/078_双钱纹/078_双钱纹_卡片图.png",
+        "git_blob_sha": "ca98aca66dd330c76804f9558506bec69649812e",
+        "sha256": "8cbdef3e338a87677fe0756e2be73301ad5141c80e6e5b0d515b4c6dda796c28",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "双钱纹由钱币形态组合而成，结构简洁，寓意明确。",
+      "visual_keywords": [
+        "两枚古钱",
+        "方孔",
+        "金线"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.079",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Coin Pattern",
+      "label_zh": "铜钱纹",
+      "aliases_zh": [
+        "铜钱纹",
+        "铜钱纹以外圆内方为基本形，适合连续纹和底纹设计。",
+        "方孔钱",
+        "连续排列",
+        "古铜色"
+      ],
+      "description": "Coin Pattern",
+      "nai_tags": [
+        "Coin Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_079.png",
+        "source_path": "patterns/076-090_吉祥器物纹/079_铜钱纹/079_铜钱纹_卡片图.png",
+        "git_blob_sha": "a4e20989c39ed8797489fd83a246e4b7830c2434",
+        "sha256": "73a809ddf33bdf1695ac45e6debe4cfdb93f818ec99d3d44ffc5bf5f5ed5bd19",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "铜钱纹以外圆内方为基本形，适合连续纹和底纹设计。",
+      "visual_keywords": [
+        "方孔钱",
+        "连续排列",
+        "古铜色"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.080",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Flower Basket Pattern",
+      "label_zh": "花篮纹",
+      "aliases_zh": [
+        "花篮纹",
+        "花篮纹常盛放花卉果实，富有生活美学气息。",
+        "花篮",
+        "牡丹",
+        "石榴",
+        "彩色"
+      ],
+      "description": "Flower Basket Pattern",
+      "nai_tags": [
+        "Flower Basket Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_080.png",
+        "source_path": "patterns/076-090_吉祥器物纹/080_花篮纹/080_花篮纹_卡片图.png",
+        "git_blob_sha": "34a0ab697698850faa2e89ee0f8eb29e3f10a3cf",
+        "sha256": "71e59bdfbaa1c857d35af56a11154641477b03a3e3d11b55665aeb185622cdbc",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "花篮纹常盛放花卉果实，富有生活美学气息。",
+      "visual_keywords": [
+        "花篮",
+        "牡丹",
+        "石榴",
+        "彩色"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.081",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Eight Treasures Pattern",
+      "label_zh": "八宝纹",
+      "aliases_zh": [
+        "八宝纹",
+        "八宝纹由多种吉祥器物组合而成，常见于瓷器和织物。",
+        "八件宝物",
+        "环形排列"
+      ],
+      "description": "Eight Treasures Pattern",
+      "nai_tags": [
+        "Eight Treasures Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_081.png",
+        "source_path": "patterns/076-090_吉祥器物纹/081_八宝纹/081_八宝纹_卡片图.png",
+        "git_blob_sha": "c2d45af791a0fbbe391c7dfe122636b7adf772f4",
+        "sha256": "59719aa36bde30674fd85028bf7e740f22856b615b5711dc68fc91e980b94552",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "八宝纹由多种吉祥器物组合而成，常见于瓷器和织物。",
+      "visual_keywords": [
+        "八件宝物",
+        "环形排列"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.082",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Hidden Eight Immortals Pattern",
+      "label_zh": "暗八仙纹",
+      "aliases_zh": [
+        "暗八仙纹",
+        "暗八仙纹以八仙所持器物代指人物，常用于祝寿与吉祥装饰。",
+        "扇",
+        "剑",
+        "葫芦",
+        "花篮等器物"
+      ],
+      "description": "Hidden Eight Immortals Pattern",
+      "nai_tags": [
+        "Hidden Eight Immortals Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_082.png",
+        "source_path": "patterns/076-090_吉祥器物纹/082_暗八仙纹/082_暗八仙纹_卡片图.png",
+        "git_blob_sha": "27e337f3ee74cdbb6baea3062e274c939135dc46",
+        "sha256": "d336cc1169a59530275a42420fa6569b9b42c58117e45cd8056eb7ba9151c097",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "暗八仙纹以八仙所持器物代指人物，常用于祝寿与吉祥装饰。",
+      "visual_keywords": [
+        "扇",
+        "剑",
+        "葫芦",
+        "花篮等器物"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.083",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Lingzhi Pattern",
+      "label_zh": "灵芝纹",
+      "aliases_zh": [
+        "灵芝纹",
+        "灵芝纹形态柔曲，常与云纹组合成祥瑞图案。",
+        "灵芝",
+        "祥云",
+        "卷曲菌盖"
+      ],
+      "description": "Lingzhi Pattern",
+      "nai_tags": [
+        "Lingzhi Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_083.png",
+        "source_path": "patterns/076-090_吉祥器物纹/083_灵芝纹/083_灵芝纹_卡片图.png",
+        "git_blob_sha": "2e240f18ece8632943136e27578e8b81a4c2263c",
+        "sha256": "24b6be9d747057090754a6f892bfb11bb2e02d5c82e3e9ca3854df1237bc9873",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "灵芝纹形态柔曲，常与云纹组合成祥瑞图案。",
+      "visual_keywords": [
+        "灵芝",
+        "祥云",
+        "卷曲菌盖"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.084",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Coral Pattern",
+      "label_zh": "珊瑚纹",
+      "aliases_zh": [
+        "珊瑚纹",
+        "珊瑚纹多见于珍宝组合图案，色彩鲜明。",
+        "红珊瑚枝",
+        "宝石",
+        "海波"
+      ],
+      "description": "Coral Pattern",
+      "nai_tags": [
+        "Coral Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_084.png",
+        "source_path": "patterns/076-090_吉祥器物纹/084_珊瑚纹/084_珊瑚纹_卡片图.png",
+        "git_blob_sha": "ce291dcc27befefa0c61008ac54b1043df478e51",
+        "sha256": "85e1359973995b4a5bf1e592cf3cfaf8f6484b0650c427b6e340055a9542e2f2",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "珊瑚纹多见于珍宝组合图案，色彩鲜明。",
+      "visual_keywords": [
+        "红珊瑚枝",
+        "宝石",
+        "海波"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.085",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Scroll Pattern",
+      "label_zh": "书卷纹",
+      "aliases_zh": [
+        "书卷纹",
+        "书卷纹常与文运、学识、雅趣相关，适合文房主题。",
+        "卷轴",
+        "书册",
+        "云纹"
+      ],
+      "description": "Scroll Pattern",
+      "nai_tags": [
+        "Scroll Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_085.png",
+        "source_path": "patterns/076-090_吉祥器物纹/085_书卷纹/085_书卷纹_卡片图.png",
+        "git_blob_sha": "1edbb47dc9d23fa1d19383629885b6a5a0c63879",
+        "sha256": "6ac10a9c650e118ad51ca6a10a3545081230c3d033a15e68a5023fb1f333f849",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "书卷纹常与文运、学识、雅趣相关，适合文房主题。",
+      "visual_keywords": [
+        "卷轴",
+        "书册",
+        "云纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.086",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Lantern Pattern",
+      "label_zh": "灯笼纹",
+      "aliases_zh": [
+        "灯笼纹",
+        "灯笼纹富有节庆气息，常用于喜庆主题装饰。",
+        "宫灯",
+        "流苏",
+        "红金配色"
+      ],
+      "description": "Lantern Pattern",
+      "nai_tags": [
+        "Lantern Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_086.png",
+        "source_path": "patterns/076-090_吉祥器物纹/086_灯笼纹/086_灯笼纹_卡片图.png",
+        "git_blob_sha": "a9086d312e6ba22e4d6bb8685cea1aab80b9dd6d",
+        "sha256": "5a8e167618b14e5c7fd8b0e55179821c37f5cf1362ac3bfe32be43cdf86f0374",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "灯笼纹富有节庆气息，常用于喜庆主题装饰。",
+      "visual_keywords": [
+        "宫灯",
+        "流苏",
+        "红金配色"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.087",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Incense Burner Pattern",
+      "label_zh": "香炉纹",
+      "aliases_zh": [
+        "香炉纹",
+        "香炉纹具有礼仪、清供与文人空间气质。",
+        "香炉",
+        "烟云",
+        "铜器感"
+      ],
+      "description": "Incense Burner Pattern",
+      "nai_tags": [
+        "Incense Burner Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_087.png",
+        "source_path": "patterns/076-090_吉祥器物纹/087_香炉纹/087_香炉纹_卡片图.png",
+        "git_blob_sha": "d5f4e7c26663d77af6b8d24626b6c06fc9f98cef",
+        "sha256": "406ac7429e3c2f1c656042f8238e0d5b5068cff3791a2d5489e225aba58e6bfb",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "香炉纹具有礼仪、清供与文人空间气质。",
+      "visual_keywords": [
+        "香炉",
+        "烟云",
+        "铜器感"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.088",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Jade Bi Pattern",
+      "label_zh": "玉璧纹",
+      "aliases_zh": [
+        "玉璧纹",
+        "玉璧纹以圆形玉器为灵感，适合简洁庄重的图案设计。",
+        "圆璧",
+        "玉质纹理",
+        "中心孔"
+      ],
+      "description": "Jade Bi Pattern",
+      "nai_tags": [
+        "Jade Bi Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_088.png",
+        "source_path": "patterns/076-090_吉祥器物纹/088_玉璧纹/088_玉璧纹_卡片图.png",
+        "git_blob_sha": "95f62a2ca006c88be9acf123039b33d783bf430d",
+        "sha256": "14930def7e3e9465af4d5c161b0785d4d258ddc3168a2300235e31dee500f6e3",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "玉璧纹以圆形玉器为灵感，适合简洁庄重的图案设计。",
+      "visual_keywords": [
+        "圆璧",
+        "玉质纹理",
+        "中心孔"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.089",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Fan Pattern",
+      "label_zh": "扇面纹",
+      "aliases_zh": [
+        "扇面纹",
+        "扇面纹结合折扇形态与花鸟装饰，具有文雅气质。",
+        "折扇",
+        "花鸟",
+        "扇骨"
+      ],
+      "description": "Fan Pattern",
+      "nai_tags": [
+        "Fan Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_089.png",
+        "source_path": "patterns/076-090_吉祥器物纹/089_扇面纹/089_扇面纹_卡片图.png",
+        "git_blob_sha": "9845299595fbf13a94446dc3fa53bd55bedd8d31",
+        "sha256": "2c2fd540ef9d07b27e6e4133db85a2e144e46b0b095a94a779414d1f82b51cc3",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "扇面纹结合折扇形态与花鸟装饰，具有文雅气质。",
+      "visual_keywords": [
+        "折扇",
+        "花鸟",
+        "扇骨"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.090",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "吉祥器物纹",
+      "label": "Chime Stone Pattern",
+      "label_zh": "编磬纹",
+      "aliases_zh": [
+        "编磬纹",
+        "编磬纹取自古代礼乐器形，适合表现礼乐文明。",
+        "磬形",
+        "悬挂",
+        "青铜金石感"
+      ],
+      "description": "Chime Stone Pattern",
+      "nai_tags": [
+        "Chime Stone Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_090.png",
+        "source_path": "patterns/076-090_吉祥器物纹/090_编磬纹/090_编磬纹_卡片图.png",
+        "git_blob_sha": "a3e8beff260818917cbe7fb63b5588a2c19a0233",
+        "sha256": "ce12146cb601b9466c7ae5e60453613f75161cbd41b536b6979b8fe580a494b5",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "编磬纹取自古代礼乐器形，适合表现礼乐文明。",
+      "visual_keywords": [
+        "磬形",
+        "悬挂",
+        "青铜金石感"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.091",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Longevity Character Pattern",
+      "label_zh": "寿字纹",
+      "aliases_zh": [
+        "寿字纹",
+        "寿字纹以“寿”字变体构成装饰，常见于祝寿器物与织绣。",
+        "篆体寿字",
+        "圆形团寿",
+        "边饰"
+      ],
+      "description": "Longevity Character Pattern",
+      "nai_tags": [
+        "Longevity Character Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_091.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/091_寿字纹/091_寿字纹_卡片图.png",
+        "git_blob_sha": "dd3082e4f55db74b7fddf9e2789f3146f4ae3d57",
+        "sha256": "139927a957017cb63b19fe27418ecd04a5de8e639c896c78528702363a08d9e2",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "寿字纹以“寿”字变体构成装饰，常见于祝寿器物与织绣。",
+      "visual_keywords": [
+        "篆体寿字",
+        "圆形团寿",
+        "边饰"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.092",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Round Longevity Pattern",
+      "label_zh": "团寿纹",
+      "aliases_zh": [
+        "团寿纹",
+        "团寿纹将寿字置于圆形构图中，结构完整。",
+        "圆形寿字",
+        "云纹环绕"
+      ],
+      "description": "Round Longevity Pattern",
+      "nai_tags": [
+        "Round Longevity Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_092.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/092_团寿纹/092_团寿纹_卡片图.png",
+        "git_blob_sha": "7ec36686519085f4c3c3e2246dfa46ea601d83e0",
+        "sha256": "22cc1b5a0fda7b52366432a6000d17a06d6a74eed50aa5010dfb3cfe4d2d6010",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "团寿纹将寿字置于圆形构图中，结构完整。",
+      "visual_keywords": [
+        "圆形寿字",
+        "云纹环绕"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.093",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Fortune Character Pattern",
+      "label_zh": "福字纹",
+      "aliases_zh": [
+        "福字纹",
+        "福字纹以“福”字装饰化展开，常用于年节与家宅装饰。",
+        "篆体福字",
+        "祥云",
+        "朱砂"
+      ],
+      "description": "Fortune Character Pattern",
+      "nai_tags": [
+        "Fortune Character Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_093.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/093_福字纹/093_福字纹_卡片图.png",
+        "git_blob_sha": "417fff6e565c2669a19b4d3fbd6f73beda8e5979",
+        "sha256": "be54c028cfc5e8994af8d7cbbec39adac25e18d442b4c2b2e7894a515112a6cb",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "福字纹以“福”字装饰化展开，常用于年节与家宅装饰。",
+      "visual_keywords": [
+        "篆体福字",
+        "祥云",
+        "朱砂"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.094",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Double Happiness Pattern",
+      "label_zh": "喜字纹",
+      "aliases_zh": [
+        "喜字纹",
+        "喜字纹常用于婚庆和喜事场景，视觉识别度高。",
+        "双喜字",
+        "花卉",
+        "红金配色"
+      ],
+      "description": "Double Happiness Pattern",
+      "nai_tags": [
+        "Double Happiness Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_094.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/094_喜字纹/094_喜字纹_卡片图.png",
+        "git_blob_sha": "a15c7d9171b22c6bffddd0b2b1e396b6fc23e5c7",
+        "sha256": "f225f0e7c7269bc14566b424ed313311c62823c0660270bd3989d1570ce0f076",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "喜字纹常用于婚庆和喜事场景，视觉识别度高。",
+      "visual_keywords": [
+        "双喜字",
+        "花卉",
+        "红金配色"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.095",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Fortune and Longevity Pattern",
+      "label_zh": "福寿纹",
+      "aliases_zh": [
+        "福寿纹",
+        "福寿纹将福、寿或蝙蝠、寿桃等元素组合。",
+        "蝙蝠",
+        "寿桃",
+        "寿字",
+        "云纹"
+      ],
+      "description": "Fortune and Longevity Pattern",
+      "nai_tags": [
+        "Fortune and Longevity Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_095.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/095_福寿纹/095_福寿纹_卡片图.png",
+        "git_blob_sha": "c7c49a278979b6736be3edaafa55ce534cda804f",
+        "sha256": "e75460d73241e01f088ab92bf430d1d13670058801c6c0ad37dfe99cbba7a297",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "福寿纹将福、寿或蝙蝠、寿桃等元素组合。",
+      "visual_keywords": [
+        "蝙蝠",
+        "寿桃",
+        "寿字",
+        "云纹"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.096",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Five Bats Around Longevity Pattern",
+      "label_zh": "五福捧寿纹",
+      "aliases_zh": [
+        "五福捧寿纹",
+        "五只蝙蝠围绕寿字，是经典吉祥组合纹。",
+        "五蝠",
+        "团寿",
+        "圆形对称"
+      ],
+      "description": "Five Bats Around Longevity Pattern",
+      "nai_tags": [
+        "Five Bats Around Longevity Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_096.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/096_五福捧寿纹/096_五福捧寿纹_卡片图.png",
+        "git_blob_sha": "83a2ac4b3c80122a2a3646e8c0f12a091ef3793c",
+        "sha256": "5aafd711d4ad8f1e776dd0d8c5619fca9c702b39970337d0ca62bbe0e91789a5",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "五只蝙蝠围绕寿字，是经典吉祥组合纹。",
+      "visual_keywords": [
+        "五蝠",
+        "团寿",
+        "圆形对称"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.097",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Twin Fish and Lotus Pattern",
+      "label_zh": "双鱼莲花纹",
+      "aliases_zh": [
+        "双鱼莲花纹",
+        "双鱼与莲花组合，常见于民俗和器物装饰。",
+        "双鱼",
+        "莲花",
+        "水波",
+        "圆形"
+      ],
+      "description": "Twin Fish and Lotus Pattern",
+      "nai_tags": [
+        "Twin Fish and Lotus Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_097.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/097_双鱼莲花纹/097_双鱼莲花纹_卡片图.png",
+        "git_blob_sha": "1ac1e6da3a6a244c07c6e6925b7312e6ec584706",
+        "sha256": "cc9211e2ba1adbcb76e4bb691f3177958ed887f986f44cea301ee793f5c7e5a9",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "双鱼与莲花组合，常见于民俗和器物装饰。",
+      "visual_keywords": [
+        "双鱼",
+        "莲花",
+        "水波",
+        "圆形"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.098",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Deer and Crane Spring Pattern",
+      "label_zh": "鹿鹤同春纹",
+      "aliases_zh": [
+        "鹿鹤同春纹",
+        "鹿、鹤、松树组合，常用于祝寿和祥瑞主题。",
+        "鹿",
+        "鹤",
+        "松树",
+        "祥云"
+      ],
+      "description": "Deer and Crane Spring Pattern",
+      "nai_tags": [
+        "Deer and Crane Spring Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_098.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/098_鹿鹤同春纹/098_鹿鹤同春纹_卡片图.png",
+        "git_blob_sha": "822b6c0cb169f3b2c0b2ad8d6ac338af2fc9e14f",
+        "sha256": "7e2b5ec27d771a657f4fbb8e7c436764e521b5bda767f102c5fca81a7ab0e331",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "鹿、鹤、松树组合，常用于祝寿和祥瑞主题。",
+      "visual_keywords": [
+        "鹿",
+        "鹤",
+        "松树",
+        "祥云"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.099",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Three Friends of Winter Pattern",
+      "label_zh": "岁寒三友纹",
+      "aliases_zh": [
+        "岁寒三友纹",
+        "松、竹、梅并称岁寒三友，极具文人审美。",
+        "松竹梅组合",
+        "文人画风"
+      ],
+      "description": "Three Friends of Winter Pattern",
+      "nai_tags": [
+        "Three Friends of Winter Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_099.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/099_岁寒三友纹/099_岁寒三友纹_卡片图.png",
+        "git_blob_sha": "d4d87d2c8630745da8db930a72613ed21119878b",
+        "sha256": "737535a549eb3ef6cff69304c4daac31ff98c969828d8cec50f9ed81cfe40cd6",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "松、竹、梅并称岁寒三友，极具文人审美。",
+      "visual_keywords": [
+        "松竹梅组合",
+        "文人画风"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "traditional.100",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "文字福寿与组合纹",
+      "label": "Square and Circle Harmony Pattern",
+      "label_zh": "方圆合璧纹",
+      "aliases_zh": [
+        "方圆合璧纹",
+        "方与圆组合体现秩序、圆融与和谐，适合现代新中式抽象纹样。",
+        "外圆内方",
+        "几何平衡",
+        "金青配色"
+      ],
+      "description": "Square and Circle Harmony Pattern",
+      "nai_tags": [
+        "Square and Circle Harmony Pattern"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "traditional_patterns",
+      "source_kind": "github_dataset",
+      "provenance": {
+        "id": "traditional_patterns",
+        "repository": "dososo/chinese-traditional-patterns",
+        "url": "https://github.com/dososo/chinese-traditional-patterns",
+        "commit": "64dccd203a5cde5514eeda1096052c7b9bb69663",
+        "stars_at_review": 364,
+        "review_date": "2026-11-18",
+        "license": "CC-BY-NC-4.0"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": {
+        "local_available": true,
+        "local_file": "resource_library/motif/images/traditional_100.png",
+        "source_path": "patterns/091-100_文字福寿与组合纹/100_方圆合璧纹/100_方圆合璧纹_卡片图.png",
+        "git_blob_sha": "b2c60f1ee23fd42d124445707585111dbca9e568",
+        "sha256": "d7681a70ecadb16ac89415d8b46d4ea17cf27cca180ff2c89be8d7a5139eea40",
+        "visual_review": "reviewed_nonportrait_pattern_card",
+        "scope": "motif",
+        "review_note": "已查看纹样图录；提取纹样区域和构成，排除卡片文字、纸张背景与排版。"
+      },
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "summary_zh": "方与圆组合体现秩序、圆融与和谐，适合现代新中式抽象纹样。",
+      "visual_keywords": [
+        "外圆内方",
+        "几何平衡",
+        "金青配色"
+      ],
+      "constraints": [
+        "bind pattern geometry to a specific current item surface and anchor",
+        "do not copy card typography, paper background, title, cultural claims, or palette as a forced global art style"
+      ]
+    },
+    {
+      "id": "avs.motif.abstract_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "abstract motif",
+      "label_zh": "抽象花纹",
+      "aliases_zh": [
+        "抽象花纹"
+      ],
+      "description": "abstract motif",
+      "nai_tags": [
+        "abstract motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.anchor_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "anchor motif",
+      "label_zh": "锚形图案",
+      "aliases_zh": [
+        "锚形图案"
+      ],
+      "description": "anchor motif",
+      "nai_tags": [
+        "anchor motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.animal_print",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "animal print",
+      "label_zh": "动物纹",
+      "aliases_zh": [
+        "动物纹"
+      ],
+      "description": "animal print",
+      "nai_tags": [
+        "animal print"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.butterfly_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "butterfly motif",
+      "label_zh": "蝴蝶图案",
+      "aliases_zh": [
+        "蝴蝶图案"
+      ],
+      "description": "butterfly motif",
+      "nai_tags": [
+        "butterfly motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.calligraphic_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "calligraphic motif",
+      "label_zh": "书法图案",
+      "aliases_zh": [
+        "书法图案"
+      ],
+      "description": "calligraphic motif",
+      "nai_tags": [
+        "calligraphic motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.cherry_blossom_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "cherry-blossom motif",
+      "label_zh": "樱花图案",
+      "aliases_zh": [
+        "樱花图案"
+      ],
+      "description": "cherry-blossom motif",
+      "nai_tags": [
+        "cherry-blossom motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.flame_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "flame motif",
+      "label_zh": "火焰图案",
+      "aliases_zh": [
+        "火焰图案"
+      ],
+      "description": "flame motif",
+      "nai_tags": [
+        "flame motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.floral_print",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "floral print",
+      "label_zh": "花卉印花",
+      "aliases_zh": [
+        "花卉印花"
+      ],
+      "description": "floral print",
+      "nai_tags": [
+        "floral print"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.heart_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "heart motif",
+      "label_zh": "心形图案",
+      "aliases_zh": [
+        "心形图案"
+      ],
+      "description": "heart motif",
+      "nai_tags": [
+        "heart motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.heraldic_emblem",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "heraldic emblem",
+      "label_zh": "徽章图案",
+      "aliases_zh": [
+        "徽章图案"
+      ],
+      "description": "heraldic emblem",
+      "nai_tags": [
+        "heraldic emblem"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.leaf_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "leaf motif",
+      "label_zh": "叶片图案",
+      "aliases_zh": [
+        "叶片图案"
+      ],
+      "description": "leaf motif",
+      "nai_tags": [
+        "leaf motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.leopard_print",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "leopard print",
+      "label_zh": "豹纹",
+      "aliases_zh": [
+        "豹纹"
+      ],
+      "description": "leopard print",
+      "nai_tags": [
+        "leopard print"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.moon_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "moon motif",
+      "label_zh": "月亮图案",
+      "aliases_zh": [
+        "月亮图案"
+      ],
+      "description": "moon motif",
+      "nai_tags": [
+        "moon motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.rose_print",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "rose print",
+      "label_zh": "玫瑰印花",
+      "aliases_zh": [
+        "玫瑰印花"
+      ],
+      "description": "rose print",
+      "nai_tags": [
+        "rose print"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.snowflake_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "snowflake motif",
+      "label_zh": "雪花图案",
+      "aliases_zh": [
+        "雪花图案"
+      ],
+      "description": "snowflake motif",
+      "nai_tags": [
+        "snowflake motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.spiderweb_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "spiderweb motif",
+      "label_zh": "蛛网图案",
+      "aliases_zh": [
+        "蛛网图案"
+      ],
+      "description": "spiderweb motif",
+      "nai_tags": [
+        "spiderweb motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.star_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "star motif",
+      "label_zh": "星形图案",
+      "aliases_zh": [
+        "星形图案"
+      ],
+      "description": "star motif",
+      "nai_tags": [
+        "star motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.vine_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "vine motif",
+      "label_zh": "藤蔓图案",
+      "aliases_zh": [
+        "藤蔓图案"
+      ],
+      "description": "vine motif",
+      "nai_tags": [
+        "vine motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.wing_motif",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "wing motif",
+      "label_zh": "羽翼图案",
+      "aliases_zh": [
+        "羽翼图案"
+      ],
+      "description": "wing motif",
+      "nai_tags": [
+        "wing motif"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.motif.zebra_print",
+      "category": "motif",
+      "category_zh": "图案",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "zebra print",
+      "label_zh": "斑马纹",
+      "aliases_zh": [
+        "斑马纹"
+      ],
+      "description": "zebra print",
+      "nai_tags": [
+        "zebra print"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
