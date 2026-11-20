@@ -1,0 +1,390 @@
+{
+  "category": "makeup",
+  "label_zh": "妆容术语",
+  "entries": [
+    {
+      "id": "avs.makeup.fine_eyeliner",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "fine eyeliner",
+      "label_zh": "细眼线",
+      "aliases_zh": [
+        "细眼线"
+      ],
+      "description": "fine eyeliner",
+      "nai_tags": [
+        "fine eyeliner"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.glossy_lips",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "glossy lips",
+      "label_zh": "水光唇妆",
+      "aliases_zh": [
+        "水光唇妆"
+      ],
+      "description": "glossy lips",
+      "nai_tags": [
+        "glossy lips"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.gradient_lip_colour",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "gradient lip colour",
+      "label_zh": "渐变唇妆",
+      "aliases_zh": [
+        "渐变唇妆"
+      ],
+      "description": "gradient lip colour",
+      "nai_tags": [
+        "gradient lip colour"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.long_eyelashes",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "long eyelashes",
+      "label_zh": "纤长睫毛",
+      "aliases_zh": [
+        "纤长睫毛"
+      ],
+      "description": "long eyelashes",
+      "nai_tags": [
+        "long eyelashes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.matte_lipstick",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "matte lipstick",
+      "label_zh": "哑光唇妆",
+      "aliases_zh": [
+        "哑光唇妆"
+      ],
+      "description": "matte lipstick",
+      "nai_tags": [
+        "matte lipstick"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.nude_pink_lipstick",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "nude-pink lipstick",
+      "label_zh": "裸粉唇",
+      "aliases_zh": [
+        "裸粉唇"
+      ],
+      "description": "nude-pink lipstick",
+      "nai_tags": [
+        "nude-pink lipstick"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.red_lipstick",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "red lipstick",
+      "label_zh": "红唇",
+      "aliases_zh": [
+        "红唇"
+      ],
+      "description": "red lipstick",
+      "nai_tags": [
+        "red lipstick"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.smoky_eye_makeup",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "smoky eye makeup",
+      "label_zh": "烟熏眼妆",
+      "aliases_zh": [
+        "烟熏眼妆"
+      ],
+      "description": "smoky eye makeup",
+      "nai_tags": [
+        "smoky eye makeup"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.subtle_blush_makeup",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "subtle blush makeup",
+      "label_zh": "淡腮红",
+      "aliases_zh": [
+        "淡腮红"
+      ],
+      "description": "subtle blush makeup",
+      "nai_tags": [
+        "subtle blush makeup"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.subtle_eyeshadow",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "subtle eyeshadow",
+      "label_zh": "淡眼影",
+      "aliases_zh": [
+        "淡眼影"
+      ],
+      "description": "subtle eyeshadow",
+      "nai_tags": [
+        "subtle eyeshadow"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.thick_eyelashes",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "thick eyelashes",
+      "label_zh": "浓密睫毛",
+      "aliases_zh": [
+        "浓密睫毛"
+      ],
+      "description": "thick eyelashes",
+      "nai_tags": [
+        "thick eyelashes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.makeup.winged_eyeliner",
+      "category": "makeup",
+      "category_zh": "妆容术语",
+      "compile_category": "makeup",
+      "subcategory": "common_design_term",
+      "label": "winged eyeliner",
+      "label_zh": "上扬眼线",
+      "aliases_zh": [
+        "上扬眼线"
+      ],
+      "description": "winged eyeliner",
+      "nai_tags": [
+        "winged eyeliner"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
