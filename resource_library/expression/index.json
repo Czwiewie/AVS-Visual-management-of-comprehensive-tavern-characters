@@ -1,0 +1,966 @@
+{
+  "category": "expression",
+  "label_zh": "表情与目光",
+  "entries": [
+    {
+      "id": "avs.expression.annoyed_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "annoyed expression",
+      "label_zh": "不悦",
+      "aliases_zh": [
+        "不悦"
+      ],
+      "description": "annoyed expression",
+      "nai_tags": [
+        "annoyed expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.bright_smile",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "bright smile",
+      "label_zh": "开朗笑容",
+      "aliases_zh": [
+        "开朗笑容"
+      ],
+      "description": "bright smile",
+      "nai_tags": [
+        "bright smile"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.clenched_teeth",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "clenched teeth",
+      "label_zh": "咬紧牙关",
+      "aliases_zh": [
+        "咬紧牙关"
+      ],
+      "description": "clenched teeth",
+      "nai_tags": [
+        "clenched teeth"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.closed_eyes",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "closed eyes",
+      "label_zh": "闭目",
+      "aliases_zh": [
+        "闭目"
+      ],
+      "description": "closed eyes",
+      "nai_tags": [
+        "closed eyes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.closed_mouth_smile",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "closed-mouth smile",
+      "label_zh": "抿唇笑",
+      "aliases_zh": [
+        "抿唇笑"
+      ],
+      "description": "closed-mouth smile",
+      "nai_tags": [
+        "closed-mouth smile"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.confident_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "confident expression",
+      "label_zh": "自信神情",
+      "aliases_zh": [
+        "自信神情"
+      ],
+      "description": "confident expression",
+      "nai_tags": [
+        "confident expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.confused_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "confused expression",
+      "label_zh": "困惑",
+      "aliases_zh": [
+        "困惑"
+      ],
+      "description": "confused expression",
+      "nai_tags": [
+        "confused expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.determined_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "determined expression",
+      "label_zh": "坚定",
+      "aliases_zh": [
+        "坚定"
+      ],
+      "description": "determined expression",
+      "nai_tags": [
+        "determined expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.downcast_gaze",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "downcast gaze",
+      "label_zh": "目光下垂",
+      "aliases_zh": [
+        "目光下垂"
+      ],
+      "description": "downcast gaze",
+      "nai_tags": [
+        "downcast gaze"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.focused_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "focused expression",
+      "label_zh": "专注",
+      "aliases_zh": [
+        "专注"
+      ],
+      "description": "focused expression",
+      "nai_tags": [
+        "focused expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.gentle_smile",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "gentle smile",
+      "label_zh": "轻浅微笑",
+      "aliases_zh": [
+        "轻浅微笑"
+      ],
+      "description": "gentle smile",
+      "nai_tags": [
+        "gentle smile"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.half_lidded_eyes",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "half-lidded eyes",
+      "label_zh": "半垂眼帘",
+      "aliases_zh": [
+        "半垂眼帘"
+      ],
+      "description": "half-lidded eyes",
+      "nai_tags": [
+        "half-lidded eyes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.looking_back",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "looking back",
+      "label_zh": "回眸",
+      "aliases_zh": [
+        "回眸"
+      ],
+      "description": "looking back",
+      "nai_tags": [
+        "looking back"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.looking_toward_the_other_person",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "looking toward the other person",
+      "label_zh": "直视对方",
+      "aliases_zh": [
+        "直视对方"
+      ],
+      "description": "looking toward the other person",
+      "nai_tags": [
+        "looking toward the other person"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.playful_wink",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "playful wink",
+      "label_zh": "俏皮眨眼",
+      "aliases_zh": [
+        "俏皮眨眼"
+      ],
+      "description": "playful wink",
+      "nai_tags": [
+        "playful wink"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.pouting",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "pouting",
+      "label_zh": "噘嘴",
+      "aliases_zh": [
+        "噘嘴"
+      ],
+      "description": "pouting",
+      "nai_tags": [
+        "pouting"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.relieved_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "relieved expression",
+      "label_zh": "释然",
+      "aliases_zh": [
+        "释然"
+      ],
+      "description": "relieved expression",
+      "nai_tags": [
+        "relieved expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.sad_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "sad expression",
+      "label_zh": "悲伤",
+      "aliases_zh": [
+        "悲伤"
+      ],
+      "description": "sad expression",
+      "nai_tags": [
+        "sad expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.serious_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "serious expression",
+      "label_zh": "严肃",
+      "aliases_zh": [
+        "严肃"
+      ],
+      "description": "serious expression",
+      "nai_tags": [
+        "serious expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.shy_expression_with_a_faint_blush",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "shy expression with a faint blush",
+      "label_zh": "羞赧",
+      "aliases_zh": [
+        "羞赧"
+      ],
+      "description": "shy expression with a faint blush",
+      "nai_tags": [
+        "shy expression with a faint blush"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.sideways_glance",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "sideways glance",
+      "label_zh": "目光侧移",
+      "aliases_zh": [
+        "目光侧移"
+      ],
+      "description": "sideways glance",
+      "nai_tags": [
+        "sideways glance"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.slightly_furrowed_brows",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "slightly furrowed brows",
+      "label_zh": "轻皱眉",
+      "aliases_zh": [
+        "轻皱眉"
+      ],
+      "description": "slightly furrowed brows",
+      "nai_tags": [
+        "slightly furrowed brows"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.slightly_parted_lips",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "slightly parted lips",
+      "label_zh": "微张嘴唇",
+      "aliases_zh": [
+        "微张嘴唇"
+      ],
+      "description": "slightly parted lips",
+      "nai_tags": [
+        "slightly parted lips"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.subtle_smile",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "subtle smile",
+      "label_zh": "含蓄笑容",
+      "aliases_zh": [
+        "含蓄笑容"
+      ],
+      "description": "subtle smile",
+      "nai_tags": [
+        "subtle smile"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.surprised_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "surprised expression",
+      "label_zh": "惊讶",
+      "aliases_zh": [
+        "惊讶"
+      ],
+      "description": "surprised expression",
+      "nai_tags": [
+        "surprised expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.tearful_eyes",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "tearful eyes",
+      "label_zh": "含泪",
+      "aliases_zh": [
+        "含泪"
+      ],
+      "description": "tearful eyes",
+      "nai_tags": [
+        "tearful eyes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.thoughtful_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "thoughtful expression",
+      "label_zh": "沉思",
+      "aliases_zh": [
+        "沉思"
+      ],
+      "description": "thoughtful expression",
+      "nai_tags": [
+        "thoughtful expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.tired_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "tired expression",
+      "label_zh": "疲倦",
+      "aliases_zh": [
+        "疲倦"
+      ],
+      "description": "tired expression",
+      "nai_tags": [
+        "tired expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.toothy_smile",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "toothy smile",
+      "label_zh": "露齿笑",
+      "aliases_zh": [
+        "露齿笑"
+      ],
+      "description": "toothy smile",
+      "nai_tags": [
+        "toothy smile"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.expression.worried_expression",
+      "category": "expression",
+      "category_zh": "表情与目光",
+      "compile_category": "expression",
+      "subcategory": "common_design_term",
+      "label": "worried expression",
+      "label_zh": "忧虑",
+      "aliases_zh": [
+        "忧虑"
+      ],
+      "description": "worried expression",
+      "nai_tags": [
+        "worried expression"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": false,
+      "regions": [
+        "face"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
