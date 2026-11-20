@@ -1,0 +1,942 @@
+{
+  "category": "hosiery",
+  "label_zh": "丝袜与袜类",
+  "entries": [
+    {
+      "id": "avs.hosiery.ankle_socks",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "ankle socks",
+      "label_zh": "短袜",
+      "aliases_zh": [
+        "短袜"
+      ],
+      "description": "ankle socks",
+      "nai_tags": [
+        "ankle socks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.argyle_socks",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "argyle socks",
+      "label_zh": "菱格袜",
+      "aliases_zh": [
+        "菱格袜"
+      ],
+      "description": "argyle socks",
+      "nai_tags": [
+        "argyle socks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.asymmetric_single_design_legwear",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "asymmetric single-design legwear",
+      "label_zh": "左右不对称袜",
+      "aliases_zh": [
+        "左右不对称袜"
+      ],
+      "description": "asymmetric single-design legwear",
+      "nai_tags": [
+        "asymmetric single-design legwear"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.back_seamed_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "back-seamed stockings",
+      "label_zh": "后缝线长袜",
+      "aliases_zh": [
+        "后缝线长袜"
+      ],
+      "description": "back-seamed stockings",
+      "nai_tags": [
+        "back-seamed stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.black_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "black stockings",
+      "label_zh": "黑色丝袜",
+      "aliases_zh": [
+        "黑色丝袜"
+      ],
+      "description": "black stockings",
+      "nai_tags": [
+        "black stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.fishnet_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "fishnet stockings",
+      "label_zh": "渔网袜",
+      "aliases_zh": [
+        "渔网袜"
+      ],
+      "description": "fishnet stockings",
+      "nai_tags": [
+        "fishnet stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.grey_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "grey stockings",
+      "label_zh": "灰色丝袜",
+      "aliases_zh": [
+        "灰色丝袜"
+      ],
+      "description": "grey stockings",
+      "nai_tags": [
+        "grey stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.knee_high_socks",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "knee-high socks",
+      "label_zh": "及膝袜",
+      "aliases_zh": [
+        "及膝袜"
+      ],
+      "description": "knee-high socks",
+      "nai_tags": [
+        "knee-high socks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.lace_stocking_tops",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "lace stocking tops",
+      "label_zh": "蕾丝袜口",
+      "aliases_zh": [
+        "蕾丝袜口"
+      ],
+      "description": "lace stocking tops",
+      "nai_tags": [
+        "lace stocking tops"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.lace_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "lace stockings",
+      "label_zh": "蕾丝长袜",
+      "aliases_zh": [
+        "蕾丝长袜"
+      ],
+      "description": "lace stockings",
+      "nai_tags": [
+        "lace stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.matte_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "matte stockings",
+      "label_zh": "哑光丝袜",
+      "aliases_zh": [
+        "哑光丝袜"
+      ],
+      "description": "matte stockings",
+      "nai_tags": [
+        "matte stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.no_show_socks",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "no-show socks",
+      "label_zh": "船袜",
+      "aliases_zh": [
+        "船袜"
+      ],
+      "description": "no-show socks",
+      "nai_tags": [
+        "no-show socks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.opaque_pantyhose",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "opaque pantyhose",
+      "label_zh": "不透明连裤袜",
+      "aliases_zh": [
+        "不透明连裤袜"
+      ],
+      "description": "opaque pantyhose",
+      "nai_tags": [
+        "opaque pantyhose"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.over_knee_socks",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "over-knee socks",
+      "label_zh": "过膝袜",
+      "aliases_zh": [
+        "过膝袜"
+      ],
+      "description": "over-knee socks",
+      "nai_tags": [
+        "over-knee socks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.pinstriped_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "pinstriped stockings",
+      "label_zh": "细条纹袜",
+      "aliases_zh": [
+        "细条纹袜"
+      ],
+      "description": "pinstriped stockings",
+      "nai_tags": [
+        "pinstriped stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.polka_dot_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "polka-dot stockings",
+      "label_zh": "波点袜",
+      "aliases_zh": [
+        "波点袜"
+      ],
+      "description": "polka-dot stockings",
+      "nai_tags": [
+        "polka-dot stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.sheer_pantyhose",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "sheer pantyhose",
+      "label_zh": "薄透连裤袜",
+      "aliases_zh": [
+        "薄透连裤袜"
+      ],
+      "description": "sheer pantyhose",
+      "nai_tags": [
+        "sheer pantyhose"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.single_stocking",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "single stocking",
+      "label_zh": "单侧袜",
+      "aliases_zh": [
+        "单侧袜"
+      ],
+      "description": "single stocking",
+      "nai_tags": [
+        "single stocking"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.skin_tone_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "skin-tone stockings",
+      "label_zh": "肤色丝袜",
+      "aliases_zh": [
+        "肤色丝袜"
+      ],
+      "description": "skin-tone stockings",
+      "nai_tags": [
+        "skin-tone stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.slightly_lustrous_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "slightly lustrous stockings",
+      "label_zh": "微光泽丝袜",
+      "aliases_zh": [
+        "微光泽丝袜"
+      ],
+      "description": "slightly lustrous stockings",
+      "nai_tags": [
+        "slightly lustrous stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.stirrup_tights",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "stirrup tights",
+      "label_zh": "踩脚袜",
+      "aliases_zh": [
+        "踩脚袜"
+      ],
+      "description": "stirrup tights",
+      "nai_tags": [
+        "stirrup tights"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.thigh_high_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "thigh-high stockings",
+      "label_zh": "大腿长袜",
+      "aliases_zh": [
+        "大腿长袜"
+      ],
+      "description": "thigh-high stockings",
+      "nai_tags": [
+        "thigh-high stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.toeless_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "toeless stockings",
+      "label_zh": "露趾丝袜",
+      "aliases_zh": [
+        "露趾丝袜"
+      ],
+      "description": "toeless stockings",
+      "nai_tags": [
+        "toeless stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.torn_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "torn stockings",
+      "label_zh": "破损袜",
+      "aliases_zh": [
+        "破损袜"
+      ],
+      "description": "torn stockings",
+      "nai_tags": [
+        "torn stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.two_tone_legwear",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "two-tone legwear",
+      "label_zh": "拼色袜",
+      "aliases_zh": [
+        "拼色袜"
+      ],
+      "description": "two-tone legwear",
+      "nai_tags": [
+        "two-tone legwear"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    },
+    {
+      "id": "avs.hosiery.white_stockings",
+      "category": "hosiery",
+      "category_zh": "丝袜与袜类",
+      "compile_category": "clothing",
+      "subcategory": "common_design_term",
+      "label": "white stockings",
+      "label_zh": "白色丝袜",
+      "aliases_zh": [
+        "白色丝袜"
+      ],
+      "description": "white stockings",
+      "nai_tags": [
+        "white stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "legs",
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested",
+      "constraints": [
+        "single hosiery design per current item; no stockings layering"
+      ]
+    }
+  ]
+}
