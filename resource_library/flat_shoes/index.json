@@ -1,0 +1,646 @@
+{
+  "category": "flat_shoes",
+  "label_zh": "平底鞋",
+  "entries": [
+    {
+      "id": "avs.flat_shoes.ballet_flats",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "ballet flats",
+      "label_zh": "芭蕾平底鞋",
+      "aliases_zh": [
+        "芭蕾平底鞋"
+      ],
+      "description": "ballet flats",
+      "nai_tags": [
+        "ballet flats"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.boat_shoes",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "boat shoes",
+      "label_zh": "船鞋",
+      "aliases_zh": [
+        "船鞋"
+      ],
+      "description": "boat shoes",
+      "nai_tags": [
+        "boat shoes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.canvas_shoes",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "canvas shoes",
+      "label_zh": "帆布鞋",
+      "aliases_zh": [
+        "帆布鞋"
+      ],
+      "description": "canvas shoes",
+      "nai_tags": [
+        "canvas shoes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_derby_shoes",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat derby shoes",
+      "label_zh": "德比平底鞋",
+      "aliases_zh": [
+        "德比平底鞋"
+      ],
+      "description": "flat derby shoes",
+      "nai_tags": [
+        "flat derby shoes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_loafers",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat loafers",
+      "label_zh": "平底乐福鞋",
+      "aliases_zh": [
+        "平底乐福鞋"
+      ],
+      "description": "flat loafers",
+      "nai_tags": [
+        "flat loafers"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_mary_jane_shoes",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat Mary Jane shoes",
+      "label_zh": "玛丽珍平底鞋",
+      "aliases_zh": [
+        "玛丽珍平底鞋"
+      ],
+      "description": "flat Mary Jane shoes",
+      "nai_tags": [
+        "flat Mary Jane shoes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_mules",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat mules",
+      "label_zh": "平底穆勒鞋",
+      "aliases_zh": [
+        "平底穆勒鞋"
+      ],
+      "description": "flat mules",
+      "nai_tags": [
+        "flat mules"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_oxford_shoes",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat oxford shoes",
+      "label_zh": "牛津平底鞋",
+      "aliases_zh": [
+        "牛津平底鞋"
+      ],
+      "description": "flat oxford shoes",
+      "nai_tags": [
+        "flat oxford shoes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_sandals",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat sandals",
+      "label_zh": "平底凉鞋",
+      "aliases_zh": [
+        "平底凉鞋"
+      ],
+      "description": "flat sandals",
+      "nai_tags": [
+        "flat sandals"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flat_slingbacks",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flat slingbacks",
+      "label_zh": "平底后空鞋",
+      "aliases_zh": [
+        "平底后空鞋"
+      ],
+      "description": "flat slingbacks",
+      "nai_tags": [
+        "flat slingbacks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.flats_with_ribbon_bows",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "flats with ribbon bows",
+      "label_zh": "蝴蝶结平底鞋",
+      "aliases_zh": [
+        "蝴蝶结平底鞋"
+      ],
+      "description": "flats with ribbon bows",
+      "nai_tags": [
+        "flats with ribbon bows"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.high_top_sneakers",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "high-top sneakers",
+      "label_zh": "高帮运动鞋",
+      "aliases_zh": [
+        "高帮运动鞋"
+      ],
+      "description": "high-top sneakers",
+      "nai_tags": [
+        "high-top sneakers"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.lace_up_flats",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "lace-up flats",
+      "label_zh": "平底绑带鞋",
+      "aliases_zh": [
+        "平底绑带鞋"
+      ],
+      "description": "lace-up flats",
+      "nai_tags": [
+        "lace-up flats"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.low_top_sneakers",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "low-top sneakers",
+      "label_zh": "低帮运动鞋",
+      "aliases_zh": [
+        "低帮运动鞋"
+      ],
+      "description": "low-top sneakers",
+      "nai_tags": [
+        "low-top sneakers"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.moccasins",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "moccasins",
+      "label_zh": "莫卡辛鞋",
+      "aliases_zh": [
+        "莫卡辛鞋"
+      ],
+      "description": "moccasins",
+      "nai_tags": [
+        "moccasins"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.pointed_toe_flats",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "pointed-toe flats",
+      "label_zh": "尖头平底鞋",
+      "aliases_zh": [
+        "尖头平底鞋"
+      ],
+      "description": "pointed-toe flats",
+      "nai_tags": [
+        "pointed-toe flats"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.round_toe_flats",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "round-toe flats",
+      "label_zh": "圆头平底鞋",
+      "aliases_zh": [
+        "圆头平底鞋"
+      ],
+      "description": "round-toe flats",
+      "nai_tags": [
+        "round-toe flats"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.slip_on_shoes",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "slip-on shoes",
+      "label_zh": "便鞋",
+      "aliases_zh": [
+        "便鞋"
+      ],
+      "description": "slip-on shoes",
+      "nai_tags": [
+        "slip-on shoes"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.slippers",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "slippers",
+      "label_zh": "拖鞋",
+      "aliases_zh": [
+        "拖鞋"
+      ],
+      "description": "slippers",
+      "nai_tags": [
+        "slippers"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.flat_shoes.square_toe_flats",
+      "category": "flat_shoes",
+      "category_zh": "平底鞋",
+      "compile_category": "footwear",
+      "subcategory": "common_design_term",
+      "label": "square-toe flats",
+      "label_zh": "方头平底鞋",
+      "aliases_zh": [
+        "方头平底鞋"
+      ],
+      "description": "square-toe flats",
+      "nai_tags": [
+        "square-toe flats"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "feet"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
