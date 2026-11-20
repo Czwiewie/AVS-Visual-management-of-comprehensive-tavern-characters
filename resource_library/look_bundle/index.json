@@ -1,0 +1,262 @@
+{
+  "category": "look_bundle",
+  "label_zh": "搭配结构",
+  "entries": [
+    {
+      "id": "avs.look_bundle.blouse_with_a_skirt",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "blouse with a skirt",
+      "label_zh": "衬衫配半裙",
+      "aliases_zh": [
+        "衬衫配半裙"
+      ],
+      "description": "blouse with a skirt",
+      "nai_tags": [
+        "blouse with a skirt"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.coordinated_two_piece_outfit",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "coordinated two-piece outfit",
+      "label_zh": "两件式套装",
+      "aliases_zh": [
+        "两件式套装"
+      ],
+      "description": "coordinated two-piece outfit",
+      "nai_tags": [
+        "coordinated two-piece outfit"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.evening_gown_with_heels",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "evening gown with heels",
+      "label_zh": "礼服配高跟鞋",
+      "aliases_zh": [
+        "礼服配高跟鞋"
+      ],
+      "description": "evening gown with heels",
+      "nai_tags": [
+        "evening gown with heels"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.knit_top_with_trousers",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "knit top with trousers",
+      "label_zh": "针织上衣配长裤",
+      "aliases_zh": [
+        "针织上衣配长裤"
+      ],
+      "description": "knit top with trousers",
+      "nai_tags": [
+        "knit top with trousers"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.long_dress_with_a_shawl",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "long dress with a shawl",
+      "label_zh": "长裙配披肩",
+      "aliases_zh": [
+        "长裙配披肩"
+      ],
+      "description": "long dress with a shawl",
+      "nai_tags": [
+        "long dress with a shawl"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.three_piece_formal_suit",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "three-piece formal suit",
+      "label_zh": "三件式正装",
+      "aliases_zh": [
+        "三件式正装"
+      ],
+      "description": "three-piece formal suit",
+      "nai_tags": [
+        "three-piece formal suit"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.travel_outfit_with_ankle_boots",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "travel outfit with ankle boots",
+      "label_zh": "旅行装配短靴",
+      "aliases_zh": [
+        "旅行装配短靴"
+      ],
+      "description": "travel outfit with ankle boots",
+      "nai_tags": [
+        "travel outfit with ankle boots"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.look_bundle.uniform_with_stockings",
+      "category": "look_bundle",
+      "category_zh": "搭配结构",
+      "compile_category": "look_bundle",
+      "subcategory": "common_design_term",
+      "label": "uniform with stockings",
+      "label_zh": "制服配长袜",
+      "aliases_zh": [
+        "制服配长袜"
+      ],
+      "description": "uniform with stockings",
+      "nai_tags": [
+        "uniform with stockings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": false,
+      "requires_scope_split": true,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
