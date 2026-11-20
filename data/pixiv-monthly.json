@@ -1,7 +1,930 @@
 {
-  "status": "needs_sync",
-  "source": "https://www.pixiv.net/ranking.php?mode=monthly&content=illust&format=json&p=1",
-  "syncedAt": null,
-  "items": [],
-  "message": "仓库尚未成功同步Pixiv月榜。没有伪造的榜单或缩略图。"
+  "status": "ok",
+  "source": "https://www.pixiv.net/ranking.php?mode=monthly&content=illust&p=1&format=json",
+  "syncedAt": "2026-11-20T14:08:49+00:00",
+  "items": [
+    {
+      "rank": 1,
+      "id": "151191747",
+      "title": "学生時代の制服",
+      "artist": "mignon",
+      "tags": [
+        "メイドのセイラ",
+        "ぱんつ",
+        "おへそ",
+        "へそ",
+        "ストッキング越しのパンツ",
+        "着替え",
+        "パンスト越しのパンツ",
+        "オリジナル10000users入り",
+        "セーラー服",
+        "絶対空域"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/23/10/22/151191747_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151191747"
+    },
+    {
+      "rank": 2,
+      "id": "151166171",
+      "title": "Eldreda Sunbringer",
+      "artist": "Nvl",
+      "tags": [
+        "ZenlessZoneZero",
+        "ゼンレスゾーンゼロ",
+        "エルダ・サンブリンガー",
+        "白髪巨乳",
+        "長身巨乳",
+        "オッドアイ",
+        "お腹",
+        "角娘",
+        "ゼンゼロ5000users入り",
+        "エルダ・サンブリンガー・星月夜の散策"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/07/54/20/151166171_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151166171"
+    },
+    {
+      "rank": 3,
+      "id": "151184956",
+      "title": "あっ…、立ちくらみ…♡",
+      "artist": "イコモチ",
+      "tags": [
+        "zzzero",
+        "ゼンゼロ",
+        "zenlesszonezero",
+        "绝区零",
+        "젠레스존제로",
+        "フィオニー",
+        "フィオニー・レファエラ",
+        "ゼンレスゾーンゼロ",
+        "ゼンゼロ5000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/20/55/24/151184956_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151184956"
+    },
+    {
+      "rank": 4,
+      "id": "151157393",
+      "title": "Mercury",
+      "artist": "rororo",
+      "tags": [
+        "アズールレーン",
+        "メルクーリィ(アズールレーン)",
+        "愛恋天使メルクーリィ",
+        "爆乳",
+        "北半球",
+        "目がハート",
+        "エロ衣装",
+        "おっぱい"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/16/51/151157393_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151157393"
+    },
+    {
+      "rank": 5,
+      "id": "151157973",
+      "title": "作戦開始～!!",
+      "artist": "SWAV / 初画集発売中",
+      "tags": [
+        "オリジナル",
+        "ReSURGUM",
+        "魔法少女"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/30/29/151157973_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151157973"
+    },
+    {
+      "rank": 6,
+      "id": "151157218",
+      "title": "Kal'tsit·Esperanta",
+      "artist": "MildT",
+      "tags": [
+        "アークナイツ",
+        "明日方舟",
+        "ケルシー(アークナイツ)",
+        "凯尔希",
+        "猫耳",
+        "巨乳化",
+        "翠眼",
+        "片目隠れ",
+        "アークナイツ5000users入り",
+        "女の子"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/12/38/151157218_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151157218"
+    },
+    {
+      "rank": 7,
+      "id": "151168373",
+      "title": "祀",
+      "artist": "八伝",
+      "tags": [
+        "Arknights",
+        "スー(エンドフィールド)",
+        "アークナイツ:エンドフィールド",
+        "温泉",
+        "風呂",
+        "祀",
+        "竜娘",
+        "横乳",
+        "濡れ",
+        "尻尾"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/10/02/23/151168373_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151168373"
+    },
+    {
+      "rank": 8,
+      "id": "151156285",
+      "title": "ZZZ バニーレミエル",
+      "artist": "Cian yo",
+      "tags": [
+        "女の子",
+        "ゼンレスゾーンゼロ",
+        "ZZZ",
+        "レミエール",
+        "Remielle",
+        "レミエール・ダン",
+        "スーパーハイレグ",
+        "ピンク髪",
+        "バニーガール",
+        "爆乳"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/00/22/151156285_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151156285"
+    },
+    {
+      "rank": 9,
+      "id": "151172350",
+      "title": ":D",
+      "artist": "SWKL:D",
+      "tags": [
+        "绝区零",
+        "少女",
+        "フィオニー・レファエラ",
+        "金髪",
+        "セーラーミズギ",
+        "眼帯",
+        "腿",
+        "アホ毛"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/13/49/54/151172350_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151172350"
+    },
+    {
+      "rank": 10,
+      "id": "151170586",
+      "title": "Twitterで見かけたハロウィン土偶",
+      "artist": "遊ハち",
+      "tags": [
+        "イラスト",
+        "時事ネタ",
+        "土偶",
+        "あらかわいい"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/12/10/22/151170586_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151170586"
+    },
+    {
+      "rank": 11,
+      "id": "151156259",
+      "title": "ダーニャ",
+      "artist": "Poki",
+      "tags": [
+        "ダーニャ",
+        "Denia",
+        "达妮娅",
+        "鳴潮",
+        "WutheringWaves",
+        "ai-assisted",
+        "女の子",
+        "鸣潮"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/00/18/151156259_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151156259"
+    },
+    {
+      "rank": 12,
+      "id": "151156232",
+      "title": "レミエール・ダン",
+      "artist": "kuavera",
+      "tags": [
+        "レミエール・ダン",
+        "ZenlessZoneZero",
+        "zzzero",
+        "ラミル",
+        "爆乳",
+        "牛柄ビキニ",
+        "むちむち",
+        "おへそ",
+        "ピンク髪"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/00/13/151156232_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151156232"
+    },
+    {
+      "rank": 13,
+      "id": "151108611",
+      "title": "あーもう！ いいから、撫でてください……！",
+      "artist": "MyungYi",
+      "tags": [
+        "ブルアカ",
+        "ケイ(ブルーアーカイブ)",
+        "ブルーアーカイブ",
+        "かわいい",
+        "天童ケイ",
+        "BlueArchive",
+        "女の子",
+        "ブルーアーカイブ1000users入り",
+        "赤面",
+        "汗だく"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/21/15/57/23/151108611_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151108611"
+    },
+    {
+      "rank": 14,
+      "id": "151133205",
+      "title": "神里凌华",
+      "artist": "阿戈魔AGM",
+      "tags": [
+        "女の子",
+        "欧派",
+        "尻神様",
+        "原神",
+        "神里凌华",
+        "神里綾華(原神)",
+        "原神5000users入り",
+        "ガーターベルト",
+        "ポニーテール",
+        "背中"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/12/44/04/151133205_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151133205"
+    },
+    {
+      "rank": 15,
+      "id": "151156380",
+      "title": "兎鞠まり",
+      "artist": "カンザリン",
+      "tags": [
+        "兎鞠まり",
+        "バーチャルYouTuber",
+        "VTuber",
+        "ロリ",
+        "貧乳",
+        "バーチャルYouTuber1000users入り",
+        "おじさん",
+        "ロンググローブ"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/00/39/151156380_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151156380"
+    },
+    {
+      "rank": 16,
+      "id": "151181590",
+      "title": "ヴェスナ \\ Vesna",
+      "artist": "helloimtea",
+      "tags": [
+        "おっぱい",
+        "girl",
+        "GenshinImpact",
+        "原神",
+        "Genshin",
+        "原神1000users入り",
+        "ヴェスナ",
+        "背中",
+        "尻",
+        "金髪"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/19/37/13/151181590_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151181590"
+    },
+    {
+      "rank": 17,
+      "id": "151134548",
+      "title": "👑",
+      "artist": "ABP_ART",
+      "tags": [
+        "うちの子",
+        "魅惑のふともも",
+        "少女",
+        "おへそ",
+        "極上の女体",
+        "ストッキング",
+        "ちっぱい",
+        "內褲",
+        "ハートくり抜き",
+        "ぱんつ"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/13/50/26/151134548_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151134548"
+    },
+    {
+      "rank": 18,
+      "id": "151177072",
+      "title": "白给女孩 十年之约 (commission)",
+      "artist": "猫打",
+      "tags": [
+        "足裏",
+        "足指",
+        "黒タイツ",
+        "younggirl",
+        "ギリシャ型",
+        "バー",
+        "照れ顔",
+        "バニーガール",
+        "ちっぱい",
+        "黑髮"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/17/32/47/151177072_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151177072"
+    },
+    {
+      "rank": 19,
+      "id": "151177369",
+      "title": "凄いねぞう",
+      "artist": "Pt",
+      "tags": [
+        "オリジナル",
+        "狛神みこと",
+        "むっつりみこと",
+        "確信犯",
+        "据え膳食わぬは男の恥",
+        "はよ結婚しろ",
+        "いいから結婚しろ",
+        "みことちゃんは嫌われたくない!",
+        "ここは天国か",
+        "まだ結婚してない?おいおい冗談やめろよ笑"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/17/43/11/151177369_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151177369"
+    },
+    {
+      "rank": 20,
+      "id": "151111628",
+      "title": "緋雪",
+      "artist": "儒宅 Ruzhai",
+      "tags": [
+        "WutheringWaves",
+        "鳴潮",
+        "鸣潮",
+        "緋雪",
+        "Hiyuki",
+        "ぱんつ",
+        "スカートめくり",
+        "メイド",
+        "ポニーテール",
+        "下着"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/21/18/00/23/151111628_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151111628"
+    },
+    {
+      "rank": 21,
+      "id": "151152760",
+      "title": "Mistique",
+      "artist": "anon",
+      "tags": [
+        "ステラソラ",
+        "StellaSora",
+        "ミスティ(ステラソラ)",
+        "ベッドの上",
+        "押し倒し",
+        "事前",
+        "口隠し",
+        "赤面",
+        "ステラソラ5000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/22/42/16/151152760_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151152760"
+    },
+    {
+      "rank": 22,
+      "id": "151152054",
+      "title": "祀",
+      "artist": "巴莎卡_R",
+      "tags": [
+        "endfield",
+        "ぱんつ",
+        "スー(エンドフィールド)",
+        "しゃがみパンチラ",
+        "裸足",
+        "おこ",
+        "魅惑のふともも",
+        "エンドフィールド5000users入り",
+        "竜娘",
+        "足跡"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/22/27/41/151152054_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151152054"
+    },
+    {
+      "rank": 23,
+      "id": "151157703",
+      "title": "画竜点睛🍁",
+      "artist": "壱珂",
+      "tags": [
+        "明日方舟终末地",
+        "Arknights:Endfield",
+        "アークナイツ:エンドフィールド",
+        "明日方舟",
+        "アークナイツ",
+        "スー(エンドフィールド)",
+        "エンドフィールド1000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/23/27/151157703_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151157703"
+    },
+    {
+      "rank": 24,
+      "id": "151193990",
+      "title": "ある日のカフェ巡り",
+      "artist": "torino",
+      "tags": [
+        "NTE",
+        "NTEネバエバ",
+        "ミント(NTE)",
+        "レクイエム(NTE)",
+        "鑑定士(NTE)",
+        "NTE5000users入り",
+        "猫耳"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/24/00/00/30/151193990_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151193990"
+    },
+    {
+      "rank": 25,
+      "id": "151195836",
+      "title": "work out",
+      "artist": "Shigure@PATREON",
+      "tags": [
+        "ブルーアーカイブ",
+        "BlueArchive",
+        "ブルアカ",
+        "調月リオ",
+        "濡れ透け",
+        "体操服",
+        "乳揺れ",
+        "でかぱい",
+        "あばれる乳",
+        "ブルマ"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/24/00/34/32/151195836_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151195836"
+    },
+    {
+      "rank": 26,
+      "id": "151157940",
+      "title": "フィオニー",
+      "artist": "AtomB",
+      "tags": [
+        "足指",
+        "足裏",
+        "足フェチ",
+        "ゼンレスゾーンゼロ",
+        "ソックス足裏",
+        "白丝",
+        "フィオニー・レファエラ",
+        "尻",
+        "すじ",
+        "金髪"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/29/54/151157940_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151157940"
+    },
+    {
+      "rank": 27,
+      "id": "151130836",
+      "title": "怨仇",
+      "artist": "_依旧范特西",
+      "tags": [
+        "アズールレーン",
+        "碧蓝航线",
+        "巨乳",
+        "魅惑の谷間",
+        "黑丝",
+        "インプラカブル(アズールレーン)",
+        "アズールレーン5000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/10/55/27/151130836_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151130836"
+    },
+    {
+      "rank": 28,
+      "id": "151090277",
+      "title": "臨在神・リリム",
+      "artist": "void_0",
+      "tags": [
+        "女の子",
+        "オリジナル",
+        "イラスト",
+        "逆光",
+        "美しい",
+        "転生紀元",
+        "裸足"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/21/00/00/39/151090277_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151090277"
+    },
+    {
+      "rank": 29,
+      "id": "151142292",
+      "title": "イロハ",
+      "artist": "Pepa",
+      "tags": [
+        "ブルーアーカイブ",
+        "BlueArchive",
+        "ブルアカ",
+        "棗イロハ",
+        "女の子",
+        "ブルーアーカイブ1000users入り",
+        "私服",
+        "ジーンズ",
+        "ネックレス"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/52/40/151142292_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151142292"
+    },
+    {
+      "rank": 30,
+      "id": "151182416",
+      "title": "ケルシー",
+      "artist": "瑞月よる/mzkYoru",
+      "tags": [
+        "Arknights",
+        "明日方舟",
+        "アークナイツ",
+        "ケルシー(アークナイツ)",
+        "Kal'tsit",
+        "胸チラ",
+        "アークナイツ1000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/20/00/17/151182416_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151182416"
+    },
+    {
+      "rank": 31,
+      "id": "151141352",
+      "title": "CM",
+      "artist": "FymriE",
+      "tags": [
+        "女の子",
+        "キャラクター",
+        "ふともも",
+        "へそ",
+        "ツインテール",
+        "肉球",
+        "おっぱい"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/18/36/12/151141352_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151141352"
+    },
+    {
+      "rank": 32,
+      "id": "151224078",
+      "title": "キキ",
+      "artist": "MyungYi",
+      "tags": [
+        "竜華キサキ",
+        "キキ(ブルーアーカイブ)",
+        "ブルーアーカイブ",
+        "腿",
+        "黑髮",
+        "上履き",
+        "双马尾",
+        "小学生",
+        "赤面"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/24/19/23/21/151224078_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151224078"
+    },
+    {
+      "rank": 33,
+      "id": "151157442",
+      "title": "今から未来へ",
+      "artist": "MAOH玥儿",
+      "tags": [
+        "崩坏3rd",
+        "崩壊3rd",
+        "寻梦者",
+        "时序之律者",
+        "刻の律者",
+        "美脚",
+        "黑髮",
+        "ドレス",
+        "超ロングヘア",
+        "ハイヒール"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/17/59/151157442_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151157442"
+    },
+    {
+      "rank": 34,
+      "id": "151116543",
+      "title": "心を読む程度の能力",
+      "artist": "久蒼穹",
+      "tags": [
+        "東方",
+        "東方Project",
+        "古明地さとり",
+        "サードアイ",
+        "東方Project1000users入り",
+        "溢れ出るカリスマ"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/00/02/18/151116543_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151116543"
+    },
+    {
+      "rank": 35,
+      "id": "151142836",
+      "title": "Firefly summer",
+      "artist": "Harukix",
+      "tags": [
+        "Firefly",
+        "ホタル(スターレイル)",
+        "崩壊スターレイル",
+        "Summer",
+        "Stelle",
+        "星",
+        "ビキニ",
+        "お腹",
+        "半水面",
+        "逆光"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/19/16/23/151142836_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151142836"
+    },
+    {
+      "rank": 36,
+      "id": "151233234",
+      "title": "信じられないところに力を入れているラーメン屋",
+      "artist": "からめる",
+      "tags": [
+        "からめる",
+        "ラーメン",
+        "ナルトはあなたを見ています",
+        "どういうことだってばよ",
+        "違う、そうじゃない",
+        "ラーメンとは",
+        "ナルト一筋",
+        "祝詞",
+        "ツッコミ所の多さに定評がありすぎるうp主",
+        "なると"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/24/22/34/58/151233234_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151233234"
+    },
+    {
+      "rank": 37,
+      "id": "151176441",
+      "title": "run",
+      "artist": "XilmO@夕末",
+      "tags": [
+        "女の子",
+        "オリジナル",
+        "オリジナル1000users入り",
+        "风景",
+        "風景1000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/17/10/25/151176441_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151176441"
+    },
+    {
+      "rank": 38,
+      "id": "151109278",
+      "title": "アズレンの乳牛",
+      "artist": "麻呂太C109木曜東2ヌ07b",
+      "tags": [
+        "アズールレーン",
+        "カウペンス(アズールレーン)",
+        "樫野(アズールレーン)",
+        "牛柄ビキニ",
+        "牛娘",
+        "爆乳",
+        "長手袋",
+        "おっぱい",
+        "でかぱい",
+        "アズールレーン1000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/21/16/42/45/151109278_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151109278"
+    },
+    {
+      "rank": 39,
+      "id": "151134174",
+      "title": "🐉🐉🐉🐉",
+      "artist": "Coria",
+      "tags": [
+        "祀",
+        "アークナイツ:エンドフィールド",
+        "スー(エンドフィールド)",
+        "ソックス足裏",
+        "竜娘",
+        "緑髪",
+        "幼児化"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/13/32/13/151134174_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151134174"
+    },
+    {
+      "rank": 40,
+      "id": "151180698",
+      "title": "花火",
+      "artist": "砂粒shali",
+      "tags": [
+        "花火(スターレイル)",
+        "崩壊スターレイル",
+        "花火",
+        "Sparkle",
+        "崩坏星穹铁道",
+        "100日チャレンジ",
+        "崩壊:スターレイル"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/19/13/40/151180698_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151180698"
+    },
+    {
+      "rank": 41,
+      "id": "151228812",
+      "title": "Capri",
+      "artist": "D.I.S.H",
+      "tags": [
+        "CyberpunkEdgerunners",
+        "サイバーパンク:エッジランナーズ2",
+        "カプリ(エッジランナーズ)",
+        "乳袋",
+        "ウィンク",
+        "サイバーパンク",
+        "サイバーパンク:エッジランナーズ",
+        "笑顔",
+        "ハイヒール"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/25/03/19/23/151228812_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151228812"
+    },
+    {
+      "rank": 42,
+      "id": "151134071",
+      "title": "talia",
+      "artist": "にわリズム",
+      "tags": [
+        "CyberpunkEdgerunners",
+        "Talia",
+        "タリア・ヤン",
+        "Cyberpunk",
+        "サイバーパンク:エッジランナーズ2",
+        "おっぱい",
+        "エッジランナーズ2期1000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/13/27/06/151134071_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151134071"
+    },
+    {
+      "rank": 43,
+      "id": "151150629",
+      "title": "セリミエ",
+      "artist": "くらしっく",
+      "tags": [
+        "セリミエ(アズールレーン)",
+        "アズールレーン",
+        "おっぱい",
+        "ツインテール",
+        "アズールレーン1000users入り",
+        "メカクレ",
+        "天使",
+        "舌出し",
+        "翼",
+        "黑髮"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/22/00/30/151150629_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151150629"
+    },
+    {
+      "rank": 44,
+      "id": "151183824",
+      "title": "無題",
+      "artist": "小小依帆Zzzz",
+      "tags": [
+        "BlueArchive",
+        "ブルーアーカイブ",
+        "ロリ",
+        "貧乳",
+        "腿",
+        "ハロウィン",
+        "空崎ヒナ",
+        "チャイナドレス"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/20/29/43/151183824_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151183824"
+    },
+    {
+      "rank": 45,
+      "id": "151107111",
+      "title": "フィオニー",
+      "artist": "Hong",
+      "tags": [
+        "ゼンレスゾーンゼロ",
+        "フィオニー・レファエラ",
+        "ゼンゼロ1000users入り",
+        "金髪",
+        "ガーターストッキング",
+        "レオタード",
+        "おっぱい"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/21/14/38/05/151107111_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151107111"
+    },
+    {
+      "rank": 46,
+      "id": "151124224",
+      "title": "Day 21 \"Treatment\"",
+      "artist": "Hans-Kun",
+      "tags": [
+        "Fate/GrandOrder",
+        "FGO",
+        "nightingale",
+        "ナイチンゲール(Fate)",
+        "巨乳",
+        "トリック・オア・トリート"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/05/05/06/151124224_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151124224"
+    },
+    {
+      "rank": 47,
+      "id": "151158211",
+      "title": "月に沿って昇る",
+      "artist": "行間",
+      "tags": [
+        "背景",
+        "風景",
+        "コンセプトアート",
+        "オリジナル",
+        "ハイセンス",
+        "階段",
+        "杖",
+        "風景1000users入り"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/23/00/35/33/151158211_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151158211"
+    },
+    {
+      "rank": 48,
+      "id": "151138265",
+      "title": "水着エイメス✨",
+      "artist": "Poki",
+      "tags": [
+        "エイメス",
+        "Aemeath",
+        "爱弥斯",
+        "WutheringWaves",
+        "水着",
+        "ビキニ",
+        "ai-assisted",
+        "女の子",
+        "鸣潮"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/22/17/00/09/151138265_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151138265"
+    },
+    {
+      "rank": 49,
+      "id": "151199445",
+      "title": "Malfoy with Magic Broom",
+      "artist": "七氏",
+      "tags": [
+        "ロリ",
+        "女の子",
+        "ドラコ・マルフォイ",
+        "女体化",
+        "♀ドラコ",
+        "Malfoid",
+        "足裏",
+        "裸足"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/24/02/38/25/151199445_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151199445"
+    },
+    {
+      "rank": 50,
+      "id": "151270894",
+      "title": "ハロウィンコスプレガール",
+      "artist": "天三月",
+      "tags": [
+        "オリジナル",
+        "ハロウィン",
+        "黒タイツ",
+        "銃",
+        "黒パンツ",
+        "お尻",
+        "女の子",
+        "編み上げブーツ",
+        "キャップ",
+        "ぱんつ"
+      ],
+      "thumbnail": "https://i.pximg.net/c/480x960/img-master/img/2026/10/25/19/58/17/151270894_p0_master1200.jpg",
+      "url": "https://www.pixiv.net/artworks/151270894"
+    }
+  ]
 }
