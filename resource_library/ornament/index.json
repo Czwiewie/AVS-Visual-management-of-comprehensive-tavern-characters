@@ -1,0 +1,646 @@
+{
+  "category": "ornament",
+  "label_zh": "装饰与附着件",
+  "entries": [
+    {
+      "id": "avs.ornament.applique",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "applique",
+      "label_zh": "贴花",
+      "aliases_zh": [
+        "贴花"
+      ],
+      "description": "applique",
+      "nai_tags": [
+        "applique"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.beaded_decoration",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "beaded decoration",
+      "label_zh": "珠饰",
+      "aliases_zh": [
+        "珠饰"
+      ],
+      "description": "beaded decoration",
+      "nai_tags": [
+        "beaded decoration"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.bound_edges",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "bound edges",
+      "label_zh": "包边",
+      "aliases_zh": [
+        "包边"
+      ],
+      "description": "bound edges",
+      "nai_tags": [
+        "bound edges"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.decorative_chains",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "decorative chains",
+      "label_zh": "链饰",
+      "aliases_zh": [
+        "链饰"
+      ],
+      "description": "decorative chains",
+      "nai_tags": [
+        "decorative chains"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.decorative_cutouts",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "decorative cutouts",
+      "label_zh": "镂空",
+      "aliases_zh": [
+        "镂空"
+      ],
+      "description": "decorative cutouts",
+      "nai_tags": [
+        "decorative cutouts"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.embroidery",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "embroidery",
+      "label_zh": "绣花",
+      "aliases_zh": [
+        "绣花"
+      ],
+      "description": "embroidery",
+      "nai_tags": [
+        "embroidery"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.feather_decoration",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "feather decoration",
+      "label_zh": "羽毛饰",
+      "aliases_zh": [
+        "羽毛饰"
+      ],
+      "description": "feather decoration",
+      "nai_tags": [
+        "feather decoration"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.floral_ornament",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "floral ornament",
+      "label_zh": "花饰",
+      "aliases_zh": [
+        "花饰"
+      ],
+      "description": "floral ornament",
+      "nai_tags": [
+        "floral ornament"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.frills",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "frills",
+      "label_zh": "褶边",
+      "aliases_zh": [
+        "褶边"
+      ],
+      "description": "frills",
+      "nai_tags": [
+        "frills"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.gemstone_settings",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "gemstone settings",
+      "label_zh": "宝石镶饰",
+      "aliases_zh": [
+        "宝石镶饰"
+      ],
+      "description": "gemstone settings",
+      "nai_tags": [
+        "gemstone settings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.knotted_buttons",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "knotted buttons",
+      "label_zh": "盘扣",
+      "aliases_zh": [
+        "盘扣"
+      ],
+      "description": "knotted buttons",
+      "nai_tags": [
+        "knotted buttons"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.lace_trim",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "lace trim",
+      "label_zh": "蕾丝花边",
+      "aliases_zh": [
+        "蕾丝花边"
+      ],
+      "description": "lace trim",
+      "nai_tags": [
+        "lace trim"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.lacing",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "lacing",
+      "label_zh": "系带",
+      "aliases_zh": [
+        "系带"
+      ],
+      "description": "lacing",
+      "nai_tags": [
+        "lacing"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.metal_buckles",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "metal buckles",
+      "label_zh": "金属扣",
+      "aliases_zh": [
+        "金属扣"
+      ],
+      "description": "metal buckles",
+      "nai_tags": [
+        "metal buckles"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.piping",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "piping",
+      "label_zh": "滚边",
+      "aliases_zh": [
+        "滚边"
+      ],
+      "description": "piping",
+      "nai_tags": [
+        "piping"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.rivets",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "rivets",
+      "label_zh": "铆钉",
+      "aliases_zh": [
+        "铆钉"
+      ],
+      "description": "rivets",
+      "nai_tags": [
+        "rivets"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.ruffles",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "ruffles",
+      "label_zh": "荷叶边",
+      "aliases_zh": [
+        "荷叶边"
+      ],
+      "description": "ruffles",
+      "nai_tags": [
+        "ruffles"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.satin_ribbon_bow",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "satin ribbon bow",
+      "label_zh": "缎带结",
+      "aliases_zh": [
+        "缎带结"
+      ],
+      "description": "satin ribbon bow",
+      "nai_tags": [
+        "satin ribbon bow"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.sequins",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "sequins",
+      "label_zh": "亮片",
+      "aliases_zh": [
+        "亮片"
+      ],
+      "description": "sequins",
+      "nai_tags": [
+        "sequins"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.ornament.tassels",
+      "category": "ornament",
+      "category_zh": "装饰与附着件",
+      "compile_category": "ornament",
+      "subcategory": "common_design_term",
+      "label": "tassels",
+      "label_zh": "流苏",
+      "aliases_zh": [
+        "流苏"
+      ],
+      "description": "tassels",
+      "nai_tags": [
+        "tassels"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
