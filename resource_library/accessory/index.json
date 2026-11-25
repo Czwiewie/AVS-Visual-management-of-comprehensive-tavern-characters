@@ -1,0 +1,1286 @@
+{
+  "category": "accessory",
+  "label_zh": "配饰",
+  "entries": [
+    {
+      "id": "avs.accessory.anklet",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "anklet",
+      "label_zh": "脚链",
+      "aliases_zh": [
+        "脚链"
+      ],
+      "description": "anklet",
+      "nai_tags": [
+        "anklet"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.backpack",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "backpack",
+      "label_zh": "背包",
+      "aliases_zh": [
+        "背包"
+      ],
+      "description": "backpack",
+      "nai_tags": [
+        "backpack"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.bangle",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "bangle",
+      "label_zh": "手镯",
+      "aliases_zh": [
+        "手镯"
+      ],
+      "description": "bangle",
+      "nai_tags": [
+        "bangle"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.belt",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "belt",
+      "label_zh": "腰带",
+      "aliases_zh": [
+        "腰带"
+      ],
+      "description": "belt",
+      "nai_tags": [
+        "belt"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.beret",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "beret",
+      "label_zh": "贝雷帽",
+      "aliases_zh": [
+        "贝雷帽"
+      ],
+      "description": "beret",
+      "nai_tags": [
+        "beret"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.bow_tie",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "bow tie",
+      "label_zh": "领结",
+      "aliases_zh": [
+        "领结"
+      ],
+      "description": "bow tie",
+      "nai_tags": [
+        "bow tie"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.bracelet",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "bracelet",
+      "label_zh": "手链",
+      "aliases_zh": [
+        "手链"
+      ],
+      "description": "bracelet",
+      "nai_tags": [
+        "bracelet"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.brooch",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "brooch",
+      "label_zh": "胸针",
+      "aliases_zh": [
+        "胸针"
+      ],
+      "description": "brooch",
+      "nai_tags": [
+        "brooch"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.choker",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "choker",
+      "label_zh": "颈环",
+      "aliases_zh": [
+        "颈环"
+      ],
+      "description": "choker",
+      "nai_tags": [
+        "choker"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.clutch_bag",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "clutch bag",
+      "label_zh": "手拿包",
+      "aliases_zh": [
+        "手拿包"
+      ],
+      "description": "clutch bag",
+      "nai_tags": [
+        "clutch bag"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.cufflinks",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "cufflinks",
+      "label_zh": "袖扣",
+      "aliases_zh": [
+        "袖扣"
+      ],
+      "description": "cufflinks",
+      "nai_tags": [
+        "cufflinks"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.drop_earrings",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "drop earrings",
+      "label_zh": "耳坠",
+      "aliases_zh": [
+        "耳坠"
+      ],
+      "description": "drop earrings",
+      "nai_tags": [
+        "drop earrings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.elbow_length_gloves",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "elbow-length gloves",
+      "label_zh": "长手套",
+      "aliases_zh": [
+        "长手套"
+      ],
+      "description": "elbow-length gloves",
+      "nai_tags": [
+        "elbow-length gloves"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.fingerless_gloves",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "fingerless gloves",
+      "label_zh": "露指手套",
+      "aliases_zh": [
+        "露指手套"
+      ],
+      "description": "fingerless gloves",
+      "nai_tags": [
+        "fingerless gloves"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.floral_hair_ornament",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "floral hair ornament",
+      "label_zh": "花朵发饰",
+      "aliases_zh": [
+        "花朵发饰"
+      ],
+      "description": "floral hair ornament",
+      "nai_tags": [
+        "floral hair ornament"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.garter_belt",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "garter belt",
+      "label_zh": "吊袜带",
+      "aliases_zh": [
+        "吊袜带"
+      ],
+      "description": "garter belt",
+      "nai_tags": [
+        "garter belt"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.glasses",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "glasses",
+      "label_zh": "眼镜",
+      "aliases_zh": [
+        "眼镜"
+      ],
+      "description": "glasses",
+      "nai_tags": [
+        "glasses"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.gloves",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "gloves",
+      "label_zh": "手套",
+      "aliases_zh": [
+        "手套"
+      ],
+      "description": "gloves",
+      "nai_tags": [
+        "gloves"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.hair_bow",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "hair bow",
+      "label_zh": "蝴蝶结发饰",
+      "aliases_zh": [
+        "蝴蝶结发饰"
+      ],
+      "description": "hair bow",
+      "nai_tags": [
+        "hair bow"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.hair_clip",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "hair clip",
+      "label_zh": "发夹",
+      "aliases_zh": [
+        "发夹"
+      ],
+      "description": "hair clip",
+      "nai_tags": [
+        "hair clip"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.hair_stick",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "hair stick",
+      "label_zh": "发簪",
+      "aliases_zh": [
+        "发簪"
+      ],
+      "description": "hair stick",
+      "nai_tags": [
+        "hair stick"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.hairband",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "hairband",
+      "label_zh": "发带",
+      "aliases_zh": [
+        "发带"
+      ],
+      "description": "hairband",
+      "nai_tags": [
+        "hairband"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.handbag",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "handbag",
+      "label_zh": "手提包",
+      "aliases_zh": [
+        "手提包"
+      ],
+      "description": "handbag",
+      "nai_tags": [
+        "handbag"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.headband",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "headband",
+      "label_zh": "发箍",
+      "aliases_zh": [
+        "发箍"
+      ],
+      "description": "headband",
+      "nai_tags": [
+        "headband"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.hoop_earrings",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "hoop earrings",
+      "label_zh": "耳环",
+      "aliases_zh": [
+        "耳环"
+      ],
+      "description": "hoop earrings",
+      "nai_tags": [
+        "hoop earrings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.monocle",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "monocle",
+      "label_zh": "单片眼镜",
+      "aliases_zh": [
+        "单片眼镜"
+      ],
+      "description": "monocle",
+      "nai_tags": [
+        "monocle"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.necklace",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "necklace",
+      "label_zh": "颈链",
+      "aliases_zh": [
+        "颈链"
+      ],
+      "description": "necklace",
+      "nai_tags": [
+        "necklace"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.necktie",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "necktie",
+      "label_zh": "领带",
+      "aliases_zh": [
+        "领带"
+      ],
+      "description": "necktie",
+      "nai_tags": [
+        "necktie"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.pearl_earrings",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "pearl earrings",
+      "label_zh": "珍珠耳饰",
+      "aliases_zh": [
+        "珍珠耳饰"
+      ],
+      "description": "pearl earrings",
+      "nai_tags": [
+        "pearl earrings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.pendant",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "pendant",
+      "label_zh": "吊坠",
+      "aliases_zh": [
+        "吊坠"
+      ],
+      "description": "pendant",
+      "nai_tags": [
+        "pendant"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.ring",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "ring",
+      "label_zh": "戒指",
+      "aliases_zh": [
+        "戒指"
+      ],
+      "description": "ring",
+      "nai_tags": [
+        "ring"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.scarf",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "scarf",
+      "label_zh": "围巾",
+      "aliases_zh": [
+        "围巾"
+      ],
+      "description": "scarf",
+      "nai_tags": [
+        "scarf"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.shawl",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "shawl",
+      "label_zh": "披肩",
+      "aliases_zh": [
+        "披肩"
+      ],
+      "description": "shawl",
+      "nai_tags": [
+        "shawl"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.shoulder_bag",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "shoulder bag",
+      "label_zh": "肩包",
+      "aliases_zh": [
+        "肩包"
+      ],
+      "description": "shoulder bag",
+      "nai_tags": [
+        "shoulder bag"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.stud_earrings",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "stud earrings",
+      "label_zh": "耳钉",
+      "aliases_zh": [
+        "耳钉"
+      ],
+      "description": "stud earrings",
+      "nai_tags": [
+        "stud earrings"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.sword_scabbard",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "sword scabbard",
+      "label_zh": "剑鞘",
+      "aliases_zh": [
+        "剑鞘"
+      ],
+      "description": "sword scabbard",
+      "nai_tags": [
+        "sword scabbard"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.veil",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "veil",
+      "label_zh": "头纱",
+      "aliases_zh": [
+        "头纱"
+      ],
+      "description": "veil",
+      "nai_tags": [
+        "veil"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.waist_chain",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "waist chain",
+      "label_zh": "腰链",
+      "aliases_zh": [
+        "腰链"
+      ],
+      "description": "waist chain",
+      "nai_tags": [
+        "waist chain"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.wide_brimmed_hat",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "wide-brimmed hat",
+      "label_zh": "宽檐帽",
+      "aliases_zh": [
+        "宽檐帽"
+      ],
+      "description": "wide-brimmed hat",
+      "nai_tags": [
+        "wide-brimmed hat"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    },
+    {
+      "id": "avs.accessory.wristwatch",
+      "category": "accessory",
+      "category_zh": "配饰",
+      "compile_category": "accessory",
+      "subcategory": "common_design_term",
+      "label": "wristwatch",
+      "label_zh": "腕表",
+      "aliases_zh": [
+        "腕表"
+      ],
+      "description": "wristwatch",
+      "nai_tags": [
+        "wristwatch"
+      ],
+      "language": "en",
+      "kind": "vocabulary_candidate",
+      "source_id": "avs_vocabulary",
+      "source_kind": "authored_vocabulary",
+      "provenance": {
+        "repository": "AVS",
+        "usage": "independently authored common design terms, not copied legacy catalogs"
+      },
+      "requires_parent_item": true,
+      "requires_scope_split": false,
+      "regions": [
+        "torso"
+      ],
+      "reference": null,
+      "nai4full_status": "candidate_not_image_quality_tested",
+      "nai5full_status": "candidate_not_image_quality_tested"
+    }
+  ]
+}
